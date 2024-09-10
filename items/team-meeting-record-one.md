@@ -61,3 +61,4 @@ Meeting Procedure:
 2. DataFiles storing restaurants/sight spots informations.
 3. Search/Real-Time views on map showing the objects.
 4. Modern UI/UX design.
+5. Additional Features TBD.
