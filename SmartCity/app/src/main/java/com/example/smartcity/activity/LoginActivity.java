@@ -2,8 +2,11 @@ package com.example.smartcity.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,15 +16,22 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.smartcity.R;
+import com.example.smartcity.dao.UserDao;
+import com.example.smartcity.dao.UserDaoImpl;
+import com.example.smartcity.db.SQLiteUtil;
 
 /**
- * This activity
+ * This activity use to implement login function
+ * @author: u7811526
  */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText loginAccount;
     private EditText loginPwd;
     private Button btnLogin;
+    private SQLiteUtil sqLiteUtil;
+    private boolean showPwd = false;
+    private ImageView btnShowPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +44,25 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
+        // initialize the SQLite database and get the connection of this database
+        // once finished in onCreate(), the dao layer is able to operate the database
+        sqLiteUtil = new SQLiteUtil(this);
+        SQLiteUtil.connected = sqLiteUtil.getWritableDatabase();
         loginAccount = findViewById(R.id.login_account);
         loginPwd = findViewById(R.id.login_pwd);
         btnLogin = findViewById(R.id.login_btn);
+        btnShowPwd = findViewById(R.id.login_show_btn);
         btnLogin.setOnClickListener(v -> {
             String account = loginAccount.getText().toString().trim();
             String pwd = loginPwd.getText().toString().trim();
             login(account,pwd);
+        });
+
+        /* the image from www.iconfont.cn */
+        // set the state of show/hide pwd button
+        btnShowPwd.setImageResource(R.mipmap.login_hide_pwd);
+        btnShowPwd.setOnClickListener(v -> {
+            showPassword();
         });
     }
 
@@ -48,13 +70,12 @@ public class LoginActivity extends AppCompatActivity {
      * used to implement user login function
      * @param account user's account
      * @param pwd user's password
-     * @author Shengzong Dai
-     * @uid u7811526
+     * @author u7811526
      */
     private void login(String account, String pwd) {
         // if the account or password is null, this user won't be allowed to login
         if(account.isEmpty()) {
-            Toast.makeText(this,"Account can't be null",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Username can't be null",Toast.LENGTH_SHORT).show();
             return;
         }
         if(pwd.isEmpty()) {
@@ -68,7 +89,25 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-            Toast.makeText(this,"Account or password wrong",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Wrong username or password",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * used to show/hide the password test
+     */
+    public void showPassword() {
+        if(!showPwd) {
+            btnShowPwd.setImageResource(R.mipmap.login_show_pwd);
+            HideReturnsTransformationMethod show = HideReturnsTransformationMethod.getInstance();
+            loginPwd.setTransformationMethod(show);
+            showPwd = true;
+        } else {
+            /* the image from www.iconfont.cn */
+            btnShowPwd.setImageResource(R.mipmap.login_hide_pwd);
+            PasswordTransformationMethod hide = PasswordTransformationMethod.getInstance();
+            loginPwd.setTransformationMethod(hide);
+            showPwd = false;
         }
     }
 
@@ -80,9 +119,8 @@ public class LoginActivity extends AppCompatActivity {
      * @uid u7811526
      */
     private boolean userExist(String account, String pwd) {
-        // TODO need refine when implement database
-        if(account.equals("comp2100@anu.edu.au") && pwd.equals("comp2100")
-         || account.equals("comp6442@anu.edu.au") && pwd.equals("comp6442")) return true;
-        return false;
+        // call the dao to check database
+        UserDao userDao = new UserDaoImpl();
+        return userDao.checkUser(account, pwd);
     }
 }
