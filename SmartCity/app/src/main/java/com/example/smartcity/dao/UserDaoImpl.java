@@ -1,25 +1,52 @@
 package com.example.smartcity.dao;
 
-import android.annotation.SuppressLint;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.example.smartcity.db.SQLiteUtil;
+import static android.content.ContentValues.TAG;
 
+import android.util.Log;
 
-public class UserDaoImpl implements UserDao{
+import androidx.annotation.NonNull;
 
-    private SQLiteDatabase db = SQLiteUtil.connected;
+import com.example.smartcity.entity.LoginUser;
+import com.example.smartcity.entity.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-    /**
-     * Use to check if the user account and pwd correct or not, the account and pwd must fit
-     * @param account
-     * @param pwd
-     * @return if the input parameters are correct, the table will get 1 message, else 0
-     */
+public class UserDaoImpl implements UserDao {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference usersRef = db.collection("users");
+
     @Override
-    public boolean checkUser(String account, String pwd) {
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from user_info where user_account = ? and user_pwd = ?", new String[]{account, pwd});
-        return cursor.getCount() > 0;
+    public boolean checkUser(User user) {
+        Query query = usersRef.whereEqualTo("name", user.getName()).whereEqualTo("pwd", user.getPwd());
+
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    System.out.println("task successful");
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        System.out.println("the login info is: " + document.getData());
+                        LoginUser.setLoginUser(document.toObject(User.class));
+                        System.out.println("LoginUser info update");
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+
+        boolean successful = query.get().isSuccessful();
+        System.out.println("The state of query test " + successful );
+
+
+        return !LoginUser.isEmpty();
     }
 }
+

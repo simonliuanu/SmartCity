@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153328531694",
+    "project_id": "smart-city-restaurant",
+    "storage_bucket": "smart-city-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153328531694:android:46d61c7e8240061a4f1bff",
+        "android_client_info": {
+          "package_name": "com.example.smartcity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpeYyRN45HtJhRWHKx-3-eHAVDPP1Z-ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

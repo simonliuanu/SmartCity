@@ -1,5 +1,7 @@
 package com.example.smartcity.dao;
 
+import com.example.smartcity.entity.User;
+
 public interface UserDao {
-    boolean checkUser(String account, String pwd);
+    boolean checkUser(User user);
 }
