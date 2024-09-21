@@ -18,20 +18,23 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.smartcity.R;
 import com.example.smartcity.dao.UserDao;
 import com.example.smartcity.dao.UserDaoImpl;
-import com.example.smartcity.db.SQLiteUtil;
+import com.example.smartcity.db.Firebase;
+import com.example.smartcity.entity.User;
+import com.example.smartcity.util.FirestoreCallback;
 
 /**
  * This activity use to implement login function
+ *
  * @author: u7811526
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText loginAccount;
+    private EditText loginUsername;
     private EditText loginPwd;
     private Button btnLogin;
-    private SQLiteUtil sqLiteUtil;
     private boolean showPwd = false;
     private ImageView btnShowPwd;
+    private Firebase firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +47,17 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        // initialize the SQLite database and get the connection of this database
-        // once finished in onCreate(), the dao layer is able to operate the database
-        sqLiteUtil = new SQLiteUtil(this);
-        SQLiteUtil.connected = sqLiteUtil.getWritableDatabase();
-        loginAccount = findViewById(R.id.login_account);
+        firebase = new Firebase();
+        firebase.setupUser();
+
+        loginUsername = findViewById(R.id.login_user_name);
         loginPwd = findViewById(R.id.login_pwd);
         btnLogin = findViewById(R.id.login_btn);
         btnShowPwd = findViewById(R.id.login_show_btn);
         btnLogin.setOnClickListener(v -> {
-            String account = loginAccount.getText().toString().trim();
+            String username = loginUsername.getText().toString().trim();
             String pwd = loginPwd.getText().toString().trim();
-            login(account,pwd);
+            login(username, pwd);
         });
 
         /* the image from www.iconfont.cn */
@@ -68,36 +70,32 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * used to implement user login function
-     * @param account user's account
-     * @param pwd user's password
+     *
+     * @param username user's account
+     * @param pwd     user's password
      * @author u7811526
      */
-    private void login(String account, String pwd) {
+    private void login(String username, String pwd) {
         // if the account or password is null, this user won't be allowed to login
-        if(account.isEmpty()) {
-            Toast.makeText(this,"Username can't be null",Toast.LENGTH_SHORT).show();
+        if (username.isEmpty()) {
+            Toast.makeText(this, "Username can't be null", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(pwd.isEmpty()) {
-            Toast.makeText(this,"Password can't be null",Toast.LENGTH_SHORT).show();
+        if (pwd.isEmpty()) {
+            Toast.makeText(this, "Password can't be null", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // jump to main page
-        // TODO hard code, need to refine later
-        if(userExist(account,pwd)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this,"Wrong username or password",Toast.LENGTH_SHORT).show();
-        }
+        checkUser(username,pwd);
     }
 
     /**
      * used to show/hide the password test
      */
     public void showPassword() {
-        if(!showPwd) {
+        if (!showPwd) {
+            /* the image from www.iconfont.cn */
             btnShowPwd.setImageResource(R.mipmap.login_show_pwd);
             HideReturnsTransformationMethod show = HideReturnsTransformationMethod.getInstance();
             loginPwd.setTransformationMethod(show);
@@ -113,14 +111,32 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * used to check if the user exist
-     * @param account user's account
-     * @param pwd user's password
+     * call the callback function to check if the user exist or not
+     * The callback function will only be executed after the query is completed.
+     * @param username user's name
+     * @param pwd     user's password
      * @author Shengzong Dai
      * @uid u7811526
      */
-    private boolean userExist(String account, String pwd) {
+    private void checkUser(String username, String pwd) {
+        User user = new User(username, pwd);
         // call the dao to check database
         UserDao userDao = new UserDaoImpl();
-        return userDao.checkUser(account, pwd);
+        userDao.checkUser(user, new FirestoreCallback() {
+            // when running here, it will be blocked
+            // until the onComplete() in userDaoImpl finished
+            @Override
+            public void onCallback(boolean isUserExists) {
+                // thus the userExist update, and app can
+                // judge the state of user correctly
+                if (isUserExists) {
+                    System.out.println("entry check user method");
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

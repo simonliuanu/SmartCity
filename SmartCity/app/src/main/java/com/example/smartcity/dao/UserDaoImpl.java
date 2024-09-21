@@ -1,25 +1,59 @@
 package com.example.smartcity.dao;
 
-import android.annotation.SuppressLint;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.example.smartcity.db.SQLiteUtil;
+import static android.content.ContentValues.TAG;
 
+import android.util.Log;
 
-public class UserDaoImpl implements UserDao{
+import androidx.annotation.NonNull;
 
-    private SQLiteDatabase db = SQLiteUtil.connected;
+import com.example.smartcity.entity.UserState;
+import com.example.smartcity.entity.User;
+import com.example.smartcity.util.FirestoreCallback;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+public class UserDaoImpl implements UserDao {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference usersRef = db.collection("users");
 
     /**
-     * Use to check if the user account and pwd correct or not, the account and pwd must fit
-     * @param account
-     * @param pwd
-     * @return if the input parameters are correct, the table will get 1 message, else 0
+     * This method used to check if the login user exist
+     * Since Firebase Firestore queries are asynchronous, we cannot directly
+     * get the return value of the callback function externally, and need to
+     * wait for the callback to complete before processing the returned result.
+     * @param user the info of login user with name and pwd
+     * @param callback to process the survey results
+     * @author: Shengzong Dai
      */
     @Override
-    public boolean checkUser(String account, String pwd) {
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from user_info where user_account = ? and user_pwd = ?", new String[]{account, pwd});
-        return cursor.getCount() > 0;
+    public void checkUser(User user, FirestoreCallback callback) {
+        Query query = usersRef.whereEqualTo("name", user.getName()).whereEqualTo("pwd", user.getPwd());
+
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    System.out.println("Task successful");
+                    if (!task.getResult().isEmpty()) {
+                        System.out.println("Get login user's information");
+                        callback.onCallback(true);
+                        System.out.println("Update the user state");
+                    } else {
+                        System.out.println("Login user not exist");
+                        callback.onCallback(false);
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    callback.onCallback(false);
+                }
+            }
+        });
     }
 }
+
