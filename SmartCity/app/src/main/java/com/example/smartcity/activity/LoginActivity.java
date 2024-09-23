@@ -72,8 +72,7 @@ public class LoginActivity extends AppCompatActivity {
      * used to implement user login function
      *
      * @param username user's account
-     * @param pwd     user's password
-     * @author u7811526
+     * @param pwd     user's      * @author u7811526
      */
     private void login(String username, String pwd) {
         // if the account or password is null, this user won't be allowed to login
