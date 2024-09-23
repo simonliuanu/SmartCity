@@ -11,9 +11,14 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcity.R;
 
 public class MapFragment extends Fragment {
+
+    View mapView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        mapView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        return mapView;
     }
 }

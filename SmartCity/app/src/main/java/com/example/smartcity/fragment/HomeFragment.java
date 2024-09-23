@@ -11,9 +11,14 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcity.R;
 
 public class HomeFragment extends Fragment {
+
+    private View homeView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        homeView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        return homeView;
     }
 }
