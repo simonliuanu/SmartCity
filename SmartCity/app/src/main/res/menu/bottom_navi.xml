@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- image from www.iconfont.cn  -->
-    <!-- URL: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186-->
     <item
+        android:id="@+id/navi_home"
         android:title="Home"
         app:showAsAction="always"
-        android:icon="@mipmap/navi_home"
-        />
+        android:icon="@mipmap/navi_home" />
 
     <item
+        android:id="@+id/navi_map"
         android:title="Map"
         app:showAsAction="always"
-        android:icon="@mipmap/navi_des"
-        />
+        android:icon="@mipmap/navi_des" />
 
     <item
-        android:title="item"
+        android:id="@+id/navi_item"
+        android:title="Item"
         app:showAsAction="always"
-        android:icon="@mipmap/navi_item"
-        />
+        android:icon="@mipmap/navi_item" />
 
     <item
+        android:id="@+id/navi_me"
         android:title="Me"
         app:showAsAction="always"
-        android:icon="@mipmap/navi_me"
-        />
-
+        android:icon="@mipmap/navi_me" />
 </menu>
