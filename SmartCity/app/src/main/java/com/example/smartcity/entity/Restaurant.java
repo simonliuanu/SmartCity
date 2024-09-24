@@ -19,6 +19,14 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
     public Restaurant() {
     }
 
+    // test constructor
+    public Restaurant(String name, double rating, String address, String photoUrl) {
+        this.name = name;
+        this.rating = rating;
+        this.address = address;
+        this.photoUrl = photoUrl;
+    }
+
     public Restaurant(String name, double rating, String address, String photoUrl,
                       double latitude, double longitude, String[] types,
                       String priceLevel, String estimatedPrice, int userRatingsTotal) {

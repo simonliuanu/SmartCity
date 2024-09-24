@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- CardView for Restaurant Information -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Restaurant Image -->
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:contentDescription="Restaurant Image"
+                android:scaleType="centerCrop" />
+
+            <!-- Restaurant Name -->
+            <TextView
+                android:id="@+id/item_restaurant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Restaurant Name"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Restaurant Rating -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:text="Rate: "
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/item_restaurant_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4.6"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <!-- Price Range -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:text="Price: "
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/item_restaurant_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$20"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <!-- Cuisine Type -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:text="Type: "
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/item_restaurant_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Italian, Chinese"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!--         uncertain item
+                        <TextView
+                            android:id="@+id/item_restaurant_distance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="2.5 km away"
+                            android:textSize="14sp" />
+            -->
+
+            <!-- Address -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:text="Address: "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ANU"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
