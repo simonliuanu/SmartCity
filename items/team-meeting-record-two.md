@@ -64,3 +64,4 @@ Meeting Procedure:
 ### Next-Meeting Planning
 
     Meeting Three - Week 9 (Time TBD)
+    Scribe - Simon Liu
