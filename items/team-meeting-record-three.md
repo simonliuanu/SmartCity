@@ -1,6 +1,6 @@
 # Five-Coders Team Meeting
 
-## Team Meeting #2 - Week 8, 28th, September, 2024 (14:00 - 16:00)
+## Team Meeting #3 - Week 8, 28th, September, 2024 (14:00 - 16:00)
 **Present:** 
 Simon Liu, Shengzong Dai, Rongze Gao, Yuheng Li, Tianfa Zhu
 <br>
