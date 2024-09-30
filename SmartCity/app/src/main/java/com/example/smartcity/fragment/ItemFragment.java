@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -26,6 +27,12 @@ import java.util.List;
 public class ItemFragment extends Fragment {
 
     View itemView;
+    private int curPage = 0;
+    private static final int PER_PAGE_LIMITS = 12;
+    private boolean isLoading = false;
+    private boolean isLastPage = false;
+    private List<Restaurant> resList;
+    private ItemListAdapter itemListAdapter;
 
     @Nullable
     @Override
@@ -40,7 +47,7 @@ public class ItemFragment extends Fragment {
         // TODO need optimize later, it's a hard code
         List<Restaurant> resList = new ArrayList<>();
         ItemListAdapter itemListAdapter = new ItemListAdapter(getContext(), resList);
-        DatabaseReference resReference = FirebaseDatabase.getInstance().getReference().child("read_restaurants");
+        Query resReference = FirebaseDatabase.getInstance().getReference().child("restaurants").limitToFirst(25);
 
         listView.setAdapter(itemListAdapter);
 
