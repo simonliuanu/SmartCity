@@ -35,7 +35,7 @@ public class RestaurantManager {
     private void loadRestaurantData() {
         try {
             // Read JSON file from assets
-            InputStream inputStream = context.getAssets().open("sydney_restaurants_locations.json");
+            InputStream inputStream = context.getAssets().open("RES_dataSet.json");
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
             StringBuilder jsonStringBuilder = new StringBuilder();

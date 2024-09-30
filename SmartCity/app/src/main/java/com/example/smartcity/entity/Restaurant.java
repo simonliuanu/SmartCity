@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Restaurant implements Serializable, Comparable<Restaurant>{
+    private int id;
     private String name;
     private double rating;
     private String address;
@@ -27,9 +28,10 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
         this.photoUrl = photoUrl;
     }
 
-    public Restaurant(String name, double rating, String address, String photoUrl,
+    public Restaurant(int id, String name, double rating, String address, String photoUrl,
                       double latitude, double longitude, String[] types,
                       String priceLevel, String estimatedPrice, int userRatingsTotal) {
+        this.id = id;
         this.name = name;
         this.rating = rating;
         this.address = address;
@@ -40,6 +42,10 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
         this.priceLevel = priceLevel;
         this.estimatedPrice = estimatedPrice;
         this.userRatingsTotal = userRatingsTotal;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -125,6 +131,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
     @Override
     public String toString() {
         return "Restaurant{" +
+                "id=" + id +
                 "name='" + name + '\'' +
                 ", rating=" + rating +
                 ", address='" + address + '\'' +
@@ -193,6 +200,10 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
                 Objects.equals(estimatedPrice, that.estimatedPrice);
     }
 
-
-
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, name, rating, address, photoUrl, latitude, longitude, priceLevel, estimatedPrice, userRatingsTotal);
+        result = 31 * result + Arrays.hashCode(types);
+        return result;
+    }
 }

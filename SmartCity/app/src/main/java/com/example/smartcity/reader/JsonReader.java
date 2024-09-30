@@ -23,6 +23,7 @@ public class JsonReader {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 // 获取各字段值
+                int id = jsonObject.getInt("id");
                 String name = jsonObject.getString("name");
                 double rating = jsonObject.optDouble("rating", -1);  // 使用 optDouble 以防字段缺失
                 String address = jsonObject.getString("address");
@@ -45,6 +46,7 @@ public class JsonReader {
 
                 // 创建 Restaurant 对象并添加到列表中
                 Restaurant restaurant = new Restaurant(
+                        id,
                         name,
                         rating,
                         address,

@@ -26,6 +26,7 @@ public class RestaurantManagerInstrumentationTest {
         manager = RestaurantManager.getInstance(context);
     }
 
+    //test restaurant avltree
     @Test
     public void testGetRestaurantTree() {
         AvlTree<Restaurant> tree = manager.getRestaurantTree();
