@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     private double latitude;
     private double longitude;
     private List<String> types;
-    private int price_level;
+    private Integer price_level;
     private String estimated_price;
     private int user_ratings_total;
 
@@ -25,24 +26,24 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     }
 
     // test constructor
-    public Restaurant(String name, double rating, String address, String photoUrl) {
+    public Restaurant(String name, double rating, String address, String photo_url) {
         this.name = name;
         this.rating = rating;
         this.address = address;
-        this.photo_url = photoUrl;
+        this.photo_url = photo_url;
     }
 
-    public Restaurant(int id, String name, double rating, String address, String photoUrl,
+    public Restaurant(int id, String name, double rating, String address, String photo_url,
                       double latitude, double longitude, List<String> types,
                       int priceLevel, String estimatedPrice, int userRatingsTotal) {
         this.id = id;
         this.name = name;
         this.rating = rating;
         this.address = address;
-        this.photo_url = photoUrl;
+        this.photo_url = photo_url;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.types = types;
+        this.types = (types != null) ? types : new ArrayList<>();
         this.price_level = priceLevel;
         this.estimated_price = estimatedPrice;
         this.user_ratings_total = userRatingsTotal;
@@ -100,6 +101,9 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         this.longitude = longitude;
     }
 
+    public List<String> getTypes() {
+        return types;
+    }
 
     public int getPrice_level() {
         return price_level;
@@ -135,7 +139,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
                 ", photoUrl='" + photo_url + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", types=" + String.join(", ", types) +
+                ", types=" + (types != null ? String.join(", ", types) : "[]") +
                 ", priceLevel='" + price_level + '\'' +
                 ", estimatedPrice='" + estimated_price + '\'' +
                 ", userRatingsTotal=" + user_ratings_total +
@@ -181,7 +185,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     }
 
 
-/*    @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Restaurant)) return false;
@@ -193,15 +197,13 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
                 Objects.equals(name, that.name) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(photo_url, that.photo_url) &&
-                //Arrays.equals(types, that.types) &&
-                Objects.equals(price_level, that.price_level) &&
+                Objects.equals(types, that.types) &&  // 使用 List 的 equals
+                price_level == that.price_level &&
                 Objects.equals(estimated_price, that.estimated_price);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, name, rating, address, photo_url, latitude, longitude, price_level, estimated_price, user_ratings_total);
-        result = 31 * result + Arrays.hashCode(types);
-        return result;
-    } */
+        return Objects.hash(id, name, rating, address, photo_url, latitude, longitude, types, price_level, estimated_price, user_ratings_total);
+    }
 }

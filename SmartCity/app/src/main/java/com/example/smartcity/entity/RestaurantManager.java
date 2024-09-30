@@ -27,7 +27,7 @@ public class RestaurantManager {
     // Load and parse the restaurant data
     private void loadRestaurantData() {
         // 使用 GsonJsonReader 读取 JSON 数据
-        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_one_line.json");
+        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_reordered_one_line_2.json");
 
         if (restaurants != null) {
             // Insert all restaurants into the AVL tree

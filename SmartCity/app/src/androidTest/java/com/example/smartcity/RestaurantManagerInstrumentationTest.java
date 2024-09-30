@@ -1,4 +1,4 @@
-/*
+
 package com.example.smartcity;
 
 import android.content.Context;
@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.smartcity.dataStructure.AvlTree;
 import com.example.smartcity.entity.Restaurant;
-import com.example.smartcity.entity.Restaurant_org;
 import com.example.smartcity.entity.RestaurantManager;
 
 import org.junit.Before;
@@ -41,4 +40,4 @@ public class RestaurantManagerInstrumentationTest {
         System.out.println("Number of nodes in the AVL tree: " + nodeCount);
     }
 }
-*/
+
