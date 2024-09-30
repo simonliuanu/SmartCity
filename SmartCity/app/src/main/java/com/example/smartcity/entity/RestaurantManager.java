@@ -40,6 +40,7 @@ public class RestaurantManager {
         }
     }
 
+
     // Retrieve the AVL tree containing all restaurants
     public AvlTree<Restaurant> getRestaurantTree() {
         return restaurantTree;
