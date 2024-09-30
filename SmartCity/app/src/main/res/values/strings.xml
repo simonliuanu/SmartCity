@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SmartCity</string>
+    <string name="map_api_key">AIzaSyAbDA9WKE-U5ClKlrBbZ5nJJiBsfE2JhRw</string>
 </resources>

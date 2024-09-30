@@ -62,6 +62,9 @@ dependencies {
 
     //convert a JSON string to an Java object
     implementation ("com.google.code.gson:gson:2.11.0")
+
+    // Maps SDK for Android
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
     
 
     implementation(libs.appcompat)
