@@ -1,10 +1,14 @@
 package com.example.smartcity.entity;
 
 import java.io.Serializable;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.List;
 
-public class Restaurant implements Serializable, Comparable<Restaurant>{
+public class Restaurant implements Serializable, Comparable<Restaurant> {
     private int id;
     private String name;
     private double rating;
@@ -12,8 +16,8 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
     private String photo_url;
     private double latitude;
     private double longitude;
-    private String[] types;
-    private String price_level;
+    private List<String> types;
+    private int price_level;
     private String estimated_price;
     private int user_ratings_total;
 
@@ -21,27 +25,27 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
     }
 
     // test constructor
-    public Restaurant(String name, double rating, String address, String photo_url) {
+    public Restaurant(String name, double rating, String address, String photoUrl) {
         this.name = name;
         this.rating = rating;
         this.address = address;
-        this.photo_url = photo_url;
+        this.photo_url = photoUrl;
     }
 
-    public Restaurant(int id, String name, double rating, String address, String photo_url,
-                      double latitude, double longitude, String[] types,
-                      String price_level, String estimated_price, int user_ratings_total) {
+    public Restaurant(int id, String name, double rating, String address, String photoUrl,
+                      double latitude, double longitude, List<String> types,
+                      int priceLevel, String estimatedPrice, int userRatingsTotal) {
         this.id = id;
         this.name = name;
         this.rating = rating;
         this.address = address;
-        this.photo_url = photo_url;
+        this.photo_url = photoUrl;
         this.latitude = latitude;
         this.longitude = longitude;
         this.types = types;
-        this.price_level = price_level;
-        this.estimated_price = estimated_price;
-        this.user_ratings_total = user_ratings_total;
+        this.price_level = priceLevel;
+        this.estimated_price = estimatedPrice;
+        this.user_ratings_total = userRatingsTotal;
     }
 
     public int getId() {
@@ -76,8 +80,8 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
         return photo_url;
     }
 
-    public void setPhoto_url(String photoUrl) {
-        this.photo_url = photoUrl;
+    public void setPhoto_url(String photo_url) {
+        this.photo_url = photo_url;
     }
 
     public double getLatitude() {
@@ -96,19 +100,12 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
         this.longitude = longitude;
     }
 
-    public String[] getTypes() {
-        return types;
-    }
 
-    public void setTypes(String[] types) {
-        this.types = types;
-    }
-
-    public String getPrice_level() {
+    public int getPrice_level() {
         return price_level;
     }
 
-    public void setPrice_level(String priceLevel) {
+    public void setPrice_level(int price_level) {
         this.price_level = price_level;
     }
 
@@ -135,18 +132,18 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
                 "name='" + name + '\'' +
                 ", rating=" + rating +
                 ", address='" + address + '\'' +
-                ", photo_url='" + photo_url + '\'' +
+                ", photoUrl='" + photo_url + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", types=" + String.join(", ", types) +
-                ", price_level='" + price_level + '\'' +
-                ", estimated_price='" + estimated_price + '\'' +
-                ", user_ratings_total=" + user_ratings_total +
+                ", priceLevel='" + price_level + '\'' +
+                ", estimatedPrice='" + estimated_price + '\'' +
+                ", userRatingsTotal=" + user_ratings_total +
                 '}';
     }
 
 
-    @Override
+    //@Override
 //    public int compareTo(Restaurant other) {
 //        return Double.compare(this.rating, other.rating);
 //    }
@@ -158,7 +155,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
             return ratingComparison;
         }
 
-        // 如果 rating 相同，比较 user_ratings_total
+        // 如果 rating 相同，比较 userRatingsTotal
         if (this.user_ratings_total != other.user_ratings_total) {
             // 将空值视为最小值（负无穷大），空值排在前面
             Integer thisUserRatingsTotal = this.user_ratings_total == 0 ? Integer.MIN_VALUE : this.user_ratings_total;
@@ -166,7 +163,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
             return Integer.compare(thisUserRatingsTotal, otherUserRatingsTotal);
         }
 
-        // 如果 user_ratings_total 也相同，比较 priceLevel
+       /* //如果 userRatingsTotal 也相同，比较 priceLevel
         if (this.price_level != null && other.price_level != null) {
             int priceLevelComparison = this.price_level.compareTo(other.price_level);
             if (priceLevelComparison != 0) {
@@ -176,14 +173,15 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
             return 1; // this.priceLevel 非空，other.priceLevel 为空
         } else if (other.price_level != null) {
             return -1; // this.priceLevel 为空，other.priceLevel 非空
-        }
+        }*/
+
 
         // 如果 priceLevel 也相同，比较 name
         return this.name.compareTo(other.name);
     }
 
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Restaurant)) return false;
@@ -195,7 +193,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
                 Objects.equals(name, that.name) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(photo_url, that.photo_url) &&
-                Arrays.equals(types, that.types) &&
+                //Arrays.equals(types, that.types) &&
                 Objects.equals(price_level, that.price_level) &&
                 Objects.equals(estimated_price, that.estimated_price);
     }
@@ -205,5 +203,5 @@ public class Restaurant implements Serializable, Comparable<Restaurant>{
         int result = Objects.hash(id, name, rating, address, photo_url, latitude, longitude, price_level, estimated_price, user_ratings_total);
         result = 31 * result + Arrays.hashCode(types);
         return result;
-    }
+    } */
 }
