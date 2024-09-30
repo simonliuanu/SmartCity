@@ -55,6 +55,9 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
 
+    //convert a JSON string to an Java object
+    implementation ("com.google.code.gson:gson:2.11.0")
+
 
     implementation(libs.appcompat)
     implementation(libs.material)

@@ -57,7 +57,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
             TextView resAddress = convertView.findViewById(R.id.item_restaurant_address);
             TextView resRate = convertView.findViewById(R.id.item_restaurant_rate);
 
-            Glide.with(convertView).load(curRestaurant.getPhotoUrl()).into(resImage);
+            Glide.with(convertView).load(curRestaurant.getPhoto_url()).into(resImage);
 
             resName.setText(curRestaurant.getName());
             resAddress.setText(curRestaurant.getAddress());

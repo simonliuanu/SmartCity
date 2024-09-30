@@ -1,20 +1,13 @@
 package com.example.smartcity.entity;
 
 import android.content.Context;
-
-import com.example.smartcity.reader.JsonReader;
+import com.example.smartcity.reader.GsonJsonReader; // import GsonJsonReader
 import com.example.smartcity.dataStructure.AvlTree;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 public class RestaurantManager {
     private static RestaurantManager instance;
     private Context context;
-    private JsonReader jsonReader = new JsonReader();
     private AvlTree<Restaurant> restaurantTree = new AvlTree<>();
 
     // Private constructor to prevent instantiation
@@ -33,35 +26,17 @@ public class RestaurantManager {
 
     // Load and parse the restaurant data
     private void loadRestaurantData() {
-        try {
-            // Read JSON file from assets
-            InputStream inputStream = context.getAssets().open("RES_dataSet.json");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        // 使用 GsonJsonReader 读取 JSON 数据
+        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_one_line.json");
 
-            StringBuilder jsonStringBuilder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                jsonStringBuilder.append(line);
-            }
-            reader.close();
-
-            String jsonString = jsonStringBuilder.toString();
-
-            // Parse JSON data into Restaurant objects
-            List<Restaurant> restaurants = jsonReader.parseJsonToRestaurantList(jsonString);
-
-            int count = 0;
+        if (restaurants != null) {
             // Insert all restaurants into the AVL tree
             for (Restaurant restaurant : restaurants) {
                 restaurantTree.insert(restaurant);
-                count++;
             }
-
-            System.out.println("一共有多少数据： "+count);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle file read errors
+            System.out.println("the number of data： " + restaurants.size());
+        } else {
+            System.err.println("Not read any data.");
         }
     }
 
