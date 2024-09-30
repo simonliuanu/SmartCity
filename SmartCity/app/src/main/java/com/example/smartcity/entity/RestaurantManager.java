@@ -1,3 +1,4 @@
+/*
 package com.example.smartcity.entity;
 
 import android.content.Context;
@@ -70,3 +71,4 @@ public class RestaurantManager {
         return restaurantTree;
     }
 }
+*/

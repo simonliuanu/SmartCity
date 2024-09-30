@@ -1,3 +1,4 @@
+/*
 package com.example.smartcity.reader;
 
 import com.example.smartcity.entity.Restaurant;
@@ -69,3 +70,4 @@ public class JsonReader {
         return restaurants;
     }
 }
+*/

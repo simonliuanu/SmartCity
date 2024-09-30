@@ -1,9 +1,6 @@
 package com.example.smartcity.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +31,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     private Context context;
 
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
-        super(context, R.layout.item_list, list);
+        super(context, R.layout.item_list,list);
         this.context = context;
         this.list = list;
     }
@@ -42,12 +39,13 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        int index = 0;
         // if null, create a new view
-        if (convertView == null) {
+        if(convertView == null) {
             LayoutInflater from = LayoutInflater.from(getContext());
             // appear a bug on attachToRoot, without false, will
             // show  addView(View, LayoutParams) is not supported in AdapterView
-            convertView = from.inflate(R.layout.item_list, parent, false);
+            convertView = from.inflate(R.layout.item_list, parent,false);
 
 
             Restaurant curRestaurant = list.get(position);
@@ -57,11 +55,15 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
             TextView resAddress = convertView.findViewById(R.id.item_restaurant_address);
             TextView resRate = convertView.findViewById(R.id.item_restaurant_rate);
 
-            Glide.with(convertView).load(curRestaurant.getPhotoUrl()).into(resImage);
+            Glide.with(convertView).load(curRestaurant.getPhoto_url()).into(resImage);
 
             resName.setText(curRestaurant.getName());
             resAddress.setText(curRestaurant.getAddress());
-            /*            resRate.setText((int) curRestaurant.getRating());*/
+
+            System.out.println(curRestaurant.getName() + ", 所得 position 值为: " + position);
+/*            resRate.setText((int) curRestaurant.getRating());*/
+        } else {
+            convertView.getTag();
         }
 
         return convertView;
