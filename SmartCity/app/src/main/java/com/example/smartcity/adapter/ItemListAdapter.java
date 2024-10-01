@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
+import com.example.smartcity.entity.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
 
 import java.util.List;
@@ -39,8 +40,9 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        // use viewHolder to solve the repeat list in list view
+        // use viewHolder to solve the repeat list in list view;
         ViewHolder holder;
+
         // if null, create a new view
         if(convertView == null) {
             LayoutInflater from = LayoutInflater.from(getContext());
@@ -49,7 +51,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
             convertView = from.inflate(R.layout.item_list, parent,false);
             // Initialize the ViewHolder and find the views
             holder = new ViewHolder();
-
+            System.out.println("viewerHolder update, this is " + holder.holdName);
             // store the list attribute in view holder
             holder.holdImage = convertView.findViewById(R.id.item_image);
             holder.holdName = convertView.findViewById(R.id.item_restaurant_name);
@@ -57,6 +59,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
             holder.holdRate = convertView.findViewById(R.id.item_restaurant_rate);
             holder.holdPrice = convertView.findViewById(R.id.item_restaurant_price);
             holder.holdType = convertView.findViewById(R.id.item_restaurant_type);
+            holder.likeBtn = convertView.findViewById(R.id.item_like_btn);
 
             // Store the holder with the view
             convertView.setTag(holder);
@@ -73,12 +76,43 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
         holder.holdRate.setText(String.valueOf(curRestaurant.getRating())); // Make sure to convert rating to string
         holder.holdPrice.setText(curRestaurant.getEstimated_price());
 
-        System.out.println(curRestaurant.getName() + ", 所得 position 值为: " + position);
+
+        LikeRestaurant likeRes = LikeRestaurant.getInstance();
+
+        // to make sure all the restaurant is non like initialization
+        if (likeRes.contains(curRestaurant)) {
+            holder.likeBtn.setImageResource(R.mipmap.item_like_btn_on);
+        } else {
+            holder.likeBtn.setImageResource(R.mipmap.item_like_btn_off);
+        }
+
+        holder.likeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Restaurant chosenRes = list.get(position);
+                if(likeRes.contains(chosenRes)) {
+                    likeRes.remove(list.get(position));
+                    System.out.println("remove" + chosenRes.getName());
+                    /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
+                    holder.likeBtn.setImageResource(R.mipmap.item_like_btn_off);
+                } else {
+                    likeRes.add(chosenRes);
+                    /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
+                    holder.likeBtn.setImageResource(R.mipmap.item_like_btn_on);
+                    System.out.print("cur favor res are: ");
+                    for(Restaurant res : likeRes) {
+                        System.out.print(res.getName() + ",");
+                    }
+                    System.out.println();
+                }
+            }
+        });
 
         return convertView;
     }
 
     static class ViewHolder {
+        ImageView likeBtn;
         ImageView holdImage;
         TextView holdName;
         TextView holdAddress;

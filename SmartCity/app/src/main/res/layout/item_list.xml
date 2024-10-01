@@ -168,13 +168,13 @@
 
             <ImageView
                 android:id="@+id/item_like_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_image"
-                app:srcCompat="@android:drawable/btn_star_big_off" />
+                app:srcCompat="@mipmap/item_like_btn_off" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
