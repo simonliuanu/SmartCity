@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,10 +18,9 @@ import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.entity.LikeRestaurant;
 
 public class MeFragment extends Fragment {
-
-
     View meView;
     private ItemListAdapter itemListAdapter;
+    private TextView emptyTips;
 
     @Nullable
     @Override
@@ -28,6 +28,7 @@ public class MeFragment extends Fragment {
         meView = inflater.inflate(R.layout.fragment_me, container, false);
 
         ListView likeList = meView.findViewById(R.id.me_like_list);
+        emptyTips = meView.findViewById(R.id.me_empty_tips);
 
         LikeRestaurant likeRes = LikeRestaurant.getInstance();
 
@@ -42,6 +43,16 @@ public class MeFragment extends Fragment {
             Intent intent = new Intent(meView.getContext(), LoginActivity.class);
             startActivity(intent);
         });
+
+
+        // TODO: when user empty the favor, this tip won't appear in time
+        // have some potential bug, consider to keep or refine
+        if(likeRes.isEmpty()) {
+            emptyTips.setVisibility(View.VISIBLE);
+        } else {
+            emptyTips.setVisibility(View.GONE);
+        }
+
 
         return meView;
     }

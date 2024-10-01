@@ -95,6 +95,9 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                     System.out.println("remove" + chosenRes.getName());
                     /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
                     holder.likeBtn.setImageResource(R.mipmap.item_like_btn_off);
+                    // update the item list in time when user unlike a restaurant
+                    // this refresh used in me page
+                    notifyDataSetChanged();
                 } else {
                     likeRes.add(chosenRes);
                     /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
@@ -104,6 +107,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                         System.out.print(res.getName() + ",");
                     }
                     System.out.println();
+                    notifyDataSetChanged();
                 }
             }
         });
