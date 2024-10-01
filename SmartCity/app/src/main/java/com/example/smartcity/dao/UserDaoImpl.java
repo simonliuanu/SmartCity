@@ -7,7 +7,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.smartcity.entity.UserState;
 import com.example.smartcity.entity.User;
 import com.example.smartcity.util.FirestoreCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
