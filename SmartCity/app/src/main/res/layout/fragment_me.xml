@@ -11,7 +11,7 @@
         android:layout_height="169dp"
         android:orientation="horizontal"
         android:padding="16dp"
-        >
+        android:background="@color/navi_color">
 
         <!-- User Avatar -->
         <ImageView
@@ -52,7 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Logout" />
+                android:text="Logout"
+                />
 
         </LinearLayout>
     </LinearLayout>
@@ -85,3 +86,5 @@
         android:layout_margin="10sp"/>
 
 </LinearLayout>
+
+
