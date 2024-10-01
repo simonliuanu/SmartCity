@@ -5,34 +5,59 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- User Avatar -->
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_avatar"
-        android:layout_gravity="center"
-        android:layout_marginTop="20sp"/>
+    <!-- User Information Section with background color -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        >
 
-    <!-- User Email -->
-    <TextView
-        android:id="@+id/me_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user@example.com"
-        android:textSize="16sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5sp"
-        android:layout_marginTop="5sp"/>
+        <!-- User Avatar -->
+        <ImageView
+            android:layout_width="152dp"
+            android:layout_height="150dp"
+            android:layout_gravity="start"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_avatar" />
 
-    <!-- Settings Button -->
-    <Button
-        android:id="@+id/me_logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10sp"
-        android:text="Logout" />
+        <!-- Name, Email and Logout Button -->
+        <LinearLayout
+            android:layout_width="173dp"
+            android:layout_height="145dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
+            <!-- User Name -->
+            <TextView
+                android:id="@+id/me_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- User Email -->
+            <TextView
+                android:id="@+id/me_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="admin@example.com"
+                android:textSize="16sp" />
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/me_logout_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Logout" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- My Favorite Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,8 +65,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginLeft="10sp"
-        />
+        android:layout_marginTop="20sp"/>
 
+    <!-- Empty Tips -->
     <TextView
         android:id="@+id/me_empty_tips"
         android:layout_width="wrap_content"
@@ -51,12 +77,11 @@
         android:textSize="18sp"
         android:text="No Restaurant yet...Empty"/>
 
-        <ListView
-            android:id="@+id/me_like_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp"/>
-
-
+    <!-- Favorite List -->
+    <ListView
+        android:id="@+id/me_like_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10sp"/>
 
 </LinearLayout>
