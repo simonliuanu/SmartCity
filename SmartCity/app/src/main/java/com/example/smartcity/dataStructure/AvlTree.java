@@ -1,5 +1,7 @@
 package com.example.smartcity.dataStructure;
 
+import com.example.smartcity.entity.Restaurant;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,43 @@ public class AvlTree<T extends Comparable<T>> {
         node.height = 1 + Math.max(height(node.left), height(node.right));
         return balance(node);
     }
+
+    public T searchExact(T data) {
+        return searchExact(root, data);
+    }
+
+    public T searchExact(Node node, T data) {
+        if (node == null) {
+            return null;
+        }
+        int cmp = data.compareTo(node.data);
+        if (cmp < 0) {
+            return searchExact(node.left, data);
+        } else if (cmp > 0) {
+            return searchExact(node.right, data);
+        } else {
+            return node.data;
+        }
+    }
+
+    public List<T> serachByPrefix(String prefix) {
+        List<T> list = new ArrayList<>();
+        searchByPrefix(root, prefix, list);
+        return list;
+    }
+
+    public void searchByPrefix(Node node, String prefix, List<T> list) {
+        if (node == null) {
+            return;
+        }
+        Restaurant restaurant = (Restaurant) node.data;
+        if (restaurant.getName().startsWith(prefix)) {
+            list.add(node.data);
+        }
+        searchByPrefix(node.left, prefix, list);
+        searchByPrefix(node.right, prefix, list);
+    }
+
 
     public List<T> toList() {
         List<T> list = new ArrayList<>();
