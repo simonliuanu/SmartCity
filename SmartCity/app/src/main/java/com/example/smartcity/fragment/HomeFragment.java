@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment {
             return;
         }
 
-        String query = editTextSearch.getText().toString();
+        String query = editTextSearch.getText().toString().trim();
         if (!query.isEmpty()) {
             List<Restaurant> results = restaurantManager.search(query);
             if (!results.isEmpty()) {
