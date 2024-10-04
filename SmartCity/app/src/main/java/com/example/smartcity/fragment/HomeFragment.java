@@ -21,6 +21,7 @@ import com.example.smartcity.R;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.dataStructure.AvlTree;
+import com.example.smartcity.dataStructure.AvlTreeManager;
 import com.example.smartcity.entity.Restaurant;
 import com.example.smartcity.entity.RestaurantManager;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +40,6 @@ public class HomeFragment extends Fragment {
     private EditText editTextSearch;
     private Button buttonSearch;
     private ListView listViewRestaurants;
-    private RecyclerView recyclerViewRestaurants;
     private AvlTree<Restaurant> restaurantTree;
     private RestaurantManager restaurantManager;
     private ItemListAdapter itemListAdapter;
@@ -58,15 +58,13 @@ public class HomeFragment extends Fragment {
         itemListAdapter = new ItemListAdapter(getContext(), restaurantList);
         listViewRestaurants.setAdapter(itemListAdapter);
 
-        Comparator<Restaurant> byNameComparator = new Comparator<Restaurant>() {
-            @Override
-            public int compare(Restaurant r1, Restaurant r2) {
-                return r1.getName().compareTo(r2.getName());
-            }
-        };
-        restaurantTree = new AvlTree<>();
+        restaurantTree = AvlTreeManager.getInstance();
 
-        fetchRestaurantDataFromFirebase();
+        if (restaurantTree.countNodes() == 0) {
+            fetchRestaurantDataFromFirebase();
+        } else {
+            restaurantManager = new RestaurantManager(restaurantTree);
+        }
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
