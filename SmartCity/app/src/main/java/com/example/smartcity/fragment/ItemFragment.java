@@ -1,5 +1,6 @@
 package com.example.smartcity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,15 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
+import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.entity.Restaurant;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemFragment extends Fragment implements AbsListView.OnScrollListener {
+public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
 
     View itemView;
     private int curPage = 1;
@@ -46,6 +50,9 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
 
 
         ListView listView = itemView.findViewById(R.id.item_list);
+
+        //set listener for every item in the list
+        listView.setOnItemClickListener(this);
 
         // Implement the load more data page
         moreDataView = getLayoutInflater().inflate(R.layout.moredata, null);
@@ -153,6 +160,21 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
                 Log.e("FirebaseError", "Database error: " + error.getMessage());
             }
         });
+    }
+
+    /**@author Yuheng Li
+     * go to comment page
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this.getContext(), CommentActivity.class);
+        Restaurant selectedRestaurant = resList.get(i);
+        intent.putExtra("restaurant", selectedRestaurant);
+        startActivity(intent);
     }
 }
 

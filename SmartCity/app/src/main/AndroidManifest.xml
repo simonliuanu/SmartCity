@@ -47,6 +47,8 @@
         <activity
             android:name=".activity.MeActivity"
             android:exported="true" />
+        <activity android:name=".activity.CommentActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
