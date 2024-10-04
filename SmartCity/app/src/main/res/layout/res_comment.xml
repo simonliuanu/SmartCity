@@ -1,0 +1,69 @@
+<!-- activity_restaurant_details.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_avatar"/>
+
+    <ImageView
+        android:id="@+id/restaurant_photo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Name"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.5"/>
+
+    <TextView
+        android:id="@+id/textView_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123 Main St"/>
+
+    <!-- 评论区的布局部分 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:textStyle="bold"
+        android:paddingTop="16dp"/>
+
+    <!-- 评论的 RecyclerView，确保其可以滚动 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_comments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 添加评论的输入框和按钮 -->
+    <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add a comment" />
+
+    <Button
+        android:id="@+id/button_submit_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+</LinearLayout>
