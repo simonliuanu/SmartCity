@@ -63,16 +63,11 @@ public class HomeFragment extends Fragment {
         };
         restaurantTree = new AvlTree<>();
 
-        Toast toast = Toast.makeText(getContext(), "Loading data...", Toast.LENGTH_SHORT);
-
         fetchRestaurantDataFromFirebase();
-
-        Toast toast1 = Toast.makeText(getContext(), "Data loaded.", Toast.LENGTH_SHORT);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast toast = Toast.makeText(getContext(), "Searching...", Toast.LENGTH_SHORT);
                 performSearch();
             }
         });
@@ -85,7 +80,6 @@ public class HomeFragment extends Fragment {
                 .getReference()
                 .child("restaurants")
                 .orderByKey();
-//                .limitToFirst(100);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
