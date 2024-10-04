@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.smartcity.dataStructure.Parser;
 import com.example.smartcity.dataStructure.Tokenizer;
-import com.example.smartcity.reader.GsonJsonReader; // import GsonJsonReader
 import com.example.smartcity.dataStructure.AvlTree;
 import java.util.List;
 
@@ -42,23 +41,6 @@ public class RestaurantManager {
 //        }
 //        return instance;
 //    }
-
-    // Load and parse the restaurant data
-//    private void loadRestaurantData() {
-//        // 使用 GsonJsonReader 读取 JSON 数据
-//        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_reordered_one_line_2.json");
-//
-//        if (restaurants != null) {
-//            // Insert all restaurants into the AVL tree
-//            for (Restaurant restaurant : restaurants) {
-//                restaurantTree.insert(restaurant);
-//            }
-//            System.out.println("the number of data： " + restaurants.size());
-//        } else {
-//            System.err.println("Not read any data.");
-//        }
-//    }
-
 
     // Retrieve the AVL tree containing all restaurants
     public AvlTree<Restaurant> getRestaurantTree() {

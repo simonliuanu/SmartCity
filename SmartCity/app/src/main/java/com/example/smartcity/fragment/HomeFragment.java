@@ -122,6 +122,7 @@ public class HomeFragment extends Fragment {
             if (!results.isEmpty()) {
                 updateSearchResults(results);
             } else {
+                updateSearchResults(new ArrayList<>());
                 Toast.makeText(getContext(), "No matching restaurants found.", Toast.LENGTH_SHORT).show();
             }
         } else {
