@@ -1,9 +1,11 @@
 package com.example.smartcity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
+import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.dataStructure.AvlTree;
 import com.example.smartcity.entity.Restaurant;
@@ -69,6 +72,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 performSearch();
+            }
+        });
+
+        listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Restaurant restaurant = restaurantList.get(i);
+                Intent intent = new Intent(getContext(), CommentActivity.class);
+                intent.putExtra("restaurant", restaurant);
+                startActivity(intent);
             }
         });
 
