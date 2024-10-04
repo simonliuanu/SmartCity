@@ -1,6 +1,9 @@
 package com.example.smartcity.entity;
 
 import android.content.Context;
+
+import com.example.smartcity.dataStructure.Parser;
+import com.example.smartcity.dataStructure.Tokenizer;
 import com.example.smartcity.reader.GsonJsonReader; // import GsonJsonReader
 import com.example.smartcity.dataStructure.AvlTree;
 import java.util.List;
@@ -9,36 +12,52 @@ public class RestaurantManager {
     private static RestaurantManager instance;
     private Context context;
     private AvlTree<Restaurant> restaurantTree = new AvlTree<>();
+    private Tokenizer tokenizer;
+    private Parser parser;
 
-    // Private constructor to prevent instantiation
-    private RestaurantManager(Context context) {
-        this.context = context;
-        loadRestaurantData();
+    public RestaurantManager(AvlTree<Restaurant> tree) {
+        this.restaurantTree = tree;
+        this.tokenizer = new Tokenizer();
+        this.parser = new Parser();
+    }
+
+    public List<Restaurant> search(String query) {
+        String[] tokens = tokenizer.tokenize(query);
+
+        String searchTerm = tokens[0];
+
+        Restaurant exactMatch = restaurantTree.searchExact(searchTerm);
+
+        if (exactMatch != null) {
+            return List.of(exactMatch);
+        }
+
+        return restaurantTree.serachByPrefix(searchTerm);
     }
 
     // Static method to provide access to the singleton instance
-    public static synchronized RestaurantManager getInstance(Context context) {
-        if (instance == null) {
-            instance = new RestaurantManager(context.getApplicationContext());
-        }
-        return instance;
-    }
+//    public static synchronized RestaurantManager getInstance(Context context) {
+//        if (instance == null) {
+//            instance = new RestaurantManager();
+//        }
+//        return instance;
+//    }
 
     // Load and parse the restaurant data
-    private void loadRestaurantData() {
-        // 使用 GsonJsonReader 读取 JSON 数据
-        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_reordered_one_line_2.json");
-
-        if (restaurants != null) {
-            // Insert all restaurants into the AVL tree
-            for (Restaurant restaurant : restaurants) {
-                restaurantTree.insert(restaurant);
-            }
-            System.out.println("the number of data： " + restaurants.size());
-        } else {
-            System.err.println("Not read any data.");
-        }
-    }
+//    private void loadRestaurantData() {
+//        // 使用 GsonJsonReader 读取 JSON 数据
+//        List<Restaurant> restaurants = GsonJsonReader.readJsonFromFile(context, "RES_dataSet_reordered_one_line_2.json");
+//
+//        if (restaurants != null) {
+//            // Insert all restaurants into the AVL tree
+//            for (Restaurant restaurant : restaurants) {
+//                restaurantTree.insert(restaurant);
+//            }
+//            System.out.println("the number of data： " + restaurants.size());
+//        } else {
+//            System.err.println("Not read any data.");
+//        }
+//    }
 
 
     // Retrieve the AVL tree containing all restaurants

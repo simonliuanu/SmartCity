@@ -40,19 +40,20 @@ public class AvlTree<T extends Comparable<T>> {
         return balance(node);
     }
 
-    public T searchExact(T data) {
-        return searchExact(root, data);
+    public T searchExact(String name) {
+        return searchExact(root, name);
     }
 
-    public T searchExact(Node node, T data) {
+    public T searchExact(Node node, String name) {
         if (node == null) {
             return null;
         }
-        int cmp = data.compareTo(node.data);
+        Restaurant restaurant = (Restaurant) node.data;
+        int cmp = name.compareTo(restaurant.getName());
         if (cmp < 0) {
-            return searchExact(node.left, data);
+            return searchExact(node.left, name);
         } else if (cmp > 0) {
-            return searchExact(node.right, data);
+            return searchExact(node.right, name);
         } else {
             return node.data;
         }
