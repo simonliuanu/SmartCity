@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
+import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.dataStructure.AvlTree;
 import com.example.smartcity.entity.Restaurant;
 import com.example.smartcity.entity.RestaurantManager;
@@ -23,16 +26,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private View homeView;
     private EditText editTextSearch;
     private Button buttonSearch;
+    private ListView listViewRestaurants;
     private RecyclerView recyclerViewRestaurants;
     private AvlTree<Restaurant> restaurantTree;
     private RestaurantManager restaurantManager;
+    private ItemListAdapter itemListAdapter;
+
+    private List<Restaurant> restaurantList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -41,10 +50,10 @@ public class HomeFragment extends Fragment {
 
         editTextSearch = homeView.findViewById(R.id.editTextSearch);
         buttonSearch = homeView.findViewById(R.id.buttonSearch);
-        recyclerViewRestaurants = homeView.findViewById(R.id.recyclerViewRestaurants);
+        listViewRestaurants = homeView.findViewById(R.id.listViewRestaurants);
 
-        recyclerViewRestaurants.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        itemListAdapter = new ItemListAdapter(getContext(), restaurantList);
+        listViewRestaurants.setAdapter(itemListAdapter);
 
         Comparator<Restaurant> byNameComparator = new Comparator<Restaurant>() {
             @Override
@@ -54,6 +63,20 @@ public class HomeFragment extends Fragment {
         };
         restaurantTree = new AvlTree<>();
 
+        Toast toast = Toast.makeText(getContext(), "Loading data...", Toast.LENGTH_SHORT);
+
+        fetchRestaurantDataFromFirebase();
+
+        Toast toast1 = Toast.makeText(getContext(), "Data loaded.", Toast.LENGTH_SHORT);
+
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(getContext(), "Searching...", Toast.LENGTH_SHORT);
+                performSearch();
+            }
+        });
+
         return homeView;
     }
 
@@ -62,6 +85,7 @@ public class HomeFragment extends Fragment {
                 .getReference()
                 .child("restaurants")
                 .orderByKey();
+//                .limitToFirst(100);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -81,7 +105,28 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void fetchRestaurantData() {
+    private void performSearch() {
+        if (restaurantManager == null) {
+            Toast.makeText(getContext(), "Please wait for the data to load.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        String query = editTextSearch.getText().toString();
+        if (!query.isEmpty()) {
+            List<Restaurant> results = restaurantManager.search(query);
+            if (!results.isEmpty()) {
+                updateSearchResults(results);
+            } else {
+                Toast.makeText(getContext(), "No matching restaurants found.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void updateSearchResults(List<Restaurant> results) {
+        restaurantList.clear();
+        restaurantList.addAll(results);
+        itemListAdapter.notifyDataSetChanged();
     }
 }
