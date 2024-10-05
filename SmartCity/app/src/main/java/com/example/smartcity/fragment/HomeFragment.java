@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
-                if (!selected.equals("Filter By")) {
+                if (!selected.equals("All")) {
                     buttonSearch.performClick();
                 }
             }
