@@ -117,6 +117,22 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         return estimated_price;
     }
 
+    public int getPrice() {
+        switch (estimated_price) {
+            case "$10-$25":
+                return 1;
+            case "$25-$50":
+                return 2;
+            case "$50-$100":
+                return 3;
+            case "$100+":
+                return 4;
+            case "Unknown":
+            default:
+                return 5;
+        }
+    }
+
     public void setEstimated_price(String estimated_price) {
         this.estimated_price = estimated_price;
     }
