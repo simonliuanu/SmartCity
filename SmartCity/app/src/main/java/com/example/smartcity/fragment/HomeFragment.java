@@ -9,13 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
 import com.example.smartcity.activity.CommentActivity;
@@ -31,6 +30,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private AvlTree<Restaurant> restaurantTree;
     private RestaurantManager restaurantManager;
     private ItemListAdapter itemListAdapter;
+    private Spinner spinnerFilter, spinnerSortBy;
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
@@ -54,6 +55,9 @@ public class HomeFragment extends Fragment {
         editTextSearch = homeView.findViewById(R.id.editTextSearch);
         buttonSearch = homeView.findViewById(R.id.buttonSearch);
         listViewRestaurants = homeView.findViewById(R.id.listViewRestaurants);
+
+        spinnerFilter = homeView.findViewById(R.id.spinnerFilter);
+        spinnerSortBy = homeView.findViewById(R.id.spinnerSortBy);
 
         itemListAdapter = new ItemListAdapter(getContext(), restaurantList);
         listViewRestaurants.setAdapter(itemListAdapter);
@@ -70,6 +74,21 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 performSearch();
+            }
+        });
+
+
+        spinnerSortBy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                if (!selected.equals("Sort By")) {
+                    buttonSearch.performClick();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
@@ -120,6 +139,7 @@ public class HomeFragment extends Fragment {
         if (!query.isEmpty()) {
             List<Restaurant> results = restaurantManager.search(query);
             if (!results.isEmpty()) {
+                sortResults(results);
                 updateSearchResults(results);
             } else {
                 updateSearchResults(new ArrayList<>());
@@ -127,6 +147,26 @@ public class HomeFragment extends Fragment {
             }
         } else {
             Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void sortResults(List<Restaurant> results) {
+        String sortBy = spinnerSortBy.getSelectedItem().toString();
+        switch (sortBy) {
+            case "Price: Low to High":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getPrice));
+                break;
+            case "Price: High to Low":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getPrice).reversed());
+                break;
+            case "Rating: High to Low":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating).reversed());
+                break;
+            case "Rating: Low to High":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating));
+                break;
+            default:
+                break;
         }
     }
 

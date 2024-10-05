@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Filter options for restaurants -->
+    <string-array name="filter_options">
+        <item>All</item>
+        <item>Dinner</item>
+        <item>Takeaway</item>
+        <item>Fast Food</item>
+        <item>Desserts</item>
+    </string-array>
+
+    <!-- Sort by options for restaurants -->
+    <string-array name="sort_options">
+        <item>Sort By</item> <!-- Default option -->
+        <item>Price: Low to High</item>
+        <item>Price: High to Low</item>
+        <item>Rating: High to Low</item>
+        <item>Rating: Low to High</item>
+    </string-array>
+</resources>
