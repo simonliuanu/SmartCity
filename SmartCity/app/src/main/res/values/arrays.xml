@@ -3,10 +3,10 @@
     <!-- Filter options for restaurants -->
     <string-array name="filter_options">
         <item>All</item>
-        <item>Dinner</item>
-        <item>Takeaway</item>
-        <item>Fast Food</item>
-        <item>Desserts</item>
+        <item>Bar</item>
+        <item>Cafe</item>
+        <item>Food</item>
+        <item>Store</item>
     </string-array>
 
     <!-- Sort by options for restaurants -->

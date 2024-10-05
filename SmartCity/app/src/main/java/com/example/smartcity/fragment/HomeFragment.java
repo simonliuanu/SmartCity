@@ -77,6 +77,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                if (!selected.equals("Filter By")) {
+                    buttonSearch.performClick();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         spinnerSortBy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -136,9 +149,12 @@ public class HomeFragment extends Fragment {
         }
 
         String query = editTextSearch.getText().toString().trim();
+        String filterType = spinnerFilter.getSelectedItem().toString();
+
         if (!query.isEmpty()) {
             List<Restaurant> results = restaurantManager.search(query);
             if (!results.isEmpty()) {
+                results = filterResultsByType(results, filterType);
                 sortResults(results);
                 updateSearchResults(results);
             } else {
@@ -148,6 +164,22 @@ public class HomeFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {
+        if (filterType.equals("All")) {
+            return results;
+        }
+
+        List<Restaurant> filteredResults = new ArrayList<>();
+
+        for (Restaurant restaurant : results) {
+            if (restaurant.getTypes().contains(filterType.toLowerCase())) {
+                filteredResults.add(restaurant);
+            }
+        }
+
+        return filteredResults;
     }
 
     private void sortResults(List<Restaurant> results) {
