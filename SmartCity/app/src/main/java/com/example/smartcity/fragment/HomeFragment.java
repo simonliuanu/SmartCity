@@ -206,5 +206,6 @@ public class HomeFragment extends Fragment {
         restaurantList.clear();
         restaurantList.addAll(results);
         itemListAdapter.notifyDataSetChanged();
+        listViewRestaurants.setSelection(0);
     }
 }
