@@ -156,18 +156,9 @@ public class HomeFragment extends Fragment {
         String filterType = spinnerFilter.getSelectedItem().toString();
 
         if (!query.isEmpty()) {
-            Tokenizer tokenizer = new Tokenizer();
-            List<String> tokens = tokenizer.tokenize(query);
-
-            List<String> validTokens = getValidTokens();
-            Parser parser = new Parser(validTokens);
-            List<String> parsedTokens = parser.parse(tokens);
-
-            String correctedQuery = String.join(" ", parsedTokens);
-            List<Restaurant> results = restaurantManager.search(correctedQuery);
+            List<Restaurant> results = restaurantManager.search(query, filterType);
 
             if (!results.isEmpty()) {
-                results = filterResultsByType(results, filterType);
                 sortResults(results);
                 updateSearchResults(results);
             } else {
@@ -200,22 +191,6 @@ public class HomeFragment extends Fragment {
 
         collectValidTokens(node.getLeft(), validTokens);
         collectValidTokens(node.getRight(), validTokens);
-    }
-
-    private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {
-        if (filterType.equals("All")) {
-            return results;
-        }
-
-        List<Restaurant> filteredResults = new ArrayList<>();
-
-        for (Restaurant restaurant : results) {
-            if (restaurant.getTypes().contains(filterType.toLowerCase())) {
-                filteredResults.add(restaurant);
-            }
-        }
-
-        return filteredResults;
     }
 
     private void sortResults(List<Restaurant> results) {

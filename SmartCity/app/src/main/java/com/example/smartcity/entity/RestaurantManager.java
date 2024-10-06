@@ -22,7 +22,7 @@ public class RestaurantManager {
         this.parser = new Parser(validTokens);
     }
 
-    public List<Restaurant> search(String query) {
+    public List<Restaurant> search(String query, String filterType) {
         List<String> tokens = tokenizer.tokenize(query);
         List<String> parsedTokens = parser.parse(tokens);
         String correctedQuery = String.join(" ", parsedTokens);
@@ -37,9 +37,23 @@ public class RestaurantManager {
             }
         }
 
-        return results;
+        return filterResultsByType(results, filterType);
     }
 
+    private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {
+        if (filterType.equals("All")) {
+            return results;
+        }
+
+        List<Restaurant> filteredResults = new ArrayList<>();
+        for (Restaurant restaurant : results) {
+            if (restaurant.getTypes().contains(filterType.toLowerCase())) {
+                filteredResults.add(restaurant);
+            }
+        }
+
+        return filteredResults;
+    }
 
     public AvlTree<Restaurant> getRestaurantTree() {
         return restaurantTree;
