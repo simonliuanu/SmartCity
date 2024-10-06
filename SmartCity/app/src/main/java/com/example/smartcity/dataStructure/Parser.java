@@ -23,9 +23,10 @@ public class Parser {
     private String findClosestValidToken(String token) {
         String closestToken = token;
         int minDistance = Integer.MAX_VALUE;
+        String lowerCaseToken = token.toLowerCase();
 
         for (String validToken : validTokens) {
-            int distance = levenshteinDistance(token, validToken);
+            int distance = levenshteinDistance(lowerCaseToken, validToken.toLowerCase());
             if (distance < minDistance) {
                 minDistance = distance;
                 closestToken = validToken;
