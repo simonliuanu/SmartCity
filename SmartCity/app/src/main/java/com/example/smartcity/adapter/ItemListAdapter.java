@@ -35,7 +35,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     private List<Restaurant> list;
 
     private Context context;
-    private boolean isDialogShown = false;
+    private static boolean isDialogShown = false;
 
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
         super(context, R.layout.item_list,list);
