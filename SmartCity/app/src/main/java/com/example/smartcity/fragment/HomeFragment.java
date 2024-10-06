@@ -183,23 +183,37 @@ public class HomeFragment extends Fragment {
     }
 
     private void sortResults(List<Restaurant> results) {
+        List<Restaurant> filteredResults = new ArrayList<>();
+        List<Restaurant> unknownPrice = new ArrayList<>();
+        for (Restaurant restaurant : results) {
+            if (restaurant.getPrice() != 5) {
+                filteredResults.add(restaurant);
+            } else {
+                unknownPrice.add(restaurant);
+            }
+        }
+
         String sortBy = spinnerSortBy.getSelectedItem().toString();
         switch (sortBy) {
             case "Price: Low to High":
-                Collections.sort(results, Comparator.comparingDouble(Restaurant::getPrice));
+                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getPrice));
                 break;
             case "Price: High to Low":
-                Collections.sort(results, Comparator.comparingDouble(Restaurant::getPrice).reversed());
+                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getPrice).reversed());
                 break;
             case "Rating: High to Low":
-                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating).reversed());
+                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getRating).reversed());
                 break;
             case "Rating: Low to High":
-                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating));
+                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getRating));
                 break;
             default:
                 break;
         }
+
+        results.clear();
+        results.addAll(filteredResults);
+        results.addAll(unknownPrice);
     }
 
     private void updateSearchResults(List<Restaurant> results) {
