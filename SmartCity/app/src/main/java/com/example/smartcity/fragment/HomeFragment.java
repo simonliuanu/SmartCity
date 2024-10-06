@@ -21,6 +21,8 @@ import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.dataStructure.AvlTree;
 import com.example.smartcity.dataStructure.AvlTreeManager;
+import com.example.smartcity.dataStructure.Tokenizer;
+import com.example.smartcity.dataStructure.Parser;
 import com.example.smartcity.entity.Restaurant;
 import com.example.smartcity.entity.RestaurantManager;
 import com.google.firebase.database.DataSnapshot;
@@ -67,7 +69,8 @@ public class HomeFragment extends Fragment {
         if (restaurantTree.countNodes() == 0) {
             fetchRestaurantDataFromFirebase();
         } else {
-            restaurantManager = new RestaurantManager(restaurantTree);
+            List<String> validTokens = getValidTokens();
+            restaurantManager = new RestaurantManager(restaurantTree, validTokens);
         }
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +135,8 @@ public class HomeFragment extends Fragment {
                     restaurantTree.insert(restaurant);
                 }
 
-                restaurantManager = new RestaurantManager(restaurantTree);
+                List<String> validTokens = getValidTokens();
+                restaurantManager = new RestaurantManager(restaurantTree, validTokens);
             }
 
             @Override
@@ -152,7 +156,16 @@ public class HomeFragment extends Fragment {
         String filterType = spinnerFilter.getSelectedItem().toString();
 
         if (!query.isEmpty()) {
-            List<Restaurant> results = restaurantManager.search(query);
+            Tokenizer tokenizer = new Tokenizer();
+            List<String> tokens = tokenizer.tokenize(query);
+
+            List<String> validTokens = getValidTokens();
+            Parser parser = new Parser(validTokens);
+            List<String> parsedTokens = parser.parse(tokens);
+
+            String correctedQuery = String.join(" ", parsedTokens);
+            List<Restaurant> results = restaurantManager.search(correctedQuery);
+
             if (!results.isEmpty()) {
                 results = filterResultsByType(results, filterType);
                 sortResults(results);
@@ -164,6 +177,29 @@ public class HomeFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private List<String> getValidTokens() {
+        List<String> validTokens = new ArrayList<>();
+        collectValidTokens(restaurantTree.getRoot(), validTokens);
+        return validTokens;
+    }
+
+    private void collectValidTokens(AvlTree.Node<Restaurant> node, List<String> validTokens) {
+        if (node == null) {
+            return;
+        }
+
+        Tokenizer tokenizer = new Tokenizer();
+        List<String> tokens = tokenizer.tokenize(node.getData().getName());
+        for (String token : tokens) {
+            if (!validTokens.contains(token)) {
+                validTokens.add(token);
+            }
+        }
+
+        collectValidTokens(node.getLeft(), validTokens);
+        collectValidTokens(node.getRight(), validTokens);
     }
 
     private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {

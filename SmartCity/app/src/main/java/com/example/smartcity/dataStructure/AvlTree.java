@@ -6,26 +6,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvlTree<T extends Comparable<T>> {
-    private class Node {
-        T data;
-        Node left, right;
-        int height;
+    public static class Node<T> {
+        private T data;
+        private Node<T> left;
+        private Node<T> right;
+        private int height;
 
-        Node(T data) {
+        public Node(T data) {
             this.data = data;
             this.height = 1;
         }
+
+        public T getData() {
+            return data;
+        }
+
+        public Node<T> getLeft() {
+            return left;
+        }
+
+        public Node<T> getRight() {
+            return right;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public String toString() {
+            return data.toString();
+        }
     }
 
-    private Node root;
+    private Node<T> root;
 
     public void insert(T data) {
         root = insert(root, data);
     }
 
-    private Node insert(Node node, T data) {
+    private Node<T> insert(Node<T> node, T data) {
         if (node == null) {
-            return new Node(data);
+            return new Node<>(data);
         }
         int cmp = data.compareTo(node.data);
         if (cmp < 0) {
@@ -44,7 +65,7 @@ public class AvlTree<T extends Comparable<T>> {
         return searchExact(root, name);
     }
 
-    public T searchExact(Node node, String name) {
+    public T searchExact(Node<T> node, String name) {
         if (node == null) {
             return null;
         }
@@ -59,13 +80,13 @@ public class AvlTree<T extends Comparable<T>> {
         }
     }
 
-    public List<T> serachByPrefix(String prefix) {
+    public List<T> searchByPrefix(String prefix) {
         List<T> list = new ArrayList<>();
         searchByPrefix(root, prefix, list);
         return list;
     }
 
-    public void searchByPrefix(Node node, String prefix, List<T> list) {
+    public void searchByPrefix(Node<T> node, String prefix, List<T> list) {
         if (node == null) {
             return;
         }
@@ -77,14 +98,13 @@ public class AvlTree<T extends Comparable<T>> {
         searchByPrefix(node.right, prefix, list);
     }
 
-
     public List<T> toList() {
         List<T> list = new ArrayList<>();
         inOrderTraversal(root, list);
         return list;
     }
 
-    private void inOrderTraversal(Node node, List<T> list) {
+    private void inOrderTraversal(Node<T> node, List<T> list) {
         if (node != null) {
             inOrderTraversal(node.left, list);
             list.add(node.data);
@@ -92,7 +112,7 @@ public class AvlTree<T extends Comparable<T>> {
         }
     }
 
-    private Node balance(Node node) {
+    private Node<T> balance(Node<T> node) {
         if (node == null) return null;
 
         int balance = height(node.left) - height(node.right);
@@ -110,8 +130,8 @@ public class AvlTree<T extends Comparable<T>> {
         return node;
     }
 
-    private Node rotateLeft(Node node) {
-        Node newRoot = node.right;
+    private Node<T> rotateLeft(Node<T> node) {
+        Node<T> newRoot = node.right;
         node.right = newRoot.left;
         newRoot.left = node;
         node.height = 1 + Math.max(height(node.left), height(node.right));
@@ -119,8 +139,8 @@ public class AvlTree<T extends Comparable<T>> {
         return newRoot;
     }
 
-    private Node rotateRight(Node node) {
-        Node newRoot = node.left;
+    private Node<T> rotateRight(Node<T> node) {
+        Node<T> newRoot = node.left;
         node.left = newRoot.right;
         newRoot.right = node;
         node.height = 1 + Math.max(height(node.left), height(node.right));
@@ -128,7 +148,7 @@ public class AvlTree<T extends Comparable<T>> {
         return newRoot;
     }
 
-    private int height(Node node) {
+    private int height(Node<T> node) {
         return node == null ? 0 : node.height;
     }
 
@@ -138,7 +158,7 @@ public class AvlTree<T extends Comparable<T>> {
         return sb.toString();
     }
 
-    private void appendTree(Node node, StringBuilder sb, String prefix, String childrenPrefix) {
+    private void appendTree(Node<T> node, StringBuilder sb, String prefix, String childrenPrefix) {
         if (node != null) {
             sb.append(prefix);
             sb.append(node.data);
@@ -154,10 +174,14 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     // 辅助递归方法来计算节点总数
-    private int countNodes(Node node) {
+    private int countNodes(Node<T> node) {
         if (node == null) {
             return 0;
         }
         return 1 + countNodes(node.left) + countNodes(node.right);
+    }
+
+    public Node<T> getRoot() {
+        return root;
     }
 }

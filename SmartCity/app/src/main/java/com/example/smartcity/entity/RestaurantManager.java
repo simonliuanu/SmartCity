@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.smartcity.dataStructure.Parser;
 import com.example.smartcity.dataStructure.Tokenizer;
 import com.example.smartcity.dataStructure.AvlTree;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantManager {
@@ -14,35 +16,31 @@ public class RestaurantManager {
     private Tokenizer tokenizer;
     private Parser parser;
 
-    public RestaurantManager(AvlTree<Restaurant> tree) {
+    public RestaurantManager(AvlTree<Restaurant> tree, List<String> validTokens) {
         this.restaurantTree = tree;
         this.tokenizer = new Tokenizer();
-        this.parser = new Parser();
+        this.parser = new Parser(validTokens);
     }
 
     public List<Restaurant> search(String query) {
-        String[] tokens = tokenizer.tokenize(query);
+        List<String> tokens = tokenizer.tokenize(query);
+        List<String> parsedTokens = parser.parse(tokens);
+        String correctedQuery = String.join(" ", parsedTokens);
 
-        String searchTerm = tokens[0];
-
-        Restaurant exactMatch = restaurantTree.searchExact(searchTerm);
-
-        if (exactMatch != null) {
-            return List.of(exactMatch);
+        List<Restaurant> results = new ArrayList<>();
+        for (String token : parsedTokens) {
+            Restaurant exactMatch = restaurantTree.searchExact(token);
+            if (exactMatch != null) {
+                results.add(exactMatch);
+            } else {
+                results.addAll(restaurantTree.searchByPrefix(token));
+            }
         }
 
-        return restaurantTree.serachByPrefix(searchTerm);
+        return results;
     }
 
-    // Static method to provide access to the singleton instance
-//    public static synchronized RestaurantManager getInstance(Context context) {
-//        if (instance == null) {
-//            instance = new RestaurantManager();
-//        }
-//        return instance;
-//    }
 
-    // Retrieve the AVL tree containing all restaurants
     public AvlTree<Restaurant> getRestaurantTree() {
         return restaurantTree;
     }
