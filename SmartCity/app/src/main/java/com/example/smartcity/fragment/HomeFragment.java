@@ -170,11 +170,8 @@ private void performSearch() {
             sortResults(results);
 
             if (exactMatch != null) {
-                Toast.makeText(getContext(), "Exact match found: " + exactMatch.getName(), Toast.LENGTH_SHORT).show();
                 results.remove(exactMatch);
                 results.add(0, exactMatch);
-            } else {
-                Toast.makeText(getContext(), "No exact match found for: " + query, Toast.LENGTH_SHORT).show();
             }
 
             updateSearchResults(results);
