@@ -161,7 +161,7 @@ private void performSearch() {
         if (!results.isEmpty()) {
             Restaurant exactMatch = null;
             for (Restaurant restaurant : results) {
-                if (restaurant.getName().equalsIgnoreCase(query)) {
+                if (restaurant.getName().toLowerCase().equalsIgnoreCase(query)) {
                     exactMatch = restaurant;
                     break;
                 }
