@@ -146,31 +146,46 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void performSearch() {
-        if (restaurantManager == null) {
-            Toast.makeText(getContext(), "Please wait for the data to load.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String query = editTextSearch.getText().toString().trim();
-        String filterType = spinnerFilter.getSelectedItem().toString();
-
-        if (!query.isEmpty()) {
-            List<Restaurant> results = restaurantManager.search(query, filterType);
-
-            if (!results.isEmpty()) {
-                sortResults(results);
-                updateSearchResults(results);
-            } else {
-                updateSearchResults(new ArrayList<>());
-                Toast.makeText(getContext(), "No matching restaurants found.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
-        }
+private void performSearch() {
+    if (restaurantManager == null) {
+        Toast.makeText(getContext(), "Please wait for the data to load.", Toast.LENGTH_SHORT).show();
+        return;
     }
 
-    private List<String> getValidTokens() {
+    String query = editTextSearch.getText().toString().trim();
+    String filterType = spinnerFilter.getSelectedItem().toString();
+
+    if (!query.isEmpty()) {
+        List<Restaurant> results = restaurantManager.search(query, filterType);
+
+        if (!results.isEmpty()) {
+            Restaurant exactMatch = null;
+            for (Restaurant restaurant : results) {
+                if (restaurant.getName().equalsIgnoreCase(query)) {
+                    exactMatch = restaurant;
+                    break;
+                }
+            }
+
+            sortResults(results);
+
+            if (exactMatch != null) {
+                Toast.makeText(getContext(), "Exact match found: " + exactMatch.getName(), Toast.LENGTH_SHORT).show();
+                results.remove(exactMatch);
+                results.add(0, exactMatch);
+            } else {
+                Toast.makeText(getContext(), "No exact match found for: " + query, Toast.LENGTH_SHORT).show();
+            }
+
+            updateSearchResults(results);
+        } else {
+            updateSearchResults(new ArrayList<>());
+            Toast.makeText(getContext(), "No matching restaurants found.", Toast.LENGTH_SHORT).show();
+        }
+    } else {
+        Toast.makeText(getContext(), "Please enter a search query.", Toast.LENGTH_SHORT).show();
+    }
+}    private List<String> getValidTokens() {
         List<String> validTokens = new ArrayList<>();
         collectValidTokens(restaurantTree.getRoot(), validTokens);
         return validTokens;
