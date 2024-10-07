@@ -1,18 +1,23 @@
 package com.example.smartcity.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
+import com.example.smartcity.activity.MainActivity;
 import com.example.smartcity.entity.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
 
@@ -30,6 +35,7 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     private List<Restaurant> list;
 
     private Context context;
+    private static boolean isDialogShown = false;
 
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
         super(context, R.layout.item_list,list);
@@ -42,6 +48,8 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         // use viewHolder to solve the repeat list in list view;
         ViewHolder holder;
+
+        LikeRestaurant likeRes = LikeRestaurant.getInstance();
 
         // if null, create a new view
         if(convertView == null) {
@@ -76,9 +84,6 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
         holder.holdRate.setText(String.valueOf(curRestaurant.getRating())); // Make sure to convert rating to string
         holder.holdPrice.setText(curRestaurant.getEstimated_price());
 
-
-        LikeRestaurant likeRes = LikeRestaurant.getInstance();
-
         // to make sure all the restaurant is non like initialization
         if (likeRes.contains(curRestaurant)) {
             holder.likeBtn.setImageResource(R.mipmap.item_like_btn_on);
@@ -109,10 +114,42 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                     System.out.println();
                     notifyDataSetChanged();
                 }
+                if (likeRes.size() == 5 && !isDialogShown) {
+                    showDialog();
+                }
             }
         });
-
         return convertView;
+    }
+
+    private void showDialog() {
+        isDialogShown = true;
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View View = inflater.inflate(R.layout.noti_confirmation, null);
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(View)
+                .create();
+
+        Button noBtn = View.findViewById(R.id.noti_no_button);
+        Button yesBtn = View.findViewById(R.id.noti_yes_button);
+
+        noBtn.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        yesBtn.setOnClickListener(v -> {
+            Toast.makeText(context, "Redirecting to your favorites!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra("targetFragment", "MeFragment");
+            context.startActivity(intent);
+
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
     static class ViewHolder {
