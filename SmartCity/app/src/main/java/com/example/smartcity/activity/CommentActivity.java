@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
 import com.example.smartcity.adapter.CommentAdapter;
+import com.example.smartcity.entity.Comment;
 import com.example.smartcity.entity.Restaurant;
 
 import java.util.ArrayList;
@@ -27,9 +28,10 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     private TextView textViewName, textViewRating, textViewAddress;
     private RecyclerView recyclerViewComments;
     private CommentAdapter commentAdapter;
-    private List<String> commentList;
+    private List<Comment> commentList;
     private EditText editTextComment;
     private Button buttonSubmitComment;
+    private String currentUsername = "Me";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +46,13 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
         editTextComment = findViewById(R.id.editText_comment);
         buttonSubmitComment = findViewById(R.id.button_submit_comment);
 
-        // 初始化评论列表
+        // comment list
         commentList = new ArrayList<>();
-        commentAdapter = new CommentAdapter(commentList);
+        commentAdapter = new CommentAdapter(commentList, currentUsername);
         recyclerViewComments.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewComments.setAdapter(commentAdapter);
 
-        // 示例：显示的餐馆信息
+        // display the res
         Restaurant restaurant = (Restaurant) getIntent().getSerializableExtra("restaurant");
         if (restaurant != null) {
             String photoUrl = restaurant.getPhoto_url();
@@ -64,35 +66,38 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
             textViewAddress.setText(restaurant.getAddress());
         }
 
-        // 监听提交评论按钮
+        // listen submit the comment
         buttonSubmitComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String comment = editTextComment.getText().toString();
-                if (!comment.isEmpty()) {
+                String commentText = editTextComment.getText().toString();
+                if (!commentText.isEmpty()) {
+                    Comment comment = new Comment(currentUsername, commentText);
                     commentList.add(comment);
                     commentAdapter.notifyItemInserted(commentList.size() - 1);
-                    editTextComment.setText("");  // 清空输入框
+                    editTextComment.setText("");
                 }
             }
         });
 
-        // 模拟随机刷新评论
+        // simulate the comments
         recyclerViewComments.postDelayed(new Runnable() {
             @Override
             public void run() {
-                addRandomComment();  // 添加一个随机评论
+                addRandomComment();
                 recyclerViewComments.postDelayed(this, 2000);
             }
         }, 2000);
-        //返回
+        //return to item page
         findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
-    //模拟数据流
+    //simulate the data stream
     private void addRandomComment() {
         String[] randomComments = {"Great food!", "Amazing service!", "Would definitely come again!", "A bit expensive."};
-        String randomComment = randomComments[(int) (Math.random() * randomComments.length)];
+        String[] randomUserName = {"user1","user2","user3","user4"};
+//        String randomComment = randomComments[(int) (Math.random() * randomComments.length)];
+        Comment randomComment = new Comment(randomUserName[(int) (Math.random() * randomUserName.length)], randomComments[(int) (Math.random() * randomComments.length)]);
         commentList.add(randomComment);
         commentAdapter.notifyItemInserted(commentList.size() - 1);
     }
@@ -101,6 +106,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view.getId() == R.id.iv_back){
             finish();
+
         }
     }
 }

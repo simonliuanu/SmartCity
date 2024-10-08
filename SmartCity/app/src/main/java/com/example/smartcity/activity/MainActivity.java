@@ -58,14 +58,28 @@ public class MainActivity extends AppCompatActivity {
             // Replace the current Fragment
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_fragment, selectedFragment)
+                    .replace(R.id.fragment_container, selectedFragment)
                     .commit();
             return true;
         });
 
-        // Set the default selected Fragment
+        Intent intent = getIntent();
+        String targetFragment = intent.getStringExtra("targetFragment");
+
         if (savedInstanceState == null) {
-            bottomNavigationView.setSelectedItemId(R.id.navi_home); // Default to HomeFragment
+            if (targetFragment != null && targetFragment.equals("MeFragment")) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new MeFragment())
+                        .commit();
+                bottomNavigationView.setSelectedItemId(R.id.navi_me);
+            } else {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new HomeFragment())
+                        .commit();
+                bottomNavigationView.setSelectedItemId(R.id.navi_home);
+            }
         }
     }
 }
