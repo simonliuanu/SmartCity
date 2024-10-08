@@ -33,13 +33,11 @@ public class MeFragment extends Fragment {
         ListView likeList = meView.findViewById(R.id.me_like_list);
         emptyTips = meView.findViewById(R.id.me_empty_tips);
 
-        // 设置点击事件
         likeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // 获取被点击的餐厅对象
                 Restaurant selectedRestaurant = itemListAdapter.getItem(position);
-                // 启动新的活动
+
                 Intent intent = new Intent(getContext(), CommentActivity.class);
                 intent.putExtra("restaurant", selectedRestaurant);
                 startActivity(intent);

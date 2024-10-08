@@ -106,6 +106,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view.getId() == R.id.iv_back){
             finish();
+
         }
     }
 }
