@@ -117,6 +117,22 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         return estimated_price;
     }
 
+    public int getPrice() {
+        switch (estimated_price) {
+            case "$10-$25":
+                return 1;
+            case "$25-$50":
+                return 2;
+            case "$50-$100":
+                return 3;
+            case "$100+":
+                return 4;
+            case "Unknown":
+            default:
+                return 5;
+        }
+    }
+
     public void setEstimated_price(String estimated_price) {
         this.estimated_price = estimated_price;
     }
@@ -146,45 +162,6 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
                 '}';
     }
 
-
-    //@Override
-//    public int compareTo(Restaurant other) {
-//        return Double.compare(this.rating, other.rating);
-//    }
-
-    public int compareTo(Restaurant other) {
-        // 首先比较 rating
-        int ratingComparison = Double.compare(this.rating, other.rating);
-        if (ratingComparison != 0) {
-            return ratingComparison;
-        }
-
-        // 如果 rating 相同，比较 userRatingsTotal
-        if (this.user_ratings_total != other.user_ratings_total) {
-            // 将空值视为最小值（负无穷大），空值排在前面
-            Integer thisUserRatingsTotal = this.user_ratings_total == 0 ? Integer.MIN_VALUE : this.user_ratings_total;
-            Integer otherUserRatingsTotal = other.user_ratings_total == 0 ? Integer.MIN_VALUE : other.user_ratings_total;
-            return Integer.compare(thisUserRatingsTotal, otherUserRatingsTotal);
-        }
-
-       /* //如果 userRatingsTotal 也相同，比较 priceLevel
-        if (this.price_level != null && other.price_level != null) {
-            int priceLevelComparison = this.price_level.compareTo(other.price_level);
-            if (priceLevelComparison != 0) {
-                return priceLevelComparison;
-            }
-        } else if (this.price_level != null) {
-            return 1; // this.priceLevel 非空，other.priceLevel 为空
-        } else if (other.price_level != null) {
-            return -1; // this.priceLevel 为空，other.priceLevel 非空
-        }*/
-
-
-        // 如果 priceLevel 也相同，比较 name
-        return this.name.compareTo(other.name);
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -205,5 +182,10 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, rating, address, photo_url, latitude, longitude, types, price_level, estimated_price, user_ratings_total);
+    }
+
+    @Override
+    public int compareTo(Restaurant other) {
+        return this.name.compareTo(other.name);
     }
 }

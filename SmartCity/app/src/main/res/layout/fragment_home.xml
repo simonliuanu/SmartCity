@@ -13,13 +13,13 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Find Restaurants"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Search -->
     <EditText
@@ -30,10 +30,10 @@
         android:layout_marginEnd="8dp"
         android:hint="Search for nearby"
         android:inputType="text"
-        android:padding="10dp"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
         app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
 
     <!-- Search Button -->
@@ -41,48 +41,42 @@
         android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Search"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@id/editTextSearch"
         app:layout_constraintBottom_toBottomOf="@id/editTextSearch"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp" />
+        app:layout_constraintTop_toTopOf="@id/editTextSearch" />
 
-    <!-- Category Tags -->
+    <!-- Filter and Sort By -->
     <LinearLayout
-        android:id="@+id/linearLayoutCategories"
+        android:id="@+id/linearLayoutFilterSort"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/editTextSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:padding="8dp">
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextSearch">
 
-        <Button
+        <!-- Filter Spinner -->
+        <Spinner
+            android:id="@+id/spinnerFilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dinner" />
+            android:entries="@array/filter_options"
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <Button
+        <!-- Sort By Spinner -->
+        <Spinner
+            android:id="@+id/spinnerSortBy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Takeaway" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fast Food" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Desserts" />
+            android:entries="@array/sort_options"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <!-- Recommended Restaurants Title -->
@@ -90,24 +84,22 @@
         android:id="@+id/textViewRecommended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Recommended Restaurants"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutCategories"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutFilterSort" />
 
-    <!-- Search Result -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewRestaurants"
+    <!-- ListView for search results -->
+    <ListView
+        android:id="@+id/listViewRestaurants"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewRecommended"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/fragment_item" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRecommended" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
