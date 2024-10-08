@@ -20,8 +20,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
+//import com.example.smartcity.Service.RestaurantIterator;
+import com.example.smartcity.Service.RestaurantIterator;
+import com.example.smartcity.Service.RestaurantRepository;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
+import com.example.smartcity.dataStructure.AvlTree;
+import com.example.smartcity.dataStructure.AvlTreeManager;
 import com.example.smartcity.entity.Restaurant;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +35,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
@@ -42,6 +48,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     private View moreDataView;
     private ProgressBar morePg;
     private Button moreBtn;
+    //private RestaurantIterator restaurantItr = new RestaurantIterator();
 
     @Nullable
     @Override
@@ -60,7 +67,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         moreBtn = moreDataView.findViewById(R.id.more_data_btn);
         morePg = moreDataView.findViewById(R.id.more_data_progress);
 
-        // TODO : here is a description class
+        // TODO : here is a deprecated class
         Handler handler = new Handler();
 
         // Initialize the page
@@ -127,39 +134,13 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
 
     public void loadMoreData() {
 
-        Query resQuery = FirebaseDatabase.getInstance().
-                getReference()
-                .child("restaurants")
-                .orderByKey()
-                .startAt(String.valueOf(curPage * PER_PAGE_LIMITS))
-                .limitToFirst(PER_PAGE_LIMITS);
+        RestaurantRepository restaurantRepository = new RestaurantRepository();
+        RestaurantIterator iterator = restaurantRepository.getIterator();
 
-        resQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // represent the new page's restaurant data
-                List<Restaurant> newRestaurants = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Restaurant value = snapshot.getValue(Restaurant.class);
-                    newRestaurants.add(value);
-                }
-
-                resList.addAll(newRestaurants);
-
-                itemListAdapter.notifyDataSetChanged();
-                // get the next page items
-                curPage++;
-
-                // Hide progress bar and show button again
-                morePg.setVisibility(View.GONE);
-                moreBtn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseError", "Database error: " + error.getMessage());
-            }
-        });
+        if (iterator.hasNext()) {
+            resList.addAll(iterator.next());
+        }
+        itemListAdapter.notifyDataSetChanged();
     }
 
     /**@author Yuheng Li
