@@ -25,7 +25,6 @@ public class RestaurantManager {
     public List<Restaurant> search(String query, String filterType) {
         List<String> tokens = tokenizer.tokenize(query);
         List<String> parsedTokens = parser.parse(tokens);
-        String correctedQuery = String.join(" ", parsedTokens);
 
         List<Restaurant> results = new ArrayList<>();
         for (String token : parsedTokens) {
@@ -33,7 +32,7 @@ public class RestaurantManager {
             if (exactMatch != null) {
                 results.add(exactMatch);
             } else {
-                results.addAll(restaurantTree.searchByPrefix(token));
+                results.addAll(restaurantTree.searchByContains(token));
             }
         }
 

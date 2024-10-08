@@ -80,22 +80,22 @@ public class AvlTree<T extends Comparable<T>> {
         }
     }
 
-    public List<T> searchByPrefix(String prefix) {
+    public List<T> searchByContains(String prefix) {
         List<T> list = new ArrayList<>();
-        searchByPrefix(root, prefix, list);
+        searchByContains(root, prefix, list);
         return list;
     }
 
-    public void searchByPrefix(Node<T> node, String prefix, List<T> list) {
+    public void searchByContains(Node<T> node, String prefix, List<T> list) {
         if (node == null) {
             return;
         }
         Restaurant restaurant = (Restaurant) node.data;
-        if (restaurant.getName().startsWith(prefix)) {
+        if (restaurant.getName().contains(prefix)) {
             list.add(node.data);
         }
-        searchByPrefix(node.left, prefix, list);
-        searchByPrefix(node.right, prefix, list);
+        searchByContains(node.left, prefix, list);
+        searchByContains(node.right, prefix, list);
     }
 
     public List<T> toList() {
