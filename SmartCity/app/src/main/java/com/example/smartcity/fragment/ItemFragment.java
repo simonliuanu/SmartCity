@@ -24,7 +24,10 @@ import com.example.smartcity.Iterator.RestaurantIterator;
 import com.example.smartcity.Iterator.RestaurantRepository;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
+import com.example.smartcity.dao.ItemDao;
+import com.example.smartcity.dao.ItemDaoImpl;
 import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.util.DataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,7 +40,6 @@ import java.util.List;
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
 
     View itemView;
-    private int curPage = 1;
     private static final int PER_PAGE_LIMITS = 12;
     private List<Restaurant> resList = new ArrayList<>();
     private ItemListAdapter itemListAdapter;
@@ -46,6 +48,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     private Button moreBtn;
     private RestaurantRepository restaurantRepository;
     private RestaurantIterator iterator;
+    private ItemDao itemDao;
     //private RestaurantIterator restaurantItr = new RestaurantIterator();
 
     @Nullable
@@ -65,37 +68,19 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         moreBtn = moreDataView.findViewById(R.id.more_data_btn);
         morePg = moreDataView.findViewById(R.id.more_data_progress);
 
+        itemDao = new ItemDaoImpl();
+
         // TODO : here is a deprecated class
         Handler handler = new Handler();
 
         // Initialize the page
+        initiateData();
+
         itemListAdapter = new ItemListAdapter(getContext(), resList);
         listView.addFooterView(moreDataView);
         listView.setAdapter(itemListAdapter);
         listView.setOnScrollListener(this);
 
-        Query resQuery = FirebaseDatabase.getInstance().
-                getReference()
-                .child("restaurants")
-                .orderByKey()
-                .limitToFirst(PER_PAGE_LIMITS);
-
-        resQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                resList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Restaurant value = snapshot.getValue(Restaurant.class);
-                    resList.add(value);
-                }
-                itemListAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseError", "Database error: " + error.getMessage());
-            }
-        });
 
         restaurantRepository = new RestaurantRepository();
         iterator = restaurantRepository.getIterator();
@@ -106,11 +91,10 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
             public void onClick(View view) {
                 morePg.setVisibility(View.VISIBLE);
                 moreBtn.setVisibility(View.GONE);
-
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if(iterator.hasNext()) {
+                        if (iterator.hasNext()) {
                             loadMoreData();
                             morePg.setVisibility(View.GONE);
                             moreBtn.setVisibility(View.VISIBLE);
@@ -128,6 +112,22 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         return itemView;
     }
 
+    private void initiateData() {
+        itemDao.initialItemList(new DataCallback<List<Restaurant>>() {
+            @Override
+            public void onSuccess(List<Restaurant> result) {
+                resList.clear();
+                resList.addAll(result);
+                itemListAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e("itemList", "Error loading data: " + error);
+            }
+        });
+    }
+
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
 
@@ -138,15 +138,16 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     }
 
     public void loadMoreData() {
-            resList.addAll(iterator.next());
+        resList.addAll(iterator.next());
     }
 
-    /**@author Yuheng Li
-     * go to comment page
+    /**
      * @param adapterView
      * @param view
      * @param i
      * @param l
+     * @author Yuheng Li
+     * go to comment page
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

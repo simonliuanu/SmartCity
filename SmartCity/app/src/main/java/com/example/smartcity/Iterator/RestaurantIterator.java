@@ -1,5 +1,7 @@
 package com.example.smartcity.Iterator;
 
+import android.util.Log;
+
 import com.example.smartcity.dataStructure.AvlTree;
 import com.example.smartcity.dataStructure.AvlTreeManager;
 import com.example.smartcity.entity.Restaurant;
@@ -23,6 +25,7 @@ public class RestaurantIterator implements Iterator<List<Restaurant>> {
     @Override
     public boolean hasNext() {
         return curPage * PER_PAGE_LIMITS <= TOTAL_DATA;
+
     }
 
     @Override
@@ -30,10 +33,11 @@ public class RestaurantIterator implements Iterator<List<Restaurant>> {
         List<Restaurant> nextPageRes = new ArrayList<>();
         if(this.hasNext()) {
             nextPageRes = instance.toList().subList(curPage * PER_PAGE_LIMITS, ++curPage * PER_PAGE_LIMITS);
-            curPage++;
+            Log.i("iterator","the current page is: " + curPage);
         } else {
             nextPageRes = null;
         }
+        Log.i("iterator","state of hasNext: " + this.hasNext());
         return nextPageRes;
     }
 }
