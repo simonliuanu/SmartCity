@@ -15,7 +15,10 @@ import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
 import com.example.smartcity.adapter.CommentAdapter;
 import com.example.smartcity.entity.Comment;
+import com.example.smartcity.entity.CommentFactory;
+import com.example.smartcity.entity.ContentInComment;
 import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.entity.UsernameInComment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,19 +88,19 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void run() {
                 addRandomComment();
-                recyclerViewComments.postDelayed(this, 2000);
+                recyclerViewComments.postDelayed(this, 3000);
             }
-        }, 2000);
+        }, 3000);
         //return to item page
         findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
     //simulate the data stream
     private void addRandomComment() {
-        String[] randomComments = {"Great food!", "Amazing service!", "Would definitely come again!", "A bit expensive."};
-        String[] randomUserName = {"user1","user2","user3","user4"};
-//        String randomComment = randomComments[(int) (Math.random() * randomComments.length)];
-        Comment randomComment = new Comment(randomUserName[(int) (Math.random() * randomUserName.length)], randomComments[(int) (Math.random() * randomComments.length)]);
+        CommentFactory commentFactory = new CommentFactory();
+        ContentInComment contentInComment = (ContentInComment) commentFactory.getItem("Comment");
+        UsernameInComment usernameInComment = (UsernameInComment) commentFactory.getItem("Username");
+        Comment randomComment = new Comment(usernameInComment.getItem(), contentInComment.getItem());
         commentList.add(randomComment);
         commentAdapter.notifyItemInserted(commentList.size() - 1);
     }
@@ -106,7 +109,6 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view.getId() == R.id.iv_back){
             finish();
-
         }
     }
 }
