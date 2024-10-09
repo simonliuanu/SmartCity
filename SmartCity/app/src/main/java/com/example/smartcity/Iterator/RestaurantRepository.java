@@ -1,6 +1,4 @@
-package com.example.smartcity.Service;
-
-import java.util.Iterator;
+package com.example.smartcity.Iterator;
 
 public class RestaurantRepository implements Container{
 
