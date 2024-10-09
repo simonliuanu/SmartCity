@@ -14,13 +14,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
-//import com.example.smartcity.Service.RestaurantIterator;
-import com.example.smartcity.Iterator.RestaurantIterator;
 import com.example.smartcity.Iterator.RestaurantRepository;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
@@ -28,13 +25,10 @@ import com.example.smartcity.dao.ItemDao;
 import com.example.smartcity.dao.ItemDaoImpl;
 import com.example.smartcity.entity.Restaurant;
 import com.example.smartcity.util.DataCallback;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
@@ -47,8 +41,8 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     private ProgressBar morePg;
     private Button moreBtn;
     private RestaurantRepository restaurantRepository;
-    private RestaurantIterator iterator;
     private ItemDao itemDao;
+    private Iterator iterator;
     //private RestaurantIterator restaurantItr = new RestaurantIterator();
 
     @Nullable
@@ -138,7 +132,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     }
 
     public void loadMoreData() {
-        resList.addAll(iterator.next());
+        resList.addAll((List<Restaurant>) iterator.next());
     }
 
     /**

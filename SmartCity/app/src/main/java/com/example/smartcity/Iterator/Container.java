@@ -3,5 +3,5 @@ package com.example.smartcity.Iterator;
 import java.util.Iterator;
 
 public interface Container {
-    public Iterator getIterator();
+    Iterator getIterator();
 }
