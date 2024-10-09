@@ -3,7 +3,6 @@ package com.example.smartcity.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,33 +14,36 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
+import com.example.smartcity.Iterator.RestaurantRepository;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
+import com.example.smartcity.dao.ItemDao;
+import com.example.smartcity.dao.ItemDaoImpl;
 import com.example.smartcity.entity.Restaurant;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.example.smartcity.util.DataCallback;
+
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
 
     View itemView;
-    private int curPage = 1;
     private static final int PER_PAGE_LIMITS = 12;
     private List<Restaurant> resList = new ArrayList<>();
     private ItemListAdapter itemListAdapter;
     private View moreDataView;
     private ProgressBar morePg;
     private Button moreBtn;
+    private RestaurantRepository restaurantRepository;
+    private ItemDao itemDao;
+    private Iterator iterator;
+    //private RestaurantIterator restaurantItr = new RestaurantIterator();
 
     @Nullable
     @Override
@@ -60,38 +62,22 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         moreBtn = moreDataView.findViewById(R.id.more_data_btn);
         morePg = moreDataView.findViewById(R.id.more_data_progress);
 
-        // TODO : here is a description class
+        itemDao = new ItemDaoImpl();
+
+        // TODO : here is a deprecated class
         Handler handler = new Handler();
 
         // Initialize the page
-        itemListAdapter = new ItemListAdapter(getContext(), resList);
-        Query resQuery = FirebaseDatabase.getInstance().
-                getReference()
-                .child("restaurants")
-                .orderByKey()
-                .limitToFirst(PER_PAGE_LIMITS);
+        initiateData();
 
+        itemListAdapter = new ItemListAdapter(getContext(), resList);
         listView.addFooterView(moreDataView);
         listView.setAdapter(itemListAdapter);
-
         listView.setOnScrollListener(this);
 
-        resQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                resList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Restaurant value = snapshot.getValue(Restaurant.class);
-                    resList.add(value);
-                }
-                itemListAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseError", "Database error: " + error.getMessage());
-            }
-        });
+        restaurantRepository = new RestaurantRepository();
+        iterator = restaurantRepository.getIterator();
 
         // once user click the more button, it will load more restaurant
         moreBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,13 +85,18 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
             public void onClick(View view) {
                 morePg.setVisibility(View.VISIBLE);
                 moreBtn.setVisibility(View.GONE);
-
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        loadMoreData();
-                        morePg.setVisibility(View.GONE);
-                        moreBtn.setVisibility(View.VISIBLE);
+                        if (iterator.hasNext()) {
+                            loadMoreData();
+                            morePg.setVisibility(View.GONE);
+                            moreBtn.setVisibility(View.VISIBLE);
+                        } else {
+                            Toast.makeText(getContext(), "No more data", Toast.LENGTH_SHORT).show();
+                            morePg.setVisibility(View.GONE);
+                            moreBtn.setVisibility(View.GONE);
+                        }
                         itemListAdapter.notifyDataSetChanged();
                     }
                 }, 2000);
@@ -115,6 +106,22 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         return itemView;
     }
 
+    private void initiateData() {
+        itemDao.initialItemList(new DataCallback<List<Restaurant>>() {
+            @Override
+            public void onSuccess(List<Restaurant> result) {
+                resList.clear();
+                resList.addAll(result);
+                itemListAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e("itemList", "Error loading data: " + error);
+            }
+        });
+    }
+
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
 
@@ -122,52 +129,19 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
 
     @Override
     public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-
     }
 
     public void loadMoreData() {
-
-        Query resQuery = FirebaseDatabase.getInstance().
-                getReference()
-                .child("restaurants")
-                .orderByKey()
-                .startAt(String.valueOf(curPage * PER_PAGE_LIMITS))
-                .limitToFirst(PER_PAGE_LIMITS);
-
-        resQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // represent the new page's restaurant data
-                List<Restaurant> newRestaurants = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Restaurant value = snapshot.getValue(Restaurant.class);
-                    newRestaurants.add(value);
-                }
-
-                resList.addAll(newRestaurants);
-
-                itemListAdapter.notifyDataSetChanged();
-                // get the next page items
-                curPage++;
-
-                // Hide progress bar and show button again
-                morePg.setVisibility(View.GONE);
-                moreBtn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseError", "Database error: " + error.getMessage());
-            }
-        });
+        resList.addAll((List<Restaurant>) iterator.next());
     }
 
-    /**@author Yuheng Li
-     * go to comment page
+    /**
      * @param adapterView
      * @param view
      * @param i
      * @param l
+     * @author Yuheng Li
+     * go to comment page
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

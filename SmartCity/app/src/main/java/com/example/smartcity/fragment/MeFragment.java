@@ -20,6 +20,8 @@ import com.example.smartcity.adapter.ItemListAdapter;
 import com.example.smartcity.entity.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
 
+import java.util.Objects;
+
 public class MeFragment extends Fragment {
     View meView;
     private ItemListAdapter itemListAdapter;
@@ -54,8 +56,7 @@ public class MeFragment extends Fragment {
 
         // back to the login page
         logoutBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(meView.getContext(), LoginActivity.class);
-            startActivity(intent);
+            requireActivity().finish();
         });
 
 
