@@ -1,4 +1,4 @@
-package com.example.smartcity.entity;
+package com.example.smartcity.Factory;
 
 public interface CommentItem {
     String getItem();
