@@ -1,5 +1,12 @@
 package com.example.smartcity.fragment;
+import com.bumptech.glide.Glide;
+import com.example.smartcity.entity.MapRestaurantCache;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,18 +17,45 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.smartcity.R;
+import com.example.smartcity.entity.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap myMap;
     private View mapView;
+
+    // To interact with the Firestore database
+    private FirebaseFirestore firestore;
+
+    // To obtain the device's location
+    private FusedLocationProviderClient fusedLocationClient;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
 
     @Nullable
     @Override
@@ -34,6 +68,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mapFragment.getMapAsync(this);
         }
 
+        // Initialize Firestore
+        firestore = FirebaseFirestore.getInstance();
+
+        // Initialize location client
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+
         return mapView;
     }
 
@@ -41,9 +81,178 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
 
-        // Example location to show on the map
-        LatLng exampleLocation = new LatLng(-33.8709065, 151.2075485);
-        myMap.addMarker(new MarkerOptions().position(exampleLocation).title("QT Sydney"));
-        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(exampleLocation, 15)); // Set zoom level to 15
+        // Check if location permission is granted
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            enableUserLocation();
+        } else {
+            // Request permission
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+
+        // Set user interface options for the map
+        myMap.getUiSettings().setZoomControlsEnabled(true);
+        myMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+        // Customize the information window
+        myMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null; // Use default window frame
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                // Inflate custom layout
+                View infoWindowView = getLayoutInflater().inflate(R.layout.restaurant_info_window, null);
+
+                Restaurant restaurant = (Restaurant) marker.getTag();
+
+                ImageView imageView = infoWindowView.findViewById(R.id.res_image);
+                TextView title = infoWindowView.findViewById(R.id.res_title);
+                TextView rating = infoWindowView.findViewById(R.id.res_rating);
+                TextView price = infoWindowView.findViewById(R.id.res_price);
+                TextView category = infoWindowView.findViewById(R.id.res_category);
+
+                if (restaurant != null) {
+                    title.setText(restaurant.getName());
+                    rating.setText("Rate: " + restaurant.getRating());
+                    price.setText("Price: " + restaurant.getEstimated_price());
+                    category.setText("Type: " + String.join(", ", restaurant.getTypes()));
+
+                    // Use Glide to load restaurant images
+                    Glide.with(infoWindowView).load(restaurant.getPhoto_url()).into(imageView);
+                }
+
+
+                return infoWindowView;
+            }
+        });
+
+        // Use a custom layout when clicked
+        myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                LatLng markerPosition = marker.getPosition();
+                googleMap.animateCamera(CameraUpdateFactory.newLatLng(markerPosition));
+                marker.showInfoWindow();
+                return true;
+            }
+        });
+    }
+
+    private void enableUserLocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            myMap.setMyLocationEnabled(true);
+            myMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            // Get user's last known location
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(requireActivity(), location -> {
+                        if (location != null) {
+                            LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                            // Show nearby restaurants (this will be implemented in the next steps)
+                            showNearbyRestaurants(userLocation);
+                        }
+                    });
+        }
+    }
+
+    // Show nearby restaurants by querying Firebase
+    private void showNearbyRestaurants(LatLng userLocation) {
+        // Use the location string as the key to check the cache
+        String locationKey = generateLocationKey(userLocation);
+
+        HashMap<String, List<MarkerOptions>> cachedRestaurants = MapRestaurantCache.getInstance().getCachedRestaurants();
+
+        // Check if restaurants near this location have already been cached
+        // Used for loading nearby restaurants in the map for the second time
+        if (cachedRestaurants.containsKey(locationKey)) {
+            List<MarkerOptions> cachedMarkers = cachedRestaurants.get(locationKey);
+            for (MarkerOptions marker : cachedMarkers) {
+                myMap.addMarker(marker);
+            }
+            Log.d("MapFragment", "Loaded restaurants from cache for location: " + locationKey);
+            return;
+        }
+
+        DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference().child("restaurants");
+
+        // Set the radius for looking nearby restaurants
+        double radiusInMeters = 2000;
+        double latDelta = radiusInMeters / 111320;  // Calculate the change in latitude to determine the range of nearby latitudes
+        double lngDelta = radiusInMeters / (111320 * Math.cos(Math.toRadians(userLocation.latitude)));  // Calculate the change in longitude to determine the range of nearby longitude
+
+        // Determine the range of latitude and longitude near the current location
+        double northEastLat = userLocation.latitude + latDelta;
+        double northEastLng = userLocation.longitude + lngDelta;
+        double southWestLat = userLocation.latitude - latDelta;
+        double southWestLng = userLocation.longitude - lngDelta;
+
+        // Query restaurants within the latitude and longitude range (first filter by latitude range, then filter by longitude).
+        restaurantRef.orderByChild("latitude")
+                .startAt(southWestLat).endAt(northEastLat)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int restaurantCount = 0;
+                        List<MarkerOptions> restaurantMarkers = new ArrayList<>(); // Store the currently loaded restaurants
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Restaurant restaurant = snapshot.getValue(Restaurant.class);
+                            double lat = snapshot.child("latitude").getValue(Double.class);
+                            double lng = snapshot.child("longitude").getValue(Double.class);
+                            String name = snapshot.child("name").getValue(String.class);
+
+                            if (lat != 0 && lng != 0 && name != null) {
+
+                                // Further check if the longitude is within the range
+                                if (lng >= southWestLng && lng <= northEastLng) {
+                                    LatLng restaurantLocation = new LatLng(lat, lng);
+                                    // Calculate the distance between the user and the restaurant
+                                    float[] results = new float[1];
+                                    Location.distanceBetween(userLocation.latitude, userLocation.longitude, lat, lng, results);
+                                    float distanceInMeters = results[0];
+
+                                    // Ensure the restaurant is within radius kilometers
+                                    if (distanceInMeters <= radiusInMeters) {
+                                        restaurantCount++;
+                                        Log.d("MapFragment", "Nearby Restaurant: " + name + " at (" + lat + ", " + lng + ")");
+
+                                        // Create MarkerOptions and add it to the cache list
+                                        MarkerOptions markerOptions = new MarkerOptions()
+                                                .position(restaurantLocation)
+                                                .title(name);
+                                        restaurantMarkers.add(markerOptions);
+
+                                        myMap.addMarker(markerOptions);
+                                        Marker marker = myMap.addMarker(markerOptions);
+                                        marker.setTag(restaurant); // Add restaurant information to the map marker
+                                    }
+                                }
+                            }
+                        }
+
+                        // Cache the currently loaded restaurant data for subsequent loading
+                        cachedRestaurants.put(locationKey, restaurantMarkers);
+                        Log.d("MapFragment", "Number of restaurants found: " + restaurantCount);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.w("MapFragment", "Error getting data from Realtime Database.", error.toException());
+                    }
+                });
+    }
+
+    // Generate a standardized value for caching or looking up the geographic location key for subsequent loading.
+    private String generateLocationKey(LatLng userLocation) {
+        double roundedLat = Math.round(userLocation.latitude * 10000.0) / 10000.0;
+        double roundedLng = Math.round(userLocation.longitude * 10000.0) / 10000.0;
+        return roundedLat + "," + roundedLng;
     }
 }
