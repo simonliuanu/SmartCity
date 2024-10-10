@@ -6,26 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
 import com.example.smartcity.activity.CommentActivity;
-import com.example.smartcity.activity.LoginActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
-import com.example.smartcity.entity.LikeRestaurant;
+import com.example.smartcity.observer.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.observer.LikeRestaurantObserver;
 
-import java.util.Objects;
+import java.util.ArrayList;
 
-public class MeFragment extends Fragment {
+public class MeFragment extends Fragment implements LikeRestaurantObserver {
     View meView;
     private ItemListAdapter itemListAdapter;
-    private TextView emptyTips;
+    private Spinner filter;
+    private ArrayList<Restaurant> filterRes;
+    private LikeRestaurant likeRes;
+    // the default filter type
+    private String curType = "all";
 
     @Nullable
     @Override
@@ -33,7 +38,7 @@ public class MeFragment extends Fragment {
         meView = inflater.inflate(R.layout.fragment_me, container, false);
 
         ListView likeList = meView.findViewById(R.id.me_like_list);
-        emptyTips = meView.findViewById(R.id.me_empty_tips);
+        filter = meView.findViewById(R.id.me_spinner);
 
         likeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,11 +51,35 @@ public class MeFragment extends Fragment {
             }
         });
 
-        LikeRestaurant likeRes = LikeRestaurant.getInstance();
+        likeRes = LikeRestaurant.getInstance();
+        // as the default type is "all", so the filterRes is likeRes
+        filterRes = new ArrayList<>(likeRes);
 
-        itemListAdapter = new ItemListAdapter(getContext(), likeRes);
-
+        itemListAdapter = new ItemListAdapter(getContext(), filterRes);
         likeList.setAdapter(itemListAdapter);
+
+        likeRes.attach(this);
+
+        // set the spinner types
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[]{"All", "Bar", "Cafe", "Food", "Store"});
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filter.setAdapter(spinnerAdapter);
+
+
+        filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // update the filter res list by type
+                String selectedGroup = (String) parentView.getItemAtPosition(position);
+                curType = selectedGroup.toLowerCase();
+                filterRestaurantsByType(curType);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                filterRestaurantsByType("all");
+            }
+        });
 
         Button logoutBtn = meView.findViewById(R.id.me_logout_btn);
 
@@ -59,15 +88,31 @@ public class MeFragment extends Fragment {
             requireActivity().finish();
         });
 
-
-        // TODO: when user empty the favor, this tip won't appear in time
-        // have some potential bug, consider to keep or refine
-        if(likeRes.isEmpty()) {
-            emptyTips.setVisibility(View.VISIBLE);
-        } else {
-            emptyTips.setVisibility(View.GONE);
-        }
         return meView;
     }
 
+    private void filterRestaurantsByType(String type) {
+        filterRes.clear();
+        if (type.equals("all")) {
+            filterRes.addAll(likeRes);
+        } else {
+            for (Restaurant restaurant : likeRes) {
+                if (restaurant.getTypes().contains(type)) {
+                    filterRes.add(restaurant);
+                }
+            }
+        }
+        itemListAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * When the state of likeRes changed (e.g. user unlike a restaurant)
+     * update the filter restaurant to show the page after removing the
+     * corresponding restaurant
+     */
+    @Override
+    public void update() {
+        filterRestaurantsByType(curType);
+        itemListAdapter.notifyDataSetChanged();
+    }
 }
