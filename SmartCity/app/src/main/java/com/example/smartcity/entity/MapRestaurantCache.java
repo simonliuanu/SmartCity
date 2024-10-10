@@ -1,13 +1,14 @@
 package com.example.smartcity.entity;
 
 import com.google.android.gms.maps.model.MarkerOptions;
+import android.util.Pair;
 import java.util.HashMap;
 import java.util.List;
 
 // This cache class is used for the subsequent loading of restaurants near the current location
 public class MapRestaurantCache {
     private static MapRestaurantCache instance;
-    private HashMap<String, List<MarkerOptions>> cachedRestaurants;
+    private HashMap<String, List<Pair<MarkerOptions, Restaurant>>> cachedRestaurants;
 
     private MapRestaurantCache() {
         cachedRestaurants = new HashMap<>();
@@ -20,7 +21,11 @@ public class MapRestaurantCache {
         return instance;
     }
 
-    public HashMap<String, List<MarkerOptions>> getCachedRestaurants() {
+    public HashMap<String, List<Pair<MarkerOptions, Restaurant>>> getCachedRestaurants() {
         return cachedRestaurants;
+    }
+
+    public void cacheRestaurants(String locationKey, List<Pair<MarkerOptions, Restaurant>> restaurantMarkers) {
+        cachedRestaurants.put(locationKey, restaurantMarkers);
     }
 }

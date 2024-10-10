@@ -5,6 +5,7 @@ import com.example.smartcity.entity.MapRestaurantCache;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import android.util.Pair;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -167,14 +168,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // Use the location string as the key to check the cache
         String locationKey = generateLocationKey(userLocation);
 
-        HashMap<String, List<MarkerOptions>> cachedRestaurants = MapRestaurantCache.getInstance().getCachedRestaurants();
+        List<Pair<MarkerOptions, Restaurant>> cachedRestaurants = MapRestaurantCache.getInstance().getCachedRestaurants().get(locationKey);
 
         // Check if restaurants near this location have already been cached
         // Used for loading nearby restaurants in the map for the second time
-        if (cachedRestaurants.containsKey(locationKey)) {
-            List<MarkerOptions> cachedMarkers = cachedRestaurants.get(locationKey);
-            for (MarkerOptions marker : cachedMarkers) {
-                myMap.addMarker(marker);
+        if (cachedRestaurants != null) {
+            for (Pair<MarkerOptions, Restaurant> markerPair : cachedRestaurants) {
+                MarkerOptions markerOptions = markerPair.first;
+                Restaurant restaurant = markerPair.second;
+
+                Marker marker = myMap.addMarker(markerOptions);
+                marker.setTag(restaurant);
             }
             Log.d("MapFragment", "Loaded restaurants from cache for location: " + locationKey);
             return;
@@ -200,7 +204,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         int restaurantCount = 0;
-                        List<MarkerOptions> restaurantMarkers = new ArrayList<>(); // Store the currently loaded restaurants
+                        List<Pair<MarkerOptions, Restaurant>> restaurantMarkers = new ArrayList<>(); // Store the currently loaded restaurants
 
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Restaurant restaurant = snapshot.getValue(Restaurant.class);
@@ -227,7 +231,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                                         MarkerOptions markerOptions = new MarkerOptions()
                                                 .position(restaurantLocation)
                                                 .title(name);
-                                        restaurantMarkers.add(markerOptions);
+                                        restaurantMarkers.add(new Pair<>(markerOptions, restaurant));
 
                                         myMap.addMarker(markerOptions);
                                         Marker marker = myMap.addMarker(markerOptions);
@@ -238,7 +242,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         }
 
                         // Cache the currently loaded restaurant data for subsequent loading
-                        cachedRestaurants.put(locationKey, restaurantMarkers);
+                        MapRestaurantCache.getInstance().getCachedRestaurants().put(locationKey, restaurantMarkers);
                         Log.d("MapFragment", "Number of restaurants found: " + restaurantCount);
                     }
 
