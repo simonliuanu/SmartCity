@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcity.R;
 import com.example.smartcity.activity.CommentActivity;
 import com.example.smartcity.adapter.ItemListAdapter;
+import com.example.smartcity.entity.User;
 import com.example.smartcity.observer.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
 import com.example.smartcity.observer.LikeRestaurantObserver;
@@ -31,6 +33,7 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
     private LikeRestaurant likeRes;
     // the default filter type
     private String curType = "all";
+    private TextView meUserName;
 
     @Nullable
     @Override
@@ -39,6 +42,11 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
 
         ListView likeList = meView.findViewById(R.id.me_like_list);
         filter = meView.findViewById(R.id.me_spinner);
+        meUserName = meView.findViewById(R.id.me_user_name);
+
+        // update the display message of login user
+        User loginUser = User.getInstance();
+        meUserName.setText(loginUser.getLoginUserName());
 
         likeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
