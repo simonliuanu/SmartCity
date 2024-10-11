@@ -61,7 +61,7 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
         likeRes.attach(this);
 
         // set the spinner types
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[]{"All", "Bar", "Cafe", "Food", "Store"});
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[]{"All", "Bar", "Cafe", "Food", "Lodging"});
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filter.setAdapter(spinnerAdapter);
 

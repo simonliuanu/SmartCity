@@ -81,7 +81,8 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
         Glide.with(convertView.getContext()).load(curRestaurant.getPhoto_url()).into(holder.holdImage);
         holder.holdName.setText(curRestaurant.getName());
         holder.holdAddress.setText(curRestaurant.getAddress());
-        holder.holdRate.setText(String.valueOf(curRestaurant.getRating())); // Make sure to convert rating to string
+        holder.holdRate.setText(String.valueOf(curRestaurant.getRating()));
+        holder.holdType.setText(curRestaurant.getDisplayedType());
         holder.holdPrice.setText(curRestaurant.getEstimated_price());
 
         // to make sure all the restaurant is non like initialization
