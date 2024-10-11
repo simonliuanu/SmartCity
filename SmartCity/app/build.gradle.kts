@@ -67,8 +67,6 @@ dependencies {
     // use to read the url of images
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.firebase.database)
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
 
     //convert a JSON string to an Java object
