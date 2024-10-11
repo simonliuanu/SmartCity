@@ -16,10 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCity"
         tools:targetApi="31">
-        <activity
-            android:name=".activity.MainActivity2"
-            android:exported="false"
-            android:theme="@style/Theme.SmartCity" />
         <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -27,6 +23,7 @@
 
         <activity
             android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
             android:name=".activity.LoginActivity"
@@ -37,21 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.HomeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.MapActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.ItemActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.MeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.ChatActivity"
-            android:exported="true" />
         <activity
             android:name=".activity.CommentActivity"
             android:exported="true" />
