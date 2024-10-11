@@ -9,9 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="169dp"
+        android:background="@color/navi_color"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="@color/navi_color">
+        android:padding="16dp">
 
         <!-- User Avatar -->
         <ImageView
@@ -23,7 +23,7 @@
 
         <!-- Name, Email and Logout Button -->
         <LinearLayout
-            android:layout_width="173dp"
+            android:layout_width="wrap_content"
             android:layout_height="145dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -39,11 +39,11 @@
 
             <!-- User Email -->
             <TextView
-                android:id="@+id/me_user_email"
+                android:id="@+id/me_user_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="admin@example.com"
+                android:layout_marginTop="8sp"
+                android:text="Welcome!"
                 android:textSize="16sp" />
 
             <!-- Logout Button -->
@@ -52,38 +52,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/button_background"
                 android:text="Logout" />
 
         </LinearLayout>
     </LinearLayout>
 
-    <!-- My Favorite Section -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Favorite"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10sp"
-        android:layout_marginTop="20sp"/>
+        android:orientation="horizontal">
+        <!-- My Favorite Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="5sp"
+            android:text="My Favorite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
 
-    <!-- Empty Tips -->
-    <TextView
-        android:id="@+id/me_empty_tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="5sp"
-        android:textSize="18sp"
-        android:text="No Restaurant yet...Empty"/>
+
+        <Spinner
+            android:id="@+id/me_spinner"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="5sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
     <!-- Favorite List -->
     <ListView
         android:id="@+id/me_like_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10sp"/>
+        android:layout_margin="10sp" />
 
 </LinearLayout>
 
