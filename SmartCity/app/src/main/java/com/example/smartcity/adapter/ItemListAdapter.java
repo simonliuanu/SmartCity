@@ -35,7 +35,6 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     private List<Restaurant> list;
 
     private Context context;
-    private static boolean isDialogShown = false;
 
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
         super(context, R.layout.item_list,list);
@@ -109,44 +108,10 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                     holder.likeBtn.setImageResource(R.mipmap.item_like_btn_on);
                     notifyDataSetChanged();
                 }
-                if (likeRes.size() == 5 && !isDialogShown) {
-                    showDialog();
-                }
             }
         });
         return convertView;
     }
-
-    private void showDialog() {
-        isDialogShown = true;
-
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View View = inflater.inflate(R.layout.noti_confirmation, null);
-
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setView(View)
-                .create();
-
-        Button noBtn = View.findViewById(R.id.noti_no_button);
-        Button yesBtn = View.findViewById(R.id.noti_yes_button);
-
-        noBtn.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        yesBtn.setOnClickListener(v -> {
-            Toast.makeText(context, "Redirecting to your favorites!", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.putExtra("targetFragment", "MeFragment");
-            context.startActivity(intent);
-
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
     static class ViewHolder {
         ImageView likeBtn;
         ImageView holdImage;
