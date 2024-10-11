@@ -21,6 +21,12 @@
         android:icon="@mipmap/navi_item" />
 
     <item
+        android:id="@+id/navi_chat"
+        android:title="Chat"
+        app:showAsAction="always"
+        android:icon="@mipmap/navi_chat" />
+
+    <item
         android:id="@+id/navi_me"
         android:title="Me"
         app:showAsAction="always"

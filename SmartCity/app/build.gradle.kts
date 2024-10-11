@@ -31,6 +31,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -51,6 +54,12 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-database")
 
+    //Interact with the Firebase Firestore database and automatically handle data changes
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
+
+    implementation ("com.google.firebase:firebase-auth:21.3.0")
+
+    implementation ("com.google.firebase:firebase-storage:20.2.0")
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
@@ -58,6 +67,8 @@ dependencies {
     // use to read the url of images
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.firebase.database)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
 
     //convert a JSON string to an Java object
