@@ -6,19 +6,28 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:padding="5dp"
-        android:src="@drawable/ic_back" />
-
-    <ImageView
-        android:id="@+id/restaurant_photo"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/restaurant_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="3dp"
+            android:background="@drawable/rounded_background"
+            android:src="@drawable/ic_back" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView_name"
@@ -28,19 +37,56 @@
         android:textSize="18sp"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/textView_rating"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4.5"/>
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
 
-    <TextView
-        android:id="@+id/textView_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="123 Main St"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!-- 评论区的布局部分 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 Main St" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,24 +94,32 @@
         android:textStyle="bold"
         android:paddingTop="16dp"/>
 
-    <!-- 评论的 RecyclerView，确保其可以滚动 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_comments"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- 添加评论的输入框和按钮 -->
-    <EditText
-        android:id="@+id/editText_comment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Add a comment" />
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
-    <Button
-        android:id="@+id/button_submit_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit" />
+        <EditText
+            android:id="@+id/editText_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Add a comment" />
+
+        <Button
+            android:id="@+id/button_submit_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comment"
+            android:background="@drawable/button_background"
+            android:layout_gravity="end" />
+    </LinearLayout>
 
 </LinearLayout>
