@@ -188,4 +188,20 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     public int compareTo(Restaurant other) {
         return this.name.compareTo(other.name);
     }
+
+    /**
+     * This function used to display the type
+     * as ordinal data have some redundant types, we need filter them
+     * @return
+     */
+    public String getDisplayedType() {
+        StringBuilder typeBuilder = new StringBuilder();
+        for (RestaurantType value : RestaurantType.values()) {
+            if (types.contains(value.toString().toLowerCase())) {
+                typeBuilder.append(" ").append(value.toString().toLowerCase()).append(",");
+            }
+        }
+
+        return typeBuilder.toString().substring(0,typeBuilder.length() - 1);
+    }
 }

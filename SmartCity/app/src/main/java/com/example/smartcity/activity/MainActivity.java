@@ -63,23 +63,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        Intent intent = getIntent();
-        String targetFragment = intent.getStringExtra("targetFragment");
-
         if (savedInstanceState == null) {
-            if (targetFragment != null && targetFragment.equals("MeFragment")) {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new MeFragment())
-                        .commit();
-                bottomNavigationView.setSelectedItemId(R.id.navi_me);
-            } else {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new HomeFragment())
-                        .commit();
-                bottomNavigationView.setSelectedItemId(R.id.navi_home);
-            }
+            bottomNavigationView.setSelectedItemId(R.id.navi_home); // Default to HomeFragment
         }
     }
 }

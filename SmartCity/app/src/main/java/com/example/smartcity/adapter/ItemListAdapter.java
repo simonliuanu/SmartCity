@@ -18,7 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
 import com.example.smartcity.activity.MainActivity;
-import com.example.smartcity.entity.LikeRestaurant;
+import com.example.smartcity.observer.LikeRestaurant;
 import com.example.smartcity.entity.Restaurant;
 
 import java.util.List;
@@ -35,7 +35,6 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
     private List<Restaurant> list;
 
     private Context context;
-    private static boolean isDialogShown = false;
 
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
         super(context, R.layout.item_list,list);
@@ -81,7 +80,8 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
         Glide.with(convertView.getContext()).load(curRestaurant.getPhoto_url()).into(holder.holdImage);
         holder.holdName.setText(curRestaurant.getName());
         holder.holdAddress.setText(curRestaurant.getAddress());
-        holder.holdRate.setText(String.valueOf(curRestaurant.getRating())); // Make sure to convert rating to string
+        holder.holdRate.setText(String.valueOf(curRestaurant.getRating()));
+        holder.holdType.setText(curRestaurant.getDisplayedType());
         holder.holdPrice.setText(curRestaurant.getEstimated_price());
 
         // to make sure all the restaurant is non like initialization
@@ -97,7 +97,6 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                 Restaurant chosenRes = list.get(position);
                 if(likeRes.contains(chosenRes)) {
                     likeRes.remove(list.get(position));
-                    System.out.println("remove" + chosenRes.getName());
                     /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
                     holder.likeBtn.setImageResource(R.mipmap.item_like_btn_off);
                     // update the item list in time when user unlike a restaurant
@@ -107,51 +106,12 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
                     likeRes.add(chosenRes);
                     /* image from https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077 */
                     holder.likeBtn.setImageResource(R.mipmap.item_like_btn_on);
-                    System.out.print("cur favor res are: ");
-                    for(Restaurant res : likeRes) {
-                        System.out.print(res.getName() + ",");
-                    }
-                    System.out.println();
                     notifyDataSetChanged();
-                }
-                if (likeRes.size() == 5 && !isDialogShown) {
-                    showDialog();
                 }
             }
         });
         return convertView;
     }
-
-    private void showDialog() {
-        isDialogShown = true;
-
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View View = inflater.inflate(R.layout.noti_confirmation, null);
-
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setView(View)
-                .create();
-
-        Button noBtn = View.findViewById(R.id.noti_no_button);
-        Button yesBtn = View.findViewById(R.id.noti_yes_button);
-
-        noBtn.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        yesBtn.setOnClickListener(v -> {
-            Toast.makeText(context, "Redirecting to your favorites!", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.putExtra("targetFragment", "MeFragment");
-            context.startActivity(intent);
-
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
     static class ViewHolder {
         ImageView likeBtn;
         ImageView holdImage;

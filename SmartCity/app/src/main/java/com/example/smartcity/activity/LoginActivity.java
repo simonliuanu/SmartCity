@@ -129,7 +129,8 @@ public class LoginActivity extends AppCompatActivity {
                 // thus the userExist update, and app can
                 // judge the state of user correctly
                 if (isUserExists) {
-                    System.out.println("entry check user method");
+                    // update the state of login user
+                    user.updateLoginUserState(username);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
