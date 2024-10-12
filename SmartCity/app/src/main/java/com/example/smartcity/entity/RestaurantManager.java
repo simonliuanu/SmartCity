@@ -40,7 +40,7 @@ public class RestaurantManager {
     }
 
     private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {
-        if (filterType.equals("All")) {
+        if (filterType.equals("Type")) {
             return results;
         }
 
