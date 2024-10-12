@@ -1,8 +1,7 @@
 package com.example.smartcity.fragment;
 import com.bumptech.glide.Glide;
-import com.example.smartcity.entity.MapRestaurantCache;
+import com.example.smartcity.cache.MapRestaurantCache;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import android.util.Pair;

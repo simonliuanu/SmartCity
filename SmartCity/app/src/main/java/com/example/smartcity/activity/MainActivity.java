@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.smartcity.R;
+import com.example.smartcity.fragment.ChatFragment;
 import com.example.smartcity.fragment.HomeFragment;
 import com.example.smartcity.fragment.MapFragment;
 import com.example.smartcity.fragment.ItemFragment;
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ItemFragment();
                     break;
 
+                case R.id.navi_chat:
+                    selectedFragment = new ChatFragment();
+                    break;
+
                 case R.id.navi_me:
                     selectedFragment = new MeFragment();
                     break;
@@ -63,8 +68,19 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        Intent intent = getIntent();
+        String targetFragment = intent.getStringExtra("targetFragment");
+
         if (savedInstanceState == null) {
-            bottomNavigationView.setSelectedItemId(R.id.navi_home); // Default to HomeFragment
+            if (targetFragment != null && targetFragment.equals("ChatFragment")) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new ChatFragment())
+                        .commit();
+                bottomNavigationView.setSelectedItemId(R.id.navi_chat);
+            } else{
+                bottomNavigationView.setSelectedItemId(R.id.navi_home); // Default to HomeFragment
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
-package com.example.smartcity.entity;
+package com.example.smartcity.cache;
 
+import com.example.smartcity.entity.Restaurant;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.util.Pair;
 import java.util.HashMap;

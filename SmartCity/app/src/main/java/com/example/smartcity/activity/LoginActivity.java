@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.smartcity.R;
+import com.example.smartcity.cache.UserCache;
 import com.example.smartcity.dao.UserDao;
 import com.example.smartcity.dao.UserDaoImpl;
 import com.example.smartcity.db.Firebase;
@@ -129,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 // thus the userExist update, and app can
                 // judge the state of user correctly
                 if (isUserExists) {
+                    UserCache.getInstance().setCurrentUserName(username);
                     // update the state of login user
                     user.updateLoginUserState(username);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
