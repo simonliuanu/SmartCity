@@ -2,11 +2,11 @@
 <resources>
     <!-- Filter options for restaurants -->
     <string-array name="filter_options">
-        <item>All</item>
+        <item>Type</item>
         <item>Bar</item>
         <item>Cafe</item>
         <item>Food</item>
-        <item>Store</item>
+        <item>Lodging</item>
     </string-array>
 
     <!-- Sort by options for restaurants -->

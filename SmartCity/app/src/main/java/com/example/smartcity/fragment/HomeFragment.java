@@ -36,6 +36,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * HomeFragment is the main fragment that displays the list of restaurants.
+ * It allows users to search for restaurants by name and filter/sort the results.
+ * The restaurant data is fetched from Firebase and stored in an AVL tree.
+ * The search results are displayed in a ListView using ItemListAdapter.
+ */
 public class HomeFragment extends Fragment {
 
     private View homeView;
@@ -49,6 +55,21 @@ public class HomeFragment extends Fragment {
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @author Simon Liu (u7761758)
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
