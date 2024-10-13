@@ -86,8 +86,23 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
      - [Report Writing?] [Slides preparation?]*
      - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
-2. **UID2, Name2**  I have xx% contribution, as follows: <br>
-   - ...
+2. **u7810157, Yuheng Li**  I have 25% contribution, as follows: <br>
+   - **Code Contribution in the final App**
+
+     - Feature [DataFiles], [DataStream] - class: [RES_dataSet](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/RES_dataSet_one_line.json?ref_type=heads),[CommentActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/activity/CommentActivity.java?ref_type=heads),[CommentAdapter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/adapter/CommentAdapter.java?ref_type=heads),[Comment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/entity/Comment.java?ref_type=heads)
+     - Factory Design Pattern -  class CommentFactory: [CommentFactory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads),[CommentItem](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentItem.java?ref_type=heads),[ContentInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/ContentInComment.java?ref_type=heads),[UsernameInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/UsernameInComment.java?ref_type=heads)
+     - UI files: [res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/res_comment.xml?ref_type=heads)
+     - (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+
+   - **Code and App Design** 
+
+     - [Factroy design pattern]*
+     - [UML design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+   - **Others**: (only if significant and significantly different from an "average contribution") 
+
+     - [Report Writing?] [Slides preparation?]*
+     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 3. **u7811526, Shengzong Dai**  I have 25% contribution, as follows: <br>
    - **Code Contribution in the final App**
      - Feature [LogIn] , [LoadShowData], [Interact-Follow], [UXUI]
@@ -236,11 +251,10 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 5. Factory Pattern
 
-   Location:
+   * *Objective: used for .*
 
-       com/example/smartcity/Factory    
-
-   Reason:
+   * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads), [CommentItem](),[ContentInComment](),[UsernameInComment](); processed using Method [CommentActivity]()
+   * *Reasons:*
 
        In order to meet the requirements of high-quality code, I decided to use the factory pattern here to generate comment content. By using the factory pattern, the object creation logic can be encapsulated in a factory class instead of directly instantiating the object in the client code. The advantages of doing so are: 1: The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment. 2: High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 3: The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
