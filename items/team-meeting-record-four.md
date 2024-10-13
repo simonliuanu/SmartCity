@@ -1,47 +1,42 @@
 # [Team Name]
-Five-Coders Team Meeting
 
-## Team Meeting [#4] - Week [10] - [2024-10-10] (10:00-12:00)
+This following is a very simple team meeting template. You should expand it based on the scope and nature of your discussion.
+
+## Team Meeting [#2] - Week [9] - [2024-10-04] (15:00 - 16700)
+
 **Absent:** None
 <br>
-**Lead/scribe:** Rongze Gao
+**Lead/scribe:** Yuheng Li
 
 ## Agreed Procedure
-Stand up Procedure: 
-- Each team member briefly shares their progress and any roadblocks
-- Collaborate on checkpoint 2 and report and discuss the project status with the tutor.
-- Discuss the follow-up content of the project.
 
+Stand up Procedure: 
+
+- {e.g. Each team member briefly shares their progress and any roadblocks.}
 
 ## Agenda Items
-| Number |                Item                  |
-|:-------|-------------------------------------:|
-| 1      | List all the completed features      |
-| 2      | Inspect the existing issues          |
-| 3      | Discuss adding new features          |
-| 4      | Schedule the code refactoring tasks. |
-| 5      | Plan the final project report.       |
+
+| Number | Item                                              |
+|:------ | -------------------------------------------------:|
+| 1      | Check of basic features                           |
+| 2      | Discussed which additional feature to achieve     |
+| 3      | Set rough deadline of each task                   |
+| 4      | Assign additional features tasks to members       |
+| 5      | Planning for Future Meeting Dates/Times/Locations |
 
 ## Meeting Minutes
-- Checkpoint 2 has been completed.
-- This meeting summarized the features that have been implemented, discussed the additional features to be added, and made arrangements for the project's closing tasks.
+
+- We talk about the tasks we need to realise in week 10 before checkpoints 2, and we  check the process of every member.
 
 ### Report - Summary of progresses
-- All basic features of the app have been fully implemented.
-- More than half of the custom features have been realized.
-
-### Discussions
-- Change [Interact-Noti] to [Interact-Scheduled] 
-- Add [UI-Test]
-- Add [P2P-DM]
-
 
 ## Action Items
-| Task                  | Assigned To |  Due Date  |
-|:----------------------|:-----------:|:----------:|
-| [Add new features]    | Rongze Gao  | 10-16      |
-| [Add new features]    | Tianfa Zhu  | 10-16      |
-| [Code refactoring]    | All members | 10-16      |
-| [Prepare the report]  | All members | 10-16      |
 
-
+| Task                  | Assigned To               | Due Date |
+|:--------------------- |:-------------------------:|:--------:|
+| [additional features] | Shengzong Dai             | 10-10    |
+| [additional features] | Yuheng Li                 | 10-10    |
+| [additional features] | Rongze Gao                | 10-10    |
+| [additional features] | Ximeng Liu                | 10-10    |
+| [UXUI]                | Shengzong Dai, Tianfa Zhu | -        |
+| [UIFeedback]          | Shengzong Dai, Tianfa Zhu | -        |
