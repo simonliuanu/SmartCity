@@ -163,54 +163,8 @@ Note that the core criteria of contribution is based on `code contribution` (the
 This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
 
 - Details about the parser (describe the formal grammar and language used)
-
 - Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
-
 - Details about the design patterns used (where in the code, justification of the choice, etc)
-
-  1. Data Access Object Pattern(DAO)
-
-     Location: 
-
-     ​    <a herf="[SmartCity/app/src/main/java/com/example/smartcity/dao · dev · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/tree/dev/SmartCity/app/src/main/java/com/example/smartcity/dao?ref_type=heads)">com/example/smartcity/dao</a>
-
-     Reason:
-
-     ​    Our project use firebase real time database as a persistence database to store the data, in order to not to expose details of the data storage and the way to access to database, we choose to use DAO to centralize the data access logic of the application to simplify business logic and facilitate data operations.
-
-     ​    When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
-
-2. Singleton Pattern
-
-   Location:
-
-   ​    com/example/smartcity/entity/LikeRestaurant.java // TODO: may changed later
-   ​    com/example/smartcity/dataStructure/AvlTreeManager.java
-
-   Reason:
-
-   ​    LikeRestaurant as a class to manage the restaurants that be collected (like) by user, when user add restaurant on  'Home' or 'Item' page, the data could update immediately on 'Me' page, as the basic feature [Intera-Micro] asked to store in memory, singleton meets the requirement to provide a class as a global access point to access the instance. In this way, we can store the data conveniently and reduce the memory usage.
-   ​     
-
-3. Iterator Pattern
-
-   Location: 
-
-   ​    com/example/smartcity/Iterator/RestaurantRepository.java
-
-   Reason:
-
-   ​    To meet the feature [LoadShowData] on 'Item' page, we need to show the restaurants data that we stored in firebase. But more than 3500 data is a huge number and it would be slow if load one time, so we choose to distribute these data in different pages with 12 items per page. In this way, iterator is helpful to manage the data, we can justify if the next page is null or not to show a right page. 
-
-4. Factory Pattern
-
-   Location:
-
-       com/example/smartcity/Factory    
-
-   Reason:
-
-       In order to meet the requirements of high-quality code, I decided to use the factory pattern here to generate comment content. By using the factory pattern, the object creation logic can be encapsulated in a factory class instead of directly instantiating the object in the client code. The advantages of doing so are: 1: The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment. 2: High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 3: The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
 *Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
 
@@ -246,10 +200,49 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 *[What design patterns did your team utilise? Where and why?]*
 
 1. *xxx Pattern*
+
    * *Objective: used for storing xxxx for xxx feature.*
    * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
    * *Reasons:*
-     * ...
+
+2. *Data Access Object Pattern(DAO)*
+
+   * *Objective: used for .*
+   * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser]()*
+   * *Reasons:*
+   
+   ​    Our project use firebase real time database as a persistence database to store the data, in order to not to expose details of the data storage and the way to access to database, we choose to use DAO to centralize the data access logic of the application to simplify business logic and facilitate data operations.
+   
+   ​    When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
+
+3. *Singleton Pattern*
+
+   * *Objective: used for .*
+
+   * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser]()*
+   * *Reasons:*
+
+   ​    LikeRestaurant as a class to manage the restaurants that be collected (like) by user, when user add restaurant on  'Home' or 'Item' page, the data could update immediately on 'Me' page, as the basic feature [Intera-Micro] asked to store in memory, singleton meets the requirement to provide a class as a global access point to access the instance. In this way, we can store the data conveniently and reduce the memory usage.
+   ​     
+
+4. *Iterator Pattern*
+
+   * *Objective: used for .*
+
+   * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext]() and [next]()
+   * *Reasons:*
+
+   ​    To meet the feature [LoadShowData] on 'Item' page, we need to show the restaurants data that we stored in firebase. But more than 3500 data is a huge number and it would be slow if load one time, so we choose to distribute these data in different pages with 12 items per page. In this way, iterator is helpful to manage the data, we can justify if the next page is null or not to show a right page. 
+
+5. Factory Pattern
+
+   Location:
+
+       com/example/smartcity/Factory    
+
+   Reason:
+
+       In order to meet the requirements of high-quality code, I decided to use the factory pattern here to generate comment content. By using the factory pattern, the object creation logic can be encapsulated in a factory class instead of directly instantiating the object in the client code. The advantages of doing so are: 1: The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment. 2: High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 3: The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
 <hr>
 
