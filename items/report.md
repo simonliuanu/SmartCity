@@ -34,6 +34,7 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 - Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
 
   - Confirm: [X] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
+  - <img src="media/report/firebase-editors.png">
 
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
 
