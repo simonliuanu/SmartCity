@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <!-- Left Side: Functionality Section -->
     <LinearLayout
         android:id="@+id/linearLayoutLeft"
         android:layout_width="0dp"
@@ -21,7 +20,6 @@
         app:layout_constraintEnd_toStartOf="@id/listViewRestaurants"
         android:layout_weight="1">
 
-        <!-- Title -->
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
@@ -30,7 +28,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Search and Button Section -->
         <LinearLayout
             android:id="@+id/linearLayoutSearch"
             android:layout_width="match_parent"
@@ -38,7 +35,6 @@
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
-            <!-- Search -->
             <EditText
                 android:id="@+id/editTextSearch"
                 android:layout_width="0dp"
@@ -50,7 +46,6 @@
                 android:minHeight="40dp"
                 android:padding="8dp" />
 
-            <!-- Search Button -->
             <Button
                 android:id="@+id/buttonSearch"
                 android:layout_width="wrap_content"
@@ -59,7 +54,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Filter and Sort By Section -->
         <LinearLayout
             android:id="@+id/linearLayoutFilterSort"
             android:layout_width="match_parent"
@@ -67,7 +61,6 @@
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
-            <!-- Filter Spinner -->
             <Spinner
                 android:id="@+id/spinnerFilter"
                 android:layout_width="0dp"
@@ -75,7 +68,6 @@
                 android:layout_weight="1"
                 android:entries="@array/filter_options" />
 
-            <!-- Sort By Spinner -->
             <Spinner
                 android:id="@+id/spinnerSortBy"
                 android:layout_width="0dp"
@@ -84,7 +76,6 @@
                 android:entries="@array/sort_options" />
         </LinearLayout>
 
-        <!-- Recommended Restaurants Title -->
         <TextView
             android:id="@+id/textViewRecommended"
             android:layout_width="wrap_content"
@@ -95,7 +86,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Right Side: ListView for Search Results -->
     <ListView
         android:id="@+id/listViewRestaurants"
         android:layout_width="0dp"
