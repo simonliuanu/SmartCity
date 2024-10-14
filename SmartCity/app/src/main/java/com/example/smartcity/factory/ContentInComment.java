@@ -1,4 +1,4 @@
-package com.example.smartcity.Factory;
+package com.example.smartcity.factory;
 
 public class ContentInComment implements CommentItem {
     @Override
