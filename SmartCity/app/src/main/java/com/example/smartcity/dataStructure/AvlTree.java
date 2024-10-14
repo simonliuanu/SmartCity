@@ -62,7 +62,6 @@ public class AvlTree<T extends Comparable<T>> {
         } else if (cmp > 0) {
             node.right = insert(node.right, data);
         } else {
-            // Duplicate data is not allowed
             return node;
         }
         node.height = 1 + Math.max(height(node.left), height(node.right));
