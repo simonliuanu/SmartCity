@@ -228,40 +228,33 @@ public class HomeFragment extends Fragment {
         collectValidTokens(node.getRight(), validTokens);
     }
 
-    private void sortResults(List<Restaurant> results) {
-        List<Restaurant> filteredResults = new ArrayList<>();
-        List<Restaurant> unknownPrice = new ArrayList<>();
-        for (Restaurant restaurant : results) {
-            if (restaurant.getPrice() != 5) {
-                filteredResults.add(restaurant);
-            } else {
-                unknownPrice.add(restaurant);
-            }
-        }
-
-        String sortBy = spinnerSortBy.getSelectedItem().toString();
-        switch (sortBy) {
-            case "Price: Low to High":
-                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getPrice));
-                break;
-            case "Price: High to Low":
-                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getPrice).reversed());
-                break;
-            case "Rating: High to Low":
-                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getRating).reversed());
-                break;
-            case "Rating: Low to High":
-                Collections.sort(filteredResults, Comparator.comparingDouble(Restaurant::getRating));
-                break;
-            default:
-                break;
-        }
-
-        results.clear();
-        results.addAll(filteredResults);
-        results.addAll(unknownPrice);
+private void sortResults(List<Restaurant> results) {
+    String sortBy = spinnerSortBy.getSelectedItem().toString();
+    switch (sortBy) {
+        case "Price: Low to High":
+            Collections.sort(results, (r1, r2) -> {
+                if (r1.getPrice() == 5) return 1;
+                if (r2.getPrice() == 5) return -1;
+                return Integer.compare(r1.getPrice(), r2.getPrice());
+            });
+            break;
+        case "Price: High to Low":
+            Collections.sort(results, (r1, r2) -> {
+                if (r1.getPrice() == 5) return 1;
+                if (r2.getPrice() == 5) return -1;
+                return Integer.compare(r2.getPrice(), r1.getPrice());
+            });
+            break;
+        case "Rating: High to Low":
+            Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating).reversed());
+            break;
+        case "Rating: Low to High":
+            Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating));
+            break;
+        default:
+            break;
     }
-
+}
     private void updateSearchResults(List<Restaurant> results) {
         restaurantList.clear();
         restaurantList.addAll(results);
