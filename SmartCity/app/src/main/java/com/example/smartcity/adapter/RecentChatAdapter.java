@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
+import com.example.smartcity.activity.ChatActivity;
 import com.example.smartcity.cache.UserCache;
 import com.example.smartcity.entity.ChatWindow;
 import com.example.smartcity.util.FirebaseUtil;
+import com.example.smartcity.util.UserUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
@@ -38,6 +40,12 @@ public class RecentChatAdapter extends FirestoreRecyclerAdapter<ChatWindow, Rece
         chatWindowView.lastMessage.setText(chatWindow.getLastMessage());
         chatWindowView.lastMessageTime.setText(FirebaseUtil.timestampToString(chatWindow.getTimestamp()));
 
+        chatWindowView.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ChatActivity.class);
+            UserUtil.passUserNameAsIntent(intent,receiverUserName);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull

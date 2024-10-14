@@ -8,7 +8,7 @@ public class User {
     private String name;
     private String pwd;
 
-    private User() {
+    public User() {
     }
 
     public User(String name, String pwd) {

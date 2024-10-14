@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
+import com.example.smartcity.activity.ChatActivity;
 import com.example.smartcity.cache.UserCache;
 import com.example.smartcity.entity.User;
+import com.example.smartcity.util.UserUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
@@ -33,6 +35,12 @@ public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUser
             userView.username.setText(user.getName() + "(Me)");
         }
 
+        userView.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ChatActivity.class);
+            UserUtil.passUserAsIntent(intent,user);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull
