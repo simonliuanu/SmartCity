@@ -41,6 +41,8 @@ import java.util.List;
  * It allows users to search for restaurants by name and filter/sort the results.
  * The restaurant data is fetched from Firebase and stored in an AVL tree.
  * The search results are displayed in a ListView using ItemListAdapter.
+ *
+ * @author Simon Liu (u7761758)
  */
 public class HomeFragment extends Fragment {
 
@@ -142,6 +144,16 @@ public class HomeFragment extends Fragment {
         return homeView;
     }
 
+    /**
+     * Fetches restaurant data from Firebase and inserts it into the AVL tree.
+     * It listens for a single value event and retrieves the data snapshot.
+     * It then iterates through the children of the snapshot and inserts each restaurant into the AVL tree.
+     * It also collects the valid tokens from the restaurant names and creates a RestaurantManager.
+     * The RestaurantManager is used to search for restaurants based on user input.
+     * It is called when the AVL tree is empty.
+     *
+     * @author Simon Liu (u7761758)
+     */
     private void fetchRestaurantDataFromFirebase() {
         Query query = FirebaseDatabase.getInstance()
             .getReference()
@@ -167,6 +179,16 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    /**
+     * Performs a search based on the user input.
+     * It retrieves the search query and filter type from the EditText and Spinner.
+     * It then calls the search method of the RestaurantManager to get the search results.
+     * It sorts the results based on the selected sort option and updates the ListView with the results.
+     * It displays a toast message if no matching restaurants are found.
+     * It is called when the search button is clicked.
+     *
+     * @author Simon Liu (u7761758)
+     */
     private void performSearch() {
         if (restaurantManager == null) {
             Toast.makeText(getContext(), "Please wait for the data to load.", Toast.LENGTH_SHORT).show();
@@ -205,12 +227,29 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    /**
+     * Collects the valid tokens from the restaurant names in the AVL tree.
+     * It calls the collectValidTokens method to traverse the AVL tree and tokenize each restaurant name.
+     *
+     * @author Simon Liu (u7761758)
+     * @return A list of valid tokens
+     */
     private List<String> getValidTokens() {
         List<String> validTokens = new ArrayList<>();
         collectValidTokens(restaurantTree.getRoot(), validTokens);
         return validTokens;
     }
 
+    /**
+     * Collects the valid tokens from the restaurant names in the AVL tree.
+     * It traverses the AVL tree in pre-order and tokenizes each restaurant name.
+     * It then adds each token to a list of valid tokens.
+     * It is called by the getValidTokens method.
+     *
+     * @author Simon Liu (u7761758)
+     * @param node The current node in the AVL tree
+     * @param validTokens A list of valid tokens
+     */
     private void collectValidTokens(AvlTree.Node<Restaurant> node, List<String> validTokens) {
         if (node == null) {
             return;
@@ -228,33 +267,53 @@ public class HomeFragment extends Fragment {
         collectValidTokens(node.getRight(), validTokens);
     }
 
-private void sortResults(List<Restaurant> results) {
-    String sortBy = spinnerSortBy.getSelectedItem().toString();
-    switch (sortBy) {
-        case "Price: Low to High":
-            Collections.sort(results, (r1, r2) -> {
-                if (r1.getPrice() == 5) return 1;
-                if (r2.getPrice() == 5) return -1;
-                return Integer.compare(r1.getPrice(), r2.getPrice());
-            });
-            break;
-        case "Price: High to Low":
-            Collections.sort(results, (r1, r2) -> {
-                if (r1.getPrice() == 5) return 1;
-                if (r2.getPrice() == 5) return -1;
-                return Integer.compare(r2.getPrice(), r1.getPrice());
-            });
-            break;
-        case "Rating: High to Low":
-            Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating).reversed());
-            break;
-        case "Rating: Low to High":
-            Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating));
-            break;
-        default:
-            break;
+    /**
+     * Sorts the search results based on the selected sort option.
+     * It retrieves the selected sort option from the Spinner and sorts the results accordingly.
+     * It is called by the performSearch method.
+     * It supports sorting by price (low to high, high to low) and rating (high to low, low to high).
+     * If the price is unknown, it is set to 5 to make it the last ones to be displayed.
+     *
+     * @author Simon Liu (u7761758)
+     * @param results A list of search results
+     */
+    private void sortResults(List<Restaurant> results) {
+        String sortBy = spinnerSortBy.getSelectedItem().toString();
+        switch (sortBy) {
+            case "Price: Low to High":
+                Collections.sort(results, (r1, r2) -> {
+                    if (r1.getPrice() == 5) return 1;
+                    if (r2.getPrice() == 5) return -1;
+                    return Integer.compare(r1.getPrice(), r2.getPrice());
+                });
+                break;
+            case "Price: High to Low":
+                Collections.sort(results, (r1, r2) -> {
+                    if (r1.getPrice() == 5) return 1;
+                    if (r2.getPrice() == 5) return -1;
+                    return Integer.compare(r2.getPrice(), r1.getPrice());
+                });
+                break;
+            case "Rating: High to Low":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating).reversed());
+                break;
+            case "Rating: Low to High":
+                Collections.sort(results, Comparator.comparingDouble(Restaurant::getRating));
+                break;
+            default:
+                break;
+        }
     }
-}
+
+    /**
+     * Updates the search results in the ListView.
+     * It clears the current list of restaurants and adds the new search results.
+     * It then notifies the adapter that the data set has changed.
+     * It is called by the performSearch method.
+     *
+     * @author Simon Liu (u7761758)
+     * @param results A list of search results
+     */
     private void updateSearchResults(List<Restaurant> results) {
         restaurantList.clear();
         restaurantList.addAll(results);
