@@ -434,9 +434,13 @@ Feature Category: Firebase Integration <br>
     - How to solve the issue: 
       The essence here is ensuring that `resList` updates in real-time whenever `likeRestaurant` is modified. This scenario is a perfect fit for the Observer pattern. In this case, `likeRestaurant` would act as the subject, and `resList` (though implemented in `MeFragment`) would be the observer. When the state of `likeRestaurant` changesᅳsuch as when a user likes or unlikes a restaurantᅳthe add() or remove() methods are triggered, and the observer is notified. This, in turn, calls `filterRestaurantsByType` to update the state of `resList`. By applying the Observer pattern, the "My Favorites" section can update instantly whenever a restaurant is liked or unliked.
 
-- (iii) select a software license and explain why you chose this one (4 sentences maximum); and
+- (iii) select a software license and explain why you chose this one (4 sentences maximum);<br>
+ **The license we choose:** MIT License<br>
+ **The reason:** We choose the MIT LICENSE since it has wide usage, allowing modification and distribution, and the source code of an app remains open-source. It highly encourages collaboration, hence further development. Secondly, it limits liability and warranty, protecting the developers(us). Since the app will likely evolve and will be integrated in many other systems, the MIT License makes this flexible.
 
-- (iv) identify and explain **at least one** ethical issue arising from the development or deployment of your app (6 sentences maximum)—you may refer to the IEEE Computer Society Code of Ethics for ideas about potential ethical considerations.
+- (iv) identify and explain **at least one** ethical issue arising from the development or deployment of your app (6 sentences maximum)—you may refer to the IEEE Computer Society Code of Ethics for ideas about potential ethical considerations.<br>
+**The ethical issues we may need to attention:** User privacy<br>
+**The reason:** One ethical issue in the development or deployment of the app is user privacy, particularly in how location and personal data are collected and stored. If users' data, such as their search history or chat list, is not properly secured or anonymized, it could be misused, leading to privacy violations. According to the IEEE Code of Ethics, developers have a duty to protect users' data and ensure that their systems do not cause harm. It is crucial to inform users about how their data is used and to gain proper consent. Failure to do so would undermine trust and could lead to ethical breaches.
 
 <br> <hr>
 
