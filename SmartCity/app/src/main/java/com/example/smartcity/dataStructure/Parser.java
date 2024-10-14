@@ -3,14 +3,34 @@ package com.example.smartcity.dataStructure;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Parser is a class that corrects misspelled tokens in a list of tokens.
+ * It uses the Levenshtein distance algorithm to find the closest valid token.
+ * It is used to correct user input for search queries.
+ *
+ * @author Simon Liu (u7761758)
+ */
 public class Parser {
 
     private List<String> validTokens;
 
+    /**
+     * Constructor for Parser class.
+     *
+     * @author Simon Liu (u7761758)
+     * @param validTokens A list of valid tokens
+     */
     public Parser(List<String> validTokens) {
         this.validTokens = validTokens;
     }
 
+    /**
+     * Parses a list of tokens and corrects any misspelled tokens.
+     *
+     * @author Simon Liu (u7761758)
+     * @param tokens The list of tokens to parse
+     * @return A list of corrected tokens
+     */
     public List<String> parse(List<String> tokens) {
         List<String> parsedTokens = new ArrayList<>();
         for (String token : tokens) {
@@ -20,6 +40,15 @@ public class Parser {
         return parsedTokens;
     }
 
+    /**
+     * Finds the closest valid token to a given token.
+     * It calculates the Levenshtein distance between the given token and each valid token.
+     * It returns the valid token with the smallest distance.
+     *
+     * @author Simon Liu (u7761758)
+     * @param token The token to correct
+     * @return The closest valid token
+     */
     private String findClosestValidToken(String token) {
         String closestToken = token;
         int minDistance = Integer.MAX_VALUE;
@@ -36,6 +65,16 @@ public class Parser {
         return closestToken;
     }
 
+    /**
+     * Calculates the Levenshtein distance between two strings.
+     * It uses dynamic programming to calculate the minimum number of single-character edits
+     * (insertions, deletions, or substitutions) required to change one string into another.
+     *
+     * @author Simon Liu (u7761758)
+     * @param a The first string
+     * @param b The second string
+     * @return The Levenshtein distance between the two strings
+     */
     private int levenshteinDistance(String a, String b) {
         int[][] dp = new int[a.length() + 1][b.length() + 1];
 

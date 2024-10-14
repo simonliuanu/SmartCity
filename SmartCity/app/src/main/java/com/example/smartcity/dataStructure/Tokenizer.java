@@ -3,6 +3,13 @@ package com.example.smartcity.dataStructure;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Tokenizer is a class that tokenizes a query string into a list of tokens.
+ * It splits the query string by whitespace and returns a list of tokens.
+ * It is used to process user input for search queries.
+ *
+ * @author Simon Liu (u7761758)
+ */
 public class Tokenizer {
     public List<String> tokenize(String query) {
         String[] tokens = query.split("\\s+");
