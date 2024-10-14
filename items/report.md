@@ -409,7 +409,34 @@ Feature Category: Firebase Integration <br>
 *Instructions:*
 
 - If implemented, explain how your solution addresses the task (any detail requirements will be released with the surprise feature specifications).
-- State that "Surprise feature is not implemented" otherwise.
+
+- (i) identify **at least one existing** code component that could be replaced by a design pattern—list all relevant git commits, files and line numbers (and provide links) from **before 10 October**;
+
+  - Relevant git commits:  [Rebuild item_list layout to fit favorite function (22e7bba3) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/22e7bba3ce999c8ebddd5766951aa77f099758a8) , [Implement favorite basic function (7b26f2d9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/7b26f2d986c1976984fd971f42edb77b6064faa5)  (1 October)
+  - Related class: [LikeRestaurant (line 1- line 14)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/7b26f2d986c1976984fd971f42edb77b6064faa5/SmartCity/app/src/main/java/com/example/smartcity/entity/LikeRestaurant.java#L1-14) , [MeFragment (line 32 - line 34)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/7b26f2d986c1976984fd971f42edb77b6064faa5/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L32-34) .
+
+- (ii) correct **at least one existing** of the implementation issues identified in (i)—list all relevant git commits, files and line numbers (and provide links) from **on or after 10 October**, and explain why the previous solution was not suitable and how you solved the issue;
+
+  - Relevant git commits: [Optimise 'Me' page my favorite part (1a237d78) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/1a237d78a22835ea8d949a033561659247e75236), [Fix the wrong display of restaurant type (ae7e3ec9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6)
+
+  - Relevant files:
+
+    - Changed: [MeFragment.java (line 56 - line 60)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L56-60)
+
+    - Expand: [LikeRestaurant (line 10 - line 65)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/LikeRestaurant.java#L10-65), [LikeRestaurantObserver (line 1 - line 6)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/LikeRestaurantObserver.java#L1-6), [Subject (line1 - line9)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/Subject.java#L1-9), [MeFragment (line 64 - line 82)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L64-82), [MeFragment (line 94 - line118)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L94-118)
+
+    - Why the previous solution was not suitable: 
+
+      In the old version, if the user click the "like" button to like  restaurant on the item page, then it appeared in the "My Favorites" section of the me page. If the user clicked on the "like" button again-to unlike-the restaurant instantly disappeared from the favorites list. I did this by using the Singleton pattern to create the class `LikeRestaurant`, which extended the `ArrayList<Restaurant>` and acted as a global variable, which stored the user's selections in memory. Then, the `ItemAdapter` was set to listen for that instance; thus, when the user liked a restaurant on an item page, it showed up in "My Favorites." Similarly, unliking it immediately removed it from the list.
+
+      However, when the 'grouped' feature was introduced, the previous code couldn't support real-time updates when restaurants were grouped by type. ⁤⁤This is because `ItemAdapter` only listened to `LikeRestaurant`, while the grouping functionality used another list, `resList` (used to store the filtered restaurants). ⁤⁤When the user grouped restaurants in "My Favorites," `resList` was updated based on the types in `LikeRestaurant`, but the display didn't update immediately when a restaurant was unliked. ⁤⁤Even though the restaurant was removed from `LikeRestaurant`, it still persisted in `resList` (The 'like' button is canceled display), since `ItemAdapter` wasn't listening to it. 
+
+    - How to solve the issue: 
+      The essence here is ensuring that `resList` updates in real-time whenever `likeRestaurant` is modified. This scenario is a perfect fit for the Observer pattern. In this case, `likeRestaurant` would act as the subject, and `resList` (though implemented in `MeFragment`) would be the observer. When the state of `likeRestaurant` changesᅳsuch as when a user likes or unlikes a restaurantᅳthe add() or remove() methods are triggered, and the observer is notified. This, in turn, calls `filterRestaurantsByType` to update the state of `resList`. By applying the Observer pattern, the "My Favorites" section can update instantly whenever a restaurant is liked or unliked.
+
+- (iii) select a software license and explain why you chose this one (4 sentences maximum); and
+
+- (iv) identify and explain **at least one** ethical issue arising from the development or deployment of your app (6 sentences maximum)—you may refer to the IEEE Computer Society Code of Ethics for ideas about potential ethical considerations.
 
 <br> <hr>
 
