@@ -9,6 +9,14 @@ import com.example.smartcity.dataStructure.AvlTree;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RestaurantManager is a class that manages the search functionality for restaurants.
+ * It uses an AVL tree to store and search for restaurants.
+ * It uses a Tokenizer and Parser to process user input for search queries.
+ * It is used to search for restaurants based on user input.
+ *
+ * @author Simon Liu (u7761758)
+ */
 public class RestaurantManager {
     private static RestaurantManager instance;
     private Context context;
@@ -16,12 +24,30 @@ public class RestaurantManager {
     private Tokenizer tokenizer;
     private Parser parser;
 
+    /**
+     * Constructor for RestaurantManager class.
+     * It initializes the AVL tree and the Tokenizer and Parser.
+     *
+     * @author Simon Liu (u7761758)
+     * @param tree        The AVL tree of restaurants
+     * @param validTokens A list of valid tokens
+     * @return An instance of the RestaurantManager class
+     */
     public RestaurantManager(AvlTree<Restaurant> tree, List<String> validTokens) {
         this.restaurantTree = tree;
         this.tokenizer = new Tokenizer();
         this.parser = new Parser(validTokens);
     }
 
+    /**
+     * Gets the instance of the RestaurantManager class.
+     * It ensures that there is only one instance of the RestaurantManager in the application.
+     *
+     * @author Simon Liu (u7761758)
+     * @param query        The search query
+     * @param filterType The filter type
+     * @return A list of restaurants that match the search query
+     */
     public List<Restaurant> search(String query, String filterType) {
         List<String> tokens = tokenizer.tokenize(query);
         List<String> parsedTokens = parser.parse(tokens);
@@ -39,6 +65,16 @@ public class RestaurantManager {
         return filterResultsByType(results, filterType);
     }
 
+    /**
+     * Filters the search results by restaurant type.
+     * It returns only the restaurants that match the filter type.
+     * If the filter type is "Type", it returns all the search results.
+     *
+     * @author Simon Liu (u7761758)
+     * @param results    The search results
+     * @param filterType The filter type
+     * @return A list of restaurants that match the filter type
+     */
     private List<Restaurant> filterResultsByType(List<Restaurant> results, String filterType) {
         if (filterType.equals("Type")) {
             return results;
@@ -52,9 +88,5 @@ public class RestaurantManager {
         }
 
         return filteredResults;
-    }
-
-    public AvlTree<Restaurant> getRestaurantTree() {
-        return restaurantTree;
     }
 }
