@@ -5,6 +5,14 @@ import com.example.smartcity.entity.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AvlTree is a generic AVL tree implementation.
+ * It supports insertion, searching, and traversal operations.
+ * It is used to store and manage data in a balanced binary search tree.
+ * It supports generic data types that implement the Comparable interface by default.
+ *
+ * @param <T> the type of data to be stored in the AVL tree
+ */
 public class AvlTree<T extends Comparable<T>> {
     public static class Node<T> {
         private T data;
