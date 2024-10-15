@@ -1,4 +1,4 @@
-package com.example.smartcity.adapter;
+package com.example.smartcity.frontend.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

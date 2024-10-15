@@ -1,4 +1,4 @@
-package com.example.smartcity.fragment;
+package com.example.smartcity.frontend.fragment;
 import com.bumptech.glide.Glide;
 import com.example.smartcity.cache.MapRestaurantCache;
 

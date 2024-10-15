@@ -1,4 +1,4 @@
-package com.example.smartcity.activity;
+package com.example.smartcity.frontend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.smartcity.R;
-import com.example.smartcity.fragment.ChatFragment;
-import com.example.smartcity.fragment.HomeFragment;
-import com.example.smartcity.fragment.MapFragment;
-import com.example.smartcity.fragment.ItemFragment;
-import com.example.smartcity.fragment.MeFragment;
+import com.example.smartcity.frontend.fragment.ChatFragment;
+import com.example.smartcity.frontend.fragment.HomeFragment;
+import com.example.smartcity.frontend.fragment.MapFragment;
+import com.example.smartcity.frontend.fragment.ItemFragment;
+import com.example.smartcity.frontend.fragment.MeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.smartcity.adapter;
+package com.example.smartcity.frontend.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
-import com.example.smartcity.activity.ChatActivity;
+import com.example.smartcity.frontend.activity.ChatActivity;
 import com.example.smartcity.cache.UserCache;
 import com.example.smartcity.entity.ChatWindow;
 import com.example.smartcity.util.FirebaseUtil;

@@ -1,4 +1,4 @@
-package com.example.smartcity.activity;
+package com.example.smartcity.frontend.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
-import com.example.smartcity.adapter.CommentAdapter;
+import com.example.smartcity.frontend.adapter.CommentAdapter;
 import com.example.smartcity.entity.Comment;
 import com.example.smartcity.factory.CommentFactory;
 import com.example.smartcity.factory.ContentInComment;

@@ -1,4 +1,4 @@
-package com.example.smartcity.activity;
+package com.example.smartcity.frontend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
-import com.example.smartcity.adapter.MessageAdapter;
+import com.example.smartcity.frontend.adapter.MessageAdapter;
 import com.example.smartcity.cache.UserCache;
 import com.example.smartcity.entity.ChatMessage;
 import com.example.smartcity.entity.ChatWindow;

@@ -1,4 +1,4 @@
-package com.example.smartcity.activity;
+package com.example.smartcity.frontend.activity;
 
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
-import com.example.smartcity.adapter.SearchUserAdapter;
+import com.example.smartcity.frontend.adapter.SearchUserAdapter;
 import com.example.smartcity.entity.User;
 import com.example.smartcity.util.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;

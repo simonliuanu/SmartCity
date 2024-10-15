@@ -1,4 +1,4 @@
-package com.example.smartcity.activity;
+package com.example.smartcity.frontend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

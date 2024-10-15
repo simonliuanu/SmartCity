@@ -1,4 +1,4 @@
-package com.example.smartcity.fragment;
+package com.example.smartcity.frontend.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +19,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
 import com.example.smartcity.Iterator.RestaurantRepository;
-import com.example.smartcity.activity.CommentActivity;
-import com.example.smartcity.adapter.ItemListAdapter;
+import com.example.smartcity.frontend.activity.CommentActivity;
+import com.example.smartcity.frontend.adapter.ItemListAdapter;
 import com.example.smartcity.dao.ItemDao;
 import com.example.smartcity.dao.ItemDaoImpl;
 import com.example.smartcity.entity.Restaurant;
