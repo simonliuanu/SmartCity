@@ -21,7 +21,7 @@ import com.example.smartcity.backend.dao.UserDao;
 import com.example.smartcity.backend.dao.UserDaoImpl;
 import com.example.smartcity.backend.db.Firebase;
 import com.example.smartcity.backend.entity.User;
-import com.example.smartcity.util.FirestoreCallback;
+import com.example.smartcity.util.LoginCallback;
 
 /**
  * This activity use to implement login function
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(username, pwd);
         // call the dao to check database
         UserDao userDao = new UserDaoImpl();
-        userDao.checkUser(user, new FirestoreCallback() {
+        userDao.checkUser(user, new LoginCallback() {
             // when running here, it will be blocked
             // until the onComplete() in userDaoImpl finished
             @Override
