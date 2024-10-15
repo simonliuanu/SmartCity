@@ -2,6 +2,7 @@ package com.example.smartcity.backend.entity;
 
 import java.io.Serializable;
 
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;

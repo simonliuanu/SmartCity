@@ -1,5 +1,16 @@
+// SearchUserActivity.java
+/*
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ */
+
 package com.example.smartcity.frontend.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -33,22 +44,32 @@ public class SearchUserActivity extends AppCompatActivity {
         backButton = findViewById(R.id.back_btn);
         recyclerView = findViewById(R.id.search_view);
 
+        // Focus on the search input field
         searchInput.requestFocus();
 
+        // Set up back button to return to the ChatFragment
         backButton.setOnClickListener(v -> {
-            onBackPressed();
+            Intent intent = new Intent(SearchUserActivity.this, MainActivity.class);
+            intent.putExtra("targetFragment", "ChatFragment");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
 
+        // Set up search button to perform the user search
         searchButton.setOnClickListener(v -> {
             String searchText = searchInput.getText().toString();
             if(searchText.isEmpty()){
                 searchInput.setError("Please Input a Name");
                 return;
             }
+
+            // Set up RecyclerView with search results
             setupSearchRecyclerView(searchText);
         });
     }
 
+    // Configure RecyclerView to display search results based on user input
     void setupSearchRecyclerView(String searchTerm){
         Query query = FirebaseUtil.allUserCollectionReference()
                 .whereGreaterThanOrEqualTo("name", searchTerm)

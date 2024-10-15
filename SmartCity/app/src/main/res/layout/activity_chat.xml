@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This layout file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:layout_toEndOf="@+id/back_btn"
-            android:text="Username"
+            android:text="@string/chat_window_show"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:id="@+id/receiver_user_name"/>
@@ -57,7 +65,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toLeftOf="@id/send_btn"
-            android:hint="Write message here"
+            android:hint="@string/chat_window_hint"
             android:background="@drawable/search_text"
             android:padding="10dp"
             android:id="@+id/message_input"/>

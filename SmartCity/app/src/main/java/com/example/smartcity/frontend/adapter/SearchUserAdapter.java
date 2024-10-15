@@ -1,3 +1,13 @@
+// SearchUserAdapter.java
+/*
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ */
+
 package com.example.smartcity.frontend.adapter;
 
 import android.content.Context;
@@ -31,10 +41,12 @@ public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUser
     protected void onBindViewHolder(@NonNull UserView userView, int position, @NonNull User user) {
         userView.username.setText(user.getName());
 
+        // Append "(Me)" if the user is the current user
         if (user.getName().equals(UserCache.getInstance().getCurrentUserName())){
             userView.username.setText(user.getName() + "(Me)");
         }
 
+        // Set an OnClickListener to open the ChatActivity when a user is clicked
         userView.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatActivity.class);
             UserUtil.passUserAsIntent(intent,user);

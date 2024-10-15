@@ -1,3 +1,13 @@
+// ChatWindow.java
+/*
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ */
+
 package com.example.smartcity.backend.entity;
 
 import com.google.firebase.Timestamp;

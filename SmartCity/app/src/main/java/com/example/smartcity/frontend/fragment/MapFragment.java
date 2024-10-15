@@ -1,9 +1,18 @@
 package com.example.smartcity.frontend.fragment;
-import com.bumptech.glide.Glide;
+
 import com.example.smartcity.backend.cache.MapRestaurantCache;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.Pair;
 
 import android.location.Location;
@@ -26,6 +35,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.smartcity.R;
+import com.example.smartcity.util.FirebaseUtil;
 import com.example.smartcity.backend.entity.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,11 +47,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
@@ -49,8 +58,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap myMap;
     private View mapView;
 
-    // To interact with the Firestore database
-    private FirebaseFirestore firestore;
+    //Used for preloading restaurant images
+    private Map<String, Bitmap> imageCacheMap = new HashMap<>();
 
     // To obtain the device's location
     private FusedLocationProviderClient fusedLocationClient;
@@ -67,9 +76,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
-
-        // Initialize Firestore
-        firestore = FirebaseFirestore.getInstance();
 
         // Initialize location client
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
@@ -121,10 +127,39 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     price.setText("Price: " + restaurant.getEstimated_price());
                     category.setText("Type: " + String.join(", ", restaurant.getTypes()));
 
-                    // Use Glide to load restaurant images
-                    Glide.with(infoWindowView).load(restaurant.getPhoto_url()).into(imageView);
-                }
 
+                    // Check if images are in the cache
+                    Bitmap cachedImage = imageCacheMap.get(restaurant.getPhoto_url());
+                    if (cachedImage != null) {
+                        // If the image is found in the cache, set it to the ImageView
+                        imageView.setImageBitmap(cachedImage);
+                    } else {
+                        // If not in the cache, use a placeholder image and start loading
+                        imageView.setImageResource(R.drawable.placeholder_image);
+
+                        // Use Glide to load the image asynchronously as a Bitmap
+                        Glide.with(infoWindowView)
+                                .asBitmap()
+                                .load(restaurant.getPhoto_url()) // Load the image using the restaurant's photo URL
+                                .into(new CustomTarget<Bitmap>() {
+                                    @Override
+                                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                        // When the image is successfully loaded, set it to the ImageView
+                                        imageView.setImageBitmap(resource);
+                                        // Cache the loaded image by putting it into the image cache map for future reloading
+                                        imageCacheMap.put(restaurant.getPhoto_url(), resource);
+                                        // If the marker's info window is currently displayed, refresh it to show the new image
+                                        if (marker.isInfoWindowShown()) {
+                                            marker.showInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                                    }
+                                });
+                    }
+                }
 
                 return infoWindowView;
             }
@@ -183,7 +218,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             return;
         }
 
-        DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference().child("restaurants");
+        DatabaseReference restaurantRef = FirebaseUtil.getRestaurantReference();
 
         // Set the radius for looking nearby restaurants
         double radiusInMeters = 2000;
@@ -235,6 +270,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                                         myMap.addMarker(markerOptions);
                                         Marker marker = myMap.addMarker(markerOptions);
                                         marker.setTag(restaurant); // Add restaurant information to the map marker
+
+                                        // Preloading restaurant images and caching them
+                                        preloadAndCacheImage(restaurant.getPhoto_url());
                                     }
                                 }
                             }
@@ -257,5 +295,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         double roundedLat = Math.round(userLocation.latitude * 10000.0) / 10000.0;
         double roundedLng = Math.round(userLocation.longitude * 10000.0) / 10000.0;
         return roundedLat + "," + roundedLng;
+    }
+
+    // Used for preloading restaurant images and caching them
+    private void preloadAndCacheImage(String imageUrl) {
+        Glide.with(this)
+                .asBitmap()
+                .load(imageUrl)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        imageCacheMap.put(imageUrl, resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                    }
+                });
     }
 }
