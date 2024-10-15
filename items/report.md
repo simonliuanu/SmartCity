@@ -1,4 +1,4 @@
-# [G0 - Team Name] Report
+# [G16 - Five Coders] Report
 
 The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
 
@@ -48,9 +48,9 @@ The key area(s) of responsibilities for each member
 | UID      |     Name      |      Role |
 | :------- | :-----------: | --------: |
 | u7841935 |  Rongze Gao   | Developer |
-| u7811526 | Shengzong Dai | Developer |
+| u7811526 | Shengzong Dai | Leader    |
 | u7761758 |   Simon Liu   | Developer |
-| u7615711 |  Tianfa Zhu   | Developer |
+| u7615711 |  Tianfa Zhu   | Designer  |
 | u7810157 |   Yuheng Li   | Developer |
 
 ## Summary of Individual Contributions
@@ -170,7 +170,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 3. *Then, he identifies a restaurant, reads through the reviews, checks the menu, and decides on it.*
 4. *He was eager to dine at this restaurant and shared his experience by posting his review and rating in the application.*
 5. *His friend Mark used the application as well and read Jay's review, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
-6.*Later on, Mark visited the restaurant, had an exceptional meal, and posted his review, starting a conversation about their experiences.*
+6. *Later on, Mark visited the restaurant, had an exceptional meal, and posted his review, starting a conversation about their experiences.*
 
 *Targets Users: Food enthusiasts, travelers, and anyone looking to discover new dining options*
 
