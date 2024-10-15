@@ -1,3 +1,13 @@
+// MessageAdapter.java
+/*
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ */
+
 package com.example.smartcity.adapter;
 
 import android.content.Context;
@@ -27,6 +37,7 @@ public class MessageAdapter extends FirestoreRecyclerAdapter<ChatMessage, Messag
 
     @Override
     protected void onBindViewHolder(@NonNull ChatView chatView, int position, @NonNull ChatMessage message) {
+        // Check if the message is sent by the current user
         if(message.getUserName().equals(UserCache.getInstance().getCurrentUserName())){
             chatView.leftChatLayout.setVisibility(View.GONE);
             chatView.rightChatLayout.setVisibility(View.VISIBLE);

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SmartCity</string>
     <string name="map_api_key">AIzaSyAbDA9WKE-U5ClKlrBbZ5nJJiBsfE2JhRw</string>
+    <string name="recent_chat_show">Friends</string>
+    <string name="search_user_show">Search User</string>
+    <string name="search_user_hint">Username</string>
+    <string name="chat_window_show">Username</string>
+    <string name="chat_window_hint">Write message here</string>
 </resources>

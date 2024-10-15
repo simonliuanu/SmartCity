@@ -2,10 +2,8 @@ package com.example.smartcity.entity;
 
 import java.io.Serializable;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.List;
 

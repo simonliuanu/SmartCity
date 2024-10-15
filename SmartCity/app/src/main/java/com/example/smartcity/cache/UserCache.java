@@ -1,5 +1,6 @@
 package com.example.smartcity.cache;
 
+// This cache class is used for the store of current user
 public class UserCache {
     private static UserCache instance;
     private String currentUserName;

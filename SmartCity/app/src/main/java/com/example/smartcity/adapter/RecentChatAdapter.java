@@ -1,3 +1,13 @@
+// RecentChatAdapter.java
+/*
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ */
+
 package com.example.smartcity.adapter;
 
 import android.content.Context;
@@ -31,15 +41,20 @@ public class RecentChatAdapter extends FirestoreRecyclerAdapter<ChatWindow, Rece
     @Override
     protected void onBindViewHolder(@NonNull ChatWindowView chatWindowView, int position, @NonNull ChatWindow chatWindow) {
         String receiverUserName;
+
+        // Determine the receiver's username based on the current user's name
         if(chatWindow.getUserNames().get(0).equals(UserCache.getInstance().getCurrentUserName())){
             receiverUserName = chatWindow.getUserNames().get(1);
         }else{
             receiverUserName = chatWindow.getUserNames().get(0);
         }
+
+        // Bind data to the views
         chatWindowView.username.setText(receiverUserName);
         chatWindowView.lastMessage.setText(chatWindow.getLastMessage());
         chatWindowView.lastMessageTime.setText(FirebaseUtil.timestampToString(chatWindow.getTimestamp()));
 
+        // Set a click listener to open the chat activity when a chat item is clicked
         chatWindowView.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatActivity.class);
             UserUtil.passUserNameAsIntent(intent,receiverUserName);
