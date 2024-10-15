@@ -139,32 +139,23 @@ Note that the core criteria of contribution is based on `code contribution` (the
    - **Code Contribution in the final App**
 
      - Feature [UXUI] - class: [MainActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/activity/MainActivity.java?ref_type=heads)
+     - Feature [UIFeedback] - [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)
+     
      - UI files: layout:[fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads),[fragment_map.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_map.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_me.xml?ref_type=heads),[comment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/comment_item.xml?ref_type=heads), [rounded_background.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/drawable/rounded_background.xml?ref_type=heads),[button_background.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/drawable/button_background.xml?ref_type=heads); 
      layout(landscape):[fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_home.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_me.xml?ref_type=heads),[res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/res_comment.xml?ref_type=heads).
-     - (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+     
 
    - **Code and App Design** 
 
-     - [What design patterns, data structures, did the involved member propose?]*
-     - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
-
-   - **Others**: (only if significant and significantly different from an "average contribution") 
-
-     - [Report Writing?] [Slides preparation?]*
-     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
-
+     - [UI Design. I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages. Furthermore, I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]* <br><br>
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
-
-*Here is a pet specific application example*
-
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+*SmartCity is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
 
 ### Problem Statement
 
-*[Problem statement that defines the purpose of your App]*
+*[Our app helps users discoveries of new restaurants by searching either via name or GPS, reading of reviews, saving favorites, and finally sharing in the vibrant community of food enthusiasts.]*
 
 ### Application Use Cases and/or Examples
 
@@ -172,37 +163,29 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *Here is a pet training application example*
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
+*Jay is looking for a new Italian restaurant in his vicinity to try for dinner.*
 
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+1. *Jay opens the app and goes to the home screen, which has listings of popular restaurants in the vicinity.*
+2. *He types "Chinese restaurant" in the search feature and views the results returned.*
+3. *Then, he identifies a restaurant, reads through the reviews, checks the menu, and decides on it.*
+4. *He was eager to dine at this restaurant and shared his experience by posting his review and rating in the application.*
+5. *His friend Mark used the application as well and read Jay's review, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
+6.*Later on, Mark visited the restaurant, had an exceptional meal, and posted his review, starting a conversation about their experiences.*
 
-*Here is a map navigation application example*
+*Targets Users: Food enthusiasts, travelers, and anyone looking to discover new dining options*
 
-*Targets Users: Drivers*
+* *Users can search for restaurants nearby based on their preferences and dietary needs.*
+* *Users can bookmark  their favorite restaurants to make access easier next time*
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+*Users can share experiences about their dining and reviews with their friends and the community of the app*
 
-*Target Users: Those who want to find some good restaurants*
-
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
-
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
-
+*Users can filter restaurants depending on the kind of cuisine they want, the range of pricing, and rating done by users to get the best for their needs*
 <hr>
-
 
 ### Application UML
 
 ![ClassDiagram](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/report/classDiagram.svg?ref_type=heads)
 <hr>
-
 
 ## Code Design and Decisions
 
