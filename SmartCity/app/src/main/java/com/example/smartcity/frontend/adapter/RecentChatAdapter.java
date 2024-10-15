@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
 import com.example.smartcity.frontend.activity.ChatActivity;
-import com.example.smartcity.cache.UserCache;
-import com.example.smartcity.entity.ChatWindow;
+import com.example.smartcity.backend.cache.UserCache;
+import com.example.smartcity.backend.entity.ChatWindow;
 import com.example.smartcity.util.FirebaseUtil;
 import com.example.smartcity.util.UserUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;

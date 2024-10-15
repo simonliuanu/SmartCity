@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
 import com.example.smartcity.frontend.adapter.SearchUserAdapter;
-import com.example.smartcity.entity.User;
+import com.example.smartcity.backend.entity.User;
 import com.example.smartcity.util.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;

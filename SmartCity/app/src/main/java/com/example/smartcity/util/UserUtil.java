@@ -2,7 +2,7 @@ package com.example.smartcity.util;
 
 import android.content.Intent;
 
-import com.example.smartcity.entity.User;
+import com.example.smartcity.backend.entity.User;
 
 public class UserUtil {
     public static void passUserAsIntent(Intent intent, User user){

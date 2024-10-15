@@ -1,7 +1,7 @@
 package com.example.smartcity;
 
-import com.example.smartcity.dataStructure.AvlTree;
-import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.backend.dataStructure.AvlTree;
+import com.example.smartcity.backend.entity.Restaurant;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Arrays;

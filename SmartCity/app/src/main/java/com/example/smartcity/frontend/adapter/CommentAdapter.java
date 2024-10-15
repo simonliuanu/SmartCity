@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
-import com.example.smartcity.entity.Comment;
+import com.example.smartcity.backend.entity.Comment;
 
 import java.util.List;
 

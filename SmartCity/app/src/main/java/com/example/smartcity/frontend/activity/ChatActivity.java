@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity.R;
 import com.example.smartcity.frontend.adapter.MessageAdapter;
-import com.example.smartcity.cache.UserCache;
-import com.example.smartcity.entity.ChatMessage;
-import com.example.smartcity.entity.ChatWindow;
-import com.example.smartcity.entity.User;
+import com.example.smartcity.backend.cache.UserCache;
+import com.example.smartcity.backend.entity.ChatMessage;
+import com.example.smartcity.backend.entity.ChatWindow;
+import com.example.smartcity.backend.entity.User;
 import com.example.smartcity.util.FirebaseUtil;
 import com.example.smartcity.util.UserUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;

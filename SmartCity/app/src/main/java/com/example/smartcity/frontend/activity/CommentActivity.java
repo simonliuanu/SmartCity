@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
 import com.example.smartcity.frontend.adapter.CommentAdapter;
-import com.example.smartcity.entity.Comment;
-import com.example.smartcity.factory.CommentFactory;
-import com.example.smartcity.factory.ContentInComment;
-import com.example.smartcity.entity.Restaurant;
-import com.example.smartcity.factory.UsernameInComment;
+import com.example.smartcity.backend.entity.Comment;
+import com.example.smartcity.backend.factory.CommentFactory;
+import com.example.smartcity.backend.factory.ContentInComment;
+import com.example.smartcity.backend.entity.Restaurant;
+import com.example.smartcity.backend.factory.UsernameInComment;
 
 import java.util.ArrayList;
 import java.util.List;

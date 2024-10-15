@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.smartcity.R;
-import com.example.smartcity.observer.LikeRestaurant;
-import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.backend.observer.LikeRestaurant;
+import com.example.smartcity.backend.entity.Restaurant;
 
 import java.util.List;
 

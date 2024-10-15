@@ -18,10 +18,10 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcity.R;
 import com.example.smartcity.frontend.activity.CommentActivity;
 import com.example.smartcity.frontend.adapter.ItemListAdapter;
-import com.example.smartcity.entity.User;
-import com.example.smartcity.observer.LikeRestaurant;
-import com.example.smartcity.entity.Restaurant;
-import com.example.smartcity.observer.LikeRestaurantObserver;
+import com.example.smartcity.backend.entity.User;
+import com.example.smartcity.backend.observer.LikeRestaurant;
+import com.example.smartcity.backend.entity.Restaurant;
+import com.example.smartcity.backend.observer.LikeRestaurantObserver;
 
 import java.util.ArrayList;
 

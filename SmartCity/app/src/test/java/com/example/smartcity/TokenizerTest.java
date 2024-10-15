@@ -1,6 +1,6 @@
 package com.example.smartcity;
 
-import com.example.smartcity.dataStructure.Tokenizer;
+import com.example.smartcity.backend.dataStructure.Tokenizer;
 import org.junit.Test;
 import java.util.List;
 import static org.junit.Assert.assertEquals;

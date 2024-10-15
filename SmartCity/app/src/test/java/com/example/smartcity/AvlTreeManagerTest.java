@@ -1,8 +1,8 @@
 package com.example.smartcity;
 
-import com.example.smartcity.dataStructure.AvlTree;
-import com.example.smartcity.dataStructure.AvlTreeManager;
-import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.backend.dataStructure.AvlTree;
+import com.example.smartcity.backend.dataStructure.AvlTreeManager;
+import com.example.smartcity.backend.entity.Restaurant;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

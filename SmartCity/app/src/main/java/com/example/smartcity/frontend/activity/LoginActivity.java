@@ -16,11 +16,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.smartcity.R;
-import com.example.smartcity.cache.UserCache;
-import com.example.smartcity.dao.UserDao;
-import com.example.smartcity.dao.UserDaoImpl;
-import com.example.smartcity.db.Firebase;
-import com.example.smartcity.entity.User;
+import com.example.smartcity.backend.cache.UserCache;
+import com.example.smartcity.backend.dao.UserDao;
+import com.example.smartcity.backend.dao.UserDaoImpl;
+import com.example.smartcity.backend.db.Firebase;
+import com.example.smartcity.backend.entity.User;
 import com.example.smartcity.util.FirestoreCallback;
 
 /**

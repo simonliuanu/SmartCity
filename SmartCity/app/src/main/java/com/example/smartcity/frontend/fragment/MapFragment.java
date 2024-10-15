@@ -1,6 +1,6 @@
 package com.example.smartcity.frontend.fragment;
 import com.bumptech.glide.Glide;
-import com.example.smartcity.cache.MapRestaurantCache;
+import com.example.smartcity.backend.cache.MapRestaurantCache;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.smartcity.R;
-import com.example.smartcity.entity.Restaurant;
+import com.example.smartcity.backend.entity.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
