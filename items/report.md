@@ -104,22 +104,36 @@ Note that the core criteria of contribution is based on `code contribution` (the
      - [Report Writing?] [Slides preparation?]*
      - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 3. **u7811526, Shengzong Dai**  I have 25% contribution, as follows: <br>
-   - **Code Contribution in the final App**
-     - Feature [LogIn] , [LoadShowData], [Interact-Follow], [UXUI]
-       - class Login: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java), [ItemListAdapter.java](), [Firebase](), [ItemFragment.java](), [MeFragment.java](),  
-     - Singleton Design Pattern -  class User, LikeRestaurant: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-     - Observer Design Pattern -  class LikeRestaurant: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-     - Iterator Design Pattern -  class RestaurantRepository: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-     - UI files: [bottom_navi.xml](), [activity_login.xml](), [activity_main.xml](), [fragment_item.xml](), [item_list.xml]()
-     - ... (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
-   - **Code and App Design** 
-     - I use Iterator pattern to optimize load show data, use singleton to optimize user collected restaurants, and use observer pattern to optimize grouped effect on 'me' page
-     - [What design patterns, data structures, did the involved member propose?]*
-     - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
-   - **Others**: (only if significant and significantly different from an "average contribution") 
+- **Code Contribution in the final App**
 
-     - [Report Writing?] [Slides preparation?]*
-     - [Set up firebase.] e.g., APK, setups, firebase* <br><br>
+  - Features:
+
+    - [LogIn] - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
+    - [LoadShowData] - class ItemListAdapter:  [ItemListAdapter.java](), 
+    - [Interact-Follow] - class: MeFragment
+    - [[UXUI] - class:
+
+  - Design Pattern: 
+  
+    - Singleton Pattern -  class User, LikeRestaurant: [getInstance()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43),
+    - Observer Pattern -  class LikeRestaurant: line 21 - 66
+    - Iterator Pattern -  class RestaurantRepository: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
+    - DAO Pattern - package Dao 
+
+  - UI files: [bottom_navi.xml](), [activity_login.xml](), [activity_main.xml](), [fragment_item.xml](), [item_list.xml]()
+
+  - Other: setup firebase
+
+    <br>
+
+- **Code and App Design** 
+
+  - I purposed following items: design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. Datastructure: [Arraylist]
+  - [UI Design. I design the theme color and layout location of the project]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution") 
+
+  - [setup firebase] <br><br><br><br>
 
 4. **u7615711, Tianfa Zhu**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
@@ -222,7 +236,14 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * We don’t need to access restaurants by index, which would make an array-based structure less suitable. Instead, the tree structure allows for quick retrieval based on comparisons (e.g., restaurant names or locations).
      * For restaurant queries, the tree’s ordering and balancing help provide both exact and suggested results based on user input, particularly when implementing fuzzy matching.
 
-2. ...
+2. ArrayList
+
+   * ***Objective**: Use for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time.*
+   * **Code Locations: ** Defined in [LikeRestaurants.java]() , [ItemFragment.java]()
+   * *Reasons*: 
+      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
+      * ArrayList is sorted in the order in which the elements were added
+      * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
 3. ...
 
@@ -241,33 +262,40 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 2. *Data Access Object Pattern(DAO)*
 
-   * *Objective: used for .*
-   * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser]()*
-   * *Reasons:*
-   
-   ​    Our project use firebase real time database as a persistence database to store the data, in order to not to expose details of the data storage and the way to access to database, we choose to use DAO to centralize the data access logic of the application to simplify business logic and facilitate data operations.
-   
-   ​    When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
+     * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
+     * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser()]()*
+     * *Reasons:*
+       *  Hide details of the data storage and the way to access to database
+       * DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
+       * When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
+
+       
 
 3. *Singleton Pattern*
 
-   * *Objective: used for .*
-
-   * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser]()*
-   * *Reasons:*
-
-   ​    LikeRestaurant as a class to manage the restaurants that be collected (like) by user, when user add restaurant on  'Home' or 'Item' page, the data could update immediately on 'Me' page, as the basic feature [Intera-Micro] asked to store in memory, singleton meets the requirement to provide a class as a global access point to access the instance. In this way, we can store the data conveniently and reduce the memory usage.
-   ​     
-
+     * *Objective: make sure there is only one instance of LikeRestaurant and provide a global access point to access that instance.*
+     * *Code Locations: defined in [LikeRestaurant](); processed using [getInstance()]() .*
+     * *Reasons:*
+       * Only one instance in memory, reducing memory overhead
+       * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
+       * Data can be easily shared between different objects
+         ​  
+         <br>
 4. *Iterator Pattern*
 
-   * *Objective: used for .*
+     * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
+     * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext()]() and [next()]()
+     * *Reasons:*
+       * Simplify the aggregation class, the class does not need to care about the traversal logic.
+       * Implemented paging functionality to speed up data loading
 
-   * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext]() and [next]()
-   * *Reasons:*
+5. *Observer Pattern*
 
-   ​    To meet the feature [LoadShowData] on 'Item' page, we need to show the restaurants data that we stored in firebase. But more than 3500 data is a huge number and it would be slow if load one time, so we choose to distribute these data in different pages with 12 items per page. In this way, iterator is helpful to manage the data, we can justify if the next page is null or not to show a right page. 
-
+     * *Objective: used for realizing the grouping of restaurant data and real-time data update and display for [Interact-Follow] feature*
+     * Code Locations:  defined in [LikeRestaurant](); processed using [getInstance()]() 
+     * Reasons:
+       * Keep low coupling and high collaboration between objects
+       * Ensure that when the status of the restaurant in 'My Favorite' changes, the corresponding list can be updated in time
 5. Factory Pattern
 
    * *Objective: used for .*
@@ -379,20 +407,49 @@ Production Rules:
 
 ### Custom Features
 
-Feature Category: Privacy <br>
+Feature Category: Search-related features <br>
 
-1. [Privacy-Request]. Description of the feature  (easy)
+  1. `[Search-Invalid]` The search functionality must not only provide results for valid search queries (extension of the basic **[Search]** feature) but also process and correctly handle partially invalid search queries, returning meaningful results. Refer to the [Feature Request Example](#feature-request-example) for further explanation of this feature. (medium)
 
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
 
-   * Description of your implementation: ... <br>
+     * Description of your implementation: ... <br>
 
-     <br>
+       <br>
 
-2. [Privacy-Block]. Description ... ... (medium)
-   ... ...
-   <br><br>
+  2. `[Search-Filter]` The app must provide functionality to sort and filter a list of items returned from searches using appropriate UI components. (easy)
 
+     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+
+     * Description of your implementation: ...
+
+
+Feature Category: Greater Data Usage, Handling and Sophistication <br>
+
+   3. `[Data-GPS]` The app must utilize GPS information based on location data. Hint: see the demo presented by our tutors on ECHO360. (easy). 
+
+      * Code:
+
+      * Description of your implementation: 
+
+Feature Category: Peer to Peer Messaging <br>
+
+4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
+
+   * Code:
+
+   * Description of your implementation: 
+
+       
+
+  Feature Category: User Interactivity <br>
+
+5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
+
+   * Code:
+
+   * Description of your implementation:
+ 
 Feature Category: Firebase Integration <br>
 
 3. [FB-Auth] Description of the feature (easy)
@@ -490,10 +547,11 @@ Feature Category: Firebase Integration <br>
   (each committed within 2 days after the meeting)
 * Your meetings should also have a reasonable date spanning across Week 6 to 11.*
 
-- *[Team Meeting 1](link_to_md_file.md)*
-- ...
-- ...
-- [Team Meeting 4](link_to_md_file.md)
+  - *[Team Meeting 1](link_to_md_file.md)*
+  - *[Team Meeting 2](link_to_md_file.md)*
+  - *[Team Meeting 3](link_to_md_file.md)*
+  - *[Team Meeting 4](link_to_md_file.md)*
+  - *[Team Meeting 5](link_to_md_file.md)*
 - ... (Add any descriptions if needed) ...
 
 <hr>
