@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/navi_color"
-        android:padding="10dp"
-        android:id="@+id/toolbar">
+        android:padding="7dp"
+        android:id="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Friends"
+            android:text="Chat"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -26,7 +33,7 @@
             android:id="@+id/search_user_btn"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:layout_alignParentEnd = "true"
+            android:layout_alignParentEnd="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp"
             android:src="@drawable/icon_search"
@@ -38,6 +45,6 @@
         android:id="@+id/user_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
