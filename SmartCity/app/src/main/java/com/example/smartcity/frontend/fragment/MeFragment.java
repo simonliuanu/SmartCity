@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -93,6 +94,7 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
 
         // back to the login page
         logoutBtn.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "You have logged out", Toast.LENGTH_SHORT).show();
             requireActivity().finish();
         });
 
