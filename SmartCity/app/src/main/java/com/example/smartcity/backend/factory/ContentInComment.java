@@ -1,5 +1,9 @@
 package com.example.smartcity.backend.factory;
-
+/**
+ *  ContentInComment class is used to generate the content of comment
+ *  it is the usage of the factory method
+ *  @author Yuheng Li(u7810157)
+ */
 public class ContentInComment implements CommentItem {
     @Override
     public String getItem() {

@@ -1,5 +1,9 @@
 package com.example.smartcity.backend.factory;
-
+/**
+ *  UsernameInComment class is used to generate the username of comment
+ *  it is the usage of the factory method
+ *  @author Yuheng Li(u7810157)
+ */
 public class UsernameInComment implements CommentItem{
     @Override
     public String getItem() {

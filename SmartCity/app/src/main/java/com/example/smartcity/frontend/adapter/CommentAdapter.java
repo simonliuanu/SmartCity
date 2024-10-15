@@ -13,17 +13,36 @@ import com.example.smartcity.backend.entity.Comment;
 import java.util.List;
 
 /**
+ * CommentAdapter is used to help with the activity to display the comment message normally,
+ * including display the every comment through recycleView
+ * and display "Me" according to the current user
+ * and display the name, content, and date in every comment.
  * @author Yuheng Li
  */
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
 
     private List<Comment> commentList;
     private String currentUsername;
+
+    /**
+     *
+     * @param commentList store all comment data to display
+     * @param currentUsername is used to check the user of current comment
+     * @author Yuheng Li(u7810157)
+     */
     public CommentAdapter(List<Comment> commentList, String currentUsername) {
         this.commentList = commentList;
         this.currentUsername = currentUsername;
     }
 
+    /**
+     *
+     * @param parent   The ViewGroup into which the new View will be added after it is bound to
+     *                 an adapter position.
+     * @param viewType The view type of the new View.
+     * @return CommentViewHolder
+     * @author Yuheng Li(u7810157)
+     */
     @NonNull
     @Override
     public CommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,6 +50,13 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         return new CommentViewHolder(view);
     }
 
+    /**
+     *
+     * @param holder   The ViewHolder which should be updated to represent the contents of the
+     *                 item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     * @author Yuheng Li(u7810157)
+     */
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
         Comment comment = commentList.get(position);
@@ -45,6 +71,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         return commentList.size();
     }
 
+    /**
+     * CommentViewHolder is used to hold a single comment's view
+     * @author Yuheng Li(u7810157)
+     */
     static class CommentViewHolder extends RecyclerView.ViewHolder {
         TextView textViewComment;
         TextView textViewUserName;
