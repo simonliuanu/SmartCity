@@ -10,6 +10,7 @@ public interface UserDao {
      * in data base
      * @param user login user
      * @param callback callback function, use to asynchronously process firebase callback data
+     * @author Shengzong Dai (u7811526)
      */
     void checkUser(User user, FirestoreCallback callback);
 }

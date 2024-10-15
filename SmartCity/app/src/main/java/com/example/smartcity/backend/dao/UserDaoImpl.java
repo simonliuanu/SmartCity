@@ -16,6 +16,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * Implementation of the UserDao interface to interact with Firebase database.
+ * @author Shengzong Dai (u7811526)
+ */
 public class UserDaoImpl implements UserDao {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -28,7 +32,6 @@ public class UserDaoImpl implements UserDao {
      * wait for the callback to complete before processing the returned result.
      * @param user the info of login user with name and pwd
      * @param callback to process the survey results
-     * @author: Shengzong Dai
      */
     @Override
     public void checkUser(User user, FirestoreCallback callback) {
