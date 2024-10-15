@@ -94,7 +94,8 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
 
         // back to the login page
         logoutBtn.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "You have logged out", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "You have logged out", Toast.LENGTH_SHORT).show(); // <-- Added this line
+
             requireActivity().finish();
         });
 

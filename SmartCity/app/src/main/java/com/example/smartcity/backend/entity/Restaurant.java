@@ -22,6 +22,15 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     public Restaurant() {
     }
 
+    /**
+     * used to filter restaurants types
+     * @author Shengzong Dai (u7811526)
+     */
+    public enum RestaurantType {
+        CAFE, LODGING, FOOD, BAR
+    }
+
+
     // test constructor
     public Restaurant(String name, double rating, String address, String photo_url) {
         this.name = name;
@@ -189,7 +198,8 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     /**
      * This function used to display the type
      * as ordinal data have some redundant types, we need filter them
-     * @return
+     * @return restaurant type after filter
+     * @author Shengzong Dai (u7811526)
      */
     public String getDisplayedType() {
         StringBuilder typeBuilder = new StringBuilder();

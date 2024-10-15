@@ -26,6 +26,9 @@ public class LikeRestaurant extends ArrayList<Restaurant> implements Subject {
         observers.remove(observer);
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyAllObservers() {
         for (LikeRestaurantObserver observer : observers) {
@@ -35,6 +38,7 @@ public class LikeRestaurant extends ArrayList<Restaurant> implements Subject {
     }
 
     /**
+     * override add() from ArrayList
      * when add new restaurant, notice all observer to update
      * @param restaurant
      * @return
@@ -49,7 +53,8 @@ public class LikeRestaurant extends ArrayList<Restaurant> implements Subject {
     }
 
     /**
-     * when remove(unlike) restaurant, notice
+     * override remove() from ArrayList
+     * when remove(unlike) restaurant, notice all observer to update
      * @param restaurant
      * @return
      */

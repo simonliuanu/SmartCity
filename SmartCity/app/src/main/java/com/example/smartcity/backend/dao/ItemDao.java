@@ -10,6 +10,8 @@ public interface ItemDao {
     /**
      * This method used to initial the data in item page
      * @param callback
+     * @author Shengzong Dai
+     * @uid u7811526
      */
     void initialItemList(final DataCallback<List<Restaurant>> callback);
 }
