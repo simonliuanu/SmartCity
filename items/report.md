@@ -156,7 +156,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ## Application Description
 
-*SmartCity is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
+*CityTastes is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
 
 ### Problem Statement
 
@@ -396,14 +396,14 @@ Production Rules:
 6. [UXUI]
 
    - Code: LoginActivity, UserDao, UserDaoImple
-   - Description of feature: User  can use the fixed account to login 
+   - Description of feature: User  can use the fixed account to login
    - Description of your implementation: Store the users' information in firebase 
 
 7. [UIFeedback]
 
-   - Code: LoginActivity, UserDao, UserDaoImple
-   - Description of feature: User  can use the fixed account to login 
-   - Description of your implementation: Store the users' information in firebase 
+   - Code: LoginActivity, UserDao, UserDaoImple, MeFragment
+   - Description of feature: User can use the fixed account to login, logout 
+   - Description of your implementation: After the user enters incorrect information or logs out, the system will display a toast.
 
    <br>
 
