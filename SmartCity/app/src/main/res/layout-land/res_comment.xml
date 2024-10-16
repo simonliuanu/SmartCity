@@ -32,7 +32,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginStart="3dp"
                 android:background="@drawable/rounded_background"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back" /><!--the image from https://www.iconfont.cn/search/index?searchType=icon&q=%E8%BF%94%E5%9B%9E-->
         </RelativeLayout>
 
         <TextView

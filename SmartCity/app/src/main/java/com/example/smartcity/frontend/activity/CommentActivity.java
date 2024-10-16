@@ -96,6 +96,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
             }
         }, 3000);
         //return to item page
+        //this img from https://www.iconfont.cn/search/index?searchType=icon&q=%E8%BF%94%E5%9B%9E
         findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
