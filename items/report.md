@@ -70,22 +70,25 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
 
-1. **UID1, Name1**  I have 30% contribution, as follows: <br>
+1. **u7841935, Rongze Gao**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
-     - Feature A1, A2, A3 - class Dummy: [Dummy.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-     - XYZ Design Pattern -  class AnotherClass: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-     - ... (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+   - Feature:
+     - [Data-GPS] - class MapFragment: [MapFragment.java]()
+     - [P2P-DM] - class ChatFragment: [ChatFragment.java](), SearchUserActivity: [SearchUserActivity.java](), ChatActivity.java: [ChatActivity.java]()
+     - [UXUI]
+      
+   - Design Pattern 
+     - Model-View-Controller (MVC) Pattern 
+         - Model class FirebaseUtil: [FirebaseUtil.java](), UserUtil: [UserUtil.java]()
+         - View class RecentChatAdapter: [RecentChatAdapter.java](), SearchUserAdapter: [SearchUserAdapter.java](), MessageAdapter: [MessageAdapter.java]()
+         - Controller class [P2P-DM] feature classes
+     - Singleton Pattern - class MapRestaurantCache: [MapRestaurantCache.java](), UserCache: [UserCache.java]()
 
-   - **Code and App Design** 
+  - UI files: [fragment_chat.xml](), [activity_search_user.xml](), [activity_chat.xml](), [recent_chat_view.xml](), [search_user_view.xml](), [message_view.xml]()
 
-     - [What design patterns, data structures, did the involved member propose?]*
-     - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+  - **Others**: Assisted Data Verification
 
-   - **Others**: (only if significant and significantly different from an "average contribution") 
-
-     - [Report Writing?] [Slides preparation?]*
-     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 2. **u7810157, Yuheng Li**  I have 25% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
@@ -252,11 +255,17 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 *[What design patterns did your team utilise? Where and why?]*
 
-1. *xxx Pattern*
+1. *Model-View-Controller (MVC) Pattern*
 
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+   * *Objective: Used to separate the data (Model), the user interface (View), and the control logic (Controller) to enhance maintainability and scalability of the application.*
+   * *Code Locations: 
+      - Model: defined in [FirebaseUtil.java](), [UserUtil.java]()
+      - View: defined in [RecentChatAdapter.java](), [SearchUserAdapter.java](), [MessageAdapter.java]()
+      - Controller: defined in [ChatFragment.java](), [SearchUserActivity.java](), [ChatActivity.java]()
    * *Reasons:*
+     * Facilitate clear separation of concerns, allowing easier management of changes in one part of the application without affecting others.
+     * Promote better organization of code, leading to improved readability and maintainability.
+
 
 2. *Data Access Object Pattern(DAO)*
 
@@ -267,8 +276,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
        * DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
        * When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
 
-       
-
+    
 3. *Singleton Pattern*
 
      * *Objective: make sure there is only one instance of LikeRestaurant and provide a global access point to access that instance.*
@@ -279,6 +287,8 @@ Here is a partial (short) example for the subsection `Data Structures`:*
        * Data can be easily shared between different objects
          ​  
          <br>
+
+
 4. *Iterator Pattern*
 
      * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
@@ -287,6 +297,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
        * Simplify the aggregation class, the class does not need to care about the traversal logic.
        * Implemented paging functionality to speed up data loading
 
+
 5. *Observer Pattern*
 
      * *Objective: used for realizing the grouping of restaurant data and real-time data update and display for [Interact-Follow] feature*
@@ -294,7 +305,9 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * Reasons:
        * Keep low coupling and high collaboration between objects
        * Ensure that when the status of the restaurant in 'My Favorite' changes, the corresponding list can be updated in time
-5. Factory Pattern
+
+
+6. Factory Pattern
 
    * *Objective: used for .*
 
@@ -426,21 +439,27 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
    3. `[Data-GPS]` The app must utilize GPS information based on location data. Hint: see the demo presented by our tutors on ECHO360. (easy). 
 
-      * Code:
+      * Code: [MapFragment.java]()
 
       * Description of your implementation: 
+        * Implemented GPS functionality using the Google Maps API to display nearby restaurants based on the user's current location.
+        * Loaded restaurant data from a Firebase database and marked them on the map using custom markers, allowing users to tap on markers for more information.
 
 Feature Category: Peer to Peer Messaging <br>
 
+
 4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
 
-   * Code:
+   * Code: [ChatFragment.java](), [ChatActivity.java](), [SearchUserActivity.java]()
 
    * Description of your implementation: 
-
-       
+        * Developed a peer-to-peer messaging system that allows users to send and receive direct messages.
+        * Utilized Firebase Firestore for real-time data synchronization, enabling messages to be sent instantly and visible to both sender and receiver.
+        * Created user search functionality that allows users to find other users by name, facilitating the initiation of chats.
+        * Implemented RecyclerViews to display recent chat windows and chat messages, enhancing user experience through efficient data handling and presentation.
 
   Feature Category: User Interactivity <br>
+
 
 5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
 
@@ -528,8 +547,11 @@ Feature Category: Firebase Integration <br>
 
 1. *Bug 1:*
 
-   - *A space bar (' ') in the sign in email will crash the application.*
-   - ...
+   - Description: When users are in the process of searching for users or chatting with other users, pressing the phone's built-in back navigation key causes the application to crash or logs out the current user.
+   - Steps to Reproduce:
+       - Open the application.
+       - Navigate to the user search or chat feature.
+       - Press the back navigation key on the phone.
 
 2. *Bug 2:*
 
