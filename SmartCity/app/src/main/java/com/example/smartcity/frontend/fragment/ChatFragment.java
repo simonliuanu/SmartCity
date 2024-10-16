@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.fragment;
@@ -39,6 +37,7 @@ import com.google.firebase.firestore.Query;
  * ChatFragment is a Fragment that displays recent chat windows and allows users
  * to search for other users. It uses a RecyclerView to display chat windows
  * retrieved from a Firestore database.
+ * @author Rongze Gao(u7841935)
  */
 public class ChatFragment extends Fragment {
 

@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.util;
@@ -29,6 +27,7 @@ import java.util.Arrays;
  * for accessing Firestore and Realtime Database references.
  * This utility class facilitates the implementation of chat functionalities
  * by providing methods to manage chat windows and messages.
+ * @author Rongze Gao(u7841935)
  */
 public class FirebaseUtil {
 

@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.adapter;
@@ -35,6 +33,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
  * This adapter binds chat message data to views for each message item,
  * ensuring that messages sent by the current user are displayed differently
  * from those sent by others.
+ * @author Rongze Gao(u7841935)
  */
 public class MessageAdapter extends FirestoreRecyclerAdapter<ChatMessage, MessageAdapter.ChatView> {
 

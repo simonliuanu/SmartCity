@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.activity;
@@ -33,6 +31,7 @@ import com.google.firebase.firestore.Query;
 /**
  * SearchUserActivity allows users to search for other users by name.
  * It displays the search results in a RecyclerView and handles user interactions.
+ * @author Rongze Gao(u7841935)
  */
 public class SearchUserActivity extends AppCompatActivity {
 

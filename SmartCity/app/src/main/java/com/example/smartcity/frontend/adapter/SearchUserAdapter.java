@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.adapter;
@@ -36,6 +34,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
  * Adapter for searching and displaying users in a RecyclerView.
  * This adapter binds user data to views for each user item,
  * allowing users to select a contact to initiate a chat.
+ * @author Rongze Gao(u7841935)
  */
 public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUserAdapter.UserView> {
 

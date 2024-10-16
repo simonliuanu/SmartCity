@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.backend.entity;
@@ -22,6 +20,7 @@ import java.util.List;
  * Represents a chat window in the chat application.
  * This class holds the details of a chat window, including the ID,
  * participants, last message, and timestamp of the last activity.
+ * @author Rongze Gao(u7841935)
  */
 public class ChatWindow {
     String chatWindowId;

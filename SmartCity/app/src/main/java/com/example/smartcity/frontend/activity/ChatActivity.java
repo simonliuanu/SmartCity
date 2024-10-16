@@ -8,8 +8,6 @@
  *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
- *
- * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.activity;
@@ -42,6 +40,12 @@ import com.google.firebase.firestore.Query;
 
 import java.util.Arrays;
 
+/**
+ * This activity handles the chat interface where users can send and receive messages
+ * to and from each other. It initializes the chat window and displays chat messages
+ * in real-time using Firestore.
+ * @author Rongze Gao(u7841935)
+ */
 public class ChatActivity extends AppCompatActivity {
 
     User receiverUser;
