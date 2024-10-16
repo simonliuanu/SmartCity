@@ -31,10 +31,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Represents the "Item" page in the application.
+ *
+ * @author Shengzong Dai (u7811526), Yuheng Li (u7810157)
+ */
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
 
     View itemView;
-    private static final int PER_PAGE_LIMITS = 12;
     private List<Restaurant> resList = new ArrayList<>();
     private ItemListAdapter itemListAdapter;
     private View moreDataView;
@@ -43,13 +47,11 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     private RestaurantRepository restaurantRepository;
     private ItemDao itemDao;
     private Iterator iterator;
-    //private RestaurantIterator restaurantItr = new RestaurantIterator();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         itemView = inflater.inflate(R.layout.fragment_item, container, false);
-
 
         ListView listView = itemView.findViewById(R.id.item_list);
 
@@ -106,6 +108,10 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
         return itemView;
     }
 
+    /**
+     * Initialize the list of restaurants by fetching the initial data set from firestore by ItemDao.
+     * @author Shengzong Dai (u7811526)
+     */
     private void initiateData() {
         itemDao.initialItemList(new DataCallback<List<Restaurant>>() {
             @Override
@@ -131,6 +137,10 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
     public void onScroll(AbsListView absListView, int i, int i1, int i2) {
     }
 
+    /**
+     * Load more restaurant data by adding the next set of restaurants to the existing list.
+     * @author: Shengzong Dai (u7811526)
+     */
     public void loadMoreData() {
         resList.addAll((List<Restaurant>) iterator.next());
     }

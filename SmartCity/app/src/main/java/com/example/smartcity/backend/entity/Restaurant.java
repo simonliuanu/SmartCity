@@ -2,10 +2,18 @@ package com.example.smartcity.backend.entity;
 
 import java.io.Serializable;
 
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;
 
+/**
+ * Represents a Restaurant entity with relevant details.
+ * This class implements Serializable to allow the restaurant data to be serialized,
+ * and Comparable to allow sorting based on restaurant names.
+ *
+ * @author Rongze Gao (u7841935), Shengzong Dai (u7811526), Simon Liu (u7761758)
+ */
 public class Restaurant implements Serializable, Comparable<Restaurant> {
     private int id;
     private String name;
@@ -22,14 +30,29 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     public Restaurant() {
     }
 
-    // test constructor
-    public Restaurant(String name, double rating, String address, String photo_url) {
-        this.name = name;
-        this.rating = rating;
-        this.address = address;
-        this.photo_url = photo_url;
+    /**
+     * used to set filter restaurants types
+     * @author Shengzong Dai (u7811526)
+     */
+    public enum RestaurantType {
+        CAFE, LODGING, FOOD, BAR
     }
 
+    /**
+     * Constructs a Restaurant object with specified details.
+     *
+     * @param id                the unique identifier for the restaurant
+     * @param name              the name of the restaurant
+     * @param rating            the rating of the restaurant (out of 5)
+     * @param address           the address of the restaurant
+     * @param photo_url         the URL of the restaurant's photo
+     * @param latitude          the latitude of the restaurant's location
+     * @param longitude         the longitude of the restaurant's location
+     * @param types             the list of types associated with the restaurant
+     * @param priceLevel        the price level of the restaurant
+     * @param estimatedPrice    the estimated price range for meals at the restaurant
+     * @param userRatingsTotal  the total number of user ratings for the restaurant
+     */
     public Restaurant(int id, String name, double rating, String address, String photo_url,
                       double latitude, double longitude, List<String> types,
                       int priceLevel, String estimatedPrice, int userRatingsTotal) {
@@ -114,6 +137,13 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         return estimated_price;
     }
 
+    /**
+     * Returns an integer representation of the estimated price level.
+     *
+     * @return the price level as an integer based on the estimated price string
+     *
+     * @author Simon Liu (u7761758)
+     */
     public int getPrice() {
         switch (estimated_price) {
             case "$10-$25":
@@ -181,6 +211,15 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         return Objects.hash(id, name, rating, address, photo_url, latitude, longitude, types, price_level, estimated_price, user_ratings_total);
     }
 
+    /**
+     * Compares this restaurant with the specified restaurant for order.
+     *
+     * @param other the restaurant to be compared
+     * @return a negative integer, zero, or a positive integer as this restaurant
+     *         is less than, equal to, or greater than the specified restaurant
+     *
+     * @author Simon Liu (u7761758)
+     */
     @Override
     public int compareTo(Restaurant other) {
         return this.name.compareTo(other.name);
@@ -189,7 +228,8 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     /**
      * This function used to display the type
      * as ordinal data have some redundant types, we need filter them
-     * @return
+     * @return restaurant type after filter
+     * @author Shengzong Dai (u7811526)
      */
     public String getDisplayedType() {
         StringBuilder typeBuilder = new StringBuilder();

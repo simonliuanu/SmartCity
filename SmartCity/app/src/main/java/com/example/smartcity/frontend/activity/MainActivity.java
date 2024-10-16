@@ -16,6 +16,12 @@ import com.example.smartcity.frontend.fragment.ItemFragment;
 import com.example.smartcity.frontend.fragment.MeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * MainActivity manages navigation between fragments
+ *
+ * @author Tianfa Zhu
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

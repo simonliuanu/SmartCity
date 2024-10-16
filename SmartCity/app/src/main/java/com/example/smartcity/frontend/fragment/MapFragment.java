@@ -1,9 +1,18 @@
 package com.example.smartcity.frontend.fragment;
-import com.bumptech.glide.Glide;
+
 import com.example.smartcity.backend.cache.MapRestaurantCache;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.Pair;
 
 import android.location.Location;
@@ -26,6 +35,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.smartcity.R;
+import com.example.smartcity.util.FirebaseUtil;
 import com.example.smartcity.backend.entity.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,26 +47,39 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * MapFragment is responsible for displaying a map with restaurant markers. It handles the
+ * initialization of the Google Map, loading restaurant data, displaying restaurant info
+ * in custom info windows, and providing user location features.
+ * @author Rongze Gao(u7841935)
+ */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap myMap;
     private View mapView;
 
-    // To interact with the Firestore database
-    private FirebaseFirestore firestore;
+    //Used for preloading restaurant images
+    private Map<String, Bitmap> imageCacheMap = new HashMap<>();
 
     // To obtain the device's location
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
 
+    /**
+     * Inflates the layout for this fragment and initializes the map.
+     *
+     * @param inflater LayoutInflater used to inflate the layout.
+     * @param container ViewGroup that contains the fragment UI.
+     * @param savedInstanceState Bundle containing previous state, if any.
+     * @return The view of the map fragment.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,15 +91,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mapFragment.getMapAsync(this);
         }
 
-        // Initialize Firestore
-        firestore = FirebaseFirestore.getInstance();
-
         // Initialize location client
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
         return mapView;
     }
 
+    /**
+     * Called when the map is ready to be used. Sets up user location, marker interaction, and
+     * custom info window for restaurant markers.
+     *
+     * @param googleMap The GoogleMap object representing the map.
+     */
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
@@ -121,10 +147,39 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     price.setText("Price: " + restaurant.getEstimated_price());
                     category.setText("Type: " + String.join(", ", restaurant.getTypes()));
 
-                    // Use Glide to load restaurant images
-                    Glide.with(infoWindowView).load(restaurant.getPhoto_url()).into(imageView);
-                }
 
+                    // Check if images are in the cache
+                    Bitmap cachedImage = imageCacheMap.get(restaurant.getPhoto_url());
+                    if (cachedImage != null) {
+                        // If the image is found in the cache, set it to the ImageView
+                        imageView.setImageBitmap(cachedImage);
+                    } else {
+                        // If not in the cache, use a placeholder image and start loading
+                        imageView.setImageResource(R.drawable.placeholder_image);
+
+                        // Use Glide to load the image asynchronously as a Bitmap
+                        Glide.with(infoWindowView)
+                                .asBitmap()
+                                .load(restaurant.getPhoto_url()) // Load the image using the restaurant's photo URL
+                                .into(new CustomTarget<Bitmap>() {
+                                    @Override
+                                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                        // When the image is successfully loaded, set it to the ImageView
+                                        imageView.setImageBitmap(resource);
+                                        // Cache the loaded image by putting it into the image cache map for future reloading
+                                        imageCacheMap.put(restaurant.getPhoto_url(), resource);
+                                        // If the marker's info window is currently displayed, refresh it to show the new image
+                                        if (marker.isInfoWindowShown()) {
+                                            marker.showInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                                    }
+                                });
+                    }
+                }
 
                 return infoWindowView;
             }
@@ -142,6 +197,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    /**
+     * Enables the user's location on the map if permission is granted.
+     * This method also obtains the user's last known location.
+     */
     private void enableUserLocation() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -162,7 +221,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    // Show nearby restaurants by querying Firebase
+
+    /**
+     * Queries Firebase to find and display nearby restaurants on the map based on the user's location.
+     * The restaurants' markers are added to the map, and images are preloaded and cached for faster future loading.
+     *
+     * @param userLocation The current location of the user, represented as a {@link LatLng} object.
+     */
     private void showNearbyRestaurants(LatLng userLocation) {
         // Use the location string as the key to check the cache
         String locationKey = generateLocationKey(userLocation);
@@ -183,7 +248,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             return;
         }
 
-        DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference().child("restaurants");
+        DatabaseReference restaurantRef = FirebaseUtil.getRestaurantReference();
 
         // Set the radius for looking nearby restaurants
         double radiusInMeters = 2000;
@@ -235,6 +300,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                                         myMap.addMarker(markerOptions);
                                         Marker marker = myMap.addMarker(markerOptions);
                                         marker.setTag(restaurant); // Add restaurant information to the map marker
+
+                                        // Preloading restaurant images and caching them
+                                        preloadAndCacheImage(restaurant.getPhoto_url());
                                     }
                                 }
                             }
@@ -252,10 +320,39 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 });
     }
 
-    // Generate a standardized value for caching or looking up the geographic location key for subsequent loading.
+
+    /**
+     * Generates a unique string key based on the user's location to use for caching or retrieving cached restaurant data.
+     *
+     * @param userLocation The user's location represented as a {@link LatLng} object.
+     * @return A string that uniquely represents the location by rounding latitude and longitude.
+     */
     private String generateLocationKey(LatLng userLocation) {
         double roundedLat = Math.round(userLocation.latitude * 10000.0) / 10000.0;
         double roundedLng = Math.round(userLocation.longitude * 10000.0) / 10000.0;
         return roundedLat + "," + roundedLng;
+    }
+
+
+    /**
+     * Preloads and caches restaurant images to improve future loading times.
+     * The image is downloaded asynchronously using Glide and stored in a cache map.
+     *
+     * @param imageUrl The URL of the restaurant's image.
+     */
+    private void preloadAndCacheImage(String imageUrl) {
+        Glide.with(this)
+                .asBitmap()
+                .load(imageUrl)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        imageCacheMap.put(imageUrl, resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                    }
+                });
     }
 }

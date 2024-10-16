@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This layout file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,7 +15,7 @@
     <!-- Toolbar -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/navi_color"
         android:padding="10dp"
         android:id="@+id/toolbar"
@@ -29,8 +37,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search User"
-            android:textSize="22sp"
+            android:text="@string/search_user_show"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
@@ -54,7 +62,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/search_text"
             android:layout_margin="10dp"
-            android:hint="Username"
+            android:hint="@string/search_user_hint"
             android:padding="10dp"
             android:elevation="4dp"
             android:id="@+id/seach_username_input"

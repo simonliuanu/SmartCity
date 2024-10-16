@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,15 +26,21 @@ import com.example.smartcity.backend.observer.LikeRestaurantObserver;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the "Me" page in the application.
+ *
+ * @author Tinfa Zhu (u7615711), Shengzong Dai (u7811526), Yuheng Li (u7810157)
+ */
 public class MeFragment extends Fragment implements LikeRestaurantObserver {
     View meView;
     private ItemListAdapter itemListAdapter;
     private Spinner filter;
     private ArrayList<Restaurant> filterRes;
     private LikeRestaurant likeRes;
-    // the default filter type
-    private String curType = "all";
+    private String curType;
+    private final String TYPE_ALL = "all";
     private TextView meUserName;
+
 
     @Nullable
     @Override
@@ -85,7 +92,7 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                filterRestaurantsByType("all");
+                filterRestaurantsByType(TYPE_ALL);
             }
         });
 
@@ -93,15 +100,23 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
 
         // back to the login page
         logoutBtn.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "You have logged out", Toast.LENGTH_SHORT).show(); // <-- Added this line
+
             requireActivity().finish();
         });
 
         return meView;
     }
 
+    /**
+     * Filter the list of filter restaurants based on the selected type from the spinner.
+     *
+     * @param type The type of restaurant to filter by (e.g., "all", "bar", "cafe", "food", "lodging").
+     * @author Shengzong Dai (u7811526)
+     */
     private void filterRestaurantsByType(String type) {
         filterRes.clear();
-        if (type.equals("all")) {
+        if (type.equals(TYPE_ALL)) {
             filterRes.addAll(likeRes);
         } else {
             for (Restaurant restaurant : likeRes) {
@@ -117,6 +132,8 @@ public class MeFragment extends Fragment implements LikeRestaurantObserver {
      * When the state of likeRes changed (e.g. user unlike a restaurant)
      * update the filter restaurant to show the page after removing the
      * corresponding restaurant
+     *
+     * @author Shengzong Dai (u7811526)
      */
     @Override
     public void update() {

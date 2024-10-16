@@ -8,6 +8,28 @@
     android:layout_height="match_parent"
     tools:context=".frontend.activity.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navi_color"
+        android:padding="10dp"
+        android:id="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/linearLayoutLeft"
         android:layout_width="0dp"
@@ -15,84 +37,84 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/listViewRestaurants"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/textViewTitle"
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Restaurants"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginEnd="8dp"
+            android:hint="Search for nearby"
+            android:inputType="text"
+            android:minHeight="40dp"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/buttonSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find Restaurants"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/linearLayoutSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/editTextSearch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginEnd="8dp"
-                android:hint="Search for nearby"
-                android:inputType="text"
-                android:minHeight="40dp"
-                android:padding="8dp" />
-
-            <Button
-                android:id="@+id/buttonSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayoutFilterSort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <Spinner
-                android:id="@+id/spinnerFilter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/filter_options" />
-
-            <Spinner
-                android:id="@+id/spinnerSortBy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/sort_options" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textViewRecommended"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Recommended Restaurants"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="Search"
+            android:textSize="14sp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listViewRestaurants"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toEndOf="@id/linearLayoutLeft"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_weight="2" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutFilterSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Spinner
+            android:id="@+id/spinnerFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/filter_options" />
+
+        <Spinner
+            android:id="@+id/spinnerSortBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/sort_options" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewRecommended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Recommended Restaurants"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>
+
+<ListView
+    android:id="@+id/listViewRestaurants"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintStart_toEndOf="@id/linearLayoutLeft"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_weight="2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

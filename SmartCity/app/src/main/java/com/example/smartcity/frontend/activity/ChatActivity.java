@@ -1,3 +1,17 @@
+/**
+ * ChatActivity.java
+ * This file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * <p>Sources:</p>
+ * <ul>
+ *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
+ *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
+ * </ul>
+ *
+ * @author Rongze Gao(u7841935)
+ */
+
 package com.example.smartcity.frontend.activity;
 
 import android.content.Intent;
@@ -42,12 +56,18 @@ public class ChatActivity extends AppCompatActivity {
     TextView receiverUserName;
     RecyclerView recyclerView;
 
-
+    /**
+     * Called when the activity is created. Initializes the UI components,
+     * retrieves user information from the intent, and sets up the chat window.
+     *
+     * @param savedInstanceState A Bundle containing the saved instance state, if any.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // Retrieve user information from the intent
         receiverUser = UserUtil.getUserFromIntent(getIntent());
         chatWindowId = FirebaseUtil.getChatWindowId(UserCache.getInstance().getCurrentUserName(), receiverUser.getName());
 
@@ -57,6 +77,7 @@ public class ChatActivity extends AppCompatActivity {
         receiverUserName = findViewById(R.id.receiver_user_name);
         recyclerView = findViewById(R.id.chat_view);
 
+        // Back button functionality to return to ChatFragment
         backBt.setOnClickListener((v -> {
             Intent intent = new Intent(ChatActivity.this, MainActivity.class);
             intent.putExtra("targetFragment", "ChatFragment");
@@ -64,10 +85,14 @@ public class ChatActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }));
+
+        // Display the receiver's username
         receiverUserName.setText(receiverUser.getName());
 
+        // Fetch or create the chat window
         getChatWindow();
 
+        // Send button functionality to send a message
         sendBt.setOnClickListener((v -> {
             String message = messageInput.getText().toString().trim();
             if(message.isEmpty())
@@ -75,14 +100,21 @@ public class ChatActivity extends AppCompatActivity {
             seedMessage(message);
         }));
 
+        // Set up the message display
         getMessageView();
     }
 
+    /**
+     * Retrieve or create the chat window for the current conversation.
+     * If the chat window does not exist, a new one is created and saved
+     * in the Firestore database.
+     */
     void getChatWindow(){
         FirebaseUtil.getChatWindows(chatWindowId).get().addOnCompleteListener(task ->{
             if(task.isSuccessful()){
                 chatWindow = task.getResult().toObject(ChatWindow.class);
                 if(chatWindow == null){
+                    // Create a new chat window if it does not exist
                     chatWindow = new ChatWindow(
                             chatWindowId,
                             Arrays.asList(UserCache.getInstance().getCurrentUserName(), receiverUser.getName()),
@@ -95,6 +127,13 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Send a message and update chat window details.
+     * Updates the timestamp, last message, and last message sender in the chat window,
+     * and adds the new message to the chat messages collection.
+     *
+     * @param message The message to be sent.
+     */
     void seedMessage(String message){
 
         chatWindow.setTimestamp(Timestamp.now());
@@ -102,6 +141,7 @@ public class ChatActivity extends AppCompatActivity {
         chatWindow.setLastMessage(message);
         FirebaseUtil.getChatWindows(chatWindowId).set(chatWindow);
 
+        // Create and send the message
         ChatMessage chatMessage = new ChatMessage(message, UserCache.getInstance().getCurrentUserName(),Timestamp.now());
         FirebaseUtil.getChatMessages(chatWindowId).add(chatMessage).addOnCompleteListener(new OnCompleteListener<DocumentReference>(){
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -112,6 +152,11 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Set up the message display in RecyclerView.
+     * Queries the chat messages for the current conversation and displays them
+     * in a RecyclerView with the latest messages at the bottom.
+     */
     void getMessageView(){
         Query query = FirebaseUtil.getChatMessages(chatWindowId)
                 .orderBy("timestamp", Query.Direction.DESCENDING);
@@ -122,10 +167,14 @@ public class ChatActivity extends AppCompatActivity {
 
         adapter = new MessageAdapter(options,getApplicationContext());
         LinearLayoutManager manager = new LinearLayoutManager(this);
+
+        // Display the latest messages at the bottom
         manager.setReverseLayout(true);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+        // Smooth scroll to the top when new messages are added
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {

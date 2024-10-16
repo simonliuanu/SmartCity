@@ -19,21 +19,21 @@ import com.example.smartcity.backend.entity.Restaurant;
 import java.util.List;
 
 /**
- * used to show the restaurant list adapter
+ * This adapter for displaying a list of Restaurants in listview within a fragment.
+ *
  * the adapter catch the item_list layout and put
  * the attribute List<Restaurant> in the list layout
  * once it be called by the itemFragment
  * the listView in itemFragment will be filled by the item_list.xml
+ *
+ * @author Shengzong Dai (u7811526)
  */
 public class ItemListAdapter extends ArrayAdapter<Restaurant> {
 
     private List<Restaurant> list;
 
-    private Context context;
-
     public ItemListAdapter(@NonNull Context context, List<Restaurant> list) {
         super(context, R.layout.item_list,list);
-        this.context = context;
         this.list = list;
     }
 
@@ -107,6 +107,10 @@ public class ItemListAdapter extends ArrayAdapter<Restaurant> {
         });
         return convertView;
     }
+
+    /**
+     * A ViewHolder class to hold references to the views within each list item.
+     */
     static class ViewHolder {
         ImageView likeBtn;
         ImageView holdImage;
