@@ -19,7 +19,7 @@ import com.example.smartcity.backend.entity.Restaurant;
 import java.util.List;
 
 /**
- * an adapter for displaying a list of Restaurants in listview within a fragment.
+ * This adapter for displaying a list of Restaurants in listview within a fragment.
  *
  * the adapter catch the item_list layout and put
  * the attribute List<Restaurant> in the list layout

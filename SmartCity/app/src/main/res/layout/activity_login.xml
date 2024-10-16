@@ -36,11 +36,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
+            android:layout_marginTop="5sp"
             android:gravity="center_horizontal"
             android:paddingLeft="30sp"
             android:paddingRight="30sp"
-            android:text="Empowering Your Journey: Anything, Anytime, Anywhere."
+            android:text="Explore. Eat. Enjoy. \n Your guide to local dining."
             android:textSize="15sp"
             android:textStyle="bold" />
 
