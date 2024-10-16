@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Shengzong Dai (u7811526)
  */
-public class RestaurantRepository implements Container{
+public class RestaurantRepository implements Container {
 
     /**
      * Return an instance of RestaurantIterator to iterate through restaurant pages.
@@ -28,20 +28,19 @@ public class RestaurantRepository implements Container{
         return new RestaurantIterator();
     }
 
+    private int curPage = 1;
+
+    AvlTree instance = AvlTreeManager.getInstance();
+
     /**
      * Inner class that implements the Iterator interface to iterate through
      * restaurant data in a paginated manner.
      */
     private class RestaurantIterator implements Iterator<List<Restaurant>> {
 
-        private int curPage = 1;
+
         private static final int PER_PAGE_LIMITS = 12;
         private static final int TOTAL_DATA = 3503;
-        AvlTree instance;
-
-        public RestaurantIterator() {
-            instance = AvlTreeManager.getInstance();
-        }
 
         /**
          * Checks if there is more data in next page.
@@ -51,12 +50,11 @@ public class RestaurantRepository implements Container{
         @Override
         public boolean hasNext() {
             return curPage * PER_PAGE_LIMITS <= TOTAL_DATA;
-
         }
 
         /**
          * Retrieves the next page of restaurants from the AVL tree.
-         *
+         * <p>
          * If there is more data, it returns the next 12 restaurants and
          * increments the current page counter. Otherwise, it returns null.
          *
@@ -64,15 +62,17 @@ public class RestaurantRepository implements Container{
          */
         @Override
         public List<Restaurant> next() {
-            List<Restaurant> nextPageRes = new ArrayList<>();
-            if(this.hasNext()) {
+            List<Restaurant> nextPageRes;
+            if (this.hasNext()) {
                 nextPageRes = instance.toList().subList(curPage * PER_PAGE_LIMITS, ++curPage * PER_PAGE_LIMITS);
-                Log.i("iterator","the current page is: " + curPage);
             } else {
                 nextPageRes = null;
             }
-            Log.i("iterator","state of hasNext: " + this.hasNext());
             return nextPageRes;
         }
+    }
+
+    public void setCurPage(int curPage) {
+        this.curPage = curPage;
     }
 }

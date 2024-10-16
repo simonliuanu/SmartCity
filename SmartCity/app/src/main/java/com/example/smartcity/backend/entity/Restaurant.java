@@ -69,6 +69,8 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         this.user_ratings_total = userRatingsTotal;
     }
 
+
+
     public int getId() {
         return id;
     }
