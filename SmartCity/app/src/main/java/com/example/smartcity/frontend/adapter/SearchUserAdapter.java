@@ -1,11 +1,15 @@
-// SearchUserAdapter.java
-/*
+/**
+ * SearchUserAdapter.java
  * This file is part of the chat functionality implementation,
  * which is adapted from the tutorial series by Bimal Kafle.
  *
- * Sources:
- * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
- * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ * <p>Sources:</p>
+ * <ul>
+ *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
+ *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
+ * </ul>
+ *
+ * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.adapter;
@@ -28,22 +32,40 @@ import com.example.smartcity.util.UserUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+/**
+ * Adapter for searching and displaying users in a RecyclerView.
+ * This adapter binds user data to views for each user item,
+ * allowing users to select a contact to initiate a chat.
+ */
 public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUserAdapter.UserView> {
 
     Context context;
 
+    /**
+     * Constructs a SearchUserAdapter with the specified options and context.
+     *
+     * @param options FirestoreRecyclerOptions for the User objects.
+     * @param context The context in which the adapter is running.
+     */
     public SearchUserAdapter(@NonNull FirestoreRecyclerOptions<User> options, Context context) {
         super(options);
         this.context = context;
     }
 
+    /**
+     * Binds the User data to the UserView holder.
+     *
+     * @param userView The view holder for a user.
+     * @param position The position of the user in the RecyclerView.
+     * @param user The User object containing user data.
+     */
     @Override
     protected void onBindViewHolder(@NonNull UserView userView, int position, @NonNull User user) {
         userView.username.setText(user.getName());
 
         // Append "(Me)" if the user is the current user
         if (user.getName().equals(UserCache.getInstance().getCurrentUserName())){
-            userView.username.setText(user.getName() + "(Me)");
+            userView.username.setText(user.getName() + "  (Me)");
         }
 
         // Set an OnClickListener to open the ChatActivity when a user is clicked
@@ -55,6 +77,13 @@ public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUser
         });
     }
 
+    /**
+     * Creates a new view holder for a user.
+     *
+     * @param parent The parent view group that this view will be attached to.
+     * @param viewType The view type of the new view.
+     * @return A new UserView that holds the view for the user.
+     */
     @NonNull
     @Override
     public UserView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,9 +91,17 @@ public class SearchUserAdapter extends FirestoreRecyclerAdapter<User, SearchUser
         return new UserView(view);
     }
 
+    /**
+     * View holder for displaying a user in the RecyclerView.
+     */
     class UserView extends RecyclerView.ViewHolder{
         TextView username;
 
+        /**
+         * Constructs a UserView with the specified item view.
+         *
+         * @param itemView The view representing the user.
+         */
         public UserView(@NonNull View itemView) {
             super(itemView);
             username = itemView.findViewById(R.id.user_name_text);

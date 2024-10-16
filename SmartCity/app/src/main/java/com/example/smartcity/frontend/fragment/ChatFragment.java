@@ -1,11 +1,15 @@
-// ChatFragment.java
-/*
+/**
+ * ChatFragment.java
  * This file is part of the chat functionality implementation,
  * which is adapted from the tutorial series by Bimal Kafle.
  *
- * Sources:
- * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
- * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ * <p>Sources:</p>
+ * <ul>
+ *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
+ *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
+ * </ul>
+ *
+ * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.fragment;
@@ -31,13 +35,25 @@ import com.example.smartcity.util.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
+/**
+ * ChatFragment is a Fragment that displays recent chat windows and allows users
+ * to search for other users. It uses a RecyclerView to display chat windows
+ * retrieved from a Firestore database.
+ */
 public class ChatFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecentChatAdapter adapter;
     ImageButton searchButton;
 
-    // Inflate the layout and set up the RecyclerView
+    /**
+     * Inflate the layout and set up the RecyclerView.
+     *
+     * @param inflater           The LayoutInflater used to inflate the layout.
+     * @param container          The ViewGroup that contains this fragment.
+     * @param savedInstanceState A Bundle containing the saved instance state, if any.
+     * @return The View for the fragment's UI.
+     */
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)  {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
         recyclerView = view.findViewById(R.id.user_view);
@@ -55,7 +71,11 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
-    // Configure RecyclerView to display recent chat windows
+    /**
+     * Configure RecyclerView to display recent chat windows.
+     * It queries the Firestore database to retrieve chat windows associated
+     * with the current user and sets up the adapter.
+     */
     void setupChatRecyclerView(){
         Query query = FirebaseUtil.allChatWindowCollectionReference()
                 .whereArrayContains("userNames", UserCache.getInstance().getCurrentUserName())

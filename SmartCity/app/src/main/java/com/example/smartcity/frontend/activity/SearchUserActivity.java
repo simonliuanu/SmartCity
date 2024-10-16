@@ -1,11 +1,15 @@
-// SearchUserActivity.java
-/*
+/**
+ * SearchUserActivity.java
  * This file is part of the chat functionality implementation,
  * which is adapted from the tutorial series by Bimal Kafle.
  *
- * Sources:
- * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
- * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ * <p>Sources:</p>
+ * <ul>
+ *     <li>YouTube Playlist: <a href="https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w">YouTube Playlist</a></li>
+ *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
+ * </ul>
+ *
+ * @author Rongze Gao(u7841935)
  */
 
 package com.example.smartcity.frontend.activity;
@@ -26,6 +30,10 @@ import com.example.smartcity.util.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
+/**
+ * SearchUserActivity allows users to search for other users by name.
+ * It displays the search results in a RecyclerView and handles user interactions.
+ */
 public class SearchUserActivity extends AppCompatActivity {
 
     EditText searchInput;
@@ -35,6 +43,12 @@ public class SearchUserActivity extends AppCompatActivity {
 
     SearchUserAdapter adapter;
 
+    /**
+     * Called when the activity is created. Initializes the UI components
+     * and sets up the search functionality.
+     *
+     * @param savedInstanceState A Bundle containing the saved instance state, if any.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_user);
@@ -69,7 +83,11 @@ public class SearchUserActivity extends AppCompatActivity {
         });
     }
 
-    // Configure RecyclerView to display search results based on user input
+    /**
+     * Configures the RecyclerView to display search results based on the user input.
+     *
+     * @param searchTerm The term entered by the user to search for other users.
+     */
     void setupSearchRecyclerView(String searchTerm){
         Query query = FirebaseUtil.allUserCollectionReference()
                 .whereGreaterThanOrEqualTo("name", searchTerm)

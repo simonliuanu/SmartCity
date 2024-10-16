@@ -18,8 +18,6 @@ import java.util.List;
  * @author Simon Liu (u7761758)
  */
 public class RestaurantManager {
-    private static RestaurantManager instance;
-    private Context context;
     private AvlTree<Restaurant> restaurantTree = new AvlTree<>();
     private Tokenizer tokenizer;
     private Parser parser;
