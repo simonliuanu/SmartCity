@@ -1,7 +1,14 @@
 package com.example.smartcity.backend.entity;
 
+/**
+ *  Represent a User object with name and password attributes, which corresponds
+ *  to user properties stored in Firebase.
+ *
+ * @author Shengzong Dai (u7811526)
+ */
 public class User {
 
+    // global variable used to track current login user
     private static User loginUser = new User();
     private String name;
     private String pwd;
@@ -14,10 +21,18 @@ public class User {
         this.pwd = pwd;
     }
 
+    /**
+     * Return the singleton instance representing the currently logged-in user.
+     * @return the global variable loginUser
+     */
     public static User getInstance() {
         return loginUser;
     }
 
+    /**
+     * update the login user state
+     * @param name the login user's name
+     */
     public void updateLoginUserState(String name) {
         loginUser.setName(name);
     }
