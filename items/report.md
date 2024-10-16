@@ -108,7 +108,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
      - [Report Writing?] [Slides preparation?]*
      - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
-3. **u7811526, Shengzong Dai**  I have 25% contribution, as follows: <br>
+3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
 
   - Features:
@@ -365,19 +365,25 @@ Production Rules:
 
    * Code: LoginActivity, UserDao, UserDaoImple
    * Description of feature: User can use the fixed account to login <br>
-   * Description of your implementation: We store the user's login information (username and password) in the Firebase's [Firestore database]([smart-city-restaurant – Cloud Firestore – Data – Firebase console (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100))), so that when the user logs in, the information stored in the database is compared and verified.  And when the user enters an empty or incorrect account/password, the app will give a corresponding prompt. <br>
+   * Description of your implementation: 
+      
+      We store the user's login information (username and password) in the Firebase's [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100), so that when the user logs in, the information stored in the database is compared and verified.  And when the user enters an empty or incorrect account/password, the app will give a corresponding prompt. <br>
 
 2. [DataFiles]. Description of the feature(easy)
 
    * Code to the Data File: <a href="[SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json · dev · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json?ref_type=heads)">assets</a>
    * Link to the Firebase repo: <a href="[smart-city-restaurant - Realtime Database - 数据 - Firebase 控制台 (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants?hl=zh-cn)">firebase</a>
-   * Description of your implementation:I obtained the official open map API interface of Google from the Google Cloud Console, and obtained the restaurant data we needed from Google Maps through the Google API interface. Then I wrote a script program in Python to crawl data through the API interface. This script uses a simple grid method to generate search locations from several major cities in Australia. Each city has about 10 to 30 search locations (depending on the size of the city), with a search radius of 1,000 meters. The search keywords are restaurant, cafe, bar, and the information obtained includes name, image URL, rating, address, latitude and longitude, price level and restaurant category. Finally, the results are saved in JSON format.
+   * Description of your implementation:
+   
+      I obtained the official open map API interface of Google from the Google Cloud Console, and obtained the restaurant data we needed from Google Maps through the Google API interface. Then I wrote a script program in Python to crawl data through the API interface. This script uses a simple grid method to generate search locations from several major cities in Australia. Each city has about 10 to 30 search locations (depending on the size of the city), with a search radius of 1,000 meters. The search keywords are restaurant, cafe, bar, and the information obtained includes name, image URL, rating, address, latitude and longitude, price level and restaurant category. Finally, the results are saved in JSON format.
 
 3. [LoadShowData]
 
    * Code: [ItemListAdapter](), [ItemFragment](), [RestaurantRepository]()
    * Description of feature: The app load and display data instances from the data set. <br>
-   * Description of your implementation:  We stored the restaurant data in Firebase's [Realtime Database]([smart-city-restaurant – Realtime Database – Data – Firebase console (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants)) because it works well with JSON-formatted data. Additionally, we created a corresponding `Restaurant` class with properties that map directly to the JSON structure, allowing for seamless data reading and display. As we have 3,500 records, we implemented pagination to prevent overloading the system by loading too much data at once. Each page displays 12 records, and users can click "load more data" to view the next set of data. To achieve this, we used the Iterator pattern in the implementation.<br>
+   * Description of your implementation: 
+   
+      We stored the restaurant data in Firebase's [Realtime Database](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants) because it works well with JSON-formatted data. Additionally, we created a corresponding `Restaurant` class with properties that map directly to the JSON structure, allowing for seamless data reading and display. As we have 3,500 records, we implemented pagination to prevent overloading the system by loading too much data at once. Each page displays 12 records, and users can click "load more data" to view the next set of data. To achieve this, we used the Iterator pattern in the implementation.<br>
 
 4. [DataStream]
 
@@ -487,10 +493,11 @@ Feature Category: Firebase Integration <br>
 
       In the old version, if the user click the "like" button to like  restaurant on the item page, then it appeared in the "My Favorites" section of the me page. If the user clicked on the "like" button again-to unlike-the restaurant instantly disappeared from the favorites list. I did this by using the Singleton pattern to create the class `LikeRestaurant`, which extended the `ArrayList<Restaurant>` and acted as a global variable, which stored the user's selections in memory. Then, the `ItemAdapter` was set to listen for that instance; thus, when the user liked a restaurant on an item page, it showed up in "My Favorites." Similarly, unliking it immediately removed it from the list.
 
-      However, when the 'grouped' feature was introduced, the previous code couldn't support real-time updates when restaurants were grouped by type. ⁤⁤This is because `ItemAdapter` only listened to `LikeRestaurant`, while the grouping functionality used another list, `resList` (used to store the filtered restaurants). ⁤⁤When the user grouped restaurants in "My Favorites," `resList` was updated based on the types in `LikeRestaurant`, but the display didn't update immediately when a restaurant was unliked. ⁤⁤Even though the restaurant was removed from `LikeRestaurant`, it still persisted in `resList` (The 'like' button is canceled display), since `ItemAdapter` wasn't listening to it. 
+      However, when the 'grouped' feature was introduced, the previous code couldn't support real-time updates when restaurants were grouped by type. ⁤⁤This is because `ItemAdapter` only listened to `LikeRestaurant`, while the grouping functionality used another list, `filterList` (used to store the filtered restaurants). ⁤⁤When the user grouped restaurants in "My Favorites," `filterList` was updated based on the types in `LikeRestaurant`, but the display didn't update immediately when a restaurant was unliked. ⁤⁤Even though the restaurant was removed from `LikeRestaurant`, it still persisted in `filterList` (The 'like' button is canceled display), since `ItemAdapter` wasn't listening to it. 
 
     - How to solve the issue: 
-      The essence here is ensuring that `resList` updates in real-time whenever `likeRestaurant` is modified. This scenario is a perfect fit for the Observer pattern. In this case, `likeRestaurant` would act as the subject, and `resList` (though implemented in `MeFragment`) would be the observer. When the state of `likeRestaurant` changesᅳsuch as when a user likes or unlikes a restaurantᅳthe add() or remove() methods are triggered, and the observer is notified. This, in turn, calls `filterRestaurantsByType` to update the state of `resList`. By applying the Observer pattern, the "My Favorites" section can update instantly whenever a restaurant is liked or unliked.
+
+      The essence here is ensuring that `filterList` updates in real-time whenever `likeRestaurant` is modified. This scenario is a perfect fit for the Observer pattern. In this case, `likeRestaurant` would act as the subject, and `MeFragment` (though implemented in `filterList`) would be the observer. When the state of `likeRestaurant` changesᅳsuch as when a user likes or unlikes a restaurantᅳthe add() or remove() methods are triggered, and the observer is notified. This, in turn, calls `filterRestaurantsByType` to update the state of `filterList`. By applying the Observer pattern, when user unlike the restaurant on 'Me' page, the state of `likeRestaurant` changed, and notified current `filterList`, the update the state of `filterList`, thus implemented the real-time updates of the list.
 
 - (iii) select a software license and explain why you chose this one (4 sentences maximum);<br>
  **The license we choose:** MIT License<br>
@@ -516,8 +523,21 @@ Feature Category: Firebase Integration <br>
    - *Code coverage: ...*
    - *Types of tests created and descriptions: ...*
 
-2. xxx
+2. Tests for Iterator
 
+    - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
+    - *Number of test cases: 2*
+    - *Code coverage: *
+    - *Types of tests created and descriptions:*
+        1. testLoadPageData():
+          - Simulate an AVLTree that inserts data
+          - Validate correct loading of paginated data from the AVL tree.
+          - Verify that the iterator can correctly load the paginated data
+          - Ensure that each page contains the correct number (12)
+          - Ensure the next page with data can load successfully
+        
+        2. testLoadExcessiveData():
+          - Ensure that the iterator correctly identifies when there is no more data to return.
 ...
 
 <br> <hr>
