@@ -37,7 +37,7 @@ public class RestaurantRepository implements Container{
         private int curPage = 1;
         private static final int PER_PAGE_LIMITS = 12;
         private static final int TOTAL_DATA = 3503;
-        AvlTree<Restaurant> instance;
+        AvlTree instance;
 
         public RestaurantIterator() {
             instance = AvlTreeManager.getInstance();

@@ -10,14 +10,14 @@ import com.example.smartcity.backend.entity.Restaurant;
  * @author Simon Liu (u7761758)
  */
 public class AvlTreeManager {
-    private static AvlTree<Restaurant> instance;
+    private static AvlTree instance;
 
     private AvlTreeManager() {
     }
 
-    public static AvlTree<Restaurant> getInstance() {
+    public static AvlTree getInstance() {
         if (instance == null) {
-            instance = new AvlTree<>();
+            instance = new AvlTree();
         }
         return instance;
     }

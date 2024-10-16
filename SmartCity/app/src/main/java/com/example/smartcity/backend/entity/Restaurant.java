@@ -118,6 +118,14 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
         return estimated_price;
     }
 
+    /**
+     * This function used to convert the estimated price to a number
+     * so that we can use it to compare the price
+     * If the price is unknown, we set it to 5
+     *
+     * @author Simon Liu (u7761758)
+     * @return the price level of the restaurant
+     */
     public int getPrice() {
         switch (estimated_price) {
             case "$10-$25":
