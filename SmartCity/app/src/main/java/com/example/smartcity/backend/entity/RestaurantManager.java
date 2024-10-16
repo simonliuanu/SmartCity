@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.backend.dataStructure.Parser;
 import com.example.smartcity.backend.dataStructure.Tokenizer;
+import com.example.smartcity.backend.dataStructure.AvlTree;
 
 import java.util.ArrayList;
 import java.util.List;
