@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 /**
  * MainActivity manages navigation between fragments
  *
- * @author Tianfa Zhu
+ * @author Tianfa Zhu u7615711
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Get BottomNavigationView
+        // Note: We use the deprecated method setOnNavigationItemSelectedListener
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
