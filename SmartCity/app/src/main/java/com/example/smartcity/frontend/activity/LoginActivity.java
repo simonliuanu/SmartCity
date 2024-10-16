@@ -19,7 +19,6 @@ import com.example.smartcity.R;
 import com.example.smartcity.backend.cache.UserCache;
 import com.example.smartcity.backend.dao.UserDao;
 import com.example.smartcity.backend.dao.UserDaoImpl;
-import com.example.smartcity.backend.db.Firebase;
 import com.example.smartcity.backend.entity.User;
 import com.example.smartcity.util.LoginCallback;
 
@@ -35,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private boolean showPwd = false;
     private ImageView btnShowPwd;
-    private Firebase firebase;
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        firebase = new Firebase();
-        firebase.setupUser();
+        userDao = new UserDaoImpl();
+        userDao.initializeUser();
 
         loginUsername = findViewById(R.id.login_user_name);
         loginPwd = findViewById(R.id.login_pwd);

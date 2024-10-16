@@ -15,4 +15,9 @@ public interface UserDao {
      * @param callback callback function, use to asynchronously process firebase callback data
      */
     void checkUser(User user, LoginCallback callback);
+
+    /**
+     * Add initial user information to Firebase
+     */
+    void initializeUser();
 }
