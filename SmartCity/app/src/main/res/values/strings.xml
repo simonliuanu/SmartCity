@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CityTastes</string>
     <string name="map_api_key">AIzaSyAbDA9WKE-U5ClKlrBbZ5nJJiBsfE2JhRw</string>
-    <string name="recent_chat_show">Friends</string>
+    <string name="recent_chat_show">Chat</string>
     <string name="search_user_show">Search User</string>
     <string name="search_user_hint">Username</string>
     <string name="chat_window_show">Username</string>
