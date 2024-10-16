@@ -150,7 +150,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnScrollListen
      * @param view
      * @param i
      * @param l
-     * @author Yuheng Li
+     * @author Yuheng Li(u7810157)
      * go to comment page
      */
     @Override
