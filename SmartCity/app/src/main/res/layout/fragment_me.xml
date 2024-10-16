@@ -17,7 +17,7 @@
             android:layout_height="150dp"
             android:layout_gravity="start"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_avatar" />
+            android:src="@drawable/ic_avatar" /> <!--from https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/-->
 
         <LinearLayout
             android:layout_width="wrap_content"
