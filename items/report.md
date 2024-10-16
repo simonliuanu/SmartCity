@@ -89,7 +89,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
   - **Others**: Assisted Data Verification
 
-2. **u7810157, Yuheng Li**  I have 25% contribution, as follows: <br>
+2. **u7810157, Yuheng Li**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
      - Features: 
