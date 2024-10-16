@@ -17,9 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcity.R;
+import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.frontend.activity.CommentActivity;
 import com.example.smartcity.frontend.adapter.ItemListAdapter;
-import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.backend.dataStructure.AvlTreeManager;
 import com.example.smartcity.backend.dataStructure.Tokenizer;
 import com.example.smartcity.backend.entity.Restaurant;
@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     private EditText editTextSearch;
     private Button buttonSearch;
     private ListView listViewRestaurants;
-    private AvlTree<Restaurant> restaurantTree;
+    private AvlTree restaurantTree;
     private RestaurantManager restaurantManager;
     private ItemListAdapter itemListAdapter;
     private Spinner spinnerFilter, spinnerSortBy;
@@ -249,7 +249,7 @@ public class HomeFragment extends Fragment {
      * @param node The current node in the AVL tree
      * @param validTokens A list of valid tokens
      */
-    private void collectValidTokens(AvlTree.Node<Restaurant> node, List<String> validTokens) {
+    private void collectValidTokens(AvlTree.Node node, List<String> validTokens) {
         if (node == null) {
             return;
         }
