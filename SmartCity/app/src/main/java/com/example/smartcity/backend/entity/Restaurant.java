@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;
 
+/**
+ * @author Rongze Gao (u7841935), Shengzong Dai (u7811526)
+ */
 public class Restaurant implements Serializable, Comparable<Restaurant> {
     private int id;
     private String name;
@@ -24,20 +27,11 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
     }
 
     /**
-     * used to filter restaurants types
+     * used to set filter restaurants types
      * @author Shengzong Dai (u7811526)
      */
     public enum RestaurantType {
         CAFE, LODGING, FOOD, BAR
-    }
-
-
-    // test constructor
-    public Restaurant(String name, double rating, String address, String photo_url) {
-        this.name = name;
-        this.rating = rating;
-        this.address = address;
-        this.photo_url = photo_url;
     }
 
     public Restaurant(int id, String name, double rating, String address, String photo_url,

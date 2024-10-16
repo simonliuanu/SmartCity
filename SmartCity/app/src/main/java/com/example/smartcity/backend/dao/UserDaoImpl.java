@@ -8,7 +8,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.smartcity.backend.entity.User;
-import com.example.smartcity.util.FirestoreCallback;
+import com.example.smartcity.util.LoginCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -16,6 +16,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * Implementation of the UserDao interface to interact with Firebase database.
+ * @author Shengzong Dai (u7811526)
+ */
 public class UserDaoImpl implements UserDao {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -23,15 +27,16 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * This method used to check if the login user exist
+     *
      * Since Firebase Firestore queries are asynchronous, we cannot directly
      * get the return value of the callback function externally, and need to
      * wait for the callback to complete before processing the returned result.
+     *
      * @param user the info of login user with name and pwd
      * @param callback to process the survey results
-     * @author: Shengzong Dai
      */
     @Override
-    public void checkUser(User user, FirestoreCallback callback) {
+    public void checkUser(User user, LoginCallback callback) {
         Query query = usersRef.whereEqualTo("name", user.getName()).whereEqualTo("pwd", user.getPwd());
 
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
