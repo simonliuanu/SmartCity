@@ -26,7 +26,7 @@ import com.example.smartcity.util.LoginCallback;
 /**
  * This activity use to implement login function
  *
- * @author: u7811526
+ * @author: Shengzong Dai (u7811526)
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
      * used to implement user login function
      *
      * @param username user's account
-     * @param pwd     user's      * @author u7811526
+     * @param pwd user's password
      */
     private void login(String username, String pwd) {
         // if the account or password is null, this user won't be allowed to login
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * used to show/hide the password test
+     * used to show/hide the password
      */
     public void showPassword() {
         if (!showPwd) {
@@ -115,8 +115,7 @@ public class LoginActivity extends AppCompatActivity {
      * The callback function will only be executed after the query is completed.
      * @param username user's name
      * @param pwd     user's password
-     * @author Shengzong Dai
-     * @uid u7811526
+     * @author Shengzong Dai (u7811526)
      */
     private void checkUser(String username, String pwd) {
         User user = new User(username, pwd);
