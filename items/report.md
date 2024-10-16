@@ -560,7 +560,6 @@ Feature Category: Firebase Integration <br>
 
 <hr>
 
-
 ### Conflict Resolution Protocol
 
 *[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
