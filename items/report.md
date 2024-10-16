@@ -539,6 +539,12 @@ Feature Category: Firebase Integration <br>
 
 2. *Bug 2:*
 
+   - Description: When the emulator is launched for the first time and the map interface is accessed, the map displays at the default location (Los Angeles) instead of the set current location (ANU's CSIT building), despite the emulator's default location being configured correctly. Users need to manually click the location button to update to the correct position.
+   - Steps to Reproduce:
+       - Launch the emulator.
+       - Open the application.
+       - Navigate to the map feature.
+       - Observe that the map shows the default location instead of the configured location.
 3. ...
 
 <br> <hr>
