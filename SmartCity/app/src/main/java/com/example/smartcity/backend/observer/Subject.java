@@ -15,6 +15,7 @@ public interface Subject {
      * Detach an observer
      * @param observer
      */
+    // This is the key method, so keep it
     void detach(LikeRestaurantObserver observer);
 
     /**

@@ -26,6 +26,16 @@ import java.util.List;
  * once it be called by the itemFragment
  * the listView in itemFragment will be filled by the item_list.xml
  *
+ * The usage of ViewHolder adapter from CSDN blog by '泊停Bo'
+ *
+ * When sliding the list on the 'item' page, there is a situation where the position of the item is
+ * repeated. That is, only the position value of number of the item that can be displayed on the
+ * current page is loaded, and duplicate items will appear when sliding.
+ *
+ * To solve this bug, introduced the ViewHolder class for management
+ *
+ *  Reference:
+ *      https://blog.csdn.net/qq_39402590/article/details/90473268
  * @author Shengzong Dai (u7811526)
  */
 public class ItemListAdapter extends ArrayAdapter<Restaurant> {

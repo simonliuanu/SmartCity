@@ -18,7 +18,7 @@ import java.util.List;
 public class LikeRestaurant extends ArrayList<Restaurant> implements Subject {
 
     private static LikeRestaurant singleton = new LikeRestaurant();
-    private List<LikeRestaurantObserver> observers = new ArrayList<>(); // 用于存储观察者
+    private List<LikeRestaurantObserver> observers = new ArrayList<>();
 
     private LikeRestaurant() {}
 

@@ -34,6 +34,10 @@ import java.util.List;
 /**
  * Represents the "Item" page in the application.
  *
+ * The load more data function inspired and adapted from Tencent Cloud by '全栈程序员栈长'
+ * Reference:
+ *  Tencent cloud: https://cloud.tencent.com/developer/article/2042342
+ *  Original link: https://javaforall.cn
  * @author Shengzong Dai (u7811526), Yuheng Li (u7810157)
  */
 public class ItemFragment extends Fragment implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
