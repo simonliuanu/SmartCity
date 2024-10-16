@@ -115,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
      * The callback function will only be executed after the query is completed.
      * @param username user's name
      * @param pwd     user's password
-     * @author Shengzong Dai (u7811526)
      */
     private void checkUser(String username, String pwd) {
         User user = new User(username, pwd);
