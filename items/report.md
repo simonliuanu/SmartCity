@@ -170,21 +170,42 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
-1. *Jay opens the app and goes to the home screen, which has listings of popular restaurants in the vicinity.*
-2. *He types "Chinese restaurant" in the search feature and views the results returned.*
-3. *Then, he identifies a restaurant, reads through the reviews, and decides on it.*
-4. *He was eager to dine at this restaurant and shared his experience by posting his review.*
-5. *His friend Mark used the application as well and read Jay's review, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
-6. *Later on, Mark visited the restaurant, had an exceptional meal, and posted his review, starting a conversation about their experiences.*
+*Jay is looking for a nice restaurant in his vicinity to try for dinner.*
+
+1. *Jay opens the app and goes to the home screen, which has a input window above the page to type in and two button to filter.*
+  
+2. *He types "QT" in the search input box and views the results returned. Suddenly, he thought of a amazing restaurant, but he didn't remember the precise name, he typed in some character in memory which is very similar with the final result and he still can get the restaurant he want.*
+  
+3. *Then, he can choose to display the result in price order or rate order, or he can just reallocate the result according to types.*
+  
+4. *He finds the address of the restaurant he searched is too far to go, and then he want to check if there is any restaurant nearby.*
+  
+5. *So, he clicks the map fragment and he see the his location and all restaurant nearby, he can click any of red location icon displayed on the map and he can get the details of it, such as whole picture, rate, and precise address.*
+  
+6. *He chose a restaurant quickly and was eager to dine at this restaurant and shared his experience by posting his review. So, he want to chat his friend Mark, he jumped in the chat page and click Mark's column send his opinon about the restaurant.*
+  
+7. *His friend Mark used the application as well and read Jay's messages, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
+  
+8. *Later on, Mark chated Jay where he can find all the restaurants, because he want to collect some sepcial resetaurants in his list. Jay told him that he can click the item fragment and scroll down to check all the restaurants in this app, when scrolling to the bottom, just click the "load more data" to keep finding, and in the process in his travel, he can click the yellow star on the right-top corner in the restaurant he interests in to add the restaurant to his like list.*
+  
+9. *According to Jay's suggestions, Mark find he can click every single restaurant and subimt his comments and also check other users' comment to decide collect it or not.*
+  
+10. *Finally, he can check his collection in "Me" fragment and look for details about every restaurant he collected and group them according to the types. When he don't want use this app anymore he can just log out and exit.*
+  
 
 *Targets Users: Food enthusiasts, travelers, and anyone looking to discover new dining options*
 
-* *Users can search for restaurants nearby based on their preferences and dietary needs.*
-* *Users can bookmark  their favorite restaurants to make access easier next time*
+- *Users can search restaurant based on their preferences and dietary needs.*
+  
+- *Users can search for restaurants nearby.*
+  
+- *Users can add restaurant to likelist and check every restaurant's details and other users' comments.*
+  
+- *Users can chat with other users about their opinon.*
+  
+- *Users can manage his/her own likelist and group them by types.*
+  
 
-*Users can share experiences about their dining and reviews with their friends and the community of the app*
-
-*Users can filter restaurants depending on the kind of cuisine they want, the range of pricing, and rating done by users to get the best for their needs*
 <hr>
 
 ### Application UML
