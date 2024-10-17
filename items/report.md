@@ -405,16 +405,15 @@ Production Rules:
 
 6. `[UXUI]` The app must maintain a consistent design language throughout, including colors, fonts, and UI element styles, to provide a cohesive user experience. The app must also handle orientation changes (portrait to landscape and vice versa) gracefully, ensuring that the layout adjusts appropriately. (easy)
 
-   - Code: LoginActivity, UserDao, UserDaoImple
-   - Description of feature: User  can use the fixed account to login
-   - Description of your implementation: Store the users' information in firebase 
+   - Code: [fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads),[fragment_map.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_map.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_me.xml?ref_type=heads),[comment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/comment_item.xml?ref_type=heads)
+   - Description of feature: The existing design is consistent in terms of style, font, color theme, and layout. It also supports the changes in screen orientation-smooth moving of layout for a good user experience.
+   - Description of your implementation: I have used responsive layouts that can be achieved through the use of flexible containers; these will handle the change in screen orientation by reorienting the layout properly upon rotation and also maintain coherence in design and readability. 
 
 7. `[UIFeedback]` The UI must provide clear and informative feedback for user actions, including error messages to guide users effectively. (easy)
 
-   - Code: LoginActivity, UserDao, UserDaoImple, MeFragment
-   - Description of feature: User can use the fixed account to login, logout 
-   - Description of your implementation: After the user enters incorrect information or logs out, the system will display a toast.
-
+   - Code: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)，[LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads)
+   - Description of feature: The app shows feedback for failed login attempts and also acknowledges a successful logout action.
+   - Description of your implementation: On the login page, we validated the user's input against the stored credentials, displaying "Wrong username or password" for incorrect entries. Upon logout, a toast message "You have logged out" appears, confirming the action and redirecting the user back to the login page.
    <br>
 
 ### Custom Features
