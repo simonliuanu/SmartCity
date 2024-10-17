@@ -211,15 +211,16 @@ Note that the core criteria of contribution is based on `code contribution` (the
 ### Application UML
 
 [Whole ClassDiagram](items/uml_Diagram/classDiagram.svg)<br>
- DAO ClassDiagram <br>
+<hr>
+ DAO ClassDiagram: <br>
 ![DAO ClassDiagram](items/uml_Diagram/daouml.png)<br>
- DataStructure ClassDiagram <br>
+ DataStructure ClassDiagram: <br>
 ![DataStructure ClassDiagram](items/uml_Diagram/dataStructure.png)<br>
- Factory ClassDiagram <br>
+ Factory ClassDiagram: <br>
 ![Factory ClassDiagram](items/uml_Diagram/factoryUml.png)<br>
- Iterator ClassDiagram <br>
+ Iterator ClassDiagram: <br>
 ![Iterator ClassDiagram](items/uml_Diagram/IteratorUml.png)<br>
- Observer ClassDiagram <br>
+ Observer ClassDiagram: <br>
 ![Observer ClassDiagram](items/uml_Diagram/observerUml.png)<br>
 <hr>
 
