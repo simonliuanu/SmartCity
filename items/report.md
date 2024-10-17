@@ -539,15 +539,15 @@ Feature Category: Firebase Integration <br>
     - *Number of test cases: 2*
     - *Code coverage: *
     - *Types of tests created and descriptions:*
-        1. testLoadPageData():
-          - Simulate an AVLTree that inserts data
-          - Validate correct loading of paginated data from the AVL tree.
-          - Verify that the iterator can correctly load the paginated data
-          - Ensure that each page contains the correct number (12)
-          - Ensure the next page with data can load successfully
+      1. testLoadPageData():
+        - Simulate an AVLTree that inserts data
+        - Validate correct loading of paginated data from the AVL tree.
+        - Verify that the iterator can correctly load the paginated data
+        - Ensure that each page contains the correct number (12)
+        - Ensure the next page with data can load successfully
         
-        2. testLoadExcessiveData():
-          - Ensure that the iterator correctly identifies when there is no more data to return.
+      2. testLoadExcessiveData():
+        - Ensure that the iterator correctly identifies when there is no more data to return.
 ...
 
 <br> <hr>
