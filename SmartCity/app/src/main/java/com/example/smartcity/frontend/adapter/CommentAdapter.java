@@ -17,6 +17,7 @@ import java.util.List;
  * including display the every comment through recycleView
  * and display "Me" according to the current user
  * and display the name, content, and date in every comment.
+ * Reference: part idea of code comes from: https://stackoverflow.com/questions/33702163/why-to-use-static-with-recyclerview-viewholder
  * @author Yuheng Li
  */
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
