@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This layout file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/search_text"
+    android:layout_margin="10dp"
+    android:elevation="2dp">
+
+    <include layout="@layout/user_pic"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="User name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:id="@+id/user_name_text"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="00:00"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/last_message_time"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="+000000"
+            android:id="@+id/last_message"/>
+    </LinearLayout>
+</LinearLayout>

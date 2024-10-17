@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This layout file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ -->
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <stroke android:width="1dp" android:color="@color/white"/>
+    <corners android:radius="10dp"/>
+    <solid android:color="@color/white"/>
+</shape>

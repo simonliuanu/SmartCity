@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This layout file is part of the chat functionality implementation,
+ * which is adapted from the tutorial series by Bimal Kafle.
+ *
+ * Sources:
+ * YouTube Playlist: https://www.youtube.com/playlist?list=PLgpnJydBcnPB-aQ6P5hWCHBjy8LWZ9x4w
+ * GitHub Repository: https://github.com/bimalkaf/Android_Chat_Application
+ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".frontend.activity.ChatActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navi_color"
+        android:padding="10dp"
+        android:id="@+id/toolbar">
+
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:id="@+id/back_btn"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_toEndOf="@+id/back_btn"
+            android:text="@string/chat_window_show"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:id="@+id/receiver_user_name"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottom_layout"
+        android:id="@+id/chat_view"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp"
+        android:id="@+id/bottom_layout">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/send_btn"
+            android:hint="@string/chat_window_hint"
+            android:background="@drawable/search_text"
+            android:padding="10dp"
+            android:id="@+id/message_input"/>
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_send"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/navi_color"
+            android:id="@+id/send_btn"
+            android:padding="8dp"
+            android:layout_marginStart="10dp"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

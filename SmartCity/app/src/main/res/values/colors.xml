@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="theme_color">#fda677</color>
+    <color name="navi_color">#fc7f69</color>
+    <color name="off_white">#FAFAFA</color>
+    <color name="chat_user_me">#00BCD4</color>
+    <color name="chat_user_you">#8BC34A</color>
+</resources>
