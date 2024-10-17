@@ -1,11 +1,8 @@
 package com.example.smartcity.backend.entity;
 
-import android.content.Context;
-
 import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.backend.dataStructure.Parser;
 import com.example.smartcity.backend.dataStructure.Tokenizer;
-import com.example.smartcity.backend.dataStructure.AvlTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +16,6 @@ import java.util.List;
  * @author Simon Liu (u7761758)
  */
 public class RestaurantManager {
-    private static RestaurantManager instance;
-    private Context context;
     private AvlTree restaurantTree = new AvlTree();
     private Tokenizer tokenizer;
     private Parser parser;

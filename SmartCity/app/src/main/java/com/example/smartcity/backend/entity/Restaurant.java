@@ -2,7 +2,6 @@ package com.example.smartcity.backend.entity;
 
 import java.io.Serializable;
 
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;
@@ -203,7 +202,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
                 Objects.equals(name, that.name) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(photo_url, that.photo_url) &&
-                Objects.equals(types, that.types) &&  // 使用 List 的 equals
+                Objects.equals(types, that.types) &&
                 price_level == that.price_level &&
                 Objects.equals(estimated_price, that.estimated_price);
     }

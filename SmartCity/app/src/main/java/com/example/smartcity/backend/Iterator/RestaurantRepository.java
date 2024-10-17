@@ -1,12 +1,9 @@
 package com.example.smartcity.backend.Iterator;
 
-import android.util.Log;
-
 import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.backend.dataStructure.AvlTreeManager;
 import com.example.smartcity.backend.entity.Restaurant;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
