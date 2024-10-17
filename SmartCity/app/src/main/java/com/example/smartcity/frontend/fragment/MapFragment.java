@@ -1,5 +1,20 @@
 package com.example.smartcity.frontend.fragment;
 
+/**
+ * MapFragment.java
+ * This fragment utilizes the Google Maps Android API and Google Play Services Location.
+ *
+ * @see <a href="https://developers.google.com/maps/documentation/android-sdk">Google Maps Android API Documentation</a>
+ * @see <a href="https://developers.google.com/android/reference/com/google/android/gms/location/package-summary">Google Play Services Location</a>
+ *
+ * Permissions: ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION are required for location services.
+ * Google Maps API Key is required for map rendering.
+ *
+ * Dependencies:
+ * implementation 'com.google.android.gms:play-services-maps:19.0.0'
+ * implementation 'com.google.android.gms:play-services-location:21.0.1'
+ */
+
 import com.example.smartcity.backend.cache.MapRestaurantCache;
 
 import com.bumptech.glide.Glide;

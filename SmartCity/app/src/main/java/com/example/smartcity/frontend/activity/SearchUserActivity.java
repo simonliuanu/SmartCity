@@ -1,3 +1,5 @@
+package com.example.smartcity.frontend.activity;
+
 /**
  * SearchUserActivity.java
  * This file is part of the chat functionality implementation,
@@ -9,8 +11,6 @@
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
  */
-
-package com.example.smartcity.frontend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

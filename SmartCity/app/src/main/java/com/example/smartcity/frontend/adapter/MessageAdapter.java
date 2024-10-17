@@ -1,3 +1,5 @@
+package com.example.smartcity.frontend.adapter;
+
 /**
  * MessageAdapter.java
  * This file is part of the chat functionality implementation,
@@ -9,8 +11,6 @@
  *     <li>GitHub Repository: <a href="https://github.com/bimalkaf/Android_Chat_Application">GitHub Repository</a></li>
  * </ul>
  */
-
-package com.example.smartcity.frontend.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
