@@ -165,7 +165,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 ### Application Use Cases and/or Examples
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
-
+![User case Diagram](items/uml_Diagram/UserCase.png)<br>
 *Here is a pet training application example*
 
 *Jay is looking for a new Italian restaurant in his vicinity to try for dinner.*
@@ -189,7 +189,12 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ### Application UML
 
-![ClassDiagram](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/report/classDiagram.svg?ref_type=heads)
+[ClassDiagram](items/uml_Diagram/classDiagram.svg)<br>
+![DAO ClassDiagram](items/uml_Diagram/daouml.png)<br>
+![DataStructure ClassDiagram](items/uml_Diagram/dataStructure.png)<br>
+![Factory ClassDiagram](items/uml_Diagram/factoryUml.png)<br>
+![Iterator ClassDiagram](items/uml_Diagram/IteratorUml.png)<br>
+![Observer ClassDiagram](items/uml_Diagram/observerUml.png)<br>
 <hr>
 
 ## Code Design and Decisions
