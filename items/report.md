@@ -109,36 +109,47 @@ Note that the core criteria of contribution is based on `code contribution` (the
      - [Report Writing?] [Slides preparation?]*
      - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
-- **Code Contribution in the final App**
 
+- **Code Contribution in the final App**
   - Features:
 
-    - [LogIn] - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-    - [LoadShowData] - class ItemListAdapter:  [ItemListAdapter.java](), 
-    - [Interact-Follow] - class: MeFragment
+    - [LogIn] - class: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads)
+    - [LoadShowData] - class:  [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads)
+    - [Interact-Follow] - class: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)
     - [[UXUI] - class:
-
   - Design Pattern: 
-  
-    - Singleton Pattern -  class User, LikeRestaurant: [getInstance()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43),
-    - Observer Pattern -  class LikeRestaurant: line 21 - 66
-    - Iterator Pattern -  class RestaurantRepository: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-    - DAO Pattern - package Dao 
 
-  - UI files: [bottom_navi.xml](), [activity_login.xml](), [activity_main.xml](), [fragment_item.xml](), [item_list.xml]()
-
-  - Other: setup firebase
+    - Singleton Pattern 
+      - class [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
+      - class [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32)
+    - Observer Pattern 
+      - Subject: class: [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads)
+      - Concrete Subject: [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [line 21 - 66](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L41-92)
+      - Observer: [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads)
+      - Concrete Observer: [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) implemented by [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads): [line 112 - 144](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L112-144), 
+    - Iterator Pattern
+      - Collection: [Container.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/Container.java?ref_type=heads)
+      - Concrete collection: [RestaurantRepository.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads)
+      - Concrete interator: [RestaurantIterator](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads#L36-70) (inner class)
+      - Implement in: class [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads): [line 89 - 110](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L89-110)  with method [loadMoreData](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L144-150)
+    - DAO Pattern
+      - Interface: [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads)
+      - Implement: [ItemDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDaoImpl.java?ref_type=heads), [UserDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads)
+      - Used in: ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
+  - UI files: [bottom_navi.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/tree/main/SmartCity/app/src/main/res/menu?ref_type=heads)(part), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_login.xml?ref_type=heads), [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_main.xml?ref_type=heads)(part), [fragment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_item.xml?ref_type=heads)(part), [item_list.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blame/main/SmartCity/app/src/main/res/layout/item_list.xml?ref_type=heads#L2), [moredata.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/moredata.xml?ref_type=heads)
 
     <br>
 
 - **Code and App Design** 
 
-  - I purposed following items: design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. Datastructure: [Arraylist]
-  - [UI Design. I design the theme color and layout location of the project]* <br><br>
+  - I proposed following items: 
+    - Design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. 	
+    - Datastructure: [Arraylist]
+    - Database: store in firebase
+  - UI Design: I design the theme color and layout location of the project <br><br>
 
 - **Others**: (only if significant and significantly different from an "average contribution") 
-
-  - [setup firebase] <br><br><br><br>
+  - setup firebase <br><br>
 
 4. **u7615711, Tianfa Zhu**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
