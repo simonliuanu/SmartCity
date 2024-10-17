@@ -168,12 +168,12 @@ Note that the core criteria of contribution is based on `code contribution` (the
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
 *Here is a pet training application example*
 
-*Jay is looking for a new Italian restaurant in his vicinity to try for dinner.*
+*Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
 1. *Jay opens the app and goes to the home screen, which has listings of popular restaurants in the vicinity.*
 2. *He types "Chinese restaurant" in the search feature and views the results returned.*
-3. *Then, he identifies a restaurant, reads through the reviews, checks the menu, and decides on it.*
-4. *He was eager to dine at this restaurant and shared his experience by posting his review and rating in the application.*
+3. *Then, he identifies a restaurant, reads through the reviews, and decides on it.*
+4. *He was eager to dine at this restaurant and shared his experience by posting his review.*
 5. *His friend Mark used the application as well and read Jay's review, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
 6. *Later on, Mark visited the restaurant, had an exceptional meal, and posted his review, starting a conversation about their experiences.*
 
