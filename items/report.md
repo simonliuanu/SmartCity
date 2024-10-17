@@ -329,9 +329,10 @@ Here is a partial (short) example for the subsection `Data Structures`:*
    * *Objective: used for .*
 
    * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads), [CommentItem](),[ContentInComment](),[UsernameInComment](); processed using Method [CommentActivity]()
-   * *Reasons:*
-
-       In order to meet the requirements of high-quality code, I decided to use the factory pattern here to generate comment content. By using the factory pattern, the object creation logic can be encapsulated in a factory class instead of directly instantiating the object in the client code. The advantages of doing so are: 1: The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment. 2: High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 3: The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
+   * Reasons:
+       * The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment.
+       * High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 
+       * The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
 <hr>
 
