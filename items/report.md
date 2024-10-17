@@ -189,7 +189,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ### Application UML
 
-[ClassDiagram](items/uml_Diagram/classDiagram.svg)<br>
+[Whole ClassDiagram](items/uml_Diagram/classDiagram.svg)<br>
 ![DAO ClassDiagram](items/uml_Diagram/daouml.png)<br>
 ![DataStructure ClassDiagram](items/uml_Diagram/dataStructure.png)<br>
 ![Factory ClassDiagram](items/uml_Diagram/factoryUml.png)<br>
