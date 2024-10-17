@@ -1,4 +1,4 @@
-# [G0 - Team Name] Report
+# [G16 - Five Coders] Report
 
 The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
 
@@ -31,22 +31,27 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 
 *Instruction: please place the CORRECT link to your firebase repository here (with comp21006442@gmail.com added as an Editor)*
 
-- Firebase Repository Link: <insert-link-to-firebase-repository OR write "I do not use Firebase"> // TODO
-   - Confirm: [ ] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
+- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
+
+  - Confirm: [X] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
+  - <img src="media/report/firebase-editors.png">
+
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
-   - Username: comp2100@anu.edu.au	Password: comp2100 [ ] // TODO: check if done
-   - Username: comp6442@anu.edu.au	Password: comp6442 [ ] // TODO: check if done
+
+  - Username: comp2100@anu.edu.au  Password: comp2100 [X] // TODO: check if done
+  - Username: comp6442@anu.edu.au  Password: comp6442 [X] // TODO: check if done
 
 ## Team Members and Roles
+
 The key area(s) of responsibilities for each member
 
-| UID   |  Name  |   Role |
-|:------|:------:|-------:|
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-
+| UID      |     Name      |      Role |
+| :------- | :-----------: | --------: |
+| u7841935 |  Rongze Gao   | Developer |
+| u7811526 | Shengzong Dai | Leader    |
+| u7761758 |   Simon Liu   | Developer |
+| u7615711 |  Tianfa Zhu   | Designer  |
+| u7810157 |   Yuheng Li   | Developer |
 
 ## Summary of Individual Contributions
 
@@ -65,73 +70,158 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
 
-1. **UID1, Name1**  I have 30% contribution, as follows: <br>
-  - **Code Contribution in the final App**
-    - Feature A1, A2, A3 - class Dummy: [Dummy.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-    - XYZ Design Pattern -  class AnotherClass: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-    - ... (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+1. **u7841935, Rongze Gao**  I have 20% contribution, as follows: <br>
+   - **Code Contribution in the final App**
 
-  - **Code and App Design** 
-    - [What design patterns, data structures, did the involved member propose?]*
-    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+   - Feature:
+     - [Data-GPS] - class MapFragment: [MapFragment.java]()
+     - [P2P-DM] - class ChatFragment: [ChatFragment.java](), SearchUserActivity: [SearchUserActivity.java](), ChatActivity.java: [ChatActivity.java]()
+     - [UXUI]
+      
+   - Design Pattern 
+     - Model-View-Controller (MVC) Pattern 
+         - Model class FirebaseUtil: [FirebaseUtil.java](), UserUtil: [UserUtil.java]()
+         - View class RecentChatAdapter: [RecentChatAdapter.java](), SearchUserAdapter: [SearchUserAdapter.java](), MessageAdapter: [MessageAdapter.java]()
+         - Controller class [P2P-DM] feature classes
+     - Singleton Pattern - class MapRestaurantCache: [MapRestaurantCache.java](), UserCache: [UserCache.java]()
 
-  - **Others**: (only if significant and significantly different from an "average contribution") 
-    - [Report Writing?] [Slides preparation?]*
-    - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
+  - UI files: [fragment_chat.xml](), [activity_search_user.xml](), [activity_chat.xml](), [recent_chat_view.xml](), [search_user_view.xml](), [message_view.xml]()
 
-2. **UID2, Name2**  I have xx% contribution, as follows: <br>
-  - ...
+  - **Others**: Assisted Data Verification
 
+2. **u7810157, Yuheng Li**  I have 20% contribution, as follows: <br>
+   - **Code Contribution in the final App**
 
+     - Features: 
+        -[DataFiles] - class: [RES_dataSet]()
+        -[DataStream] - class: [CommentActivity](),[CommentAdapter](),[Comment]()
+     - Factory Design Pattern -  class CommentFactory: [CommentFactory](),[CommentItem](),[ContentInComment](),[UsernameInComment]()
+     - UI files: [res_comment.xml]()
+     - (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+
+   - **Code and App Design** 
+
+     - I purposed following items: design pattern:[Factroy design pattern],Datastructure: [Arraylist]
+     - UML design:[User case diagram][Class diagram]<br><br>
+
+   - **Others**: (only if significant and significantly different from an "average contribution") 
+
+     - [Report Writing?] [Slides preparation?]*
+     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
+3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+
+  - Features:
+
+    - [LogIn] - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
+    - [LoadShowData] - class ItemListAdapter:  [ItemListAdapter.java](), 
+    - [Interact-Follow] - class: MeFragment
+    - [[UXUI] - class:
+
+  - Design Pattern: 
+  
+    - Singleton Pattern -  class User, LikeRestaurant: [getInstance()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43),
+    - Observer Pattern -  class LikeRestaurant: line 21 - 66
+    - Iterator Pattern -  class RestaurantRepository: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
+    - DAO Pattern - package Dao 
+
+  - UI files: [bottom_navi.xml](), [activity_login.xml](), [activity_main.xml](), [fragment_item.xml](), [item_list.xml]()
+
+  - Other: setup firebase
+
+    <br>
+
+- **Code and App Design** 
+
+  - I purposed following items: design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. Datastructure: [Arraylist]
+  - [UI Design. I design the theme color and layout location of the project]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution") 
+
+  - [setup firebase] <br><br><br><br>
+
+4. **u7615711, Tianfa Zhu**  I have 20% contribution, as follows: <br>
+   - **Code Contribution in the final App**
+
+     - Feature [UXUI] - class: [MainActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/activity/MainActivity.java?ref_type=heads)
+     - Feature [UIFeedback] - [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)
+     
+     - UI files: layout:[fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads),[fragment_map.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_map.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_me.xml?ref_type=heads),[comment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/comment_item.xml?ref_type=heads), [rounded_background.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/drawable/rounded_background.xml?ref_type=heads),[button_background.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/drawable/button_background.xml?ref_type=heads); 
+     layout(landscape):[fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_home.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_me.xml?ref_type=heads),[res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/res_comment.xml?ref_type=heads).
+     
+
+   - **Code and App Design** 
+
+     - [UI Design. I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages. Furthermore, I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]* <br><br>
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
-
-*Here is a pet specific application example*
-
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+*CityTastes is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
 
 ### Problem Statement
 
-*[Problem statement that defines the purpose of your App]*
-
+*[Our app helps users discoveries of new restaurants by searching either via name or GPS, reading of reviews, saving favorites, and finally sharing in the vibrant community of food enthusiasts.]*
 
 ### Application Use Cases and/or Examples
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
-
+![User case Diagram](items/uml_Diagram/UserCase.png)<br>
 *Here is a pet training application example*
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+*Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
-*Here is a map navigation application example*
+*Jay is looking for a nice restaurant in his vicinity to try for dinner.*
 
-*Targets Users: Drivers*
+1. *Jay opens the app and goes to the home screen, which has a input window above the page to type in and two button to filter.*
+  
+2. *He types "QT" in the search input box and views the results returned. Suddenly, he thought of a amazing restaurant, but he didn't remember the precise name, he typed in some character in memory which is very similar with the final result and he still can get the restaurant he want.*
+  
+3. *Then, he can choose to display the result in price order or rate order, or he can just reallocate the result according to types.*
+  
+4. *He finds the address of the restaurant he searched is too far to go, and then he want to check if there is any restaurant nearby.*
+  
+5. *So, he clicks the map fragment and he see the his location and all restaurant nearby, he can click any of red location icon displayed on the map and he can get the details of it, such as whole picture, rate, and precise address.*
+  
+6. *He chose a restaurant quickly and was eager to dine at this restaurant and shared his experience by posting his review. So, he want to chat his friend Mark, he jumped in the chat page and click Mark's column send his opinon about the restaurant.*
+  
+7. *His friend Mark used the application as well and read Jay's messages, then he wanted to go to that same restaurant based on his friend Jay's recommendation.*
+  
+8. *Later on, Mark chated Jay where he can find all the restaurants, because he want to collect some sepcial resetaurants in his list. Jay told him that he can click the item fragment and scroll down to check all the restaurants in this app, when scrolling to the bottom, just click the "load more data" to keep finding, and in the process in his travel, he can click the yellow star on the right-top corner in the restaurant he interests in to add the restaurant to his like list.*
+  
+9. *According to Jay's suggestions, Mark find he can click every single restaurant and subimt his comments and also check other users' comment to decide collect it or not.*
+  
+10. *Finally, he can check his collection in "Me" fragment and look for details about every restaurant he collected and group them according to the types. When he don't want use this app anymore he can just log out and exit.*
+  
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+*Targets Users: Food enthusiasts, travelers, and anyone looking to discover new dining options*
 
-*Target Users: Those who want to find some good restaurants*
+- *Users can search restaurant based on their preferences and dietary needs.*
+  
+- *Users can search for restaurants nearby.*
+  
+- *Users can add restaurant to likelist and check every restaurant's details and other users' comments.*
+  
+- *Users can chat with other users about their opinon.*
+  
+- *Users can manage his/her own likelist and group them by types.*
+  
 
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
-
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
-
-<hr> 
+<hr>
 
 ### Application UML
 
-![ClassDiagramExample](media/_examples/ClassDiagramExample.png) <br>
-*[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
-
+[Whole ClassDiagram](items/uml_Diagram/classDiagram.svg)<br>
+<hr>
+ DAO ClassDiagram: <br>
+![DAO ClassDiagram](items/uml_Diagram/daouml.png)<br>
+ DataStructure ClassDiagram: <br>
+![DataStructure ClassDiagram](items/uml_Diagram/dataStructure.png)<br>
+ Factory ClassDiagram: <br>
+![Factory ClassDiagram](items/uml_Diagram/factoryUml.png)<br>
+ Iterator ClassDiagram: <br>
+![Iterator ClassDiagram](items/uml_Diagram/IteratorUml.png)<br>
+ Observer ClassDiagram: <br>
+![Observer ClassDiagram](items/uml_Diagram/observerUml.png)<br>
 <hr>
 
 ## Code Design and Decisions
@@ -139,14 +229,13 @@ Note that the core criteria of contribution is based on `code contribution` (the
 This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
 
 - Details about the parser (describe the formal grammar and language used)
-
 - Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
-
 - Details about the design patterns used (where in the code, justification of the choice, etc)
 
 *Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
 
 <hr>
+
 
 ### Data Structures
 
@@ -156,100 +245,301 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 *I used the following data structures in my project:*
 
-1. *LinkedList*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+1. *AvlTree*
+   * ***Objective**: Used for storing restaurant data in a balanced search tree for the search feature. The AVL tree ensures efficient lookups, insertions, and deletions, enabling the application to quickly retrieve restaurant information based on user queries.*
+   * **Code Locations**: Defined in [AvlTree.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/dataStructure/AvlTree.java?ref_type=heads), and initialized in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/dataStructure/AvlTreeManager.java?ref_type=heads).
    * *Reasons:*
-      * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
-      * *We don't need to access the item by index for xxx feature because...*
-      * For the (part), the data ... (characteristics) ...
+     * The AVL tree is self-balancing, ensuring a time complexity of O(log n) for insertions, deletions, and lookups. This makes it more efficient than using an unsorted array or list when handling a large dataset of restaurants.
+     * AVL trees are ideal for the restaurant search feature because the balanced nature ensures that no matter how large the dataset grows, search performance remains optimal.
+     * We don’t need to access restaurants by index, which would make an array-based structure less suitable. Instead, the tree structure allows for quick retrieval based on comparisons (e.g., restaurant names or locations).
+     * For restaurant queries, the tree’s ordering and balancing help provide both exact and suggested results based on user input, particularly when implementing fuzzy matching.
 
-2. ...
+2. ArrayList
+
+   * ***Objective**: Use for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time.*
+   * **Code Locations: ** Defined in [LikeRestaurants.java]() , [ItemFragment.java]()
+   * *Reasons*: 
+      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
+      * ArrayList is sorted in the order in which the elements were added
+      * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
 3. ...
 
 <hr>
 
+
 ### Design Patterns
+
 *[What design patterns did your team utilise? Where and why?]*
 
-1. *xxx Pattern*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+1. *Model-View-Controller (MVC) Pattern*
+
+   * *Objective: Used to separate the data (Model), the user interface (View), and the control logic (Controller) to enhance maintainability and scalability of the application.*
+   * *Code Locations: 
+      - Model: defined in [FirebaseUtil.java](), [UserUtil.java]()
+      - View: defined in [RecentChatAdapter.java](), [SearchUserAdapter.java](), [MessageAdapter.java]()
+      - Controller: defined in [ChatFragment.java](), [SearchUserActivity.java](), [ChatActivity.java]()
    * *Reasons:*
-      * ...
+     * Facilitate clear separation of concerns, allowing easier management of changes in one part of the application without affecting others.
+     * Promote better organization of code, leading to improved readability and maintainability.
+
+
+2. *Data Access Object Pattern(DAO)*
+
+     * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
+     * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser()]()*
+     * *Reasons:*
+       *  Hide details of the data storage and the way to access to database
+       * DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
+       * When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
+
+    
+3. *Singleton Pattern*
+
+     * *Objective: make sure there is only one instance of LikeRestaurant and provide a global access point to access that instance.*
+     * *Code Locations: defined in [LikeRestaurant](); processed using [getInstance()]() .*
+     * *Reasons:*
+       * Only one instance in memory, reducing memory overhead
+       * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
+       * Data can be easily shared between different objects
+         ​  
+         <br>
+
+
+4. *Iterator Pattern*
+
+     * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
+     * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext()]() and [next()]()
+     * *Reasons:*
+       * Simplify the aggregation class, the class does not need to care about the traversal logic.
+       * Implemented paging functionality to speed up data loading
+
+
+5. *Observer Pattern*
+
+     * *Objective: used for realizing the grouping of restaurant data and real-time data update and display for [Interact-Follow] feature*
+     * Code Locations:  defined in [LikeRestaurant](); processed using [getInstance()]() 
+     * Reasons:
+       * Keep low coupling and high collaboration between objects
+       * Ensure that when the status of the restaurant in 'My Favorite' changes, the corresponding list can be updated in time
+
+
+6. Factory Pattern
+
+   * *Objective: used for .*
+
+   * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads), [CommentItem](),[ContentInComment](),[UsernameInComment](); processed using Method [CommentActivity]()
+   * Reasons:
+       * The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment.
+       * High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 
+       * The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
 <hr>
+
 
 ### Parser
 
 ### <u>Grammar(s)</u>
-*[How do you design the grammar? What are the advantages of your designs?]*
-*If there are several grammars, list them all under this section and what they relate to.*
+
+The parser's primary function is to validate and correct tokens by comparing them against this list using the Levenshtein distance algorithm.
+
+The parser operates based on a predefined list of **valid tokens** which are imported from item names imported from Firebase.
 
 Production Rules:
+
 ```
-    <Non-Terminal> ::= <some output>
-    <Non-Terminal> ::= <some output>
+<Sentence> ::= <Token>+
+<Token> ::= <ValidToken>
 ```
+
+**Advantages of This Design:**
+
+1. **Simplicity:**
+   - **Ease of Implementation:** The parser is straightforward to implement and maintain.
+   - **Minimal Overhead:** There's no need for complex parsing tables or state machines, which reduces computational overhead.
+2. **Flexibility:**
+   - **Dynamic Validation:** The list of valid tokens can be easily updated or extended without altering the underlying parsing logic.
+   - **Domain Adaptability:** Suitable for applications where the vocabulary is well-defined and can be enumerated.
+3. **Error Correction:**
+   - **Robustness:** By finding the closest valid token, the parser can correct minor typographical errors, enhancing user experience.
 
 ### <u>Tokenizers and Parsers</u>
 
-*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
+**Tokenizer (`Tokenizer` Class):**
+
+- **Purpose:** Breaks down input queries into individual tokens based on whitespace.
+- **Usage Scenario:** When a user inputs a query or command, the tokenizer processes the raw string to create a manageable list of tokens for further processing.
+
+**Parser (`Parser` Class):**
+
+- **Purpose:** Validates and corrects tokens by comparing them against a list of predefined valid tokens.
+- **Usage Scenario:** After tokenization, the parser ensures that each token is recognized and corrects any discrepancies, such as typographical errors, before the tokens are used in the application’s logic.
 
 <hr>
+
 
 ### Others
 
 *[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
 
 <br>
+
 <hr>
 
+
 ## Implemented Features
+
 *[What features have you implemented? where, how, and why?]* <br>
 *List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
 
 ### Basic Features
-1. [LogIn]. Description of the feature ... (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of feature: ... <br>
-   * Description of your implementation: ... <br>
 
-2. [DataFiles]. Description  ... ... (...)
-   * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
-   * Link to the Firebase repo: ...
+1. `[LogIn]` The app must support user login functionality. User sign-up is not required. (easy)
 
-3. ...
+   * Code: LoginActivity, UserDao, UserDaoImple
+   * Description of feature: User can use the fixed account to login <br>
+   * Description of your implementation: 
+      
+      We store the user's login information (username and password) in the Firebase's [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100), so that when the user logs in, the information stored in the database is compared and verified.  And when the user enters an empty or incorrect account/password, the app will give a corresponding prompt. <br>
+
+2. `[DataFiles]` The app must use a data set (which you may create) where each entry represents a meaningful piece of information relevant to the app. The data set must be represented and stored in a structured format as taught in the course. It must contain at least 2,500 valid instances. (easy)
+
+   * Code to the Data File: <a href="[SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json · dev · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json?ref_type=heads)">assets</a>
+   * Link to the Firebase repo: <a href="[smart-city-restaurant - Realtime Database - 数据 - Firebase 控制台 (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants?hl=zh-cn)">firebase</a>
+   * Description of your implementation:
+   
+      I obtained the official open map API interface of Google from the Google Cloud Console, and obtained the restaurant data we needed from Google Maps through the Google API interface. Then I wrote a script program in Python to crawl data through the API interface. This script uses a simple grid method to generate search locations from several major cities in Australia. Each city has about 10 to 30 search locations (depending on the size of the city), with a search radius of 1,000 meters. The search keywords are restaurant, cafe, bar, and the information obtained includes name, image URL, rating, address, latitude and longitude, price level and restaurant category. Finally, the results are saved in JSON format.
+
+3. `[LoadShowData]` The app must load and display data instances from the data set. Data must be retrieved from either a local file (e.g., JSON, XML) or Firebase. (easy)
+
+   * Code: [ItemListAdapter](), [ItemFragment](), [RestaurantRepository]()
+   * Description of feature: The app load and display data instances from the data set. <br>
+   * Description of your implementation: 
+   
+      We stored the restaurant data in Firebase's [Realtime Database](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants) because it works well with JSON-formatted data. Additionally, we created a corresponding `Restaurant` class with properties that map directly to the JSON structure, allowing for seamless data reading and display. As we have 3,500 records, we implemented pagination to prevent overloading the system by loading too much data at once. Each page displays 12 records, and users can click "load more data" to view the next set of data. To achieve this, we used the Iterator pattern in the implementation.<br>
+
+4. `[DataStream]` The app must simulate user interactions through data streams. These data streams must be used to feed the app so that when a user is logged in (or enters a specific activity), the data is loaded at regular time intervals and the app is updated automatically.  (medium)
+
+   * Code: [CommentActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/activity/CommentActivity.java?ref_type=heads),[CommentAdapter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/adapter/CommentAdapter.java?ref_type=heads),[CommentFactory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads),[Comment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/entity/Comment.java?ref_type=heads)
+   * Description of feature:Users can click every single restaurant and jump to new page with details and comments. The comment can be generated by system automatically,and user can submit their own comments on it, it excatly simulate the datastream between the users and other users.<br>
+   * Description of your implementation:First we need to set click listener on ever item showed in the list, and then we design the new page's [UI](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/res_comment.xml?ref_type=heads#L1) for comment and write a new class `comment` to represent the comments show under the restaurants with factory design pattern. Secondly, we design the activity and adapter for comment page to show the details of certain restaurant and generate the comment normally, we apply `thread` in it and set the time gap as 2~3 seconds. Finally, we designed a lot of contents and usernames for every comment and let them loaded in comment page successfully.<br>
+
+5. `[Search]` The app must allow users to search for information. Based on the user's input, adhering to pre-defined grammar(s), a query processor must interpret the input and retrieve relevant information matching the user's query. The implementation of this functionality should align with the app’s theme. The application must incorporate a tokenizer and parser utilizing a formal grammar created specifically for this purpose. (medium)
+
+6. `[UXUI]` The app must maintain a consistent design language throughout, including colors, fonts, and UI element styles, to provide a cohesive user experience. The app must also handle orientation changes (portrait to landscape and vice versa) gracefully, ensuring that the layout adjusts appropriately. (easy)
+
+   - Code: [fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads),[fragment_map.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_map.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/fragment_me.xml?ref_type=heads),[comment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/comment_item.xml?ref_type=heads);layout(landscape):[fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_home.xml?ref_type=heads),[fragment_me.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/fragment_me.xml?ref_type=heads),[res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout-land/res_comment.xml?ref_type=heads).
+   - Description of feature: The existing design is consistent in terms of style, font, color theme, and layout. It also supports the changes in screen orientation-smooth moving of layout for a good user experience.
+   - Description of your implementation: We have used responsive layouts that can be achieved through the use of flexible containers; these will handle the change in screen orientation by reorienting the layout properly upon rotation and also maintain coherence in design and readability. 
+
+7. `[UIFeedback]` The UI must provide clear and informative feedback for user actions, including error messages to guide users effectively. (easy)
+
+   - Code: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)，[LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads)
+   - Description of feature: The app shows feedback for failed login attempts and also acknowledges a successful logout action.
+   - Description of your implementation: On the login page, we validated the user's input against the stored credentials, displaying "Wrong username or password" for incorrect entries. Upon logout, a toast message "You have logged out" appears, confirming the action and redirecting the user back to the login page.
    <br>
 
 ### Custom Features
-Feature Category: Privacy <br>
-1. [Privacy-Request]. Description of the feature  (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of your implementation: ... <br>
-     <br>
 
-2. [Privacy-Block]. Description ... ... (medium)
-   ... ...
-   <br><br>
+Feature Category: Search-related features <br>
 
+  1. `[Search-Invalid]` The search functionality must not only provide results for valid search queries (extension of the basic **[Search]** feature) but also process and correctly handle partially invalid search queries, returning meaningful results. Refer to the [Feature Request Example](#feature-request-example) for further explanation of this feature. (medium)
+
+     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+
+     * Description of your implementation: ... <br>
+
+       <br>
+
+  2. `[Search-Filter]` The app must provide functionality to sort and filter a list of items returned from searches using appropriate UI components. (easy)
+
+     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+
+     * Description of your implementation: ...
+
+
+Feature Category: Greater Data Usage, Handling and Sophistication <br>
+
+   3. `[Data-GPS]` The app must utilize GPS information based on location data. Hint: see the demo presented by our tutors on ECHO360. (easy). 
+
+      * Code: [MapFragment.java]()
+
+      * Description of your implementation: 
+        * Implemented GPS functionality using the Google Maps API to display nearby restaurants based on the user's current location.
+        * Loaded restaurant data from a Firebase database and marked them on the map using custom markers, allowing users to tap on markers for more information.
+
+Feature Category: Peer to Peer Messaging <br>
+
+
+4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
+
+   * Code: [ChatFragment.java](), [ChatActivity.java](), [SearchUserActivity.java]()
+
+   * Description of your implementation: 
+        * Developed a peer-to-peer messaging system that allows users to send and receive direct messages.
+        * Utilized Firebase Firestore for real-time data synchronization, enabling messages to be sent instantly and visible to both sender and receiver.
+        * Created user search functionality that allows users to find other users by name, facilitating the initiation of chats.
+        * Implemented RecyclerViews to display recent chat windows and chat messages, enhancing user experience through efficient data handling and presentation.
+
+  Feature Category: User Interactivity <br>
+
+5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
+
+   * Code:
+
+   * Description of your implementation:
+ 
 Feature Category: Firebase Integration <br>
+
 3. [FB-Auth] Description of the feature (easy)
-   * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-   * Description of your implementation: ... <br>
+
+* Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+* [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
+* Description of your implementation: ... <br>
 
 <hr>
+
 
 ### Surprise Feature
 
 *Instructions:*
+
 - If implemented, explain how your solution addresses the task (any detail requirements will be released with the surprise feature specifications).
-- State that "Surprise feature is not implemented" otherwise.
+
+- (i) identify **at least one existing** code component that could be replaced by a design pattern—list all relevant git commits, files and line numbers (and provide links) from **before 10 October**;
+
+  - Relevant git commits:  [Rebuild item_list layout to fit favorite function (22e7bba3) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/22e7bba3ce999c8ebddd5766951aa77f099758a8) , [Implement favorite basic function (7b26f2d9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/7b26f2d986c1976984fd971f42edb77b6064faa5)  (1 October)
+  - Related class: [LikeRestaurant (line 1- line 14)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/7b26f2d986c1976984fd971f42edb77b6064faa5/SmartCity/app/src/main/java/com/example/smartcity/entity/LikeRestaurant.java#L1-14) , [MeFragment (line 32 - line 34)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/7b26f2d986c1976984fd971f42edb77b6064faa5/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L32-34) .
+
+- (ii) correct **at least one existing** of the implementation issues identified in (i)—list all relevant git commits, files and line numbers (and provide links) from **on or after 10 October**, and explain why the previous solution was not suitable and how you solved the issue;
+
+  - Relevant git commits: [Optimise 'Me' page my favorite part (1a237d78) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/1a237d78a22835ea8d949a033561659247e75236), [Fix the wrong display of restaurant type (ae7e3ec9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6)
+
+  - Relevant files:
+
+    - Changed: [MeFragment.java (line 56 - line 60)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L56-60)
+
+    - Expand: [LikeRestaurant (line 10 - line 65)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/LikeRestaurant.java#L10-65), [LikeRestaurantObserver (line 1 - line 6)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/LikeRestaurantObserver.java#L1-6), [Subject (line1 - line9)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/observer/Subject.java#L1-9), [MeFragment (line 64 - line 82)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L64-82), [MeFragment (line 94 - line118)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6/SmartCity/app/src/main/java/com/example/smartcity/fragment/MeFragment.java#L94-118)
+
+    - Why the previous solution was not suitable: 
+
+      In the old version, if the user click the "like" button to like  restaurant on the item page, then it appeared in the "My Favorites" section of the me page. If the user clicked on the "like" button again-to unlike-the restaurant instantly disappeared from the favorites list. I did this by using the Singleton pattern to create the class `LikeRestaurant`, which extended the `ArrayList<Restaurant>` and acted as a global variable, which stored the user's selections in memory. Then, the `ItemAdapter` was set to listen for that instance; thus, when the user liked a restaurant on an item page, it showed up in "My Favorites." Similarly, unliking it immediately removed it from the list.
+
+      However, when the 'grouped' feature was introduced, the previous code couldn't support real-time updates when restaurants were grouped by type. ⁤⁤This is because `ItemAdapter` only listened to `LikeRestaurant`, while the grouping functionality used another list, `filterList` (used to store the filtered restaurants). ⁤⁤When the user grouped restaurants in "My Favorites," `filterList` was updated based on the types in `LikeRestaurant`, but the display didn't update immediately when a restaurant was unliked. ⁤⁤Even though the restaurant was removed from `LikeRestaurant`, it still persisted in `filterList` (The 'like' button is canceled display), since `ItemAdapter` wasn't listening to it. 
+
+    - How to solve the issue: 
+
+      The essence here is ensuring that `filterList` updates in real-time whenever `likeRestaurant` is modified. This scenario is a perfect fit for the Observer pattern. In this case, `likeRestaurant` would act as the subject, and `MeFragment` (though implemented in `filterList`) would be the observer. When the state of `likeRestaurant` changesᅳsuch as when a user likes or unlikes a restaurantᅳthe add() or remove() methods are triggered, and the observer is notified. This, in turn, calls `filterRestaurantsByType` to update the state of `filterList`. By applying the Observer pattern, when user unlike the restaurant on 'Me' page, the state of `likeRestaurant` changed, and notified current `filterList`, the update the state of `filterList`, thus implemented the real-time updates of the list.
+
+- (iii) select a software license and explain why you chose this one (4 sentences maximum);<br>
+ **The license we choose:** MIT License<br>
+ **The reason:** We choose the MIT LICENSE since it has wide usage, allowing modification and distribution, and the source code of an app remains open-source. It highly encourages collaboration, hence further development. Secondly, it limits liability and warranty, protecting the developers(us). Since the app will likely evolve and will be integrated in many other systems, the MIT License makes this flexible.
+
+- (iv) identify and explain **at least one** ethical issue arising from the development or deployment of your app (6 sentences maximum)—you may refer to the IEEE Computer Society Code of Ethics for ideas about potential ethical considerations.<br>
+**The ethical issues we may need to attention:** User privacy<br>
+**The reason:** One ethical issue in the development or deployment of the app is user privacy, particularly in how location and personal data are collected and stored. If users' data, such as their search history or chat list, is not properly secured or anonymized, it could be misused, leading to privacy violations. According to the IEEE Code of Ethics, developers have a duty to protect users' data and ensure that their systems do not cause harm. It is crucial to inform users about how their data is used and to gain proper consent. Failure to do so would undermine trust and could lead to ethical breaches.
 
 <br> <hr>
-
 
 ## Testing Summary
 
@@ -259,18 +549,30 @@ Feature Category: Firebase Integration <br>
 *Here is an example:*
 
 1. Tests for Search
+
    - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
    - *Number of test cases: ...*
    - *Code coverage: ...*
    - *Types of tests created and descriptions: ...*
 
-2. xxx
+2. Tests for Iterator
 
+    - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
+    - *Number of test cases: 2*
+    - *Code coverage: *
+    - *Types of tests created and descriptions:*
+      1. testLoadPageData():
+        - Simulate an AVLTree that inserts data
+        - Validate correct loading of paginated data from the AVL tree.
+        - Verify that the iterator can correctly load the paginated data
+        - Ensure that each page contains the correct number (12)
+        - Ensure the next page with data can load successfully
+        
+      2. testLoadExcessiveData():
+        - Ensure that the iterator correctly identifies when there is no more data to return.
 ...
 
 <br> <hr>
-
-
 
 ## Summary of Known Errors and Bugs
 
@@ -280,32 +582,44 @@ Feature Category: Firebase Integration <br>
 *Here is an example:*
 
 1. *Bug 1:*
-    - *A space bar (' ') in the sign in email will crash the application.*
-    - ...
+
+   - Description: When users are in the process of searching for users or chatting with other users, pressing the phone's built-in back navigation key causes the application to crash or logs out the current user.
+   - Steps to Reproduce:
+       - Open the application.
+       - Navigate to the user search or chat feature.
+       - Press the back navigation key on the phone.
 
 2. *Bug 2:*
+
+   - Description: When the emulator is launched for the first time and the map interface is accessed, the map displays at the default location (Los Angeles) instead of the set current location (ANU's CSIT building), despite the emulator's default location being configured correctly. Users need to manually click the location button to update to the correct position.
+   - Steps to Reproduce:
+       - Launch the emulator.
+       - Open the application.
+       - Navigate to the map feature.
+       - Observe that the map shows the default location instead of the configured location.
 3. ...
 
 <br> <hr>
 
-
 ## Team Management
 
 ### Meeting Minutes
+
 * Link to the minutes of your meetings like above. There must be at least 4 team meetings.
   (each committed within 2 days after the meeting)
 * Your meetings should also have a reasonable date spanning across Week 6 to 11.*
 
-
-- *[Team Meeting 1](link_to_md_file.md)*
-- ...
-- ...
-- [Team Meeting 4](link_to_md_file.md)
+  - *[Team Meeting 1](link_to_md_file.md)*
+  - *[Team Meeting 2](link_to_md_file.md)*
+  - *[Team Meeting 3](link_to_md_file.md)*
+  - *[Team Meeting 4](link_to_md_file.md)*
+  - *[Team Meeting 5](link_to_md_file.md)*
 - ... (Add any descriptions if needed) ...
 
 <hr>
 
 ### Conflict Resolution Protocol
+
 *[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
 (If you choose to make this an external document, link to it here)]*
 
@@ -313,9 +627,8 @@ Feature Category: Firebase Integration <br>
 *- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project?*
 
 This shall include an agreed procedure for situations including (but not limited to):
+
 - A member is sick in the final week of the project.
 - A member didn't complete the assigned task which should've been completed before the checkpoint, and the checkpoint is approaching.
 - A member is unreachable (didn't respond messages in your agreed communication channels and emails in two days).
 - The team have different understandings toward the requirement of the assignment.
-
-
