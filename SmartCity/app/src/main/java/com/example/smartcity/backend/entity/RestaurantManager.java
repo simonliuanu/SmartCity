@@ -1,5 +1,7 @@
 package com.example.smartcity.backend.entity;
 
+import android.content.Context;
+
 import com.example.smartcity.backend.dataStructure.AvlTree;
 import com.example.smartcity.backend.dataStructure.Parser;
 import com.example.smartcity.backend.dataStructure.Tokenizer;
@@ -16,7 +18,8 @@ import java.util.List;
  * @author Simon Liu (u7761758)
  */
 public class RestaurantManager {
-    private AvlTree restaurantTree = new AvlTree();
+    private static RestaurantManager instance;
+    private AvlTree<Restaurant> restaurantTree = new AvlTree();
     private Tokenizer tokenizer;
     private Parser parser;
 
@@ -29,7 +32,7 @@ public class RestaurantManager {
      * @param validTokens A list of valid tokens
      * @return An instance of the RestaurantManager class
      */
-    public RestaurantManager(AvlTree tree, List<String> validTokens) {
+    public RestaurantManager(AvlTree<Restaurant> tree, List<String> validTokens) {
         this.restaurantTree = tree;
         this.tokenizer = new Tokenizer();
         this.parser = new Parser(validTokens);

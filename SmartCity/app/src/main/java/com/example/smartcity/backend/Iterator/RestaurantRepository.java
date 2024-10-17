@@ -27,7 +27,7 @@ public class RestaurantRepository implements Container {
 
     private int curPage = 1;
 
-    AvlTree instance = AvlTreeManager.getInstance();
+    AvlTree<Restaurant> instance = AvlTreeManager.getInstance();
 
     /**
      * Inner class that implements the Iterator interface to iterate through

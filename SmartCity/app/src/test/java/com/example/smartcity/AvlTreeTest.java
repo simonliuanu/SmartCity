@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 
 public class AvlTreeTest {
 
-    private AvlTree avlTree;
+    private AvlTree<Restaurant> avlTree;
 
     @Before
     public void setUp() {
-        avlTree = new AvlTree();
+        avlTree = new AvlTree<>();
         avlTree.insert(new Restaurant(1, "Restaurant C", 3.5, "789 Oak St", "http://example.com/photoC.jpg", 40.7128, -74.0060, Arrays.asList("mexican", "tacos"), 3, "$50-$100", 150));
         avlTree.insert(new Restaurant(2, "Restaurant B", 4.0, "456 Elm St", "http://example.com/photoB.jpg", 40.7128, -74.0060, Arrays.asList("chinese", "noodles"), 1, "$10-$25", 200));
         avlTree.insert(new Restaurant(3, "Restaurant A", 4.5, "123 Main St", "http://example.com/photoA.jpg", 40.7128, -74.0060, Arrays.asList("italian", "pizza"), 2, "$25-$50", 100));
@@ -81,7 +81,7 @@ public class AvlTreeTest {
         assertEquals(2, avlTree.getRoot().getHeight());
     }
 
-    private boolean isBalanced(AvlTree.Node node) {
+    private boolean isBalanced(AvlTree.Node<Restaurant> node) {
         if (node == null) return true;
         int leftHeight = node.getLeft() != null ? node.getLeft().getHeight() : 0;
         int rightHeight = node.getRight() != null ? node.getRight().getHeight() : 0;
