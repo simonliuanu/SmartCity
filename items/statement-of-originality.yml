@@ -25,9 +25,9 @@ declaration: >-
 
 # add as many "name+comment" entries as necessary
 # (or remove it altogether if you haven't collaborated with anyone outside your group)
-collaboration:
-  - name:
-    comment: >-
+#collaboration:
+#  - name:
+#    comment: >-
   
 
 # add as many "url+licence+comment" entries as necessary
@@ -102,8 +102,8 @@ members:
     uid: u7841935
   - name: Yuheng Li
     uid: u7810157
-  - name:
-    uid:
+  - name: Simon Liu
+    uid: u7761758
   - name:
     uid:
   - name: Tianfa Zhu

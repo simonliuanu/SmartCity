@@ -1,19 +1,5 @@
 # [G16 - Five Coders] Report
 
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
-
-Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submission (like the current sentence), otherwise it hampers the professionality in your documentation.
-
-*Here are some tips to write a good report:*
-
-* `Bullet points` are allowed and strongly encouraged for this report. Try to summarise and list the highlights of your project (rather than give long paragraphs).*
-
-* *Try to create `diagrams` for parts that could greatly benefit from it.*
-
-* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
-
-*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report. Note that they only provide part of the skeleton and your description should be more content-rich. Quick references about markdown by [CommonMark](https://commonmark.org/help/)*
-
 ## Table of Contents
 
 1. [Team Members and Roles](#team-members-and-roles)
@@ -28,8 +14,6 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 10. [Conflict Resolution Protocol](#conflict-resolution-protocol)
 
 ## Administrative
-
-*Instruction: please place the CORRECT link to your firebase repository here (with comp21006442@gmail.com added as an Editor)*
 
 - Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
 
@@ -56,19 +40,6 @@ The key area(s) of responsibilities for each member
 ## Summary of Individual Contributions
 
 Specific details of individual contribution of each member to the project.
-
-Each team member is responsible for writing **their own subsection**.
-
-A generic summary will not be acceptable and may result in a significant lose of marks.
-
-*[Summarise the contributions made by each member to the project, e.g. code implementation, code design, UI design, report writing, etc.]*
-
-*[Code Implementation. Which features did you implement? Which classes or methods was each member involved in? Provide an approximate proportion in pecentage of the contribution of each member to the whole code implementation, e.g. 30%.]*
-
-*you should ALSO provide links to the specified classes and/or functions*
-Note that the core criteria of contribution is based on `code contribution` (the technical developing of the App).
-
-*Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
 
 1. **u7841935, Rongze Gao**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
@@ -218,7 +189,6 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ### Application Use Cases and/or Examples
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
 
 *Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
@@ -279,24 +249,9 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ## Code Design and Decisions
 
-This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
-
-- Details about the parser (describe the formal grammar and language used)
-- Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
-- Details about the design patterns used (where in the code, justification of the choice, etc)
-
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
-
-<hr>
-
-
 ### Data Structures
 
-*[What data structures did your team utilise? Where and why?]*
-
-Here is a partial (short) example for the subsection `Data Structures`:*
-
-*I used the following data structures in my project:*
+*We used the following data structures in our project:*
 
 1. *AvlTree*
    * ***Objective**: Used for storing restaurant data in a balanced search tree for the search feature. The AVL tree ensures efficient lookups, insertions, and deletions, enabling the application to quickly retrieve restaurant information based on user queries.*
@@ -345,8 +300,6 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 
 ### Design Patterns
-
-*[What design patterns did your team utilise? Where and why?]*
 
 1. *Data Access Object Pattern(DAO)*
    * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
@@ -414,8 +367,6 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 ### Parser
 
-Defined in [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
-
 ### <u>Tokenizers and Parsers</u>
 
 **Tokenizer (`Tokenizer` Class):**
@@ -454,23 +405,10 @@ Production Rules:
 4. Reusability: The Parser class can be reused in different parts of the application where input validation and correction are needed.
 5. Maintainability: The clear separation of the parsing logic and the Levenshtein distance calculation makes the code easier to maintain and extend
 
-
-<hr>
-
-
-### Others
-
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
-
-<br>
-
 <hr>
 
 
 ## Implemented Features
-
-*[What features have you implemented? where, how, and why?]* <br>
-*List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
 
 ### Basic Features
 
@@ -489,7 +427,7 @@ Production Rules:
 
 2. `[DataFiles]` The app must use a data set (which you may create) where each entry represents a meaningful piece of information relevant to the app. The data set must be represented and stored in a structured format as taught in the course. It must contain at least 2,500 valid instances. (easy)
 
-   * Code to the Data File: <a href="[SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json · dev · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json?ref_type=heads)">assets</a>
+   * Code to the Data File: [Data set](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
    * Link to the Firebase repo: <a href="[smart-city-restaurant - Realtime Database - 数据 - Firebase 控制台 (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants?hl=zh-cn)">firebase</a>
    * Description of your implementation:
    
@@ -633,11 +571,6 @@ Feature Category: User Interactivity <br>
 
 ## Testing Summary
 
-*[What features have you tested? What is your testing coverage?]*
-*Please provide details (see rubrics) including some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
-
-*Here is an example:*
-
 1. Tests for Search & Data Structure
 
     Since the search feature is connected to the data structure, we have tested them together. We have created a series of test cases to ensure that the search functionality works as expected and that the data structure is correctly implemented. The tests include:
@@ -693,11 +626,6 @@ Feature Category: User Interactivity <br>
 
 ## Summary of Known Errors and Bugs
 
-*[Where are the known errors and bugs? What consequences might they lead to?]*
-*List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
-
-*Here is an example:*
-
 1. *Bug 1:*
 
    - Description: When users are in the process of searching for users or chatting with other users, pressing the phone's built-in back navigation key causes the application to crash or logs out the current user.
@@ -732,30 +660,27 @@ Feature Category: User Interactivity <br>
 
 ### Meeting Minutes
 
-* Link to the minutes of your meetings like above. There must be at least 4 team meetings.
-  (each committed within 2 days after the meeting)
-* Your meetings should also have a reasonable date spanning across Week 6 to 11.*
-
-  - *[Team Meeting 1](link_to_md_file.md)*
-  - *[Team Meeting 2](link_to_md_file.md)*
-  - *[Team Meeting 3](link_to_md_file.md)*
-  - *[Team Meeting 4](link_to_md_file.md)*
-  - *[Team Meeting 5](link_to_md_file.md)*
-- ... (Add any descriptions if needed) ...
+  - *[Team Meeting 1](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads) (Teaching Break, 2024-09-10)*
+  - *[Team Meeting 2](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-two.md?ref_type=heads) (Week 7, 2024-09-17)*
+  - *[Team Meeting 3](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-three.md?ref_type=heads) (Week 8, 2024-09-28)*
+  - *[Team Meeting 4](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-four.md?ref_type=heads) (Week 9, 2024-10-04)*
+  - *[Team Meeting 5](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-five.md?ref_type=heads) (Week 10, 2024-10-10)*
+  - *[Team Meeting 6](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-six.md?ref_type=heads) (Week 11, 2024-10-17)*
 
 <hr>
 
 ### Conflict Resolution Protocol
 
-*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
-(If you choose to make this an external document, link to it here)]*
+*As listed in the [first team meeting](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads), the following protocol will be used to resolve conflicts:*
 
-*If your group has issues, how will your group reach consensus or solve the problem?*
-*- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project?*
+* Interpersonal Conflict Resolution Protocols
+ 
+    * Discuss with the relevant group member and/or a neutral group member, and attempt to find a solution.
+    * If an internal solution isn't found, discuss potential solutions with the group, and attempt to find a solution as a group.
+    * If a resolution isn't found within two/three days, or there is clearly no prospect of a resolution, discuss with the lab tutor and/or the teaching team.
 
-This shall include an agreed procedure for situations including (but not limited to):
 
-- A member is sick in the final week of the project.
-- A member didn't complete the assigned task which should've been completed before the checkpoint, and the checkpoint is approaching.
-- A member is unreachable (didn't respond messages in your agreed communication channels and emails in two days).
-- The team have different understandings toward the requirement of the assignment.
+* Work-Related Conflic Resolution Protocols
+
+    * A group member will discuss the situation with the affected member and attempt to find a solution.
+    * If a quick solution isn't found, the group will meet and attempt to find a solution that helps the affected member without unreasonably affecting the other group members.
