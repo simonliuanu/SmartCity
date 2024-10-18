@@ -46,7 +46,9 @@ Specific details of individual contribution of each member to the project.
 
    - Feature:
      - [Data-GPS] - class MapFragment: [MapFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MapFragment.java?ref_type=heads)
-     - [P2P-DM] - class ChatFragment: [ChatFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ChatFragment.java?ref_type=heads), SearchUserActivity: [SearchUserActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/SearchUserActivity.java?ref_type=heads), ChatActivity.java: [ChatActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/ChatActivity.java?ref_type=heads)
+     - [P2P-DM] 
+        - class: ChatFragment: [ChatFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ChatFragment.java?ref_type=heads), SearchUserActivity: [SearchUserActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/SearchUserActivity.java?ref_type=heads), ChatActivity.java: [ChatActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/ChatActivity.java?ref_type=heads)
+        - class adapter: [RecentChatAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/RecentChatAdapter.java?ref_type=heads), [SearchUserAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/SearchUserAdapter.java?ref_type=heads), [MessageAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/MessageAdapter.java?ref_type=heads)
      - [UXUI]
       
    - Design Pattern
@@ -55,6 +57,8 @@ Specific details of individual contribution of each member to the project.
          - UserCache: [UserCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads#L16-21)
 
   - UI files: [fragment_chat.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_chat.xml?ref_type=heads), [activity_search_user.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_search_user.xml?ref_type=heads), [activity_chat.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_chat.xml?ref_type=heads), [recent_chat_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/recent_chat_view.xml?ref_type=heads), [search_user_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/search_user_view.xml?ref_type=heads), [message_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/message_view.xml?ref_type=heads)
+
+  - Datastructure: [Pair], [List], [HashMap]
 
   - **Others**: 
      - [Assisted Data Verification]
@@ -255,7 +259,7 @@ Specific details of individual contribution of each member to the project.
 
 1. *AvlTree*
    * ***Objective**: Used for storing restaurant data in a balanced search tree for the search feature. The AVL tree ensures efficient lookups, insertions, and deletions, enabling the application to quickly retrieve restaurant information based on user queries.*
-   * **Code Locations**: Defined in [AvlTree.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/dataStructure/AvlTree.java?ref_type=heads), and initialized in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/dataStructure/AvlTreeManager.java?ref_type=heads).
+   * **Code Locations**: Defined in [AvlTree.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads), and initialized in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java?ref_type=heads).
    * *Reasons:*
      * The AVL tree is self-balancing, ensuring a time complexity of O(log n) for insertions, deletions, and lookups. This makes it more efficient than using an unsorted array or list when handling a large dataset of restaurants.
      * AVL trees are ideal for the restaurant search feature because the balanced nature ensures that no matter how large the dataset grows, search performance remains optimal.
@@ -362,10 +366,10 @@ Specific details of individual contribution of each member to the project.
 
    * *Objective: used for generating comments*
 
-   * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads), [CommentItem](),[ContentInComment](),[UsernameInComment](); processed using Method [CommentActivity]()
+   * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentFactory.java?ref_type=heads), [CommentItem](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentItem.java?ref_type=heads),[ContentInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/ContentInComment.java?ref_type=heads),[UsernameInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/UsernameInComment.java?ref_type=heads); processed using Method [CommentActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads)
    * Reasons:
        * The programmer who calls the comment object only needs to know whether he needs to call username or comment to create different objects in the comment.
-       * High scalability. If someone need to add a new comment object, he/she only need to extend a factory class. 
+       * High scalability. If someone need to add a new comment object, he/she only needs to extend a factory class. 
        * The specific implementation of the comment is shielded, and the developer who calls the comment object only cares about the interface he needs.
 
 <hr>
