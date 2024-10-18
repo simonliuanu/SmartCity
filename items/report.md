@@ -308,19 +308,38 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * For restaurant queries, the tree’s ordering and balancing help provide both exact and suggested results based on user input, particularly when implementing fuzzy matching.
      * In the implementation AvlTree class is using generic type, so it can be used to store any type of data, expanding the code's reusability.
 
-2. ArrayList
+2. *ArrayList*
 
-    * ***Objective**: Used for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time, and used to adapt ListView*
-    * **Code Locations:**
-      *  Defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads), this class extends to ArrayList, and override the addMethod and removeMethod ([line 71 - 92](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L71-92)) to adapt the Observer pattern; processed in [ItemListAdapter.java line 99 - 117](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads#L99-117) to add / remove restaurant object.
-     * Defined in  [ItemFragment.java - resList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L46) to store the restaurants displayed in the 'item' list
+   * ***Objective**: Used for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time, and used to adapt ListView*
+   * **Code Locations:**
+     * Defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads), this class extends to ArrayList, and override the addMethod and removeMethod ([line 71 - 92](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L71-92)) to adapt the Observer pattern; processed in [ItemListAdapter.java line 99 - 117](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads#L99-117) to add / remove restaurant object.
+     * Defined in [ItemFragment.java - resList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L46) to store the restaurants displayed in the 'item' list
      * Defined in [MeFragment.java - filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) to store the restaurants filtered by different type
    * *Reasons*: 
-      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
+     * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
      * ArrayList is sorted in the order in which the elements were added
-      * The faster query speed of ArrayList can help users better group their favorite restaurants.
+     * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
-3. ...
+3. *Pair*
+
+   * ***Objective**:  
+   * **Code Locations**:
+   
+
+
+
+4. *List*
+
+   * ***Objective**:
+   * **Code Locations**:
+
+
+5. *HashMap*
+
+   * ***Objective**: Used for caching lists of restaurant data based on location. The key is a location identifier, which is calculated from the latitude and longitude of the restaurant's location, and the value is a list of restaurants associated with marker options.
+   * **Code Locations**: 
+
+
 
 <hr>
 
@@ -329,19 +348,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 *[What design patterns did your team utilise? Where and why?]*
 
-1. *Model-View-Controller (MVC) Pattern*
-
-   * *Objective: Used to separate the data (Model), the user interface (View), and the control logic (Controller) to enhance maintainability and scalability of the application.*
-   * *Code Locations: 
-      - Model: defined in [FirebaseUtil.java](), [UserUtil.java]()
-      - View: defined in [RecentChatAdapter.java](), [SearchUserAdapter.java](), [MessageAdapter.java]()
-      - Controller: defined in [ChatFragment.java](), [SearchUserActivity.java](), [ChatActivity.java]()
-   * *Reasons:*
-     * Facilitate clear separation of concerns, allowing easier management of changes in one part of the application without affecting others.
-     * Promote better organization of code, leading to improved readability and maintainability.
-
-
-2. Data Access Object Pattern(DAO)*
+1. *Data Access Object Pattern(DAO)*
    * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
    * *Code Locations: defined in [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) , [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads); processed in ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
    * *Reasons:*
@@ -350,23 +357,25 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      *  When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
 
 
-3. *Singleton Pattern*
+2. *Singleton Pattern*
 
    * *Objective: make sure there is only one instance of LikeRestaurant and User to provide a global access point to access that instance. LikeRestaurant used to store user's choice on 'Home' page or 'Item' page, and display on 'Me' page 'My Favorite' section; User used to store the name of login user and display on 'Me' page.*
 
    * *Code Locations: *
 
-     * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32))
+     * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32)
      * defined in [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads); processed using  [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
      * defined in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java#L18)
-
+     * defined in [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L23-28)
+     * defined in [UserCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads#L16-21)
+   
    * *Reasons:*
 
      * Only one instance in memory, reducing memory overhead
      * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
      * Data can be easily shared between different objects
 
-4. *Iterator Pattern*
+3. *Iterator Pattern*
    * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
    * Code Locations: 
      * Collection: [Container.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/Container.java?ref_type=heads)
@@ -378,7 +387,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * Implemented paging functionality to speed up data loading
 
 
-5. *Observer Pattern*
+4. *Observer Pattern*
    * *Objective: used for realizing the grouping of restaurant data and real-time data update and display, for [Interact-Follow] feature*
    * Code Locations:  
      * Subject: class: [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads)
@@ -390,7 +399,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * Ensure that the status of `filterRes` of different types can be updated synchronously with `likeRestaurant`
 
 
-6. Factory Pattern
+5. Factory Pattern
 
    * *Objective: used for .*
 
@@ -554,7 +563,7 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 Feature Category: Peer to Peer Messaging <br>
 
 
-4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
+   4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
 
    * Code: [ChatFragment.java](), [ChatActivity.java](), [SearchUserActivity.java]()
 
@@ -566,22 +575,16 @@ Feature Category: Peer to Peer Messaging <br>
 
 Feature Category: User Interactivity <br>
 
-5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
+   5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
+
    * Code:  [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads),  [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads),  [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads),  [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads),  [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads)
+
    * Description of your implementation: 
      * A like button is added for each restaurant. Users can click the button to add the restaurant to 'My Favorite'.
      * Use a global variable [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads) as a subject to store the restaurants liked by user
      * The list of these restaurants saved in 'My Favorite' section on 'me' page ( [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)). 
      * The list of like restaurants is ordered by adding time, and can be grouped by type
      * When the user unlikes a restaurant in the 'My Favorite' section, the [likeRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L69) storing the data will be updated and notify [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads) as the observer, which will call the update method to update [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71), thus achieving real-time updates of filterRes and the list.
- 
-Feature Category: Firebase Integration <br>
-
-3. [FB-Auth] Description of the feature (easy)
-
-* Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-* [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-* Description of your implementation: ... <br>
 
 <hr>
 
@@ -711,7 +714,17 @@ Feature Category: Firebase Integration <br>
        - Open the application.
        - Navigate to the map feature.
        - Observe that the map shows the default location instead of the configured location.
-3. ...
+
+3. *Bug 3:*
+
+    - Description: After the map is loaded for the first time, clicking on a restaurant marker displays the info window with the restaurant details. However, when the info window is clicked again, it turns into a blank window. On the third click, the info window returns to displaying the restaurant information again. This inconsistent behavior can confuse users.
+    - Steps to Reproduce:
+       - Launch the emulator and open the application.
+       - Navigate to the map feature and wait for the map to load.
+       - Click on a restaurant marker to open the info window, which displays the restaurant details.
+       - Click on the info window again and observe that it changes to a blank window.
+       - Click on the blank info window once more, and the restaurant information is displayed again.
+
 
 <br> <hr>
 
