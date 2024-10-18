@@ -276,12 +276,15 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 2. ArrayList
 
-   * ***Objective**: Use for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time.*
-   * **Code Locations: ** Defined in [LikeRestaurants.java]() , [ItemFragment.java]()
-   * *Reasons*: 
-      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
-      * ArrayList is sorted in the order in which the elements were added
-      * The faster query speed of ArrayList can help users better group their favorite restaurants.
+* ***Objective**: Use for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time.*
+* **Code Locations:**
+  *  Defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads), this class extends to ArrayList, and override the addMethod and removeMethod ([line 71 - 92](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L71-92)) to adapt the Observer pattern; processed in [ItemListAdapter.java line 99 - 117](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads#L99-117) to add / remove restaurant object.
+  * Defined in  [ItemFragment.java - resList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L46) to store the restaurants displayed in the 'item' list
+  * Defined in [MeFragment.java - filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) to store the restaurants filtered by different type
+* *Reasons*: 
+  * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
+  * ArrayList is sorted in the order in which the elements were added
+  * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
 3. ...
 
@@ -304,44 +307,52 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * Promote better organization of code, leading to improved readability and maintainability.
 
 
-2. *Data Access Object Pattern(DAO)*
+2. Data Access Object Pattern(DAO)*
+   * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
+   * *Code Locations: defined in [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) , [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads); processed in ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
+   * *Reasons:*
+     *  Hide details of the data storage and the way to access to database
+     *  DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
+     *  When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
 
-     * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
-     * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser()]()*
-     * *Reasons:*
-       *  Hide details of the data storage and the way to access to database
-       * DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
-       * When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
 
-    
 3. *Singleton Pattern*
 
-     * *Objective: make sure there is only one instance of LikeRestaurant and provide a global access point to access that instance.*
-     * *Code Locations: defined in [LikeRestaurant](); processed using [getInstance()]() .*
-     * *Reasons:*
-       * Only one instance in memory, reducing memory overhead
-       * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
-       * Data can be easily shared between different objects
-         ​  
-         <br>
+   * *Objective: make sure there is only one instance of LikeRestaurant and User to provide a global access point to access that instance. LikeRestaurant used to store user's choice on 'Home' page or 'Item' page, and display on 'Me' page 'My Favorite' section; User used to store the name of login user and display on 'Me' page.*
 
+   * *Code Locations: *
+
+     * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32))
+     * defined in [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads); processed using  [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
+
+   * *Reasons:*
+
+     * Only one instance in memory, reducing memory overhead
+     * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
+     * Data can be easily shared between different objects
 
 4. *Iterator Pattern*
-
-     * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
-     * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext()]() and [next()]()
-     * *Reasons:*
-       * Simplify the aggregation class, the class does not need to care about the traversal logic.
-       * Implemented paging functionality to speed up data loading
+   * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
+   * Code Locations: 
+     * Collection: [Container.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/Container.java?ref_type=heads)
+     * Concrete collection: [RestaurantRepository.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads)
+     * Concrete interator: [RestaurantIterator](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads#L36-70) (inner class)
+     * Implement in: class [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads): [line 89 - 110](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L89-110)  with method [loadMoreData](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L144-150)
+   * *Reasons:*
+     * Simplify the aggregation class, the class does not need to care about the traversal logic.
+     * Implemented paging functionality to speed up data loading
 
 
 5. *Observer Pattern*
-
-     * *Objective: used for realizing the grouping of restaurant data and real-time data update and display for [Interact-Follow] feature*
-     * Code Locations:  defined in [LikeRestaurant](); processed using [getInstance()]() 
-     * Reasons:
-       * Keep low coupling and high collaboration between objects
-       * Ensure that when the status of the restaurant in 'My Favorite' changes, the corresponding list can be updated in time
+   * *Objective: used for realizing the grouping of restaurant data and real-time data update and display, for [Interact-Follow] feature*
+   * Code Locations:  
+     * Subject: class: [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads)
+     * Concrete Subject: [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [line 21 - 66](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L41-92)
+     * Observer: [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads)
+     * Concrete Observer: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads) implement observer, but implemented by [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71)  with methods in [line 112 - 144](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L112-144)
+   * Reasons:
+     * Keep low coupling and high collaboration between objects
+     * Ensure that the status of `filterRes` of different types can be updated synchronously with `likeRestaurant`
 
 
 6. Factory Pattern
