@@ -524,17 +524,21 @@ Feature Category: Search-related features <br>
 
   1. `[Search-Invalid]` The search functionality must not only provide results for valid search queries (extension of the basic **[Search]** feature) but also process and correctly handle partially invalid search queries, returning meaningful results. Refer to the [Feature Request Example](#feature-request-example) for further explanation of this feature. (medium)
 
-     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+     * Code: [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads), [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads)
+      
+     * Description of feature: When a user enters a partially invalid search query, the search functionality should correct the query and return relevant results. For example, if a user types "restauran" instead of "restaurant," the search should return results containing the term "restaurant." 
 
-     * Description of your implementation: ... <br>
+     * Description of your implementation: The search functionality has been extended to handle partially invalid search queries. The parser uses the Levenshtein distance algorithm to correct misspelled tokens and return the closest valid token. For example, if a user types "restauran" instead of "restaurant," the parser will correct the query and return the relevant results containing the term "restaurant." cause "restaurant" is the minimum distance to "restauran" in the valid tokens list.
 
-       <br>
+     <br>
 
   2. `[Search-Filter]` The app must provide functionality to sort and filter a list of items returned from searches using appropriate UI components. (easy)
 
-     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+     * Code: [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads), [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/RestaurantManager.java?ref_type=heads)
+      
+     * Description of feature: Users can sort and filter the list of items returned from searches based on price and rating. The UI should include appropriate components for sorting and filtering, such as dropdown menus or buttons.
 
-     * Description of your implementation: ...
+     * Description of your implementation: The search functionality has been extended to include sorting and filtering options. Users can sort the list of items by price or rating, and filter different restaurant types. By default the list of results are sorted by name and all types of restaurants are listed. When clicking spinner, the list could be sorted by choosing different restaurant types, and sort by price or rating, from high to low or low to high. This is implemented by adding the sequence of the list in [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/RestaurantManager.java?ref_type=heads#L23-25) and [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads#L236-238). The UI components are implemented in [fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads).
 
 
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
