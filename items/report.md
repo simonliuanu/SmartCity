@@ -45,21 +45,21 @@ Specific details of individual contribution of each member to the project.
    - **Code Contribution in the final App**
 
    - Feature:
-     - [Data-GPS] - class MapFragment: [MapFragment.java]()
-     - [P2P-DM] - class ChatFragment: [ChatFragment.java](), SearchUserActivity: [SearchUserActivity.java](), ChatActivity.java: [ChatActivity.java]()
+     - [Data-GPS] - class MapFragment: [MapFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MapFragment.java?ref_type=heads)
+     - [P2P-DM] - class ChatFragment: [ChatFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ChatFragment.java?ref_type=heads), SearchUserActivity: [SearchUserActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/SearchUserActivity.java?ref_type=heads), ChatActivity.java: [ChatActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/ChatActivity.java?ref_type=heads)
      - [UXUI]
       
-   - Design Pattern 
-     - Model-View-Controller (MVC) Pattern 
-         - Model class FirebaseUtil: [FirebaseUtil.java](), UserUtil: [UserUtil.java]()
-         - View class RecentChatAdapter: [RecentChatAdapter.java](), SearchUserAdapter: [SearchUserAdapter.java](), MessageAdapter: [MessageAdapter.java]()
-         - Controller class [P2P-DM] feature classes
-     - Singleton Pattern - class MapRestaurantCache: [MapRestaurantCache.java](), UserCache: [UserCache.java]()
+   - Design Pattern
+     - Singleton Pattern 
+         - class MapRestaurantCache: [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L23-28)
+         - UserCache: [UserCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads#L16-21)
 
-  - UI files: [fragment_chat.xml](), [activity_search_user.xml](), [activity_chat.xml](), [recent_chat_view.xml](), [search_user_view.xml](), [message_view.xml]()
+  - UI files: [fragment_chat.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_chat.xml?ref_type=heads), [activity_search_user.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_search_user.xml?ref_type=heads), [activity_chat.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_chat.xml?ref_type=heads), [recent_chat_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/recent_chat_view.xml?ref_type=heads), [search_user_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/search_user_view.xml?ref_type=heads), [message_view.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/message_view.xml?ref_type=heads)
 
-  - **Others**: Assisted Data Verification
-
+  - **Others**: 
+     - [Assisted Data Verification]
+     - [Set the app icon]
+    <br><br>
 2. **u7810157, Yuheng Li**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
@@ -280,22 +280,27 @@ Specific details of individual contribution of each member to the project.
 
 3. *Pair*
 
-   * **Objective**:  
-   * **Code Locations**:
-   
-
-
+   * **Objective**: Used for associating MarkerOptions with Restaurant objects, enabling the storage and management of both in a single data structure.
+   * **Code Locations**: Defined in [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L36) to store the MarkerOptions and Restaurant
+   * *Reasons*:
+     * The Pair class provides a lightweight way to associate two values without creating a custom class, making the code cleaner and easier to read.
+     * It simplifies the handling of marker options and corresponding restaurant data, facilitating efficient rendering of markers on the map.
 
 4. *List*
 
-   * **Objective**:
-   * **Code Locations**:
-
+   * **Objective**: Used for storing collections of Pair<MarkerOptions, Restaurant> that represent information about all nearby restaurants for each location in the cache.
+   * **Code Locations**: Defined in [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L36) to store nearby restaurants' information
+   * *Reasons*:
+     * The List interface provides a flexible way to store and manipulate a sequence of elements, allowing for easy addition, removal, and access to restaurant data.
+     * The ability to maintain order and allow duplicates is essential for managing restaurant entries that may have similar or identical attributes.
 
 5. *HashMap*
 
    * **Objective**: Used for caching lists of restaurant data based on location. The key is a location identifier, which is calculated from the latitude and longitude of the restaurant's location, and the value is a list of restaurants associated with marker options.
-   * **Code Locations**: 
+   * **Code Locations**: Defined in [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L36) to link the current location with nearby restaurants
+   * *Reasons*:
+     * The ability to maintain order and allow duplicates is essential for managing restaurant entries that may have similar or identical attributes.
+     * Its constant time complexity for basic operations (get and put) ensures optimal performance when dealing with multiple restaurant images, thus enhancing the user experience.
 
 
 
@@ -500,7 +505,7 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
    3. `[Data-GPS]` The app must utilize GPS information based on location data. Hint: see the demo presented by our tutors on ECHO360. (easy). 
 
-      * Code: [MapFragment.java]()
+      * Code: [MapFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MapFragment.java?ref_type=heads)
 
       * Description of your implementation: 
         * Implemented GPS functionality using the Google Maps API to display nearby restaurants based on the user's current location.
@@ -511,7 +516,7 @@ Feature Category: Peer to Peer Messaging <br>
 
    4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
 
-   * Code: [ChatFragment.java](), [ChatActivity.java](), [SearchUserActivity.java]()
+   * Code: [ChatFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ChatFragment.java?ref_type=heads), [SearchUserActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/SearchUserActivity.java?ref_type=heads), [ChatActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/ChatActivity.java?ref_type=heads)
 
    * Description of your implementation: 
         * Developed a peer-to-peer messaging system that allows users to send and receive direct messages.
@@ -660,7 +665,16 @@ Feature Category: User Interactivity <br>
        - Click on a restaurant marker to open the info window, which displays the restaurant details.
        - Click on the info window again and observe that it changes to a blank window.
        - Click on the blank info window once more, and the restaurant information is displayed again.
+       - 
 
+4. *Bug 4:*
+
+    - Description: When two users are chatting, User A sends a message, followed by User B sending a reply. When User A sends another message after User B's reply, User A's new message appears above User B's message, instead of below it as expected. Subsequent messages from User A are displayed correctly.
+    - Steps to Reproduce:
+       - User A starts a chat and sends a message.
+       - User B replies to the message.
+       - User A sends another message.
+       - Observe that User A's new message appears above User B's previous message instead of below.
 
 <br> <hr>
 
@@ -690,7 +704,7 @@ Feature Category: User Interactivity <br>
     * If a resolution isn't found within two/three days, or there is clearly no prospect of a resolution, discuss with the lab tutor and/or the teaching team.
 
 
-* Work-Related Conflic Resolution Protocols
+* Work-Related Conflict Resolution Protocols
 
     * A group member will discuss the situation with the affected member and attempt to find a solution.
     * If a quick solution isn't found, the group will meet and attempt to find a solution that helps the affected member without unreasonably affecting the other group members.
