@@ -88,7 +88,6 @@ Specific details of individual contribution of each member to the project.
      - I purposed following items: 
         - Design pattern:[Factroy design pattern]
         - Datastructure: [Arraylist]
-        -
         - UI design: I design the basic layout in comment page[res_comment.xml]
         - UML design:
           - [User case diagram]
