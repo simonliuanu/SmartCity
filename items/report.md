@@ -41,7 +41,7 @@ The key area(s) of responsibilities for each member
 
 Specific details of individual contribution of each member to the project.
 
-1. **u7841935, Rongze Gao**  I have 20% contribution, as follows: <br>
+1. **u7841935, Rongze Gao (GitLab ID:u7841935@anu.edu.au)**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
    - Feature:
@@ -88,7 +88,6 @@ Specific details of individual contribution of each member to the project.
      - I purposed following items: 
         - Design pattern:[Factroy design pattern]
         - Datastructure: [Arraylist]
-        -
         - UI design: I design the basic layout in comment page[res_comment.xml]
         - UML design:
           - [User case diagram]
