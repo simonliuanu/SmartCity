@@ -15,15 +15,15 @@
 
 ## Administrative
 
-- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
+- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview
 
-  - Confirm: [X] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
+  - Confirm: I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
   - <img src="media/report/firebase-editors.png">
 
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
 
-  - Username: comp2100@anu.edu.au  Password: comp2100 [X] // TODO: check if done
-  - Username: comp6442@anu.edu.au  Password: comp6442 [X] // TODO: check if done
+  - Username: comp2100@anu.edu.au  Password: comp2100
+  - Username: comp6442@anu.edu.au  Password: comp6442
 
 ## Team Members and Roles
 
@@ -193,8 +193,6 @@ Specific details of individual contribution of each member to the project.
 
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
 
-*Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
-
 *Jay is looking for a nice restaurant in his vicinity to try for dinner.*
 
 1. *Jay opens the app and goes to the home screen, which has a input window above the page to type in and two button to filter.*
@@ -275,7 +273,7 @@ Specific details of individual contribution of each member to the project.
      * Defined in [CommentActivity.java - commentList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads#L38) to store the restaurants filtered by different type
    * *Reasons*: 
      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
-     * ArrayList is sorted in the order in which the elements were added
+     * ArrayList is sorted in the order in which the elements were added.
      * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
 3. *Pair*
@@ -311,7 +309,7 @@ Specific details of individual contribution of each member to the project.
 
 1. *Data Access Object Pattern(DAO)*
    * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
-   * *Code Locations: defined in [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) , [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads); processed in ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
+   * Code Locations: defined in [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) , [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads); processed in ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
    * *Reasons:*
      *  Hide details of the data storage and the way to access to database
      *  DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
@@ -322,7 +320,7 @@ Specific details of individual contribution of each member to the project.
 
    * *Objective: make sure there is only one instance of LikeRestaurant and User to provide a global access point to access that instance. LikeRestaurant used to store user's choice on 'Home' page or 'Item' page, and display on 'Me' page 'My Favorite' section; User used to store the name of login user and display on 'Me' page.*
 
-   * *Code Locations: *
+   * Code Locations:
 
      * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32)
      * defined in [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads); processed using  [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
@@ -362,7 +360,7 @@ Specific details of individual contribution of each member to the project.
 
 5. Factory Pattern
 
-   * *Objective: used for .*
+   * *Objective: used for generating comments*
 
    * Code Locations: defined in [Class Factory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/Factory/CommentFactory.java?ref_type=heads), [CommentItem](),[ContentInComment](),[UsernameInComment](); processed using Method [CommentActivity]()
    * Reasons:
@@ -436,7 +434,7 @@ Production Rules:
 2. `[DataFiles]` The app must use a data set (which you may create) where each entry represents a meaningful piece of information relevant to the app. The data set must be represented and stored in a structured format as taught in the course. It must contain at least 2,500 valid instances. (easy)
 
    * Code to the Data File: [Data set](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
-   * Link to the Firebase repo: <a href="[smart-city-restaurant - Realtime Database - 数据 - Firebase 控制台 (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants?hl=zh-cn)">firebase</a>
+   * Link to the Firebase repo: [Link](https://console.firebase.google.com/u/0/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants)
    * Description of your implementation:
    
       I obtained the official open map API interface of Google from the Google Cloud Console, and obtained the restaurant data we needed from Google Maps through the Google API interface. Then I wrote a script program in Python to crawl data through the API interface. This script uses a simple grid method to generate search locations from several major cities in Australia. Each city has about 10 to 30 search locations (depending on the size of the city), with a search radius of 1,000 meters. The search keywords are restaurant, cafe, bar, and the information obtained includes name, image URL, rating, address, latitude and longitude, price level and restaurant category. Finally, the results are saved in JSON format.
@@ -592,10 +590,10 @@ Feature Category: User Interactivity <br>
    [TokenizerTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/TokenizerTest.java) for the [Tokenizer Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java)<br>
    [AvlTreeTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/AvlTreeTest.java) for the [AvlTree Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java)<br>
    [AvlTreManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/manager/AvlTreeManagerTest.java) for the [AvlTreeManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/AvlTreeManager.java)<br>
-   - *Number of test cases: 13
+   - Number of test cases: 13
    - *Code coverage: 100% of Classes, 92% of Methods, 94% of Lines and 88% of Branches covered in Data Structure related classes*
-   <img src="media/report/codecoverage_test.png">
-   - *Types of tests created and descriptions:*
+   <img src="media/report/codecoverage_data_structure.png">
+   - Types of tests created and descriptions:
      - AvlTreeManagerTest
          - testSingletonInstance: Verifies that the AvlTreeManager class correctly implements the Singleton pattern by ensuring that only one instance of the AVL tree is created.
          - testAvlTreeFunctionality: Tests the basic functionality of the AVL tree managed by AvlTreeManager, including insertion and exact search operations.
@@ -620,10 +618,11 @@ Feature Category: User Interactivity <br>
 
 2. Tests for Iterator
 
-    - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
+    - Code: [IteraotrTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/IteratorTest.java?ref_type=heads) for the [RestaurantRepository Class]()
     - *Number of test cases: 2*
-    - *Code coverage: *
-    - *Types of tests created and descriptions:*
+    - *Code coverage: 100% of Classes, 100% of Methods, 100% of Lines and 100% of Branches covered*
+    <img src="media/report/codecoverage_iterator.png">
+    - Types of tests created and descriptions:
       1. testLoadPageData():
         - Simulate an AVLTree that inserts data
         - Validate correct loading of paginated data from the AVL tree.
@@ -633,7 +632,6 @@ Feature Category: User Interactivity <br>
         
       2. testLoadExcessiveData():
         - Ensure that the iterator correctly identifies when there is no more data to return.
-...
 
 <br> <hr>
 
