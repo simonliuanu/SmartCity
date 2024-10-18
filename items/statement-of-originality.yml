@@ -53,11 +53,11 @@ code:
 
   - comment: "The load more data function inspired and adapted from Tencent Cloud by '全栈程序员栈长'"
     url: "https://cloud.tencent.com/developer/article/2042342"
-    licence: (from blog)
+    licence: fair use (No specific license provided by the blog, but the content is publicly accessible.)
 
   - comment: "The usage of ViewHolder adapted from CSDN blog by '泊停Bo'"
     url: "https://blog.csdn.net/qq_39402590/article/details/90473268"
-    licence: (from blog)
+    licence: fair use (No specific license provided by the blog, but the content is publicly accessible.)
 
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
