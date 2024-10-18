@@ -306,6 +306,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * AVL trees are ideal for the restaurant search feature because the balanced nature ensures that no matter how large the dataset grows, search performance remains optimal.
      * We don’t need to access restaurants by index, which would make an array-based structure less suitable. Instead, the tree structure allows for quick retrieval based on comparisons (e.g., restaurant names or locations).
      * For restaurant queries, the tree’s ordering and balancing help provide both exact and suggested results based on user input, particularly when implementing fuzzy matching.
+     * In the implementation AvlTree class is using generic type, so it can be used to store any type of data, expanding the code's reusability.
 
 2. ArrayList
 
@@ -357,6 +358,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
      * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32))
      * defined in [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads); processed using  [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
+     * defined in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java#L18)
 
    * *Reasons:*
 
@@ -403,11 +405,30 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 ### Parser
 
+Defined in [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+
+### <u>Tokenizers and Parsers</u>
+
+**Tokenizer (`Tokenizer` Class):**
+
+- **Definition:** Defined in [Tokenizer.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java?ref_type=heads)
+- **Purpose:** Breaks down input queries into individual tokens based on whitespace.
+- **Usage Scenario:** When a user inputs a query or command, the tokenizer processes the raw string to create a manageable list of tokens for further processing.
+
+**Parser (`Parser` Class):**
+
+- **Definition:** Defined in [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+- **Purpose:** Validates and corrects tokens by comparing them against a list of predefined valid tokens.
+- **Usage Scenario:** After tokenization, the parser ensures that each token is recognized and corrects any discrepancies, such as typographical errors, before the tokens are used in the application’s logic.
 ### <u>Grammar(s)</u>
 
 The parser's primary function is to validate and correct tokens by comparing them against this list using the Levenshtein distance algorithm.
+The implementation of Levenshtein distance algorithm is in [levenshteinDistance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java#L78)
 
-The parser operates based on a predefined list of **valid tokens** which are imported from item names imported from Firebase.
+The Levenshtein distance algorithm calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into another. When the parser reads a token from the token list generated with the tokenizer, it corrects any misspelled tokens by finding the closest valid token.
+
+The parser operates based on a predefined list of **valid tokens** which are imported from item names imported from Firebase. Implementation is at [HomeFragment.getValidTokens()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java#L236)
+
 
 Production Rules:
 
@@ -418,26 +439,12 @@ Production Rules:
 
 **Advantages of This Design:**
 
-1. **Simplicity:**
-   - **Ease of Implementation:** The parser is straightforward to implement and maintain.
-   - **Minimal Overhead:** There's no need for complex parsing tables or state machines, which reduces computational overhead.
-2. **Flexibility:**
-   - **Dynamic Validation:** The list of valid tokens can be easily updated or extended without altering the underlying parsing logic.
-   - **Domain Adaptability:** Suitable for applications where the vocabulary is well-defined and can be enumerated.
-3. **Error Correction:**
-   - **Robustness:** By finding the closest valid token, the parser can correct minor typographical errors, enhancing user experience.
+1. Error Correction: The parser can correct user input errors, improving the user experience by providing more accurate search results.
+2. Efficiency: The use of the Levenshtein distance algorithm ensures that the closest valid token is found efficiently, even for large lists of valid tokens.
+3. Flexibility: The parser can handle a wide range of user inputs and correct them to match the valid tokens, making the application more robust.
+4. Reusability: The Parser class can be reused in different parts of the application where input validation and correction are needed.
+5. Maintainability: The clear separation of the parsing logic and the Levenshtein distance calculation makes the code easier to maintain and extend
 
-### <u>Tokenizers and Parsers</u>
-
-**Tokenizer (`Tokenizer` Class):**
-
-- **Purpose:** Breaks down input queries into individual tokens based on whitespace.
-- **Usage Scenario:** When a user inputs a query or command, the tokenizer processes the raw string to create a manageable list of tokens for further processing.
-
-**Parser (`Parser` Class):**
-
-- **Purpose:** Validates and corrects tokens by comparing them against a list of predefined valid tokens.
-- **Usage Scenario:** After tokenization, the parser ensures that each token is recognized and corrects any discrepancies, such as typographical errors, before the tokens are used in the application’s logic.
 
 <hr>
 
