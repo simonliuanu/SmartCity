@@ -273,7 +273,7 @@ Specific details of individual contribution of each member to the project.
      * Defined in [CommentActivity.java - commentList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads#L38) to store the restaurants filtered by different type
    * *Reasons*: 
      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
-     * ArrayList is sorted in the order in which the elements were added
+     * ArrayList is sorted in the order in which the elements were added.
      * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
 3. *Pair*
