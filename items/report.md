@@ -193,6 +193,9 @@ Specific details of individual contribution of each member to the project.
 
 *[Our app helps users discoveries of new restaurants by searching either via name or GPS, reading of reviews, saving favorites, and finally sharing in the vibrant community of food enthusiasts.]*
 
+<img src="media/report/screenshot-1.png">
+<img src="media/report/screenshot-2.png">
+
 ### Application Use Cases and/or Examples
 
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
