@@ -102,6 +102,8 @@ assets:
   
 3. How did they contribute to the completion of this assignment?
   - The Google Maps AI was used for implementing the map features, including handling location services and rendering the map.
+  - The Google Cloud console supports the map API to fetch the data set, including all data about the request.
+  - The Bilibili tutorial help me to learn how to fetch data through Google open API.
   - The YouTube tutorial by Bimal Kafle helped in implementing the chat functionality, adapting code from the provided GitHub repository.
   - ChatGPT helped us generate a high-quality Logo, adding a polished and cohesive look to the overall design of the app.
   - The article from CSDN help me to solve the repeatation of items displayed in listview
