@@ -86,9 +86,22 @@ assets:
     url: https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077
     licence: fair use
 
-  - comment: "login_pic"
-    url: https://www.iconfont.cn/illustrations/detail?spm=a313x.illustrations_index.i1.d9df05512.10153a81peBhyH&cid=46228&show_id=427709
+  - comment: "navi_des"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
     licence: fair use
+
+  - comment: "navi_home"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
+  - comment: "navi_item"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
+  - comment: "navi_me"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
 
 ### Questions (answer before final submission):
 1. You (as a group) completed this work (tick the most appropriate option):
