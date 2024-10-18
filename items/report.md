@@ -157,7 +157,7 @@ Specific details of individual contribution of each member to the project.
 
      - [UI Design. I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages. Furthermore, I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]* <br><br>
 
-5. **u7765758, Simon Liu**  I have 20% contribution, as follows: <br>
+5. **u7765758, Simon Liu (GitLab ID: u7761758@anu.edu.au, ximeng.liu@anu.edu.au (alias mail account))**  I have 20% contribution, as follows: <br>
 
     - **Code Contribution in the final App**
         - Features - Basic: [Search](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%5D%20The,this%20purpose.%20(medium)), 
