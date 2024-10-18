@@ -588,7 +588,7 @@ Feature Category: User Interactivity <br>
    - *Number of test cases: 13
    - *Code coverage: 100% of Classes, 92% of Methods, 94% of Lines and 88% of Branches covered in Data Structure related classes*
    <img src="media/report/codecoverage_data_structure.png">
-   - *Types of tests created and descriptions:*
+   - Types of tests created and descriptions:
      - AvlTreeManagerTest
          - testSingletonInstance: Verifies that the AvlTreeManager class correctly implements the Singleton pattern by ensuring that only one instance of the AVL tree is created.
          - testAvlTreeFunctionality: Tests the basic functionality of the AVL tree managed by AvlTreeManager, including insertion and exact search operations.
@@ -615,9 +615,9 @@ Feature Category: User Interactivity <br>
 
     - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
     - *Number of test cases: 2*
-    - *Code coverage: 100% of Classes, 100% of Methods, 94% of Lines and 88% of Branches covered*
+    - *Code coverage: 100% of Classes, 100% of Methods, 100% of Lines and 100% of Branches covered*
     <img src="media/report/codecoverage_iterator.png">
-    - *Types of tests created and descriptions:*
+    - Types of tests created and descriptions:
       1. testLoadPageData():
         - Simulate an AVLTree that inserts data
         - Validate correct loading of paginated data from the AVL tree.
