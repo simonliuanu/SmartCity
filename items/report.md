@@ -15,9 +15,9 @@
 
 ## Administrative
 
-- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn
+- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview
 
-  - Confirm: [X] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
+  - Confirm: I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
   - <img src="media/report/firebase-editors.png">
 
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
@@ -587,7 +587,7 @@ Feature Category: User Interactivity <br>
    [AvlTreManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/manager/AvlTreeManagerTest.java) for the [AvlTreeManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/AvlTreeManager.java)<br>
    - *Number of test cases: 13
    - *Code coverage: 100% of Classes, 92% of Methods, 94% of Lines and 88% of Branches covered in Data Structure related classes*
-   <img src="media/report/codecoverage_test.png">
+   <img src="media/report/codecoverage_data_structure.png">
    - *Types of tests created and descriptions:*
      - AvlTreeManagerTest
          - testSingletonInstance: Verifies that the AvlTreeManager class correctly implements the Singleton pattern by ensuring that only one instance of the AVL tree is created.
@@ -615,7 +615,8 @@ Feature Category: User Interactivity <br>
 
     - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
     - *Number of test cases: 2*
-    - *Code coverage: *
+    - *Code coverage: 100% of Classes, 100% of Methods, 94% of Lines and 88% of Branches covered*
+    <img src="media/report/codecoverage_iterator.png">
     - *Types of tests created and descriptions:*
       1. testLoadPageData():
         - Simulate an AVLTree that inserts data
@@ -626,7 +627,6 @@ Feature Category: User Interactivity <br>
         
       2. testLoadExcessiveData():
         - Ensure that the iterator correctly identifies when there is no more data to return.
-...
 
 <br> <hr>
 
