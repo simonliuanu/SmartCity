@@ -62,7 +62,7 @@ code:
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
 assets:
-  - comment: "icon back"
+  - comment: "icon back by UPBOX激战联盟"
     url: https://www.iconfont.cn/search/index?searchType=icon&q=%E8%BF%94%E5%9B%9E
     licence: fair use
 
