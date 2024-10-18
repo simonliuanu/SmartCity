@@ -100,7 +100,7 @@ Specific details of individual contribution of each member to the project.
      - [Report writing for Application Description part]*
      - [Set up APK]
      <br><br>
-3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
+3. **u7811526, Shengzong Dai** (GitLab ID:u7811526@anu.edu.au) I have 20% contribution, as follows: <br>
 
 - **Code Contribution in the final App**
   - Features:
