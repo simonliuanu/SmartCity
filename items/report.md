@@ -280,7 +280,7 @@ Specific details of individual contribution of each member to the project.
 
 3. *Pair*
 
-   * ***Objective**:  
+   * **Objective**:  
    * **Code Locations**:
    
 
@@ -288,13 +288,13 @@ Specific details of individual contribution of each member to the project.
 
 4. *List*
 
-   * ***Objective**:
+   * **Objective**:
    * **Code Locations**:
 
 
 5. *HashMap*
 
-   * ***Objective**: Used for caching lists of restaurant data based on location. The key is a location identifier, which is calculated from the latitude and longitude of the restaurant's location, and the value is a list of restaurants associated with marker options.
+   * **Objective**: Used for caching lists of restaurant data based on location. The key is a location identifier, which is calculated from the latitude and longitude of the restaurant's location, and the value is a list of restaurants associated with marker options.
    * **Code Locations**: 
 
 
@@ -454,6 +454,11 @@ Production Rules:
    * Description of your implementation:First we need to set click listener on ever item showed in the list, and then we design the new page's [UI](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/res/layout/res_comment.xml?ref_type=heads#L1) for comment and write a new class `comment` to represent the comments show under the restaurants with factory design pattern. Secondly, we design the activity and adapter for comment page to show the details of certain restaurant and generate the comment normally, we apply `thread` in it and set the time gap as 2~3 seconds. Finally, we designed a lot of contents and usernames for every comment and let them loaded in comment page successfully.<br>
 
 5. `[Search]` The app must allow users to search for information. Based on the user's input, adhering to pre-defined grammar(s), a query processor must interpret the input and retrieve relevant information matching the user's query. The implementation of this functionality should align with the app’s theme. The application must incorporate a tokenizer and parser utilizing a formal grammar created specifically for this purpose. (medium)
+    
+    * Code: [Tokenizer.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java?ref_type=heads), [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+    * Description of feature: The app allows users to search for restaurants based on their input query. The search functionality corrects misspelled tokens and returns relevant results based on the corrected query.
+    * Description of your implementation: 
+    The search functionality is implemented using a tokenizer and parser. The tokenizer breaks down the user's input query into individual tokens based on whitespace. The parser validates and corrects the tokens by comparing them against a list of predefined valid tokens. The parser uses the Levenshtein distance algorithm to correct misspelled tokens and return the closest valid token. The search results are then displayed to the user based on the corrected query. The search functionality is integrated into the app's theme and provides a seamless user experience.
 
 6. `[UXUI]` The app must maintain a consistent design language throughout, including colors, fonts, and UI element styles, to provide a cohesive user experience. The app must also handle orientation changes (portrait to landscape and vice versa) gracefully, ensuring that the layout adjusts appropriately. (easy)
 
