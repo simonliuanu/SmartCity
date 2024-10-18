@@ -180,6 +180,34 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
      - [UI Design. I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages. Furthermore, I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]* <br><br>
 
+5. **u7765758, Simon Liu**  I have 20% contribution, as follows: <br>
+
+    - **Code Contribution in the final App**
+        - Features - Basic: [Search](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%5D%20The,this%20purpose.%20(medium)), 
+        Custom: [Search-Invalid](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%2DInvalid%5D,this%20feature.%20(medium)), [Search-Filter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%2DFilter%5D%20The%20app%20must%20provide%20functionality%20to%20sort%20and%20filter%20a%20list%20of%20items%20returned%20from%20searches%20using%20appropriate%20UI%20components.%20(easy))<br>
+            Since these features are closely related, I have grouped the classes I contributed together:
+            - [Tokenizer.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java?ref_type=heads)
+            - [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+            - [AvlTree.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads)
+            - [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java?ref_type=heads)
+            - [Restaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/Restaurant.java?ref_type=heads)
+            - [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/RestaurantManager.java?ref_type=heads)
+            - [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads)
+        - UI file: [fragment_home](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads)(part)
+
+    - **Code and App Design**
+      - Design Pattern: [Singleton Pattern]
+        - [AvlTreeManager.getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java#L18)
+            Implemented Singleton pattern to ensure that there is only one instance of AvlTreeManager in the application.
+      - Data Structure: [AvlTree](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads) to store restaurant data (it's using generic type, so it can be used to store any type of data, expanding the code's reusability)
+      - Unit Testing:
+        - [AvlTreeTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/AvlTreeTest.java)
+        - [AvlTreeManagerTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/AvlTreeManagerTest.java)
+        - [ParserTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/ParserTest.java)
+        - [TokenizerTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/TokenizerTest.java)
+
+    - **Others**:
+        - [Team Meeting] - I have scribed team meeting record [one](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads) and [three](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-three.md?ref_type=heads).
 ## Application Description
 
 *CityTastes is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
