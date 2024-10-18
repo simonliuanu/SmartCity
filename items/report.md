@@ -635,12 +635,39 @@ Feature Category: Firebase Integration <br>
 
 *Here is an example:*
 
-1. Tests for Search
+1. Tests for Search & Data Structure
 
-   - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
-   - *Number of test cases: ...*
-   - *Code coverage: ...*
-   - *Types of tests created and descriptions: ...*
+    Since the search feature is connected to the data structure, we have tested them together. We have created a series of test cases to ensure that the search functionality works as expected and that the data structure is correctly implemented. The tests include:
+
+   - Code: [ParserTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/ParserTest.java) for the [Parser Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java)<br>
+   [TokenizerTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/TokenizerTest.java) for the [Tokenizer Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java)<br>
+   [AvlTreeTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/AvlTreeTest.java) for the [AvlTree Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java)<br>
+   [AvlTreManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/manager/AvlTreeManagerTest.java) for the [AvlTreeManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/AvlTreeManager.java)<br>
+   - *Number of test cases: 13
+   - *Code coverage: 100% of Classes, 92% of Methods, 94% of Lines and 88% of Branches covered in Data Structure related classes*
+   <img src="media/report/codecoverage_test.png">
+   - *Types of tests created and descriptions:*
+     - AvlTreeManagerTest
+         - testSingletonInstance: Verifies that the AvlTreeManager class correctly implements the Singleton pattern by ensuring that only one instance of the AVL tree is created.
+         - testAvlTreeFunctionality: Tests the basic functionality of the AVL tree managed by AvlTreeManager, including insertion and exact search operations.
+      
+     - TokenizerTest
+         - testTokenize: Ensures that the Tokenizer class correctly breaks down an input query into individual tokens based on whitespace.
+      
+     - ParserTest
+         - testParse: Validates that the Parser class correctly parses and corrects tokens using a predefined list of valid tokens, ensuring that misspelled tokens are corrected.
+      
+     - AvlTreeTest
+         - testInsert: Verifies that the AVL tree correctly inserts new nodes and updates the node count.
+         - testSearchExact: Ensures that the AVL tree can find an exact match for a given restaurant name.
+         - testSearchExactNotFound: Confirms that the AVL tree returns null when an exact match is not found.
+         - testSearchByContains: Tests the AVL tree's ability to find nodes that contain a given substring.
+         - testToList: Verifies that the AVL tree can convert its nodes to a list in the correct order.
+         - testCountNodes: Ensures that the AVL tree correctly counts the number of nodes.
+         - testBalance: Confirms that the AVL tree remains balanced after multiple insertions.
+         - testRotateRight: Tests the AVL tree's right rotation operation to ensure it is performed correctly.
+         - testHeight: Verifies that the height of the AVL tree is correctly calculated.
+    
 
 2. Tests for Iterator
 
