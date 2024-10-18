@@ -15,15 +15,15 @@
 
 ## Administrative
 
-- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
+- Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn
 
   - Confirm: [X] I have already added comp21006442@gmail.com as a Editor to the Firebase project prior to due date.
   - <img src="media/report/firebase-editors.png">
 
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
 
-  - Username: comp2100@anu.edu.au  Password: comp2100 [X] // TODO: check if done
-  - Username: comp6442@anu.edu.au  Password: comp6442 [X] // TODO: check if done
+  - Username: comp2100@anu.edu.au  Password: comp2100
+  - Username: comp6442@anu.edu.au  Password: comp6442
 
 ## Team Members and Roles
 
@@ -192,8 +192,6 @@ Specific details of individual contribution of each member to the project.
 ### Application Use Cases and/or Examples
 
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
-
-*Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
 *Jay is looking for a nice restaurant in his vicinity to try for dinner.*
 
