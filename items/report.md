@@ -93,26 +93,32 @@ Note that the core criteria of contribution is based on `code contribution` (the
    - **Code Contribution in the final App**
 
      - Features: 
-        - [DataFiles] - class: [RES_dataSet]()
-        - [DataStream] - class: [CommentActivity](),[CommentAdapter](),[Comment]()
+        - [DataFiles] - class: [RES_dataSet](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
+        - [DataStream] 
+          - class activity: [CommentActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads)
+          - class adapter: [CommentAdapter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/CommentAdapter.java?ref_type=heads)
+          - concrete class: [Comment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/Comment.java?ref_type=heads)
      - Design pattern:
         - Factory Design Pattern
-          - class CommentFactory: [CommentFactory](),
-          - interface CommentItem: [CommentItem]()
-          - class implement in content: [ContentInComment]()
-          - class implement in username: [UsernameInComment]()
-     - UI files: [res_comment.xml]()
-     - Data cleaning and formatting：[RES_dataSet]()
-     - 
-<br><br>
-   - **Code and App Design** 
+          - class CommentFactory: [CommentFactory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentFactory.java?ref_type=heads),
+          - interface CommentItem: [CommentItem](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentItem.java?ref_type=heads)
+          - class implement in content: [ContentInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/ContentInComment.java?ref_type=heads)
+          - class implement in username: [UsernameInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/UsernameInComment.java?ref_type=heads)
+     - UI files: [res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/res_comment.xml?ref_type=heads)
+     - Data fetching：[RES_dataSet](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
+     - Data cleaning and formatting：[commit history](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/f265d991c4269d03c2f8d47feeba9ec437f73a20)
+     <br>
+- **Code and App Design**
 
      - I purposed following items: 
         - Design pattern:[Factroy design pattern]
         - Datastructure: [Arraylist]
+        - UI design: I design the basic layout in comment page[res_comment.xml]
         - UML design:
           - [User case diagram]
-          - [Class diagram]<br><br>
+          - [Class diagram for whole class]
+          - [Class diagram for data structure]
+          - [Class diagram for design pattern]<br>
 
    - **Others**:
      - [Report writing for Application Description part]*
@@ -186,7 +192,6 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
-*Here is a pet training application example*
 
 *Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
