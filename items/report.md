@@ -167,7 +167,7 @@ Specific details of individual contribution of each member to the project.
    - **Code and App Design** 
 
      - [UI Design: I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages.]
-     - [UI Design: I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]
+     - [UI Design: I ensured a consistent color scheme for the top bar, navigation bar.]
 <br><br>
 
 5. **u7765758, Simon Liu (GitLab ID: u7761758@anu.edu.au, ximeng.liu@anu.edu.au (alias mail account))**  I have 20% contribution, as follows: <br>
