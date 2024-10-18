@@ -93,21 +93,30 @@ Note that the core criteria of contribution is based on `code contribution` (the
    - **Code Contribution in the final App**
 
      - Features: 
-        -[DataFiles] - class: [RES_dataSet]()
-        -[DataStream] - class: [CommentActivity](),[CommentAdapter](),[Comment]()
-     - Factory Design Pattern -  class CommentFactory: [CommentFactory](),[CommentItem](),[ContentInComment](),[UsernameInComment]()
+        - [DataFiles] - class: [RES_dataSet]()
+        - [DataStream] - class: [CommentActivity](),[CommentAdapter](),[Comment]()
+     - Design pattern:
+        - Factory Design Pattern
+          - class CommentFactory: [CommentFactory](),
+          - interface CommentItem: [CommentItem]()
+          - class implement in content: [ContentInComment]()
+          - class implement in username: [UsernameInComment]()
      - UI files: [res_comment.xml]()
-     - (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
-
+     - Data cleaning and formatting：[RES_dataSet]()
+     - 
+<br><br>
    - **Code and App Design** 
 
-     - I purposed following items: design pattern:[Factroy design pattern],Datastructure: [Arraylist]
-     - UML design:[User case diagram][Class diagram]<br><br>
+     - I purposed following items: 
+        - Design pattern:[Factroy design pattern]
+        - Datastructure: [Arraylist]
+        - UML design:
+          - [User case diagram]
+          - [Class diagram]<br><br>
 
-   - **Others**: (only if significant and significantly different from an "average contribution") 
-
-     - [Report Writing?] [Slides preparation?]*
-     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
+   - **Others**:
+     - [Report writing for Application Description part]*
+     <br><br>
 3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
 
 - **Code Contribution in the final App**
