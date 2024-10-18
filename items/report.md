@@ -64,7 +64,7 @@ Specific details of individual contribution of each member to the project.
      - [Assisted Data Verification]
      - [Set the app icon]
     <br><br>
-2. **u7810157, Yuheng Li**  I have 20% contribution, as follows: <br>
+2. **u7810157, Yuheng Li(GitLab ID: u7810157@anu.edu.au)**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
      - Features: 
