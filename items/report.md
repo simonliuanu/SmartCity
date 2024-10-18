@@ -1,19 +1,5 @@
 # [G16 - Five Coders] Report
 
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
-
-Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submission (like the current sentence), otherwise it hampers the professionality in your documentation.
-
-*Here are some tips to write a good report:*
-
-* `Bullet points` are allowed and strongly encouraged for this report. Try to summarise and list the highlights of your project (rather than give long paragraphs).*
-
-* *Try to create `diagrams` for parts that could greatly benefit from it.*
-
-* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
-
-*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report. Note that they only provide part of the skeleton and your description should be more content-rich. Quick references about markdown by [CommonMark](https://commonmark.org/help/)*
-
 ## Table of Contents
 
 1. [Team Members and Roles](#team-members-and-roles)
@@ -28,8 +14,6 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 10. [Conflict Resolution Protocol](#conflict-resolution-protocol)
 
 ## Administrative
-
-*Instruction: please place the CORRECT link to your firebase repository here (with comp21006442@gmail.com added as an Editor)*
 
 - Firebase Repository Link:  https://console.firebase.google.com/project/smart-city-restaurant/overview?hl=zh-cn // TODO
 
@@ -57,19 +41,6 @@ The key area(s) of responsibilities for each member
 
 Specific details of individual contribution of each member to the project.
 
-Each team member is responsible for writing **their own subsection**.
-
-A generic summary will not be acceptable and may result in a significant lose of marks.
-
-*[Summarise the contributions made by each member to the project, e.g. code implementation, code design, UI design, report writing, etc.]*
-
-*[Code Implementation. Which features did you implement? Which classes or methods was each member involved in? Provide an approximate proportion in pecentage of the contribution of each member to the whole code implementation, e.g. 30%.]*
-
-*you should ALSO provide links to the specified classes and/or functions*
-Note that the core criteria of contribution is based on `code contribution` (the technical developing of the App).
-
-*Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
-
 1. **u7841935, Rongze Gao**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
@@ -93,52 +64,78 @@ Note that the core criteria of contribution is based on `code contribution` (the
    - **Code Contribution in the final App**
 
      - Features: 
-        -[DataFiles] - class: [RES_dataSet]()
-        -[DataStream] - class: [CommentActivity](),[CommentAdapter](),[Comment]()
-     - Factory Design Pattern -  class CommentFactory: [CommentFactory](),[CommentItem](),[ContentInComment](),[UsernameInComment]()
-     - UI files: [res_comment.xml]()
-     - (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
+        - [DataFiles] - class: [RES_dataSet](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
+        - [DataStream] 
+          - class activity: [CommentActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads)
+          - class adapter: [CommentAdapter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/CommentAdapter.java?ref_type=heads)
+          - concrete class: [Comment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/Comment.java?ref_type=heads)
+     - Design pattern:
+        - Factory Design Pattern
+          - class CommentFactory: [CommentFactory](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentFactory.java?ref_type=heads),
+          - interface CommentItem: [CommentItem](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/CommentItem.java?ref_type=heads)
+          - class implement in content: [ContentInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/ContentInComment.java?ref_type=heads)
+          - class implement in username: [UsernameInComment](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/factory/UsernameInComment.java?ref_type=heads)
+     - UI files: [res_comment.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/res_comment.xml?ref_type=heads)
+     - Data fetching：[RES_dataSet](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
+     - Data cleaning and formatting：[commit history](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/f265d991c4269d03c2f8d47feeba9ec437f73a20)
+     <br>
+- **Code and App Design**
 
-   - **Code and App Design** 
+     - I purposed following items: 
+        - Design pattern:[Factroy design pattern]
+        - Datastructure: [Arraylist]
+        - UI design: I design the basic layout in comment page[res_comment.xml]
+        - UML design:
+          - [User case diagram]
+          - [Class diagram for whole class]
+          - [Class diagram for data structure]
+          - [Class diagram for design pattern]<br>
 
-     - I purposed following items: design pattern:[Factroy design pattern],Datastructure: [Arraylist]
-     - UML design:[User case diagram][Class diagram]<br><br>
-
-   - **Others**: (only if significant and significantly different from an "average contribution") 
-
-     - [Report Writing?] [Slides preparation?]*
-     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
+   - **Others**:
+     - [Report writing for Application Description part]*
+     <br><br>
 3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
-- **Code Contribution in the final App**
 
+- **Code Contribution in the final App**
   - Features:
 
-    - [LogIn] - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-    - [LoadShowData] - class ItemListAdapter:  [ItemListAdapter.java](), 
-    - [Interact-Follow] - class: MeFragment
+    - [LogIn] - class: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads)
+    - [LoadShowData] - class:  [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads)
+    - [Interact-Follow] - class: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)
     - [[UXUI] - class:
-
   - Design Pattern: 
-  
-    - Singleton Pattern -  class User, LikeRestaurant: [getInstance()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43),
-    - Observer Pattern -  class LikeRestaurant: line 21 - 66
-    - Iterator Pattern -  class RestaurantRepository: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-    - DAO Pattern - package Dao 
 
-  - UI files: [bottom_navi.xml](), [activity_login.xml](), [activity_main.xml](), [fragment_item.xml](), [item_list.xml]()
-
-  - Other: setup firebase
+    - Singleton Pattern 
+      - class [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
+      - class [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32)
+    - Observer Pattern 
+      - Subject: class: [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads)
+      - Concrete Subject: [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [line 21 - 66](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L41-92)
+      - Observer: [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads)
+      - Concrete Observer: [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) implemented by [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads): [line 112 - 144](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L112-144), 
+    - Iterator Pattern
+      - Collection: [Container.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/Container.java?ref_type=heads)
+      - Concrete collection: [RestaurantRepository.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads)
+      - Concrete interator: [RestaurantIterator](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads#L36-70) (inner class)
+      - Implement in: class [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads): [line 89 - 110](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L89-110)  with method [loadMoreData](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L144-150)
+    - DAO Pattern
+      - Interface: [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads)
+      - Implement: [ItemDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDaoImpl.java?ref_type=heads), [UserDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads)
+      - Used in: ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
+  - UI files: [bottom_navi.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/tree/main/SmartCity/app/src/main/res/menu?ref_type=heads)(part), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_login.xml?ref_type=heads), [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/activity_main.xml?ref_type=heads)(part), [fragment_item.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_item.xml?ref_type=heads)(part), [item_list.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blame/main/SmartCity/app/src/main/res/layout/item_list.xml?ref_type=heads#L2), [moredata.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/moredata.xml?ref_type=heads)
 
     <br>
 
 - **Code and App Design** 
 
-  - I purposed following items: design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. Datastructure: [Arraylist]
-  - [UI Design. I design the theme color and layout location of the project]* <br><br>
+  - I proposed following items: 
+    - Design pattern: [singleton pattern], [observer pattern], [iterator pattern] and [dao pattern]. 	
+    - Datastructure: [Arraylist]
+    - Database: store in firebase
+  - UI Design: I design the theme color and layout location of the project <br><br>
 
 - **Others**: (only if significant and significantly different from an "average contribution") 
-
-  - [setup firebase] <br><br><br><br>
+  - setup firebase <br><br>
 
 4. **u7615711, Tianfa Zhu**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
@@ -154,6 +151,34 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
      - [UI Design. I adopted a clean and clear design language, using a top bar and bottom navigation bar across almost all pages. Furthermore, I ensured a consistent color scheme for the top bar, navigation bar, and buttons.]* <br><br>
 
+5. **u7765758, Simon Liu**  I have 20% contribution, as follows: <br>
+
+    - **Code Contribution in the final App**
+        - Features - Basic: [Search](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%5D%20The,this%20purpose.%20(medium)), 
+        Custom: [Search-Invalid](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%2DInvalid%5D,this%20feature.%20(medium)), [Search-Filter](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/gpSpec/2_Features.md?ref_type=heads#:~:text=%5BSearch%2DFilter%5D%20The%20app%20must%20provide%20functionality%20to%20sort%20and%20filter%20a%20list%20of%20items%20returned%20from%20searches%20using%20appropriate%20UI%20components.%20(easy))<br>
+            Since these features are closely related, I have grouped the classes I contributed together:
+            - [Tokenizer.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java?ref_type=heads)
+            - [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+            - [AvlTree.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads)
+            - [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java?ref_type=heads)
+            - [Restaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/Restaurant.java?ref_type=heads)
+            - [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/RestaurantManager.java?ref_type=heads)
+            - [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads)
+        - UI file: [fragment_home](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads)(part)
+
+    - **Code and App Design**
+      - Design Pattern: [Singleton Pattern]
+        - [AvlTreeManager.getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java#L18)
+            Implemented Singleton pattern to ensure that there is only one instance of AvlTreeManager in the application.
+      - Data Structure: [AvlTree](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads) to store restaurant data (it's using generic type, so it can be used to store any type of data, expanding the code's reusability)
+      - Unit Testing:
+        - [AvlTreeTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/AvlTreeTest.java)
+        - [AvlTreeManagerTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/AvlTreeManagerTest.java)
+        - [ParserTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/ParserTest.java)
+        - [TokenizerTest.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/test/java/com/example/smartcity/TokenizerTest.java)
+
+    - **Others**:
+        - [Team Meeting] - I have scribed team meeting record [one](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads) and [three](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-three.md?ref_type=heads).
 ## Application Description
 
 *CityTastes is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
@@ -164,9 +189,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ### Application Use Cases and/or Examples
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
 ![User case Diagram](items/uml_Diagram/UserCase.png)<br>
-*Here is a pet training application example*
 
 *Jay is looking for a new Chinese restaurant in his vicinity to try for dinner.*
 
@@ -226,24 +249,9 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 ## Code Design and Decisions
 
-This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
-
-- Details about the parser (describe the formal grammar and language used)
-- Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
-- Details about the design patterns used (where in the code, justification of the choice, etc)
-
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
-
-<hr>
-
-
 ### Data Structures
 
-*[What data structures did your team utilise? Where and why?]*
-
-Here is a partial (short) example for the subsection `Data Structures`:*
-
-*I used the following data structures in my project:*
+*We used the following data structures in our project:*
 
 1. *AvlTree*
    * ***Objective**: Used for storing restaurant data in a balanced search tree for the search feature. The AVL tree ensures efficient lookups, insertions, and deletions, enabling the application to quickly retrieve restaurant information based on user queries.*
@@ -253,78 +261,98 @@ Here is a partial (short) example for the subsection `Data Structures`:*
      * AVL trees are ideal for the restaurant search feature because the balanced nature ensures that no matter how large the dataset grows, search performance remains optimal.
      * We don’t need to access restaurants by index, which would make an array-based structure less suitable. Instead, the tree structure allows for quick retrieval based on comparisons (e.g., restaurant names or locations).
      * For restaurant queries, the tree’s ordering and balancing help provide both exact and suggested results based on user input, particularly when implementing fuzzy matching.
+     * In the implementation AvlTree class is using generic type, so it can be used to store any type of data, expanding the code's reusability.
 
-2. ArrayList
+2. *ArrayList*
 
-   * ***Objective**: Use for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time.*
-   * **Code Locations: ** Defined in [LikeRestaurants.java]() , [ItemFragment.java]()
+   * ***Objective**: Used for storing the restaurants that user liked and grouped these liked restaurants, when users like or unlike restaurants, the related list can update in time, and used to adapt ListView*
+   * **Code Locations:**
+     * Defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads), this class extends to ArrayList, and override the addMethod and removeMethod ([line 71 - 92](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L71-92)) to adapt the Observer pattern; processed in [ItemListAdapter.java line 99 - 117](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads#L99-117) to add / remove restaurant object.
+     * Defined in [ItemFragment.java - resList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L46) to store the restaurants displayed in the 'item' list
+     * Defined in [MeFragment.java - filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) to store the restaurants filtered by different type
    * *Reasons*: 
-      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
-      * ArrayList is sorted in the order in which the elements were added
-      * The faster query speed of ArrayList can help users better group their favorite restaurants.
+     * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
+     * ArrayList is sorted in the order in which the elements were added
+     * The faster query speed of ArrayList can help users better group their favorite restaurants.
 
-3. ...
+3. *Pair*
+
+   * ***Objective**:  
+   * **Code Locations**:
+   
+
+
+
+4. *List*
+
+   * ***Objective**:
+   * **Code Locations**:
+
+
+5. *HashMap*
+
+   * ***Objective**: Used for caching lists of restaurant data based on location. The key is a location identifier, which is calculated from the latitude and longitude of the restaurant's location, and the value is a list of restaurants associated with marker options.
+   * **Code Locations**: 
+
+
 
 <hr>
 
 
 ### Design Patterns
 
-*[What design patterns did your team utilise? Where and why?]*
-
-1. *Model-View-Controller (MVC) Pattern*
-
-   * *Objective: Used to separate the data (Model), the user interface (View), and the control logic (Controller) to enhance maintainability and scalability of the application.*
-   * *Code Locations: 
-      - Model: defined in [FirebaseUtil.java](), [UserUtil.java]()
-      - View: defined in [RecentChatAdapter.java](), [SearchUserAdapter.java](), [MessageAdapter.java]()
-      - Controller: defined in [ChatFragment.java](), [SearchUserActivity.java](), [ChatActivity.java]()
+1. *Data Access Object Pattern(DAO)*
+   * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
+   * *Code Locations: defined in [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) , [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads); processed in ItemDao - [MeFragment.java line 76 - 77](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L76-77), UserDao - [LoginActivity method checkUser](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and [line 50 - 51](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L50-51)
    * *Reasons:*
-     * Facilitate clear separation of concerns, allowing easier management of changes in one part of the application without affecting others.
-     * Promote better organization of code, leading to improved readability and maintainability.
+     *  Hide details of the data storage and the way to access to database
+     *  DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
+     *  When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
 
 
-2. *Data Access Object Pattern(DAO)*
+2. *Singleton Pattern*
 
-     * *Objective: used for storing user's information for [LogIn] feature and initialize restaurants data for [LoadShowData] feature.*
-     * *Code Locations: defined in [Class ItemDao](), [ItemDaoImpl]() , [UserDao](), [UserDaoImpl](); processed using [initialItemList]() and [checkUser()]()*
-     * *Reasons:*
-       *  Hide details of the data storage and the way to access to database
-       * DAO can centralize the data access logic of the application to simplify business logic and facilitate data operations.
-       * When need to change the data source or modify the data access logic, we can only work on the data layer and do not affect other layers.
+   * *Objective: make sure there is only one instance of LikeRestaurant and User to provide a global access point to access that instance. LikeRestaurant used to store user's choice on 'Home' page or 'Item' page, and display on 'Me' page 'My Favorite' section; User used to store the name of login user and display on 'Me' page.*
 
-    
-3. *Singleton Pattern*
+   * *Code Locations: *
 
-     * *Objective: make sure there is only one instance of LikeRestaurant and provide a global access point to access that instance.*
-     * *Code Locations: defined in [LikeRestaurant](); processed using [getInstance()]() .*
-     * *Reasons:*
-       * Only one instance in memory, reducing memory overhead
-       * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
-       * Data can be easily shared between different objects
-         ​  
-         <br>
+     * defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L30-32)
+     * defined in [User.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads); processed using  [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/entity/User.java?ref_type=heads)
+     * defined in [AvlTreeManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTreeManager.java#L18)
+     * defined in [MapRestaurantCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/MapRestaurantCache.java?ref_type=heads#L23-28)
+     * defined in [UserCache.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads); processed using [getInstance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/cache/UserCache.java?ref_type=heads#L16-21)
+   
+   * *Reasons:*
 
+     * Only one instance in memory, reducing memory overhead
+     * Provide a global access point for easy access to instances, avoiding the problem of repeatedly creating instances in different places.
+     * Data can be easily shared between different objects
 
-4. *Iterator Pattern*
-
-     * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
-     * Code Locations: defined in [Class Container](), [RestaurantRepository](), [RestaurantIterator](); processed using Method [hasNext()]() and [next()]()
-     * *Reasons:*
-       * Simplify the aggregation class, the class does not need to care about the traversal logic.
-       * Implemented paging functionality to speed up data loading
-
-
-5. *Observer Pattern*
-
-     * *Objective: used for realizing the grouping of restaurant data and real-time data update and display for [Interact-Follow] feature*
-     * Code Locations:  defined in [LikeRestaurant](); processed using [getInstance()]() 
-     * Reasons:
-       * Keep low coupling and high collaboration between objects
-       * Ensure that when the status of the restaurant in 'My Favorite' changes, the corresponding list can be updated in time
+3. *Iterator Pattern*
+   * *Objective: used for implementing paging function and optimizing loading datas for [LoadShowData] feature.*
+   * Code Locations: 
+     * Collection: [Container.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/Container.java?ref_type=heads)
+     * Concrete collection: [RestaurantRepository.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads)
+     * Concrete interator: [RestaurantIterator](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads#L36-70) (inner class)
+     * Implement in: class [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads): [line 89 - 110](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L89-110)  with method [loadMoreData](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L144-150)
+   * *Reasons:*
+     * Simplify the aggregation class, the class does not need to care about the traversal logic.
+     * Implemented paging functionality to speed up data loading
 
 
-6. Factory Pattern
+4. *Observer Pattern*
+   * *Objective: used for realizing the grouping of restaurant data and real-time data update and display, for [Interact-Follow] feature*
+   * Code Locations:  
+     * Subject: class: [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads)
+     * Concrete Subject: [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads): [line 21 - 66](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L41-92)
+     * Observer: [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads)
+     * Concrete Observer: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads) implement observer, but implemented by [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71)  with methods in [line 112 - 144](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L112-144)
+   * Reasons:
+     * Keep low coupling and high collaboration between objects
+     * Ensure that the status of `filterRes` of different types can be updated synchronously with `likeRestaurant`
+
+
+5. Factory Pattern
 
    * *Objective: used for .*
 
@@ -339,11 +367,28 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 ### Parser
 
+### <u>Tokenizers and Parsers</u>
+
+**Tokenizer (`Tokenizer` Class):**
+
+- **Definition:** Defined in [Tokenizer.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java?ref_type=heads)
+- **Purpose:** Breaks down input queries into individual tokens based on whitespace.
+- **Usage Scenario:** When a user inputs a query or command, the tokenizer processes the raw string to create a manageable list of tokens for further processing.
+
+**Parser (`Parser` Class):**
+
+- **Definition:** Defined in [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads)
+- **Purpose:** Validates and corrects tokens by comparing them against a list of predefined valid tokens.
+- **Usage Scenario:** After tokenization, the parser ensures that each token is recognized and corrects any discrepancies, such as typographical errors, before the tokens are used in the application’s logic.
 ### <u>Grammar(s)</u>
 
 The parser's primary function is to validate and correct tokens by comparing them against this list using the Levenshtein distance algorithm.
+The implementation of Levenshtein distance algorithm is in [levenshteinDistance()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java#L78)
 
-The parser operates based on a predefined list of **valid tokens** which are imported from item names imported from Firebase.
+The Levenshtein distance algorithm calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into another. When the parser reads a token from the token list generated with the tokenizer, it corrects any misspelled tokens by finding the closest valid token.
+
+The parser operates based on a predefined list of **valid tokens** which are imported from item names imported from Firebase. Implementation is at [HomeFragment.getValidTokens()](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/bafbefbb0bf613b275a63570b186f2b5acb8af6e/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java#L236)
+
 
 Production Rules:
 
@@ -354,57 +399,35 @@ Production Rules:
 
 **Advantages of This Design:**
 
-1. **Simplicity:**
-   - **Ease of Implementation:** The parser is straightforward to implement and maintain.
-   - **Minimal Overhead:** There's no need for complex parsing tables or state machines, which reduces computational overhead.
-2. **Flexibility:**
-   - **Dynamic Validation:** The list of valid tokens can be easily updated or extended without altering the underlying parsing logic.
-   - **Domain Adaptability:** Suitable for applications where the vocabulary is well-defined and can be enumerated.
-3. **Error Correction:**
-   - **Robustness:** By finding the closest valid token, the parser can correct minor typographical errors, enhancing user experience.
-
-### <u>Tokenizers and Parsers</u>
-
-**Tokenizer (`Tokenizer` Class):**
-
-- **Purpose:** Breaks down input queries into individual tokens based on whitespace.
-- **Usage Scenario:** When a user inputs a query or command, the tokenizer processes the raw string to create a manageable list of tokens for further processing.
-
-**Parser (`Parser` Class):**
-
-- **Purpose:** Validates and corrects tokens by comparing them against a list of predefined valid tokens.
-- **Usage Scenario:** After tokenization, the parser ensures that each token is recognized and corrects any discrepancies, such as typographical errors, before the tokens are used in the application’s logic.
-
-<hr>
-
-
-### Others
-
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
-
-<br>
+1. Error Correction: The parser can correct user input errors, improving the user experience by providing more accurate search results.
+2. Efficiency: The use of the Levenshtein distance algorithm ensures that the closest valid token is found efficiently, even for large lists of valid tokens.
+3. Flexibility: The parser can handle a wide range of user inputs and correct them to match the valid tokens, making the application more robust.
+4. Reusability: The Parser class can be reused in different parts of the application where input validation and correction are needed.
+5. Maintainability: The clear separation of the parsing logic and the Levenshtein distance calculation makes the code easier to maintain and extend
 
 <hr>
 
 
 ## Implemented Features
 
-*[What features have you implemented? where, how, and why?]* <br>
-*List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
-
 ### Basic Features
 
 1. `[LogIn]` The app must support user login functionality. User sign-up is not required. (easy)
 
-   * Code: LoginActivity, UserDao, UserDaoImple
-   * Description of feature: User can use the fixed account to login <br>
-   * Description of your implementation: 
-      
-      We store the user's login information (username and password) in the Firebase's [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100), so that when the user logs in, the information stored in the database is compared and verified.  And when the user enters an empty or incorrect account/password, the app will give a corresponding prompt. <br>
+      * Code: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [UserDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads), [LoginCallback.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/util/LoginCallback.java?ref_type=heads)
+      * Description of feature: User can use the fixed account to login <br>
+      * Description of your implementation: 
+        * Store the user's login information (username and password) in [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100) 
+        * The login logic implemented in [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads)
+        * When user click the login button, the app collects the entered username and password, calls [loginMethod](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L77-90) to check empty input
+        * If it passes the empty judgment, calls [checkUserMethd in LoginActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and instantiates the [UserDao](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads)
+        * Then calls [checkUserMethod in UserDao](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads#L17) to compare and verify the information stored in database
+        * Since Firebase queries are asynchronous, the query results are processed through callback functions [onCallback in LoginCallback](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/util/LoginCallback.java?ref_type=heads).
+        * If the username and password are correct, user can log in normally. Otherwise, user cannot log in. <br>
 
 2. `[DataFiles]` The app must use a data set (which you may create) where each entry represents a meaningful piece of information relevant to the app. The data set must be represented and stored in a structured format as taught in the course. It must contain at least 2,500 valid instances. (easy)
 
-   * Code to the Data File: <a href="[SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json · dev · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/assets/RES_dataSet_reordered_one_line_2.json?ref_type=heads)">assets</a>
+   * Code to the Data File: [Data set](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/assets/RES_dataSet.json?ref_type=heads)
    * Link to the Firebase repo: <a href="[smart-city-restaurant - Realtime Database - 数据 - Firebase 控制台 (google.com)](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants?hl=zh-cn)">firebase</a>
    * Description of your implementation:
    
@@ -412,11 +435,14 @@ Production Rules:
 
 3. `[LoadShowData]` The app must load and display data instances from the data set. Data must be retrieved from either a local file (e.g., JSON, XML) or Firebase. (easy)
 
-   * Code: [ItemListAdapter](), [ItemFragment](), [RestaurantRepository]()
-   * Description of feature: The app load and display data instances from the data set. <br>
-   * Description of your implementation: 
-   
-      We stored the restaurant data in Firebase's [Realtime Database](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants) because it works well with JSON-formatted data. Additionally, we created a corresponding `Restaurant` class with properties that map directly to the JSON structure, allowing for seamless data reading and display. As we have 3,500 records, we implemented pagination to prevent overloading the system by loading too much data at once. Each page displays 12 records, and users can click "load more data" to view the next set of data. To achieve this, we used the Iterator pattern in the implementation.<br>
+      * Code: [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads), [RestaurantRepository.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads) ,  [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads),  [ItemDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDaoImpl.java?ref_type=heads)<br>
+      * Description of your implementation: 
+        * We stored the restaurant data in [Realtime Database](https://console.firebase.google.com/project/smart-city-restaurant/database/smart-city-restaurant-default-rtdb/data/~2Frestaurants) because it works well with JSON-formatted data.
+        * The basic logic implement in  [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads), when user jump to 'item' page, calls  [initiateDataMethod](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L119-133) to fetch the initial list of restaurants from a Firestore database using the [ItemDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/ItemDao.java?ref_type=heads) class.
+        * To ensure loading speed, only 12 data are displayed per page. Users can click the 'load more data' button to load the next page.
+        * Paging functionality is implemented using the Iterator pattern 
+        * The  [RestaurantIterator](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads#L36-70)  will be used to determine whether there is any data (hasNext). If so, the next method will be called and the data of the next page will be added to the display list.
+        * Once the data is fetched, the UI is updated via the [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads) and  display the restaurant data in a list format.<br>
 
 4. `[DataStream]` The app must simulate user interactions through data streams. These data streams must be used to feed the app so that when a user is logged in (or enters a specific activity), the data is loaded at regular time intervals and the app is updated automatically.  (medium)
 
@@ -445,17 +471,21 @@ Feature Category: Search-related features <br>
 
   1. `[Search-Invalid]` The search functionality must not only provide results for valid search queries (extension of the basic **[Search]** feature) but also process and correctly handle partially invalid search queries, returning meaningful results. Refer to the [Feature Request Example](#feature-request-example) for further explanation of this feature. (medium)
 
-     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+     * Code: [Parser.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java?ref_type=heads), [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads)
+      
+     * Description of feature: When a user enters a partially invalid search query, the search functionality should correct the query and return relevant results. For example, if a user types "restauran" instead of "restaurant," the search should return results containing the term "restaurant." 
 
-     * Description of your implementation: ... <br>
+     * Description of your implementation: The search functionality has been extended to handle partially invalid search queries. The parser uses the Levenshtein distance algorithm to correct misspelled tokens and return the closest valid token. For example, if a user types "restauran" instead of "restaurant," the parser will correct the query and return the relevant results containing the term "restaurant." cause "restaurant" is the minimum distance to "restauran" in the valid tokens list.
 
-       <br>
+     <br>
 
   2. `[Search-Filter]` The app must provide functionality to sort and filter a list of items returned from searches using appropriate UI components. (easy)
 
-     * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+     * Code: [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads), [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/RestaurantManager.java?ref_type=heads)
+      
+     * Description of feature: Users can sort and filter the list of items returned from searches based on price and rating. The UI should include appropriate components for sorting and filtering, such as dropdown menus or buttons.
 
-     * Description of your implementation: ...
+     * Description of your implementation: The search functionality has been extended to include sorting and filtering options. Users can sort the list of items by price or rating, and filter different restaurant types. By default the list of results are sorted by name and all types of restaurants are listed. When clicking spinner, the list could be sorted by choosing different restaurant types, and sort by price or rating, from high to low or low to high. This is implemented by adding the sequence of the list in [RestaurantManager.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/RestaurantManager.java?ref_type=heads#L23-25) and [HomeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/HomeFragment.java?ref_type=heads#L236-238). The UI components are implemented in [fragment_home.xml](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/res/layout/fragment_home.xml?ref_type=heads).
 
 
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
@@ -471,7 +501,7 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 Feature Category: Peer to Peer Messaging <br>
 
 
-4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
+   4. `[P2P-DM]` The app must provide users with the ability to send direct, private messages to each other. (hard). 
 
    * Code: [ChatFragment.java](), [ChatActivity.java](), [SearchUserActivity.java]()
 
@@ -481,21 +511,18 @@ Feature Category: Peer to Peer Messaging <br>
         * Created user search functionality that allows users to find other users by name, facilitating the initiation of chats.
         * Implemented RecyclerViews to display recent chat windows and chat messages, enhancing user experience through efficient data handling and presentation.
 
-  Feature Category: User Interactivity <br>
+Feature Category: User Interactivity <br>
 
-5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
+   5. `[Interact-Follow]` The app must provide the ability to follow, save or collect items. There must be a section that displays all items followed, saved or collected by a user, with items grouped and ordered. This information should be stored in-memory. (hard). 
 
-   * Code:
+   * Code:  [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads),  [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads),  [Subject.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/Subject.java?ref_type=heads),  [LikeRestaurantObserver.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurantObserver.java?ref_type=heads),  [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads)
 
-   * Description of your implementation:
- 
-Feature Category: Firebase Integration <br>
-
-3. [FB-Auth] Description of the feature (easy)
-
-* Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-* [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-* Description of your implementation: ... <br>
+   * Description of your implementation: 
+     * A like button is added for each restaurant. Users can click the button to add the restaurant to 'My Favorite'.
+     * Use a global variable [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads) as a subject to store the restaurants liked by user
+     * The list of these restaurants saved in 'My Favorite' section on 'me' page ( [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)). 
+     * The list of like restaurants is ordered by adding time, and can be grouped by type
+     * When the user unlikes a restaurant in the 'My Favorite' section, the [likeRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L69) storing the data will be updated and notify [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads) as the observer, which will call the update method to update [filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71), thus achieving real-time updates of filterRes and the list.
 
 <hr>
 
@@ -513,6 +540,7 @@ Feature Category: Firebase Integration <br>
 
 - (ii) correct **at least one existing** of the implementation issues identified in (i)—list all relevant git commits, files and line numbers (and provide links) from **on or after 10 October**, and explain why the previous solution was not suitable and how you solved the issue;
 
+  - Written approval of this case: https://edstem.org/au/courses/17641/discussion/2185403?comment=5149239
   - Relevant git commits: [Optimise 'Me' page my favorite part (1a237d78) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/1a237d78a22835ea8d949a033561659247e75236), [Fix the wrong display of restaurant type (ae7e3ec9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6)
 
   - Relevant files:
@@ -543,17 +571,39 @@ Feature Category: Firebase Integration <br>
 
 ## Testing Summary
 
-*[What features have you tested? What is your testing coverage?]*
-*Please provide details (see rubrics) including some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
+1. Tests for Search & Data Structure
 
-*Here is an example:*
+    Since the search feature is connected to the data structure, we have tested them together. We have created a series of test cases to ensure that the search functionality works as expected and that the data structure is correctly implemented. The tests include:
 
-1. Tests for Search
-
-   - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
-   - *Number of test cases: ...*
-   - *Code coverage: ...*
-   - *Types of tests created and descriptions: ...*
+   - Code: [ParserTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/ParserTest.java) for the [Parser Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Parser.java)<br>
+   [TokenizerTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/TokenizerTest.java) for the [Tokenizer Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/Tokenizer.java)<br>
+   [AvlTreeTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/dataStructure/AvlTreeTest.java) for the [AvlTree Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dataStructure/AvlTree.java)<br>
+   [AvlTreManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/backend/manager/AvlTreeManagerTest.java) for the [AvlTreeManager Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/manager/AvlTreeManager.java)<br>
+   - *Number of test cases: 13
+   - *Code coverage: 100% of Classes, 92% of Methods, 94% of Lines and 88% of Branches covered in Data Structure related classes*
+   <img src="media/report/codecoverage_test.png">
+   - *Types of tests created and descriptions:*
+     - AvlTreeManagerTest
+         - testSingletonInstance: Verifies that the AvlTreeManager class correctly implements the Singleton pattern by ensuring that only one instance of the AVL tree is created.
+         - testAvlTreeFunctionality: Tests the basic functionality of the AVL tree managed by AvlTreeManager, including insertion and exact search operations.
+      
+     - TokenizerTest
+         - testTokenize: Ensures that the Tokenizer class correctly breaks down an input query into individual tokens based on whitespace.
+      
+     - ParserTest
+         - testParse: Validates that the Parser class correctly parses and corrects tokens using a predefined list of valid tokens, ensuring that misspelled tokens are corrected.
+      
+     - AvlTreeTest
+         - testInsert: Verifies that the AVL tree correctly inserts new nodes and updates the node count.
+         - testSearchExact: Ensures that the AVL tree can find an exact match for a given restaurant name.
+         - testSearchExactNotFound: Confirms that the AVL tree returns null when an exact match is not found.
+         - testSearchByContains: Tests the AVL tree's ability to find nodes that contain a given substring.
+         - testToList: Verifies that the AVL tree can convert its nodes to a list in the correct order.
+         - testCountNodes: Ensures that the AVL tree correctly counts the number of nodes.
+         - testBalance: Confirms that the AVL tree remains balanced after multiple insertions.
+         - testRotateRight: Tests the AVL tree's right rotation operation to ensure it is performed correctly.
+         - testHeight: Verifies that the height of the AVL tree is correctly calculated.
+    
 
 2. Tests for Iterator
 
@@ -576,11 +626,6 @@ Feature Category: Firebase Integration <br>
 
 ## Summary of Known Errors and Bugs
 
-*[Where are the known errors and bugs? What consequences might they lead to?]*
-*List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
-
-*Here is an example:*
-
 1. *Bug 1:*
 
    - Description: When users are in the process of searching for users or chatting with other users, pressing the phone's built-in back navigation key causes the application to crash or logs out the current user.
@@ -597,7 +642,17 @@ Feature Category: Firebase Integration <br>
        - Open the application.
        - Navigate to the map feature.
        - Observe that the map shows the default location instead of the configured location.
-3. ...
+
+3. *Bug 3:*
+
+    - Description: After the map is loaded for the first time, clicking on a restaurant marker displays the info window with the restaurant details. However, when the info window is clicked again, it turns into a blank window. On the third click, the info window returns to displaying the restaurant information again. This inconsistent behavior can confuse users.
+    - Steps to Reproduce:
+       - Launch the emulator and open the application.
+       - Navigate to the map feature and wait for the map to load.
+       - Click on a restaurant marker to open the info window, which displays the restaurant details.
+       - Click on the info window again and observe that it changes to a blank window.
+       - Click on the blank info window once more, and the restaurant information is displayed again.
+
 
 <br> <hr>
 
@@ -605,30 +660,27 @@ Feature Category: Firebase Integration <br>
 
 ### Meeting Minutes
 
-* Link to the minutes of your meetings like above. There must be at least 4 team meetings.
-  (each committed within 2 days after the meeting)
-* Your meetings should also have a reasonable date spanning across Week 6 to 11.*
-
-  - *[Team Meeting 1](link_to_md_file.md)*
-  - *[Team Meeting 2](link_to_md_file.md)*
-  - *[Team Meeting 3](link_to_md_file.md)*
-  - *[Team Meeting 4](link_to_md_file.md)*
-  - *[Team Meeting 5](link_to_md_file.md)*
-- ... (Add any descriptions if needed) ...
+  - *[Team Meeting 1](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads) (Teaching Break, 2024-09-10)*
+  - *[Team Meeting 2](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-two.md?ref_type=heads) (Week 7, 2024-09-17)*
+  - *[Team Meeting 3](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-three.md?ref_type=heads) (Week 8, 2024-09-28)*
+  - *[Team Meeting 4](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-four.md?ref_type=heads) (Week 9, 2024-10-04)*
+  - *[Team Meeting 5](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-five.md?ref_type=heads) (Week 10, 2024-10-10)*
+  - *[Team Meeting 6](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-six.md?ref_type=heads) (Week 11, 2024-10-17)*
 
 <hr>
 
 ### Conflict Resolution Protocol
 
-*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
-(If you choose to make this an external document, link to it here)]*
+*As listed in the [first team meeting](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads), the following protocol will be used to resolve conflicts:*
 
-*If your group has issues, how will your group reach consensus or solve the problem?*
-*- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project?*
+* Interpersonal Conflict Resolution Protocols
+ 
+    * Discuss with the relevant group member and/or a neutral group member, and attempt to find a solution.
+    * If an internal solution isn't found, discuss potential solutions with the group, and attempt to find a solution as a group.
+    * If a resolution isn't found within two/three days, or there is clearly no prospect of a resolution, discuss with the lab tutor and/or the teaching team.
 
-This shall include an agreed procedure for situations including (but not limited to):
 
-- A member is sick in the final week of the project.
-- A member didn't complete the assigned task which should've been completed before the checkpoint, and the checkpoint is approaching.
-- A member is unreachable (didn't respond messages in your agreed communication channels and emails in two days).
-- The team have different understandings toward the requirement of the assignment.
+* Work-Related Conflic Resolution Protocols
+
+    * A group member will discuss the situation with the affected member and attempt to find a solution.
+    * If a quick solution isn't found, the group will meet and attempt to find a solution that helps the affected member without unreasonably affecting the other group members.
