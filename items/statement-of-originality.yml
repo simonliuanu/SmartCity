@@ -109,6 +109,10 @@ assets:
   - comment: "navi_chat from Google Material Symbols"
     url: https://fonts.google.com/icons?selected=Material+Symbols+Outlined:chat_bubble:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=chat&icon.size=24&icon.color=%23FFFFFF
     licence: Google Material Symbols license (free for personal and commercial use with attribution)
+  
+  - comment: "ic-avatar" by WandererCreative"
+    url: https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/
+    licence: fair use
 
 
 ### Questions (answer before final submission):
