@@ -107,7 +107,7 @@ Specific details of individual contribution of each member to the project.
     - [LogIn] - class: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads)
     - [LoadShowData] - class:  [ItemListAdapter.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads), [ItemFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads)
     - [Interact-Follow] - class: [MeFragment.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads)
-    - [[UXUI] - class:
+    - [[UXUI]
   - Design Pattern: 
 
     - Singleton Pattern 
