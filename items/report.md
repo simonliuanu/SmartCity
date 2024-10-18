@@ -427,11 +427,16 @@ Production Rules:
 
 1. `[LogIn]` The app must support user login functionality. User sign-up is not required. (easy)
 
-   * Code: LoginActivity, UserDao, UserDaoImple
-   * Description of feature: User can use the fixed account to login <br>
-   * Description of your implementation: 
-      
-      We store the user's login information (username and password) in the Firebase's [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100), so that when the user logs in, the information stored in the database is compared and verified.  And when the user enters an empty or incorrect account/password, the app will give a corresponding prompt. <br>
+* Code: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads), [UserDao.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads), [UserDaoImpl.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads), [LoginCallback.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/util/LoginCallback.java?ref_type=heads)
+* Description of feature: User can use the fixed account to login <br>
+* Description of your implementation: 
+  * Store the user's login information (username and password) in [Firestore database](https://console.firebase.google.com/project/smart-city-restaurant/firestore/databases/-default-/data/~2Fusers~2Fcomp2100) 
+  * The login logic implemented in [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDaoImpl.java?ref_type=heads)
+  * When user click the login button, the app collects the entered username and password, calls [loginMethod](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L77-90) to check empty input
+  * If it passes the empty judgment, calls [checkUserMethd in LoginActivity](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/LoginActivity.java?ref_type=heads#L118-140) and instantiates the [UserDao](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads)
+  * Then calls [checkUserMethod in UserDao](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/dao/UserDao.java?ref_type=heads#L17) to compare and verify the information stored in database
+  * Since Firebase queries are asynchronous, the query results are processed through callback functions [onCallback in LoginCallback](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/util/LoginCallback.java?ref_type=heads).
+  * If the username and password are correct, user can log in normally. Otherwise, user cannot log in. <br>
 
 2. `[DataFiles]` The app must use a data set (which you may create) where each entry represents a meaningful piece of information relevant to the app. The data set must be represented and stored in a structured format as taught in the course. It must contain at least 2,500 valid instances. (easy)
 
@@ -544,6 +549,7 @@ Feature Category: Firebase Integration <br>
 
 - (ii) correct **at least one existing** of the implementation issues identified in (i)—list all relevant git commits, files and line numbers (and provide links) from **on or after 10 October**, and explain why the previous solution was not suitable and how you solved the issue;
 
+  - Written approval of this case: https://edstem.org/au/courses/17641/discussion/2185403?comment=5149239
   - Relevant git commits: [Optimise 'Me' page my favorite part (1a237d78) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/1a237d78a22835ea8d949a033561659247e75236), [Fix the wrong display of restaurant type (ae7e3ec9) · Commits · Yuheng Li / gp-24s2 · GitLab (anu.edu.au)](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/ae7e3ec9494fa546f2377743d6e8eb75526cf7b6)
 
   - Relevant files:
