@@ -668,11 +668,13 @@ Feature Category: User Interactivity <br>
 
 ### Meeting Minutes
 
+    Team meeting #4 and #5 was recorded with wrong number when initial commit, and following links are directed to the initial commit.
+
   - *[Team Meeting 1](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-one.md?ref_type=heads) (Teaching Break, 2024-09-10)*
   - *[Team Meeting 2](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-two.md?ref_type=heads) (Week 7, 2024-09-17)*
   - *[Team Meeting 3](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-three.md?ref_type=heads) (Week 8, 2024-09-28)*
-  - *[Team Meeting 4](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-four.md?ref_type=heads) (Week 9, 2024-10-04)*
-  - *[Team Meeting 5](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-five.md?ref_type=heads) (Week 10, 2024-10-10)*
+  - *[Team Meeting 4](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/b48936e209859eeca1dc7b8e98b3cc99d14a1df3) (Week 9, 2024-10-04)*
+  - *[Team Meeting 5](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/commit/b48936e209859eeca1dc7b8e98b3cc99d14a1df3) (Week 10, 2024-10-10)*
   - *[Team Meeting 6](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/items/team-meeting-record-six.md?ref_type=heads) (Week 11, 2024-10-17)*
 
 <hr>
