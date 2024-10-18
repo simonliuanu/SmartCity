@@ -143,7 +143,7 @@ Specific details of individual contribution of each member to the project.
   - setup firebase
   - record video <br><br>
 
-4. **u7615711, Tianfa Zhu (GitLab ID: u7615711@anu.edu.au, Tianfa.Zhu@anu.edu.au (alias mail account))**  I have 20% contribution, as follows: <br>
+4. **u7615711, Tianfa Zhu (GitLab ID: u7615711@anu.edu.au)**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
 
      - Feature [UXUI] : [MainActivity.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/dev/SmartCity/app/src/main/java/com/example/smartcity/activity/MainActivity.java?ref_type=heads)
