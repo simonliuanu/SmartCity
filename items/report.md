@@ -84,6 +84,7 @@ Specific details of individual contribution of each member to the project.
      - I purposed following items: 
         - Design pattern:[Factroy design pattern]
         - Datastructure: [Arraylist]
+        -
         - UI design: I design the basic layout in comment page[res_comment.xml]
         - UML design:
           - [User case diagram]
@@ -93,6 +94,7 @@ Specific details of individual contribution of each member to the project.
 
    - **Others**:
      - [Report writing for Application Description part]*
+     - [Set up APK]
      <br><br>
 3. **u7811526, Shengzong Dai**  I have 20% contribution, as follows: <br>
 
@@ -270,6 +272,7 @@ Specific details of individual contribution of each member to the project.
      * Defined in [LikeRestaurant.java](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads), this class extends to ArrayList, and override the addMethod and removeMethod ([line 71 - 92](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/observer/LikeRestaurant.java?ref_type=heads#L71-92)) to adapt the Observer pattern; processed in [ItemListAdapter.java line 99 - 117](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/adapter/ItemListAdapter.java?ref_type=heads#L99-117) to add / remove restaurant object.
      * Defined in [ItemFragment.java - resList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/ItemFragment.java?ref_type=heads#L46) to store the restaurants displayed in the 'item' list
      * Defined in [MeFragment.java - filterRes](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/fragment/MeFragment.java?ref_type=heads#L71) to store the restaurants filtered by different type
+     * Defined in [CommentActivity.java - commentList](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/frontend/activity/CommentActivity.java?ref_type=heads#L38) to store the restaurants filtered by different type
    * *Reasons*: 
      * ArrayList can dynamically grow, it won't restrict the number of restaurants that user like.
      * ArrayList is sorted in the order in which the elements were added
