@@ -62,15 +62,15 @@ assets:
       [x] using online resources (e.g., Stackoverflow, blogs)
 
 2. If not completed by yourself only, how did the use of Gen AI tools (and which ones), contribute to completing this assignment?
-  - Tool(s): Google Maps AI, YouTube tutorials, ChatGPT
+  - Tool(s): Google Maps Android API, YouTube tutorials, ChatGPT
   
 3. How did they contribute to the completion of this assignment?
-  - The Google Maps AI was used for implementing the map features, including handling location services and rendering the map.
+  - The Google Maps Android API was used for implementing the map features, including handling location services and rendering the map.
   - The YouTube tutorial by Bimal Kafle helped in implementing the chat functionality, adapting code from the provided GitHub repository.
   - ChatGPT helped us generate a high-quality Logo, adding a polished and cohesive look to the overall design of the app.
 
 4. How long did it take to complete this assignment (approximately, in hours)?
-  - 600 hours
+  - 30 hours
 
 
 
