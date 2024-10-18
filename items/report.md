@@ -24,6 +24,8 @@
 
   - Username: comp2100@anu.edu.au  Password: comp2100
   - Username: comp6442@anu.edu.au  Password: comp6442
+  
+- API level used: 34
 
 ## Team Members and Roles
 
