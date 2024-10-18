@@ -70,25 +70,42 @@ assets:
     url: https://cloud.google.com/cloud-console/?utm_source=google&utm_medium=cpc&utm_campaign=japac-AU-all-en-dr-BKWS-all-super-trial-PHR-dr-1605216&utm_content=text-ad-none-none-DEV_c-CRE_648976003582-ADGP_Hybrid+%7C+BKWS+-+BRO+%7C+Txt+-Management+Tools-Cloud+Console-google+cloud+console-main-KWID_43700076166781865-kwd-296393718382&userloc_9071966-network_g&utm_term=KW_google+cloud+console&gad_source=1&gclid=CjwKCAjw68K4BhAuEiwAylp3kk5-bplB_d4ttfEDca58R1X6Giw1VxDrLONuUWU0o3os2ZBQNseqahoCst0QAvD_BwE&gclsrc=aw.ds&hl=zh_cn
     licence: fair use
 
-  - comment: "login_show_pwd"
-    url: https://www.iconfont.cn/search/index?searchType=icon&q=%E6%98%BE%E7%A4%BA%E5%AF%86%E7%A0%81&page=1&fromCollection=1
-    licence: fair use
-
-  - comment: "login_hide_pwd"
-    url: https://www.iconfont.cn/search/index?searchType=icon&q=%E6%98%BE%E7%A4%BA%E5%AF%86%E7%A0%81&page=1&fromCollection=1
-    licence: fair use
-
-  - comment: "item_like_btn_off"
-    url: https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077
-    licence: fair use
-
-  - comment: "item_like_btn_on"
-    url: https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077
-    licence: fair use
-
-  - comment: "login_pic"
+  - comment: "login_pic by sksin"
     url: https://www.iconfont.cn/illustrations/detail?spm=a313x.illustrations_index.i1.d9df05512.10153a81peBhyH&cid=46228&show_id=427709
     licence: fair use
+
+  - comment: "login_show_pwd by 得力研究院图标库"
+    url: https://www.iconfont.cn/search/index?searchType=icon&q=%E6%98%BE%E7%A4%BA%E5%AF%86%E7%A0%81&page=1&fromCollection=1
+    licence: fair use
+
+  - comment: "login_hide_pwd by 得力研究院图标库"
+    url: https://www.iconfont.cn/search/index?searchType=icon&q=%E6%98%BE%E7%A4%BA%E5%AF%86%E7%A0%81&page=1&fromCollection=1
+    licence: fair use
+
+  - comment: "item_like_btn_off by 祤曦"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077
+    licence: fair use
+
+  - comment: "item_like_btn_on by 祤曦"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.search_index.0.da5a778a4.662f3a81xOEdMU&cid=7077
+    licence: fair use
+
+  - comment: "navi_des by Wanp"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
+  - comment: "navi_home by Wanp"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
+  - comment: "navi_item by Wanp"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
+  - comment: "navi_me by Wanp"
+    url: https://www.iconfont.cn/collections/detail?spm=a313x.collections_index.i1.d9df05512.3d973a811ZAhv0&cid=15186
+    licence: fair use
+
 
 ### Questions (answer before final submission):
 1. You (as a group) completed this work (tick the most appropriate option):
