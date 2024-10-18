@@ -199,12 +199,12 @@ Specific details of individual contribution of each member to the project.
 
 *CityTastes is a food lovers' social media app. In this regard, the app will give users the capabilities of searching for restaurants quite conveniently. They are allowed to look for a restaurant by typing down the name or using GPS by pinning their location in order to view the nearby restaurants and save their favorite restaurants by categorizing them. This will let people share reviews, have discussions, and converse with friends in regard to dining out.*
 
+<img src="media/report/screenshot-1.png">
+<img src="media/report/screenshot-2.png">
+
 ### Problem Statement
 
 *[Our app helps users discoveries of new restaurants by searching either via name or GPS, reading of reviews, saving favorites, and finally sharing in the vibrant community of food enthusiasts.]*
-
-<img src="media/report/screenshot-1.png">
-<img src="media/report/screenshot-2.png">
 
 ### Application Use Cases and/or Examples
 
