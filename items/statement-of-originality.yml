@@ -52,12 +52,12 @@ code:
     licence: "user contributions licensed under CC BY-SA"
 
   - comment: "The load more data function inspired and adapted from Tencent Cloud by '全栈程序员栈长'"
-  url: "https://cloud.tencent.com/developer/article/2042342"
-  licence: (from blog)
+    url: "https://cloud.tencent.com/developer/article/2042342"
+    licence: (from blog)
 
   - comment: "The usage of ViewHolder adapted from CSDN blog by '泊停Bo'"
-  url: "https://cloud.tencent.com/developer/article/2042342"
-  licence: (from blog)
+    url: "https://cloud.tencent.com/developer/article/2042342"
+    licence: (from blog)
 
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
@@ -97,11 +97,11 @@ assets:
       [x] using online resources (e.g., Stackoverflow, blogs)
 
 2. If not completed by yourself only, how did the use of Gen AI tools (and which ones), contribute to completing this assignment?
-  - Tool(s): Google Maps AI, YouTube tutorials, ChatGPT, Bilibili video tutorials, stackoverflow website
-  - Online Resource: CSDN, Tencent Cloud
+  - Tool(s): ChatGPT
+  - Online Resource: Google Maps Android API, YouTube tutorials, Bilibili video tutorials, stackoverflow website, CSDN, Tencent Cloud
   
 3. How did they contribute to the completion of this assignment?
-  - The Google Maps AI was used for implementing the map features, including handling location services and rendering the map.
+  - The Google Maps Android API was used for implementing the map features, including handling location services and rendering the map.
   - The Google Cloud console supports the map API to fetch the data set, including all data about the request.
   - The Bilibili tutorial help me to learn how to fetch data through Google open API.
   - The YouTube tutorial by Bimal Kafle helped in implementing the chat functionality, adapting code from the provided GitHub repository.
