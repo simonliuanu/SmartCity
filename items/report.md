@@ -139,8 +139,9 @@ Specific details of individual contribution of each member to the project.
     - Database: store in firebase
   - UI Design: I design the theme color and layout location of the project <br><br>
 
-- **Others**: (only if significant and significantly different from an "average contribution") 
-  - setup firebase <br><br>
+- **Others**:
+  - setup firebase
+  - record video <br><br>
 
 4. **u7615711, Tianfa Zhu (GitLab ID: u7615711@anu.edu.au, Tianfa.Zhu@anu.edu.au (alias mail account))**  I have 20% contribution, as follows: <br>
    - **Code Contribution in the final App**
