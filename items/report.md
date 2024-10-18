@@ -613,7 +613,7 @@ Feature Category: User Interactivity <br>
 
 2. Tests for Iterator
 
-    - Code: [IteraotrTest Class]() for the [RestaurantRepository Class]()
+    - Code: [IteraotrTest Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/test/java/com/example/smartcity/IteratorTest.java?ref_type=heads) for the [RestaurantRepository Class](https://gitlab.cecs.anu.edu.au/u7810157/gp-24s2/-/blob/main/SmartCity/app/src/main/java/com/example/smartcity/backend/Iterator/RestaurantRepository.java?ref_type=heads)
     - *Number of test cases: 2*
     - *Code coverage: 100% of Classes, 100% of Methods, 100% of Lines and 100% of Branches covered*
     <img src="media/report/codecoverage_iterator.png">
